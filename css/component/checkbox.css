@@ -1,0 +1,114 @@
+/* ============ Checkbox ============ */
+.checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid var(--box-border);
+  border-radius: var(--radius-sm);
+  background: var(--White);
+  cursor: pointer;
+  position: relative;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.checkbox:checked {
+  background: var(--slate-700);
+  border-color: var(--slate-700);
+}
+
+/* 체크 표시 */
+.checkbox:checked::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: 1px solid var(--White);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox:focus-visible {
+  border: 2px solid var(--gray-100);
+  border-radius: var(--radius-md);
+  background: var(--White);
+  box-shadow: var(--shadows-lg);
+}
+
+.checkbox:disabled {
+  cursor: not-allowed;
+  border-color: var(--gray-200);
+  background: var(--gray-50);
+}
+.checkbox:checked:disabled {
+  background: var(--gray-300);
+  border-color: var(--gray-300);
+}
+
+/* ============ Radio ============ */
+.radio {
+  appearance: none;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid var(--box-border);
+  border-radius: 50%;
+  background: var(--White);
+  cursor: pointer;
+  position: relative;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.radio:checked {
+  border-color: var(--slate-700);
+}
+
+/* 선택 표시 (가운데 점) */
+.radio:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--slate-700);
+  transform: translate(-50%, -50%);
+}
+
+.radio:focus-visible {
+  border: 2px solid var(--gray-100);
+  box-shadow: var(--shadows-lg);
+}
+
+.radio:disabled {
+  cursor: not-allowed;
+  border-color: var(--gray-200);
+  background: var(--gray-50);
+}
+.radio:checked:disabled::after {
+  background: var(--gray-300);
+}
+
+/* ============ 라벨 묶음 (체크박스/라디오 + 텍스트) ============ */
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gap-8);
+  cursor: pointer;
+}
+.check-item__text {
+  font-size: var(--text-14);
+  color: var(--gray-700);
+  padding-top: 1px;
+}
+.check-item:has(:disabled) {
+  cursor: not-allowed;
+}
+.check-item:has(:disabled) .check-item__text {
+  color: var(--gray-400);
+}

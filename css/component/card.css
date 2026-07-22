@@ -1,0 +1,154 @@
+/* 기본 카드 */
+.card {
+  background: var(--White);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadows-xs);
+  padding: var(--spacing-20);
+}
+
+.card__thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  background: var(--gray-100);
+  object-fit: cover;
+  margin-bottom: var(--spacing-16);
+}
+
+.card__title {
+  font-size: var(--text-18);
+  font-weight: var(--weight-Semibold);
+  color: var(--gray-900);
+}
+
+.card__desc {
+  font-size: var(--text-14);
+  color: var(--gray-500);
+  margin-top: var(--spacing-4);
+  line-height: 142.857%;
+}
+
+.card__footer {
+  display: flex;
+  gap: var(--gap-8);
+  margin-top: var(--spacing-16);
+}
+
+/* 가로형 카드 — 왼쪽 썸네일 + 오른쪽 텍스트 */
+.card--horizontal {
+  display: flex;
+  gap: var(--gap-16);
+  align-items: flex-start;
+}
+.card--horizontal .card__thumb {
+  width: 96px;
+  height: 96px;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+  margin-bottom: 0;
+}
+.card--horizontal .card__body {
+  min-width: 0;
+}
+
+/* 통계 카드 */
+.card--stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-4);
+}
+.card__label {
+  font-size: var(--text-14);
+  color: var(--gray-500);
+}
+.card__value {
+  font-size: var(--text-30);
+  font-weight: var(--weight-Semibold);
+  color: var(--gray-900);
+}
+.card__delta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-4);
+  font-size: var(--text-14);
+  font-weight: var(--weight-medium);
+  width: fit-content;
+}
+.card__delta--up {
+  color: var(--primary-700);
+}
+.card__delta--down {
+  color: var(--error-600);
+}
+
+/* 데모용 그리드 (자동 줄바꿈) */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--gap-16);
+}
+
+/* ============ 리스트/활동 카드 ============ */
+.card-list {
+  display: flex;
+  flex-direction: column;
+}
+.card-list__item {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-12);
+  padding: var(--spacing-12) 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+.card-list__item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.card-list__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--primary-50);
+  color: var(--primary-600);
+}
+.card-list__body {
+  flex: 1;
+  min-width: 0;
+}
+.card-list__title {
+  font-size: var(--text-14);
+  font-weight: var(--weight-medium);
+  color: var(--gray-900);
+}
+.card-list__desc {
+  font-size: var(--text-14);
+  color: var(--gray-500);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.card-list__time {
+  flex-shrink: 0;
+  font-size: var(--text-14);
+  color: var(--gray-400);
+}
+
+/* ============ 이미지/그래프 플레이스홀더 카드 ============ */
+.card__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  background: var(--gray-50);
+  border: 1px dashed var(--gray-200);
+  color: var(--gray-400);
+  font-size: var(--text-14);
+  margin-bottom: var(--spacing-16);
+}

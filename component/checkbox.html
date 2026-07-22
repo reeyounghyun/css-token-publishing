@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkbox / Radio</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/component/checkbox.css">
+  <style>
+    body {
+      padding: 1rem;
+    }
+    h2{
+      display: flex;
+      align-items: center;
+      gap: var(--gap-8);
+      font-size: 45px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: var( --primary-700);
+    }
+    .base {
+      display: inline-block;
+      font-size: 38px;
+      font-weight: 500;
+      color: var(--gray-800);
+    }
+    .group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-12);
+      max-width: 280px;
+    }
+  </style>
+</head>
+<body>
+  <h2>
+    <span class="base">component</span>
+    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
+    Checkbox / Radio
+  </h2>
+
+  <h3 style="margin-bottom: 12px;">Checkbox</h3>
+  <div class="group">
+    <label class="check-item">
+      <input type="checkbox" class="checkbox">
+      <span class="check-item__text">기본 (선택 안 됨)</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox" class="checkbox" checked>
+      <span class="check-item__text">선택됨</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox" class="checkbox" disabled>
+      <span class="check-item__text">비활성</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox" class="checkbox" checked disabled>
+      <span class="check-item__text">선택됨 + 비활성</span>
+    </label>
+  </div>
+
+  <h3 style="margin: 32px 0 12px;">Radio</h3>
+  <div class="group">
+    <label class="check-item">
+      <input type="radio" name="plan" class="radio">
+      <span class="check-item__text">무료 플랜</span>
+    </label>
+    <label class="check-item">
+      <input type="radio" name="plan" class="radio" checked>
+      <span class="check-item__text">프로 플랜</span>
+    </label>
+    <label class="check-item">
+      <input type="radio" name="plan" class="radio" disabled>
+      <span class="check-item__text">엔터프라이즈 (문의 필요)</span>
+    </label>
+  </div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Badge / Tag</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/component/badge.css">
+  <style>
+    body {
+      padding: 1rem;
+    }
+    h2{
+      display: flex;
+      align-items: center;
+      gap: var(--gap-8);
+      font-size: 45px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: var( --primary-700);
+    }
+    .base {
+      display: inline-block;
+      font-size: 38px;
+      font-weight: 500;
+      color: var(--gray-800);
+    }
+    .demo-row {
+      display: flex;
+      gap: var(--gap-8);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <h2>
+    <span class="base">component</span>
+    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
+    Badge / Tag
+  </h2>
+
+  <h3 style="margin-bottom: 12px;">색상 변형</h3>
+  <div class="demo-row">
+    <span class="badge badge--default">Default</span>
+    <span class="badge badge--primary">Active</span>
+    <span class="badge badge--error">Error</span>
+    <span class="badge badge--outline">Outline</span>
+  </div>
+
+  <h3 style="margin: 32px 0 12px;">점 표시 (상태)</h3>
+  <div class="demo-row">
+    <span class="badge badge--primary"><span class="badge__dot"></span>Active</span>
+    <span class="badge badge--default"><span class="badge__dot"></span>Invited</span>
+    <span class="badge badge--error"><span class="badge__dot"></span>Suspended</span>
+  </div>
+
+  <h3 style="margin: 32px 0 12px;">삭제 가능한 태그 (필터 chip)</h3>
+  <div class="demo-row" id="tag-demo">
+    <span class="badge badge--outline">디자인
+      <button type="button" class="badge__remove" aria-label="삭제" data-tag-remove>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M10.5 3.5L3.5 10.5M3.5 3.5L10.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </span>
+    <span class="badge badge--outline">프론트엔드
+      <button type="button" class="badge__remove" aria-label="삭제" data-tag-remove>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M10.5 3.5L3.5 10.5M3.5 3.5L10.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </span>
+    <span class="badge badge--outline">2026 Q3
+      <button type="button" class="badge__remove" aria-label="삭제" data-tag-remove>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M10.5 3.5L3.5 10.5M3.5 3.5L10.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </span>
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

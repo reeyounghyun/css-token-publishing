@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/component/button.css">
+  <link rel="stylesheet" href="/css/component/card.css">
+  <style>
+    body {
+      padding: 1rem;
+    }
+    h2{
+      display: flex;
+      align-items: center;
+      gap: var(--gap-8);
+      font-size: 45px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: var( --primary-700);
+    }
+    .base {
+      display: inline-block;
+      font-size: 38px;
+      font-weight: 500;
+      color: var(--gray-800);
+    }
+  </style>
+</head>
+<body>
+  <h2>
+    <span class="base">component</span>
+    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
+    Card
+  </h2>
+
+  <h3 style="margin-bottom: 12px;">기본 카드 (이미지 + 액션)</h3>
+  <div class="card-grid" style="max-width: 900px;">
+    <div class="card">
+      <img class="card__thumb" src="/images/icon/mail_icon.png" alt="">
+      <h4 class="card__title">디자인 시스템 가이드</h4>
+      <p class="card__desc">토큰 기반으로 컴포넌트를 관리하는 방법을 정리한 문서입니다.</p>
+      <div class="card__footer">
+        <button type="button" class="btn btn--primary btn--sm">자세히 보기</button>
+        <button type="button" class="btn btn--default btn--sm">공유</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="card__thumb" src="/images/icon/mail_icon.png" alt="">
+      <h4 class="card__title">이번 분기 로드맵</h4>
+      <p class="card__desc">Q3 목표와 마일스톤을 한눈에 확인할 수 있어요.</p>
+      <div class="card__footer">
+        <button type="button" class="btn btn--primary btn--sm">자세히 보기</button>
+        <button type="button" class="btn btn--default btn--sm">공유</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="card__thumb" src="/images/icon/mail_icon.png" alt="">
+      <h4 class="card__title">팀 온보딩 체크리스트</h4>
+      <p class="card__desc">신규 입사자가 첫 주에 확인해야 할 항목들입니다.</p>
+      <div class="card__footer">
+        <button type="button" class="btn btn--primary btn--sm">자세히 보기</button>
+        <button type="button" class="btn btn--default btn--sm">공유</button>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin: 32px 0 12px;">가로형 카드</h3>
+  <div class="card card--horizontal" style="max-width: 480px;">
+    <img class="card__thumb" src="/images/icon/mail_icon.png" alt="">
+    <div class="card__body">
+      <h4 class="card__title">알림 설정</h4>
+      <p class="card__desc">이메일과 푸시 알림을 받을 항목을 선택하세요.</p>
+      <div class="card__footer">
+        <button type="button" class="btn btn--text btn--sm">설정 변경</button>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin: 32px 0 12px;">통계 카드</h3>
+  <div class="card-grid" style="max-width: 900px;">
+    <div class="card card--stat">
+      <span class="card__label">이번 달 매출</span>
+      <span class="card__value">₩45,231,890</span>
+      <span class="card__delta card__delta--up">▲ 12.4% 전월 대비</span>
+    </div>
+    <div class="card card--stat">
+      <span class="card__label">신규 가입자</span>
+      <span class="card__value">1,204</span>
+      <span class="card__delta card__delta--up">▲ 8.1% 전월 대비</span>
+    </div>
+    <div class="card card--stat">
+      <span class="card__label">이탈률</span>
+      <span class="card__value">3.2%</span>
+      <span class="card__delta card__delta--down">▼ 0.6%p 전월 대비</span>
+    </div>
+  </div>
+
+  <h3 style="margin: 32px 0 12px;">리스트 / 활동 카드</h3>
+  <div class="card" style="max-width: 360px;">
+    <h4 class="card__title" style="margin-bottom: 8px;">최근 활동</h4>
+    <div class="card-list">
+      <div class="card-list__item">
+        <span class="card-list__icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <div class="card-list__body">
+          <div class="card-list__title">Olivia Rhye님이 문서를 승인했습니다</div>
+          <div class="card-list__desc">2026 상반기 예산안</div>
+        </div>
+        <span class="card-list__time">2분 전</span>
+      </div>
+      <div class="card-list__item">
+        <span class="card-list__icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <div class="card-list__body">
+          <div class="card-list__title">Phoenix Baker님이 팀에 참여했습니다</div>
+          <div class="card-list__desc">디자인팀</div>
+        </div>
+        <span class="card-list__time">1시간 전</span>
+      </div>
+      <div class="card-list__item">
+        <span class="card-list__icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <div class="card-list__body">
+          <div class="card-list__title">새 배포가 완료되었습니다</div>
+          <div class="card-list__desc">v2.4.0 · production</div>
+        </div>
+        <span class="card-list__time">3시간 전</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin: 32px 0 12px;">이미지 / 그래프 플레이스홀더 카드</h3>
+  <div class="card-grid" style="max-width: 900px;">
+    <div class="card">
+      <div class="card__placeholder">차트 영역</div>
+      <h4 class="card__title">주간 방문자</h4>
+      <p class="card__desc">실제 차트 라이브러리 연결 전 자리 표시용입니다.</p>
+    </div>
+    <div class="card">
+      <div class="card__placeholder">이미지 영역</div>
+      <h4 class="card__title">커버 이미지 미등록</h4>
+      <p class="card__desc">이미지가 없을 때 보여줄 기본 상태입니다.</p>
+    </div>
+  </div>
+</body>
+</html>

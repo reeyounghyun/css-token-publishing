@@ -1,0 +1,122 @@
+/* 오버레이 (배경 딤) */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-16);
+  background: rgba(16, 24, 40, 0.5);
+  z-index: var(--z-modal);
+}
+.modal-overlay.is-open {
+  display: flex;
+}
+
+/* 모달 박스 */
+.modal {
+  width: 100%;
+  max-width: 400px;
+  background: var(--White);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadows-xl);
+  padding: var(--spacing-20);
+}
+.modal--sm { max-width: 360px; }
+.modal--md { max-width: 480px; }
+.modal--lg { max-width: 640px; }
+
+/* 헤더 */
+.modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--gap-16);
+  margin-bottom: var(--spacing-12);
+}
+.modal__title {
+  font-size: var(--text-18);
+  font-weight: var(--weight-Semibold);
+  color: var(--gray-900);
+}
+.modal__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--icon-20);
+  height: var(--icon-20);
+  background: transparent;
+  border: 0;
+  color: var(--gray-400);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+.modal__close:hover {
+  color: var(--gray-600);
+}
+.modal__close:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--primary-100);
+  border-radius: var(--radius-xs);
+}
+
+/* 본문 */
+.modal__body {
+  font-size: var(--text-14);
+  color: var(--gray-600);
+  line-height: 142.857%;
+}
+
+/* 푸터 (버튼은 button.css의 .btn 재사용) */
+.modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--gap-12);
+  margin-top: var(--spacing-20);
+}
+
+/* 스크롤 잠금 (JS에서 body에 부여) */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* 상세 정보 모달 안 프로필 헤더 */
+.modal-profile {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-12);
+  margin-bottom: var(--spacing-20);
+}
+.modal-profile__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.modal-profile__name {
+  font-size: var(--text-18);
+  font-weight: var(--weight-Semibold);
+  color: var(--gray-900);
+  margin-bottom: var(--spacing-4);
+}
+
+/* 상세 정보 모달 안 정보 그리드 (라벨/값 2열) */
+.modal-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-16);
+}
+.modal-info-grid__label {
+  display: block;
+  font-size: var(--text-14);
+  color: var(--gray-500);
+  margin-bottom: var(--spacing-4);
+}
+.modal-info-grid__value {
+  display: block;
+  font-size: var(--text-14);
+  font-weight: var(--weight-medium);
+  color: var(--gray-900);
+}

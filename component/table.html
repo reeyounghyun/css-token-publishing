@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/component/button.css">
+  <link rel="stylesheet" href="/css/component/badge.css">
+  <link rel="stylesheet" href="/css/component/table.css">
+  <link rel="stylesheet" href="/css/component/grid-table.css">
+  <style>
+    body {
+      padding: 1rem;
+    }
+    h2{
+      display: flex;
+      align-items: center;
+      gap: var(--gap-8);
+      font-size: 45px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: var( --primary-700);
+    }
+    .base {
+      display: inline-block;
+      font-size: 38px;
+      font-weight: 500;
+      color: var(--gray-800);
+    }
+  </style>
+</head>
+<body>
+  <h2>
+    <span class="base">component</span>
+    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
+    Table
+  </h2>
+
+  <h2 style="margin-top: 48px;">Empty state</h2>
+  <div class="table-wrap" style="max-width: 900px;">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th class="table__cell--center">Edit</th>
+          <th class="table__cell--center">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="5" class="table__empty">아직 등록된 팀원이 없습니다.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-toolbar" style="max-width: 900px;">
+    <span class="table-toolbar__title">Team members</span>
+    <button type="button" class="btn btn--primary btn--sm">Add member</button>
+  </div>
+
+  <div class="table-wrap" style="max-width: 900px;">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th class="table__cell--center">Edit</th>
+          <th class="table__cell--center">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="table__cell-title">Phoenix Baker</div>
+            <div class="table__cell-sub">phoenix@untitledui.com</div>
+          </td>
+          <td>Product Designer</td>
+          <td><span class="badge badge--primary"><span class="badge__dot"></span>Active</span></td>
+          <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm">Edit</button></td>
+          <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="table__cell-title">Olivia Rhye</div>
+            <div class="table__cell-sub">olivia@untitledui.com</div>
+          </td>
+          <td>Frontend Developer</td>
+          <td><span class="badge badge--primary"><span class="badge__dot"></span>Active</span></td>
+          <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm">Edit</button></td>
+          <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="table__cell-title">Lana Steiner</div>
+            <div class="table__cell-sub">lana@untitledui.com</div>
+          </td>
+          <td>UX Researcher</td>
+          <td><span class="badge badge--default"><span class="badge__dot"></span>Invited</span></td>
+          <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm">Edit</button></td>
+          <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="table__cell-title">Demi Wilkinson</div>
+            <div class="table__cell-sub">demi@untitledui.com</div>
+          </td>
+          <td>Backend Developer</td>
+          <td><span class="badge badge--error"><span class="badge__dot"></span>Suspended</span></td>
+          <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm">Edit</button></td>
+          <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 style="margin-top: 48px;">피벗 테이블 (첫 컬럼 고정 + 가로 스크롤)</h2>
+  <div class="table-toolbar" style="max-width: 900px;">
+    <span class="table-toolbar__title">제품별 월별 매출 (백만원)</span>
+  </div>
+  <div class="table-wrap" style="max-width: 500px;">
+    <table class="table table--pivot">
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>1월</th>
+          <th>2월</th>
+          <th>3월</th>
+          <th>4월</th>
+          <th>5월</th>
+          <th>6월</th>
+          <th>7월</th>
+          <th>8월</th>
+          <th>9월</th>
+          <th>10월</th>
+          <th>11월</th>
+          <th>12월</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>노트북</td>
+          <td>120</td><td>135</td><td>142</td><td>110</td><td>158</td><td>165</td>
+          <td>170</td><td>180</td><td>175</td><td>190</td><td>200</td><td>210</td>
+        </tr>
+        <tr>
+          <td>태블릿</td>
+          <td>80</td><td>85</td><td>90</td><td>78</td><td>95</td><td>100</td>
+          <td>105</td><td>110</td><td>108</td><td>115</td><td>120</td><td>125</td>
+        </tr>
+        <tr>
+          <td>스마트폰</td>
+          <td>300</td><td>310</td><td>295</td><td>320</td><td>330</td><td>340</td>
+          <td>350</td><td>345</td><td>360</td><td>370</td><td>380</td><td>400</td>
+        </tr>
+        <tr>
+          <td>이어폰</td>
+          <td>60</td><td>65</td><td>70</td><td>58</td><td>72</td><td>75</td>
+          <td>80</td><td>78</td><td>82</td><td>85</td><td>90</td><td>95</td>
+        </tr>
+        <tr>
+          <td>스마트워치</td>
+          <td>40</td><td>42</td><td>45</td><td>38</td><td>48</td><td>50</td>
+          <td>52</td><td>55</td><td>53</td><td>58</td><td>60</td><td>65</td>
+        </tr>
+        <tr class="table__row--total">
+          <td>합계</td>
+          <td>600</td><td>637</td><td>642</td><td>604</td><td>703</td><td>730</td>
+          <td>757</td><td>768</td><td>778</td><td>818</td><td>850</td><td>895</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 style="margin-top: 48px;">Grid Table (table 태그 없이 div + CSS Grid)</h2>
+  <div class="table-toolbar" style="max-width: 900px;">
+    <span class="table-toolbar__title">Team members</span>
+    <button type="button" class="btn btn--primary btn--sm">Add member</button>
+  </div>
+  <div class="table-wrap" style="max-width: 900px;">
+    <div class="grid-table" role="table" aria-label="Team members" style="--grid-table-cols: 2fr 1.2fr 1fr 0.6fr 0.6fr;">
+      <div class="grid-table__row grid-table__row--header" role="row">
+        <div class="grid-table__cell" role="columnheader">Name</div>
+        <div class="grid-table__cell" role="columnheader">Role</div>
+        <div class="grid-table__cell" role="columnheader">Status</div>
+        <div class="grid-table__cell grid-table__cell--center" role="columnheader">Edit</div>
+        <div class="grid-table__cell grid-table__cell--center" role="columnheader">Delete</div>
+      </div>
+
+      <div class="grid-table__row" role="row">
+        <div class="grid-table__cell" role="cell">
+          <div class="grid-table__cell-title">Phoenix Baker</div>
+          <div class="grid-table__cell-sub">phoenix@untitledui.com</div>
+        </div>
+        <div class="grid-table__cell" role="cell">Product Designer</div>
+        <div class="grid-table__cell" role="cell"><span class="badge badge--primary"><span class="badge__dot"></span>Active</span></div>
+        <div class="grid-table__cell grid-table__cell--center" role="cell"><button type="button" class="btn btn--text btn--sm">Edit</button></div>
+        <div class="grid-table__cell grid-table__cell--center" role="cell"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></div>
+      </div>
+
+      <div class="grid-table__row" role="row">
+        <div class="grid-table__cell" role="cell">
+          <div class="grid-table__cell-title">Olivia Rhye</div>
+          <div class="grid-table__cell-sub">olivia@untitledui.com</div>
+        </div>
+        <div class="grid-table__cell" role="cell">Frontend Developer</div>
+        <div class="grid-table__cell" role="cell"><span class="badge badge--primary"><span class="badge__dot"></span>Active</span></div>
+        <div class="grid-table__cell grid-table__cell--center" role="cell"><button type="button" class="btn btn--text btn--sm">Edit</button></div>
+        <div class="grid-table__cell grid-table__cell--center" role="cell"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></div>
+      </div>
+
+      <div class="grid-table__row" role="row">
+        <div class="grid-table__cell" role="cell">
+          <div class="grid-table__cell-title">Lana Steiner</div>
+          <div class="grid-table__cell-sub">lana@untitledui.com</div>
+        </div>
+        <div class="grid-table__cell" role="cell">UX Researcher</div>
+        <div class="grid-table__cell" role="cell"><span class="badge badge--default"><span class="badge__dot"></span>Invited</span></div>
+        <div class="grid-table__cell grid-table__cell--center" role="cell"><button type="button" class="btn btn--text btn--sm">Edit</button></div>
+        <div class="grid-table__cell grid-table__cell--center" role="cell"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></div>
+      </div>
+
+      <div class="grid-table__row" role="row">
+        <div class="grid-table__cell" role="cell">
+          <div class="grid-table__cell-title">Demi Wilkinson</div>
+          <div class="grid-table__cell-sub">demi@untitledui.com</div>
+        </div>
+        <div class="grid-table__cell" role="cell">Backend Developer</div>
+        <div class="grid-table__cell" role="cell"><span class="badge badge--error"><span class="badge__dot"></span>Suspended</span></div>
+        <div class="grid-table__cell grid-table__cell--center" role="cell"><button type="button" class="btn btn--text btn--sm">Edit</button></div>
+        <div class="grid-table__cell grid-table__cell--center" role="cell"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></div>
+      </div>
+    </div>
+  </div>
+
+  <h2 style="margin-top: 48px;">Grid Table 피벗형 (첫 컬럼 고정 + 가로 스크롤, table 태그 없음)</h2>
+  <div class="table-toolbar" style="max-width: 500px;">
+    <span class="table-toolbar__title">제품별 월별 매출 (백만원)</span>
+  </div>
+  <div class="table-wrap" style="max-width: 500px;">
+    <div class="grid-table grid-table--pivot" role="table" aria-label="제품별 월별 매출" style="--grid-table-cols: 100px repeat(12, minmax(64px, 1fr));">
+      <div class="grid-table__row grid-table__row--header" role="row">
+        <div class="grid-table__cell" role="columnheader">구분</div>
+        <div class="grid-table__cell" role="columnheader">1월</div>
+        <div class="grid-table__cell" role="columnheader">2월</div>
+        <div class="grid-table__cell" role="columnheader">3월</div>
+        <div class="grid-table__cell" role="columnheader">4월</div>
+        <div class="grid-table__cell" role="columnheader">5월</div>
+        <div class="grid-table__cell" role="columnheader">6월</div>
+        <div class="grid-table__cell" role="columnheader">7월</div>
+        <div class="grid-table__cell" role="columnheader">8월</div>
+        <div class="grid-table__cell" role="columnheader">9월</div>
+        <div class="grid-table__cell" role="columnheader">10월</div>
+        <div class="grid-table__cell" role="columnheader">11월</div>
+        <div class="grid-table__cell" role="columnheader">12월</div>
+      </div>
+
+      <div class="grid-table__row" role="row">
+        <div class="grid-table__cell" role="cell">노트북</div>
+        <div class="grid-table__cell" role="cell">120</div>
+        <div class="grid-table__cell" role="cell">135</div>
+        <div class="grid-table__cell" role="cell">142</div>
+        <div class="grid-table__cell" role="cell">110</div>
+        <div class="grid-table__cell" role="cell">158</div>
+        <div class="grid-table__cell" role="cell">165</div>
+        <div class="grid-table__cell" role="cell">170</div>
+        <div class="grid-table__cell" role="cell">180</div>
+        <div class="grid-table__cell" role="cell">175</div>
+        <div class="grid-table__cell" role="cell">190</div>
+        <div class="grid-table__cell" role="cell">200</div>
+        <div class="grid-table__cell" role="cell">210</div>
+      </div>
+
+      <div class="grid-table__row" role="row">
+        <div class="grid-table__cell" role="cell">태블릿</div>
+        <div class="grid-table__cell" role="cell">80</div>
+        <div class="grid-table__cell" role="cell">85</div>
+        <div class="grid-table__cell" role="cell">90</div>
+        <div class="grid-table__cell" role="cell">78</div>
+        <div class="grid-table__cell" role="cell">95</div>
+        <div class="grid-table__cell" role="cell">100</div>
+        <div class="grid-table__cell" role="cell">105</div>
+        <div class="grid-table__cell" role="cell">110</div>
+        <div class="grid-table__cell" role="cell">108</div>
+        <div class="grid-table__cell" role="cell">115</div>
+        <div class="grid-table__cell" role="cell">120</div>
+        <div class="grid-table__cell" role="cell">125</div>
+      </div>
+
+      <div class="grid-table__row" role="row">
+        <div class="grid-table__cell" role="cell">스마트폰</div>
+        <div class="grid-table__cell" role="cell">300</div>
+        <div class="grid-table__cell" role="cell">310</div>
+        <div class="grid-table__cell" role="cell">295</div>
+        <div class="grid-table__cell" role="cell">320</div>
+        <div class="grid-table__cell" role="cell">330</div>
+        <div class="grid-table__cell" role="cell">340</div>
+        <div class="grid-table__cell" role="cell">350</div>
+        <div class="grid-table__cell" role="cell">345</div>
+        <div class="grid-table__cell" role="cell">360</div>
+        <div class="grid-table__cell" role="cell">370</div>
+        <div class="grid-table__cell" role="cell">380</div>
+        <div class="grid-table__cell" role="cell">400</div>
+      </div>
+
+      <div class="grid-table__row" role="row">
+        <div class="grid-table__cell" role="cell">이어폰</div>
+        <div class="grid-table__cell" role="cell">60</div>
+        <div class="grid-table__cell" role="cell">65</div>
+        <div class="grid-table__cell" role="cell">70</div>
+        <div class="grid-table__cell" role="cell">58</div>
+        <div class="grid-table__cell" role="cell">72</div>
+        <div class="grid-table__cell" role="cell">75</div>
+        <div class="grid-table__cell" role="cell">80</div>
+        <div class="grid-table__cell" role="cell">78</div>
+        <div class="grid-table__cell" role="cell">82</div>
+        <div class="grid-table__cell" role="cell">85</div>
+        <div class="grid-table__cell" role="cell">90</div>
+        <div class="grid-table__cell" role="cell">95</div>
+      </div>
+
+      <div class="grid-table__row" role="row">
+        <div class="grid-table__cell" role="cell">스마트워치</div>
+        <div class="grid-table__cell" role="cell">40</div>
+        <div class="grid-table__cell" role="cell">42</div>
+        <div class="grid-table__cell" role="cell">45</div>
+        <div class="grid-table__cell" role="cell">38</div>
+        <div class="grid-table__cell" role="cell">48</div>
+        <div class="grid-table__cell" role="cell">50</div>
+        <div class="grid-table__cell" role="cell">52</div>
+        <div class="grid-table__cell" role="cell">55</div>
+        <div class="grid-table__cell" role="cell">53</div>
+        <div class="grid-table__cell" role="cell">58</div>
+        <div class="grid-table__cell" role="cell">60</div>
+        <div class="grid-table__cell" role="cell">65</div>
+      </div>
+
+      <div class="grid-table__row grid-table__row--total" role="row">
+        <div class="grid-table__cell" role="cell">합계</div>
+        <div class="grid-table__cell" role="cell">600</div>
+        <div class="grid-table__cell" role="cell">637</div>
+        <div class="grid-table__cell" role="cell">642</div>
+        <div class="grid-table__cell" role="cell">604</div>
+        <div class="grid-table__cell" role="cell">703</div>
+        <div class="grid-table__cell" role="cell">730</div>
+        <div class="grid-table__cell" role="cell">757</div>
+        <div class="grid-table__cell" role="cell">768</div>
+        <div class="grid-table__cell" role="cell">778</div>
+        <div class="grid-table__cell" role="cell">818</div>
+        <div class="grid-table__cell" role="cell">850</div>
+        <div class="grid-table__cell" role="cell">895</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

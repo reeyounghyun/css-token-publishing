@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toast</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/component/button.css">
+  <link rel="stylesheet" href="/css/component/toast.css">
+  <style>
+    body {
+      padding: 1rem;
+    }
+    h2{
+      display: flex;
+      align-items: center;
+      gap: var(--gap-8);
+      font-size: 45px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: var( --primary-700);
+    }
+    .base {
+      display: inline-block;
+      font-size: 38px;
+      font-weight: 500;
+      color: var(--gray-800);
+    }
+    .demo-row {
+      display: flex;
+      gap: var(--gap-12);
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <h2>
+    <span class="base">component</span>
+    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
+    Toast
+  </h2>
+
+  <div class="demo-row">
+    <button type="button" class="btn btn--default"
+      data-toast=""
+      data-toast-title="알림"
+      data-toast-desc="새로운 업데이트가 있습니다.">기본 토스트</button>
+
+    <button type="button" class="btn btn--primary"
+      data-toast="success"
+      data-toast-title="저장 완료"
+      data-toast-desc="변경 사항이 저장되었습니다.">성공 토스트</button>
+
+    <button type="button" class="btn btn--default"
+      data-toast="error"
+      data-toast-title="저장 실패"
+      data-toast-desc="네트워크 오류가 발생했습니다. 다시 시도해주세요.">에러 토스트</button>
+  </div>
+
+  <!-- 토스트가 실제로 쌓이는 위치 (화면 우하단 고정) -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

@@ -83,45 +83,7 @@
   background: var(--slate-100);
 }
 
-/* 커스텀 체크박스 */
-.checklist__box {
-  appearance: none;
-  -webkit-appearance: none;
-  flex-shrink: 0;
-  width: 22px;
-  height: 22px;
-  border: 1.5px solid var(--box-border);
-  border-radius: 6px;
-  background: var(--White);
-  cursor: pointer;
-  position: relative;
-  transition: background-color var(--transition-fast), border-color var(--transition-fast);
-}
-
-.checklist__box:checked {
-  background: var(--slate-700);
-  border-color: var(--slate-700);
-}
-
-/* 체크 표시 */
-.checklist__box:checked::after {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 3px;
-  width: 5px;
-  height: 10px;
-  border: 1px solid var(--White);
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
-.checklist__box:focus-visible {
-  border: 2px solid var(--gray-100);
-  border-radius: var(--radius-md);
-  background: var(--White);
-  box-shadow:var( --shadows-lg)
-}
+/* 체크박스는 checkbox.css의 .checkbox 공통 컴포넌트를 그대로 재사용 (아래 checked/focus-visible 등 중복 정의 없음) */
 
 
 /* 프로필 헤더 (드롭다운 맨 위) */

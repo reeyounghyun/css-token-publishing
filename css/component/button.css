@@ -103,9 +103,22 @@
 }
 .btn--text:active,
 .btn--text.is-pressed {
-  background: var(--gray-200); 
+  background: var(--gray-200);
 }
- 
+
+/* Danger : 삭제 등 파괴적 액션 (Text 위에 색만 덮어씀) */
+.btn--text.is-danger {
+  color: var(--error-600);
+}
+.btn--text.is-danger:hover {
+  background: var(--error-50);
+  color: var(--error-700);
+}
+.btn--text.is-danger:active,
+.btn--text.is-danger.is-pressed {
+  background: var(--error-100);
+}
+
 /* Link : 링크형 버튼(내비게이션 성격) */
 .btn--link { 
   color: var(--primary-700); 

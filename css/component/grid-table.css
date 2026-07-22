@@ -1,0 +1,89 @@
+/* table 태그 없이 div + CSS Grid로 구현한 테이블 */
+.grid-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: var(--text-14);
+}
+
+.grid-table__row {
+  display: grid;
+  grid-template-columns: var(--grid-table-cols, repeat(4, 1fr));
+  align-items: center;
+  border-bottom: 1px solid var(--gray-200);
+}
+.grid-table__row:last-child {
+  border-bottom: 0;
+}
+
+.grid-table__row--header {
+  background: var(--gray-50);
+}
+.grid-table__row--header .grid-table__cell {
+  color: var(--gray-500);
+  font-weight: var(--weight-medium);
+  white-space: nowrap;
+}
+
+.grid-table__row:not(.grid-table__row--header):hover {
+  background: var(--gray-50);
+}
+
+.grid-table__cell {
+  padding: var(--spacing-12) var(--spacing-16);
+  color: var(--gray-700);
+  transition: background-color var(--transition-fast);
+}
+.grid-table__cell--center {
+  text-align: center;
+}
+
+/* 보조 텍스트 (이메일 등) — table.css의 것과 동일한 규칙 */
+.grid-table__cell-title {
+  color: var(--gray-900);
+  font-weight: var(--weight-medium);
+}
+.grid-table__cell-sub {
+  color: var(--gray-500);
+  font-size: var(--text-14);
+}
+
+/* 셀 안 버튼(Edit/Delete 등) — 촘촘하게, table.css와 동일 규칙 */
+.grid-table__cell .btn {
+  height: auto;
+  padding: var(--spacing-4) var(--spacing-8);
+  font-weight: var(--weight-medium);
+}
+
+/* ============ 피벗형 (첫 컬럼 고정 + 가로 스크롤) ============ */
+.grid-table--pivot .grid-table__cell {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* 첫 번째 셀(행 제목) 고정 */
+.grid-table--pivot .grid-table__cell:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  text-align: left;
+  background: var(--White);
+  border-right: 1px solid var(--gray-200);
+}
+.grid-table--pivot .grid-table__row--header .grid-table__cell:first-child {
+  z-index: 2;
+  background: var(--gray-50);
+}
+.grid-table--pivot .grid-table__row:not(.grid-table__row--header):hover .grid-table__cell:first-child {
+  background: var(--gray-50);
+}
+
+/* 총 합계 행 */
+.grid-table--pivot .grid-table__row--total .grid-table__cell {
+  background: var(--gray-50);
+  color: var(--gray-900);
+  font-weight: var(--weight-Semibold);
+}
+.grid-table--pivot .grid-table__row--total .grid-table__cell:first-child {
+  background: var(--gray-100);
+}

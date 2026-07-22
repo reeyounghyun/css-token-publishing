@@ -1,0 +1,112 @@
+/* ============ Alert (콘텐츠 안 인라인 메시지) ============ */
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gap-12);
+  padding: var(--spacing-16);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  background: var(--gray-50);
+}
+.alert--primary {
+  background: var(--primary-50);
+  border-color: var(--primary-200);
+}
+.alert--error {
+  background: var(--error-50);
+  border-color: var(--error-200);
+}
+
+.alert__icon {
+  flex-shrink: 0;
+  width: var(--icon-20);
+  height: var(--icon-20);
+  color: var(--gray-500);
+}
+.alert--primary .alert__icon { color: var(--primary-600); }
+.alert--error .alert__icon { color: var(--error-500); }
+
+.alert__body {
+  flex: 1;
+  min-width: 0;
+}
+.alert__title {
+  font-size: var(--text-14);
+  font-weight: var(--weight-Semibold);
+  color: var(--gray-900);
+}
+.alert__desc {
+  font-size: var(--text-14);
+  color: var(--gray-600);
+  margin-top: var(--spacing-4);
+  line-height: 142.857%;
+}
+
+.alert__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--icon-20);
+  height: var(--icon-20);
+  background: transparent;
+  border: 0;
+  color: var(--gray-400);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+.alert__close:hover {
+  color: var(--gray-600);
+}
+.alert__close:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--primary-100);
+  border-radius: var(--radius-xs);
+}
+
+/* ============ Banner (화면/섹션 상단 전체 폭 공지) ============ */
+.banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-16);
+  padding: var(--spacing-12) var(--spacing-28);
+  background: var(--primary-600);
+  color: var(--White);
+  font-size: var(--text-14);
+  font-weight: var(--weight-medium);
+  text-align: center;
+}
+
+.banner__action {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: var(--White);
+  font-size: var(--text-14);
+  font-weight: var(--weight-Semibold);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.banner__close {
+  position: absolute;
+  right: var(--spacing-16);
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-20);
+  height: var(--icon-20);
+  background: transparent;
+  border: 0;
+  color: var(--White);
+  opacity: 0.8;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+.banner__close:hover {
+  opacity: 1;
+}

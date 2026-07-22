@@ -1,0 +1,64 @@
+/* ============ Tabs (기본 = underline) ============ */
+.tabs__list {
+  display: flex;
+  gap: var(--gap-16);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.tabs__tab {
+  padding: var(--spacing-10) var(--spacing-4);
+  margin-bottom: -1px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  font-size: var(--text-14);
+  font-weight: var(--weight-medium);
+  color: var(--gray-500);
+  cursor: pointer;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+.tabs__tab:hover {
+  color: var(--gray-700);
+}
+.tabs__tab[aria-selected="true"] {
+  color: var(--primary-700);
+  border-bottom-color: var(--primary-600);
+}
+.tabs__tab:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--primary-100);
+  border-radius: var(--radius-xs);
+}
+
+.tabs__panel {
+  display: none;
+  padding-top: var(--spacing-16);
+  font-size: var(--text-14);
+  color: var(--gray-600);
+  line-height: 142.857%;
+}
+.tabs__panel.is-active {
+  display: block;
+}
+
+/* ============ Pill 변형 (세그먼트 컨트롤) ============ */
+.tabs--pill .tabs__list {
+  display: inline-flex;
+  gap: var(--gap-4);
+  padding: var(--spacing-4);
+  background: var(--gray-100);
+  border-radius: var(--radius-md);
+  border-bottom: 0;
+}
+.tabs--pill .tabs__tab {
+  padding: var(--spacing-8) var(--spacing-14);
+  margin-bottom: 0;
+  border-bottom: 0;
+  border-radius: var(--radius-sm);
+}
+.tabs--pill .tabs__tab[aria-selected="true"] {
+  background: var(--White);
+  color: var(--gray-900);
+  border-bottom-color: transparent;
+  box-shadow: var(--shadows-xs);
+}
