@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brickify</title>
+
+  <!-- 첫 화면에 쓰는 굵기만 미리 받기 -->
+  <link rel="preload" href="fonts/Pretendard-Regular.subset.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/typography.css">
+</head>
+<body>
+  <a href="#content" class="skip-nav">본문 바로가기</a>
+
+  <main id="content">
+    <section class="main-section">
+      <header id="header" class="main-wrap">
+        <div class="logo-image">
+          <img src="images/mainLogo.svg" alt="logo">
+        </div>
+        <nav class="nav">
+          <ul>
+            <li class="menu-link text-Regular">Item 1</li>
+            <li class="menu-link">Item 2</li>
+            <li class="menu-link">Item 3</li>
+            <li class="menu-link">Item 4</li>
+            <li class="menu-btn">Brickify</li>
+          </ul>
+        </nav>
+      </header>
+      <div class="main-wrap">
+        <div class="main-area">
+          <h2>Brickify Figma</h2>
+          <p>Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all.</p>
+        </div>
+        <div class="main-image">
+          <img src="images/main-brick.png" alt="main image">
+        </div>
+      </div>
+    </section>
+    <!-- 컨탠츠 시작 -->32
+    <div class="content-wrap">
+      <section>
+        <div class="common_title">
+          <h3>Image Section</h3>
+          <span class="item-badge">1 - 8 columns</span>
+        </div>
+        <!-- grid 사용법: --cols 로 컬럼 수 주입-->
+        <div class="img-rows">
+          <ul class="grid grid--1">
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+          </ul>
+          <ul class="grid grid--2">
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+          </ul>
+          <ul class="grid grid--3">
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+          </ul> 
+          <ul class="grid grid--4">
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+          </ul>
+          <ul class="grid grid--6">
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+          </ul>
+          <ul class="grid grid--8">
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <div class="common_title">
+          <h3>Card Section</h3>
+          <span class="sub-title">Text cards</span>
+          <span class="item-badge">2 - 4 columns</span>
+        </div>
+        <!-- grid 사용법: --cols 로 컬럼 수 주입-->
+        <div class="img-rows">
+          <ul class="grid grid--2">
+            <li class="card">
+              <h4 class="card__title">Lorem bricksum </h4>
+              <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. <br/>
+              Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
+              </p>
+            </li>
+            <li class="card">
+              <h4 class="card__title">Lorem bricksum </h4>
+              <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. <br/>
+              Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
+              </p>
+            </li>
+          </ul>
+          <ul class="grid grid--3">
+            <li class="card">
+              <h4 class="card__title">Lorem bricksum </h4>
+              <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. <br/>
+              Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
+              </p>
+            </li>
+            <li class="card">
+              <h4 class="card__title">Lorem bricksum </h4>
+              <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. <br/>
+              Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
+              </p>
+            </li>
+            <li class="card">
+              <h4 class="card__title">Lorem bricksum </h4>
+              <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. <br/>
+              Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
+              </p>
+            </li>
+          </ul>
+          <ul class="grid grid--4">
+            <li class="card">
+              <h4 class="card__title">Lorem bricksum </h4>
+              <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. <br/>
+              Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
+              </p>
+            </li>
+            <li class="card">
+              <h4 class="card__title">Lorem bricksum </h4>
+              <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. <br/>
+              Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
+              </p>
+            </li>
+            <li class="card">
+              <h4 class="card__title">Lorem bricksum </h4>
+              <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. <br/>
+              Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
+              </p>
+            </li>
+            <li class="card">
+              <h4 class="card__title">Lorem bricksum </h4>
+              <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. <br/>
+              Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <div class="common_title">
+          <h3>Card Section</h3>
+          <span class="sub-title">Text cards</span>
+          <span class="item-badge">2 - 4 columns</span>
+        </div>
+        <!-- grid 사용법: --cols 로 컬럼 수 주입-->
+        <div class="img-rows">
+          <ul class="grid grid--img2">
+            <li class="card card--img">
+              <div class="card__thumb"><img src="images/content_icon.svg" alt=""></div>
+              <div class="card__body">
+                <h4 class="card__title">Lorem bricksum</h4>
+                <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
+                <br/>
+                Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
+                </p>
+              </div>
+            </li>
+            <li class="card card--img">
+              <div class="card__thumb"><img src="images/content_icon.svg" alt=""></div>
+              <div class="card__body">
+                <h4 class="card__title">Lorem bricksum</h4>
+                <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
+                <br/>
+                Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
+                </p>
+              </div>
+            </li>
+          </ul>
+
+          <ul class="grid grid--img3">
+            <li class="card card--img">
+              <div class="card__thumb"><img src="images/content_icon.svg" alt=""></div>
+              <div class="card__body">
+                <h4 class="card__title">Lorem bricksum</h4>
+                <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
+                <br/>
+                Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
+                </p>
+              </div>
+            </li>
+            <li class="card card--img">
+              <div class="card__thumb"><img src="images/content_icon.svg" alt=""></div>
+              <div class="card__body">
+                <h4 class="card__title">Lorem bricksum</h4>
+                <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
+                <br/>
+                Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
+                </p>
+              </div>
+            </li>
+            <li class="card card--img">
+              <div class="card__thumb"><img src="images/content_icon.svg" alt=""></div>
+              <div class="card__body">
+                <h4 class="card__title">Lorem bricksum</h4>
+                <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
+                <br/>
+                Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
+                </p>
+              </div>
+            </li>
+          </ul>
+
+          <ul class="grid grid--img4">
+            <li class="card card--img">
+              <div class="card__thumb"><img src="images/content_icon.svg" alt=""></div>
+              <div class="card__body">
+                <h4 class="card__title">Lorem bricksum</h4>
+                <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
+                <br/>
+                Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
+                </p>
+              </div>
+            </li>
+            <li class="card card--img">
+              <div class="card__thumb"><img src="images/content_icon.svg" alt=""></div>
+              <div class="card__body">
+                <h4 class="card__title">Lorem bricksum</h4>
+                <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
+                <br/>
+                Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
+                </p>
+              </div>
+            </li>
+            <li class="card card--img">
+              <div class="card__thumb"><img src="images/content_icon.svg" alt=""></div>
+              <div class="card__body">
+                <h4 class="card__title">Lorem bricksum</h4>
+                <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
+                <br/>
+                Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
+                </p>
+              </div>
+            </li>
+            <li class="card card--img">
+              <div class="card__thumb"><img src="images/content_icon.svg" alt=""></div>
+              <div class="card__body">
+                <h4 class="card__title">Lorem bricksum</h4>
+                <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
+                <br/>
+                Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <div class="common_title">
+          <h3>Text Section</h3>
+          <span class="item-badge">2 - 6 columns</span>
+        </div>
+        <div class="img-rows">
+          <ul class="grid grid--txt2">
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+            </p>
+            </li>
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+              </p>
+            </li>
+          </ul>
+          <ul class="grid grid--txt3">
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+              </p>
+            </li>
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+              </p>
+            </li>
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+              </p>
+            </li>
+          </ul>
+          <ul class="grid grid--txt4">
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+              </p>
+            </li>
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+              </p>
+            </li>
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+              </p>
+            </li>
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+              </p>
+            </li>
+          </ul>
+          <ul class="grid grid--txt5">
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+              </p>
+            </li>
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+              </p>
+            </li>
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+              </p>
+            </li>
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+              </p>
+            </li>
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+              </p>
+            </li>
+          </ul>
+          <ul class="grid grid--txt6">
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+              </p>
+            </li>
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+              </p>
+            </li>
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+              </p>
+            </li>
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+              </p>
+            </li>
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+              </p>
+            </li>
+            <li class="txt">
+              <h4 class="txt__title">Lorem bricksum</h4>
+              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer id="footer">
+      <div class="footer-bottom">
+        <div class="footer-box">
+          <div class="logo-image">
+            <img src="images/mainLogo.svg" alt="logo">
+          </div>
+          <p class="footer-text">
+            Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
+          </p>
+        </div>
+        <div class="right-cat">© 2023 Brickify</div>
+      </div>
+    </footer>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+</html>

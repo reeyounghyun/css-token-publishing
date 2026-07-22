@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>switch</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/component/switch.css">
+
+  <style>
+    body {
+      padding: 1rem;
+    }
+    h2{
+      display: flex;
+      align-items: center;
+      gap: var(--gap-8);
+      font-size: 45px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: var( --primary-700);
+    }
+    .base {
+      display: inline-block;
+      font-size: 38px;
+      font-weight: 500;
+      color: var(--gray-800);
+    }
+    .grid--2 { --cols: 2; }
+    .grid--3 { --cols: 3; }
+    .grid--4 { --cols: 4; }
+    .grid--6 { --cols: 6; }
+    .grid--8 { --cols: 8; }
+  </style>
+</head>
+<body>
+  <h2>
+    <span class="base">component</span>
+    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">    
+    switch
+  </h2>
+  <div class="grid grid--1" style="max-width: 1300px;">
+    <div class="state-wrap">
+      <section class="state-group">
+        <h3 class="state-group__title">Active: True</h3>
+        <div class="grid grid--4 state-head">
+          <span class="state-head__cell">Default</span>
+          <span class="state-head__cell">Pressed</span>
+          <span class="state-head__cell">Loading</span>
+          <span class="state-head__cell">Disabled</span>
+        </div>
+        <div class="size-row"><span class="size-row__label">Size: Default</span>
+          <div class="grid grid--4">
+            <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input" role="switch" checked></label></div>
+            <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input is-pressed" role="switch" checked></label></div>
+            <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input is-loading" role="switch" checked></label></div>
+            <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input" role="switch" checked disabled></label></div>
+          </div>
+        </div>
+        <div class="size-row"><span class="size-row__label">Size: Small</span>
+          <div class="grid grid--4">
+            <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input" role="switch" checked></label></div>
+            <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input is-pressed" role="switch" checked></label></div>
+            <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input is-loading" role="switch" checked></label></div>
+            <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input" role="switch" checked disabled></label></div>
+          </div>
+        </div>
+      </section>
+      <section class="state-group">
+        <h3 class="state-group__title">Active: False</h3>
+        <div class="grid grid--4 state-head">
+          <span class="state-head__cell">Default</span>
+          <span class="state-head__cell">Pressed</span>
+          <span class="state-head__cell">Loading</span>
+          <span class="state-head__cell">Disabled</span>
+        </div>
+        <div class="size-row"><span class="size-row__label">Default</span>
+          <div class="grid grid--4">
+            <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input" role="switch"></label></div>
+            <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input is-pressed" role="switch"></label></div>
+            <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input is-loading" role="switch"></label></div>
+            <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input" role="switch" disabled></label></div>
+          </div>
+        </div>
+        <div class="size-row"><span class="size-row__label">Small</span>
+          <div class="grid grid--4">
+            <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input" role="switch"></label></div>
+            <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input is-pressed" role="switch"></label></div>
+            <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input is-loading" role="switch"></label></div>
+            <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input" role="switch" disabled></label></div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="custom-toggle grid grid--2" style="gap: 40px;">
+      <!-- off (기본) -->
+      <label class="toggle">
+        <input type="checkbox" class="toggle__input" role="switch">
+      </label>
+      <!-- off (기본) -->
+      <label class="toggle">
+        <input type="checkbox" class="toggle__input" role="switch">
+        <span class="toggle__text">
+          <span class="toggle__title">Remember me</span>
+        </span>
+      </label>
+      <!-- off (기본) -->
+      <label class="toggle">
+        <input type="checkbox" class="toggle__input" role="switch">
+        <span class="toggle__text">
+          <span class="toggle__title">Remember me</span>
+          <span class="toggle__desc">Save my login details for next time.</span>
+        </span>
+      </label>
+      <!-- on (checked 예시) -->
+      <label class="toggle">
+        <input type="checkbox" class="toggle__input" role="switch" checked>
+        <span class="toggle__text">
+          <span class="toggle__title">Remember me</span>
+          <span class="toggle__desc">Save my login details for next time.</span>
+        </span>
+      </label>
+    </div>
+  </div>
+</body>
+</html>

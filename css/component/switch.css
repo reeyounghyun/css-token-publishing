@@ -1,0 +1,206 @@
+.state-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.state-group + .state-group {
+  margin-top: 1rem;
+}
+.size-row + .size-row {
+  margin-top: 1rem;
+} 
+
+/* 스위치 (체크박스 커스텀) */
+.toggle__input {
+  appearance: none;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+  position: relative;
+  width: 44px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--gray-200);
+  cursor: pointer;
+  transition: background-color var(--transition-slow);
+}
+
+/* 썸 (움직이는 원) */
+.toggle__input::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--White);
+  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.1),
+              0 1px 2px rgba(16, 24, 40, 0.06);
+  transition: transform var(--transition-slow);
+}
+
+/* on 상태: 트랙 컬러 + 썸 오른쪽 이동 */
+.toggle__input:checked {
+  background: var(--primary-600);
+}
+
+.toggle__input:checked::before {
+  transform: translateX(20px);
+}
+
+.toggle__input:focus-visible {
+  outline: 2px solid var(--gray-400);
+  outline-offset: 2px;
+}
+
+/* 텍스트 (제목 + 설명) */
+.toggle__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  /* 스위치와 첫 줄 높이 맞추기 */
+  padding-top: 1px;
+}
+
+.toggle__title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray-700);
+  line-height: 1.43;
+}
+
+.toggle__desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--gray-500);
+  line-height: 1.43;
+}
+
+/* =========================================================
+   __switch-states.css — 상태 + 사이즈 (BASE 제외)
+   네 switch.css(base) 뒤에 이어붙이는 용도
+   기준: default 트랙 44×24 · thumb 20 · translateX 20
+   ========================================================= */
+
+/* ===== 사이즈: Small (track 28×16, thumb 12) ===== */
+.toggle--sm .toggle__input {
+  width: 28px;
+  height: 16px;
+}
+.toggle--sm .toggle__input::before {
+  width: 12px;
+  height: 12px;
+}
+.toggle--sm .toggle__input:checked::before {
+  transform: translateX(12px);  
+}
+
+/* ----- Pressed: 트랙 둘레 링 (focus는 네 base의 outline 유지) ----- */
+.toggle__input:active,
+.toggle__input.is-pressed {
+  box-shadow: 0 0 0 4px var(--gray-100, #f2f4f7);
+}
+.toggle__input:checked:active,
+.toggle__input:checked.is-pressed {
+  box-shadow: 0 0 0 4px var(--primary-100, #f4ebff);
+}
+
+/* ----- Loading: 썸 위 회전 스피너 (thumb 20 기준) ----- */
+.toggle__input.is-loading::after {
+  content: "";
+  position: absolute;
+  top: 6px;      
+  left: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(16, 24, 40, 0.15);
+  border-top-color: var(--primary-600, #7f56d9);
+  animation: toggle-spin 0.7s linear infinite;
+}
+.toggle__input.is-loading:checked::after {
+  left: 26px;                     /* 6 + 20 */
+}
+.toggle__input.is-loading {
+  cursor: progress;
+  pointer-events: none;   
+  /* 로딩 중 토글 방지 (JS 없이) */
+}
+
+/* Small 스피너 */
+.toggle--sm .toggle__input.is-loading::after {
+  top: 4px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  border-width: 1.5px;
+}
+.toggle--sm .toggle__input.is-loading:checked::after {
+  left: 16px; /* 4 + 12 */
+}
+
+@keyframes toggle-spin { to { transform: rotate(360deg); }
+}
+
+/* ----- Disabled ----- */
+.toggle__input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.toggle:has(.toggle__input:disabled) {
+  cursor: not-allowed;
+}
+.note { 
+  margin-bottom:var(--spacing-28);
+  font-size:var(--text-14); 
+  color:#667085; 
+}
+.grid { 
+  display:grid; 
+  grid-template-columns:repeat(var(--cols),minmax(0,1fr)); 
+  gap:var( --gap-20);
+}
+.grid--2 { 
+  --cols:2;
+} 
+.grid--4 { 
+  --cols:4; 
+}
+.state-group__title { 
+  margin-bottom:var( --spacing-6);
+  font-size:var( --text-20); 
+  font-weight:var(--weight-Semibold); 
+  color:#7f56d9; 
+}
+.state-head { 
+  margin-bottom:var( --spacing-10);
+}
+.state-head__cell { 
+  font-size:var(--text-16); 
+  font-weight:var( --weight-medium); 
+  color:#667085; 
+}
+.size-row { 
+  margin-bottom:var( --spacing-16);
+}
+.size-row__label { 
+  display:block; 
+  font-size:var( --text-14); 
+  margin-bottom:var(--spacing-10);
+  font-weight:var(--weight-medium); 
+  color:#344054; 
+}
+.state-cell { 
+  display:flex; 
+  align-items:center;
+  min-height:36px;
+}

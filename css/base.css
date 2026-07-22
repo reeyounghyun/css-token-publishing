@@ -1,0 +1,158 @@
+@charset "utf-8";
+/* ==========================================================================
+   base.css — 토큰 + 기본 타이포 + 컨테이너 + 유틸
+   ※ 시안 값은 여기서만 고칩니다.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. 웹폰트 — 로컬 호스팅 (인터넷 없어도 동일하게 보임)
+   url 경로는 이 CSS 파일 기준. css/ 안에 있으니 ../fonts/
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Pretendard";
+  src: url("../fonts/Pretendard-Regular.subset.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pretendard";
+  src: url("../fonts/Pretendard-Medium.subset.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pretendard";
+  src: url("../fonts/Pretendard-Bold.subset.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --------------------------------------------------------------------------
+   1. 토큰
+   -------------------------------------------------------------------------- */
+:root {
+  /* Color — Brickify 시안 추정치. 피그마에서 실제 값 확인해서 교체 */
+  --c-cream: #eae5df;   /* 히어로 / 푸터 배경 */
+  --c-box:   #e3ded8;   /* 이미지 플레이스홀더 */
+  --c-black: #111111;   /* 배지, 버튼 */
+  --c-white: #ffffff;
+  --c-text:  #111111;
+  --c-text-sub: #555555;
+  --c-border: #e5e0da;
+
+  /* Font */
+  --font: "Pretendard", system-ui, "Apple SD Gothic Neo", sans-serif;
+
+  /* Font size — rem (사용자 글자 크기 설정 따라감) */
+  --fs-12: 0.75rem;
+  --fs-14: 0.875rem;
+  --fs-16: 1rem;
+  --fs-20: 1.25rem;
+  --fs-24: 1.5rem;
+  --fs-32: 2rem;
+  --fs-48: 3rem;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  /* Space — px (글자 크기 따라 움직이면 안 되는 값) */
+  --gap: 16px;
+  --gap-row: 24px;
+  --container: 1440px;
+  --pad: 16px;
+
+  --radius: 4px;
+
+  /* 그리드 컬럼 수 — 각 .grid에서 인라인으로 덮어씀 */
+  --cols: 1;
+}
+
+/* 화면이 넓어질수록 여백·간격만 키움 */
+@media (min-width: 48em) {   /* 768 */
+  :root { --gap: 20px; --gap-row: 32px; --pad: 24px; }
+}
+@media (min-width: 64em) {   /* 1024 */
+  :root { --gap: 24px; --gap-row: 40px; --pad: 40px; }
+}
+
+/* --------------------------------------------------------------------------
+   2. 기본 타이포
+   -------------------------------------------------------------------------- */
+body {
+  font-family: var(--font);
+  font-size: var(--fs-16);
+  font-weight: var(--fw-regular);
+  color: var(--c-text);
+  background: var(--c-white);
+  word-break: keep-all;
+}
+
+/* --------------------------------------------------------------------------
+   3. 레이아웃
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--pad);
+}
+
+/* 반복 그리드 — 컬럼 수는 --cols로 주입
+   <ul class="grid" style="--cols:4"> */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  gap: var(--gap-row) var(--gap);
+}
+
+.grid>li img {
+  display: block;
+  width:82px;
+  height:82px;
+  object-fit: container;
+}
+/* --------------------------------------------------------------------------
+   4. 유틸
+   -------------------------------------------------------------------------- */
+
+/* 스크린리더 전용 텍스트 */
+.blind {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* 본문 바로가기 */
+.skip-nav {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  padding: 12px;
+  background: var(--c-black);
+  color: var(--c-white);
+  text-align: center;
+}
+.skip-nav:focus { top: 0; }
+
+/* 말줄임 */
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ellipsis-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pagination</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/component/pagination.css">
+
+  <style>
+    body {
+      padding: 1rem;
+    }
+    h2{
+      display: flex;
+      align-items: center;
+      gap: var(--gap-8);
+      font-size: 45px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: var( --primary-700);
+    }
+    .base {
+      display: inline-block;
+      font-size: 38px;
+      font-weight: 500;
+      color: var(--gray-800);
+    }
+    h5 {
+      font-size: var(--text-14);
+      font-weight: var(--weight-medium);
+      color: var(--c-text);
+      margin-bottom: 0.25rem;
+    }
+    .grid--2 { --cols: 2; }
+    .grid--3 { --cols: 3; }
+    .grid--4 { --cols: 4; }
+    .grid--6 { --cols: 6; }
+    .grid--8 { --cols: 8; }
+  </style>
+</head>
+<body>
+  <h2>
+    <span class="base">component</span>
+    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">    
+    pagination
+  </h2>
+  <div class="grid grid--1" style="max-width: 600px; gap: 50px;">
+    <!-- Pagination : 숫자형 기본 -->
+    <div>
+      <h5>Pagination : 숫자형 기본</h5>
+      <nav class="pagination" aria-label="페이지네이션">
+        <!-- 이전 : 첫 페이지면 disabled -->
+        <button type="button" class="pagination__arrow" aria-label="이전 페이지" disabled>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <ul class="pagination__list">
+          <li><button type="button" class="pagination__item is-active" aria-current="page">1</button></li>
+          <li><button type="button" class="pagination__item">2</button></li>
+          <li><button type="button" class="pagination__item">3</button></li>
+          <li><span class="pagination__dots">…</span></li>
+          <li><button type="button" class="pagination__item">8</button></li>
+          <li><button type="button" class="pagination__item">9</button></li>
+          <li><button type="button" class="pagination__item">10</button></li>
+        </ul>
+        <!-- 다음 -->
+        <button type="button" class="pagination__arrow" aria-label="다음 페이지">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+
+    <!-- 화살표+텍스트 / 양끝 배치 -->
+    <div>
+      <h5> 화살표+텍스트 / 양끝 배치 기본</h5>
+      <nav class="pagination pagination--split" aria-label="페이지네이션">
+        <button type="button" class="pagination__arrow pagination__arrow--text">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Previous
+        </button>
+        <ul class="pagination__list">
+          <li><button type="button" class="pagination__item is-active" aria-current="page">1</button></li>
+          <li><button type="button" class="pagination__item">2</button></li>
+          <li><button type="button" class="pagination__item">3</button></li>
+          <li><span class="pagination__dots">…</span></li>
+          <li><button type="button" class="pagination__item">8</button></li>
+          <li><button type="button" class="pagination__item">9</button></li>
+          <li><button type="button" class="pagination__item">10</button></li>
+        </ul>
+        <button type="button" class="pagination__arrow pagination__arrow--text">
+          Next
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+
+    <div>
+      <h5> 텍스트형 : Page X of Y</h5>
+      <!-- 텍스트형 : Page X of Y -->
+      <nav class="pagination pagination--split" aria-label="페이지네이션">
+        <button type="button" class="pagination__arrow pagination__arrow--text">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Previous
+        </button>
+        <span class="pagination__text">Page <strong>1</strong> of 10</span>
+        <button type="button" class="pagination__arrow pagination__arrow--text">
+          Next
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+
+    <!-- ③ 아이콘만 + 양끝 (오른쪽 열 스타일) -->
+    <div>
+      <h5> 아이콘만 + 양끝 (오른쪽 열 스타일)</h5>
+      <nav class="pagination pagination--split" aria-label="페이지네이션">
+        <button type="button" class="pagination__arrow" aria-label="이전 페이지">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <span class="pagination__text">Page <strong>1</strong> of 10</span>
+        <button type="button" class="pagination__arrow" aria-label="다음 페이지">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+
+    <!-- 숫자 + 텍스트 둘 다 품은 형태 -->
+    <div>
+      <h5>숫자 + 텍스트 둘 다 품은 형 (창 좁히면 Page X of Y로 전환)</h5>
+      <nav class="pagination pagination--split" aria-label="페이지네이션">
+        <button type="button" class="pagination__arrow pagination__arrow--text">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Previous
+        </button>
+        <!-- 넓을 때 : 숫자 -->
+        <ul class="pagination__list">
+          <li><a href="?page=1" class="pagination__item is-active" aria-current="page">1</a></li>
+          <li><a href="?page=2" class="pagination__item">2</a></li>
+          <li><a href="?page=3" class="pagination__item">3</a></li>
+          <li><span class="pagination__dots">…</span></li>
+          <li><a href="?page=8" class="pagination__item">8</a></li>
+          <li><a href="?page=9" class="pagination__item">9</a></li>
+          <li><a href="?page=10" class="pagination__item">10</a></li>
+        </ul>
+        <!-- 좁을 때 : 텍스트 (평소 숨김) -->
+        <span class="pagination__text_none">Page <strong>1</strong> of 10</span>
+        <button type="button" class="pagination__arrow pagination__arrow--text">
+          Next
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </div>
+</body>
+</html>

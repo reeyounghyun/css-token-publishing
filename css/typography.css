@@ -1,0 +1,65 @@
+ /* 제목_텍스트 */
+ .text-display-xs {
+  font-size: var(--display-xs);
+  font-weight: var(--weight-regular);
+  line-height: 133.333%;
+ }
+
+ .text-display-sm {
+  font-size: var(--display-sm);
+  font-weight: var(--weight-regular);
+  line-height:126.667%;
+ }
+
+ .text-display-md {
+  font-size: var(--display-md);
+  font-weight: var(--weight-regular);
+  line-height: 122.222%;
+  letter-spacing: -0.72px;
+ }
+
+ .text-display-lg {
+  font-size: var(--display-lg);
+  font-weight: var(--weight-regular);
+  line-height: 125%;
+  letter-spacing: -0.96px;
+ }
+
+ .text-display-xl {
+  font-size: var(--display-xl);
+  font-weight: var(--weight-regular);
+  line-height: 125%;
+  letter-spacing: -1.2px;
+ }
+
+ .text-display-2xl {
+  font-size: var(--display-2xl);
+  font-weight: var(--weight-regular);
+  line-height: 125%;
+  letter-spacing:-1.44px;
+ }
+
+ /* 본문_텍스트 */
+ .text-xl {
+  font-size: var(--text-20);
+  font-weight: var(--weight-regular);
+  line-height: 150%;
+ }
+ 
+ .text-lg {
+  font-size: var(--text-18);
+  font-weight: var(--weight-regular);
+  line-height: 155.556%;
+}
+
+.text-md {
+  font-size:var(--text-16);
+  font-weight:var(--weight-regular);
+  line-height: 150%;
+}
+
+.text-sm {
+  font-size:var(--text-14);
+  font-weight: var(--weight-regular);
+  line-height: 142.857%;
+}

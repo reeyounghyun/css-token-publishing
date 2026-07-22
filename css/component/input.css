@@ -1,0 +1,182 @@
+/* email:기본 */
+.field {
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+}
+.field .field__label {
+  color: var(--gray-700);
+  font-size: var( --text-14);
+  font-weight: 500;
+  line-height: var(--spacing-20);
+}
+
+.field__box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--spacing-10);
+  padding-inline: var(--spacing-14);
+  border-radius: var( --radius-md);
+  border: 1px solid var(--gray-300);
+  background: var(--White);
+  box-shadow: var(--shadows-xs);
+}
+.field__box .icon {
+  background: url(/images/icon/mail_icon.png) no-repeat;
+  width: var(--icon-20);
+  height: var(--icon-20);
+  background-size: contain;
+  object-fit: contain;
+  text-indent: -9999px;
+}
+
+.field__box .field__input {
+  max-width: 240px;
+  width: 100%;
+  box-shadow:var(--shadows-xs);
+  margin-inline: var(--spacing-8);
+  background: transparent;
+  border: transparent;
+}
+
+.field__box .field__input::placeholder {
+  color: var(--gray-500);
+  font-size: var(--text-16);
+  font-style: normal;
+  font-weight: var(--weight-regular);
+  line-height: 150%;
+}
+
+.field p {
+  color: var(--gray-500);
+  font-size: var(--text-14);
+  font-weight: var(--weight-regular);
+  line-height: 142.857%;
+  margin-top: var(--spacing-6);
+}
+
+/* email:에러 */
+.field__error .field__box {
+  display: flex;
+  align-items: center;
+
+  padding-block: var(--spacing-10);
+  padding-inline: var(--spacing-14);
+  border-radius: var( --radius-md);
+  border: 1px solid var(--error-300);
+  background: var(--White);
+  box-shadow: var(--shadows-xs);
+}
+
+.field__error p {
+  color: var(--error-500);
+  font-size: var(--text-14);
+  font-weight: var(--weight-regular);
+  line-height: 142.857%;
+  margin-top: var(--spacing-6);
+}
+
+/* phone number:기본 */
+.field__number .lang__box {
+  display: flex;
+  align-items: center;
+}
+
+.field__number .lang__box span {
+  margin-right: var(--spacing-4);
+  color: var(--gray-900);
+  font-size: var(--text-16);
+  font-weight: var( --weight-regular);
+  line-height: 150%;
+}
+
+.field__number .field__box .field__input {
+  max-width: 209px;
+}
+
+.field__error.field__number  .field__box {
+  display: flex;
+  align-items: center;
+
+  padding-block: var(--spacing-10);
+  padding-inline: var(--spacing-14);
+  border-radius: var( --radius-md);
+  border: 1px solid var(--error-300);
+  background: var(--White);
+  box-shadow: var(--shadows-xs);
+}
+
+.field__error.field__number  p {
+  color: var(--error-500);
+  font-size: var(--text-14);
+  font-weight: var(--weight-regular);
+  line-height: 142.857%;
+  margin-top: var(--spacing-6);
+}
+
+/*  */
+/* password는 앞쪽 mail 아이콘이 없음 → input 왼쪽 여백 제거 */
+.field--password .field__input {
+  margin-left: 0;
+}
+
+/* 눈 아이콘 버튼 */
+.field__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+/* ---- 상태(가상클래스로 자동) : 모든 field 공통 ---- */
+
+/* Hover */
+.field__box:hover {
+  border-color: var(--gray-400);
+}
+
+/* Focused + Typing : 파란 테두리 + ring
+   (기존 shadows-xs 유지하려고 콤마로 둘 다 씀) */
+.field__box:focus-within {
+  border-color: var(--primary-300);
+  box-shadow: var(--shadows-xs), 0 0 0 4px var(--primary-100);
+}
+
+/* error 필드 focus ring */
+.field__error .field__box:focus-within {
+  border-color: var(--error-300);
+  box-shadow: var(--shadows-xs), 0 0 0 4px var(--error-100);
+}
+
+/* ---- Disabled ---- */
+.field--disabled .field__box {
+  background: var(--gray-50);
+}
+.field--disabled .field__input {
+  color: var(--gray-500);
+  cursor: not-allowed;
+}
+.field--disabled .field__btn {
+  cursor: not-allowed;
+}
+
+/* ---- 사이즈 ---- */
+.field--lg .field__box {
+  padding-block: var(--spacing-12);
+}
+.field--lg .field__input,
+.field--lg .field__input::placeholder {
+  font-size: var(--text-18);
+}
+
+.field--sm .field__box {
+  padding-block: var(--spacing-8);
+}
+.field--sm .field__input,
+.field--sm .field__input::placeholder {
+  font-size: var(--text-14);
+}

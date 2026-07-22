@@ -1,0 +1,202 @@
+/* 드롭다운_오리지널 */
+.select {
+  /* 브라우저 기본 화살표 제거 */
+  appearance: none;
+  -webkit-appearance: none;
+  width: 240px;
+  height: var(--height-lg);
+  padding: 0 40px 0 var(--spacing-12);   /* 오른쪽은 화살표 자리 */
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-sm);
+  background-color: #fff;
+  font-size: var(--text-16);
+  color: var(--gray-900);
+  cursor: pointer;
+
+  /* ▼ 기본: 아래 화살표 (닫힌 상태) */
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="%23667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat right 12px center;
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-12) center;
+}
+
+/* ▲ 열린 상태: */
+.select.is--open {
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 12.5L10 7.5L5 12.5" stroke="%23667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat right 12px center;
+  background-color: #fff;
+  border-color: var(--primary-600);
+}
+
+/* 포커스 링 (키보드 접근성) */
+.select:focus-visible {
+  outline: none;
+  border: 1px solid var(--primary-300);
+  border-radius: 8px;
+  box-shadow:var( --shadows-xs);
+}
+
+/* [공통] 드롭다운_커스텀 */
+.dropdown-custom, .dropdown {
+  width: 240px;
+  height: var(--height-lg);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-sm);
+  background-color: #fff;
+  font-size: var(--text-16);
+  color: var(--gray-900);
+  cursor: pointer;
+}
+
+/* 드롭다운_커스텀1 */
+.dropdown-custom {
+  position: relative;
+}
+
+/* 화살표 */
+.dropdown__arrow { 
+  transition: transform var(--transition-fast);
+}
+
+/* ★ 상태 훅: 이 클래스만 붙으면 열림 */
+.dropdown-custom.is--open .dropdown__list  { 
+  display: block;
+}
+.dropdown-custom.is--open .dropdown__arrow { 
+  transform: rotate(180deg);
+}
+
+/* 옵션 */
+.dropdown__item {
+  padding: 10px 12px; 
+  border-radius: 6px; 
+  font-size: 16px; 
+  cursor: pointer;
+}
+/* hover */
+.dropdown__item:hover { 
+  background: var(--gray-100);
+}
+
+
+/* 드롭다운_커스텀2 */
+.dropdown {
+  position: relative;
+  width: 240px;
+}
+
+/* --- 트리거 버튼 (닫힌 박스) --- */
+.dropdown__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-8);
+  width: 100%;
+  height: var(--height-lg);
+  padding: var(--spacing-10) var(--spacing-14);
+
+  font-size: var(--text-16);
+  color: var(--gray-900);
+  text-align: left;
+  cursor: pointer;
+}
+.dropdown__trigger:focus-visible {
+  border: 2px solid var(--gray-100);
+  outline-offset: 2px;
+}
+
+/* --- 화살표: 열리면 회전 --- */
+.dropdown__arrow {
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+/* aria-expanded 를 스타일 훅으로 씀 (상태 = HTML에 이미 있음) */
+.dropdown__trigger[aria-expanded="true"] .dropdown__arrow {
+  transform: rotate(180deg);
+}
+
+/* --- 열린 목록 --- */
+.dropdown__list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 280px;
+  padding: var(--spacing-8);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  box-shadow: var( --shadows-lg);
+  overflow-y: auto;
+  z-index: var(--z-dropdown);
+
+  /* 기본은 닫힘 */
+  display: none;
+}
+/* 트리거가 열림이면 목록 노출 (형제 선택자) */
+.dropdown__trigger[aria-expanded="true"] + .dropdown__list {
+  display: block;
+}
+
+/* --- 옵션 하나 --- */
+.dropdown__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-8);
+  padding: var(--spacing-10) var(--spacing-14);
+  border-radius: var( --radius-sm);
+  font-size: var(--text-16);
+  color: var(--gray-900);
+  cursor: pointer;
+}
+
+/* 회색 hover */
+.dropdown__item:hover {
+  background: var(--gray-100);  
+}
+/* 키보드로 이동 중인 활성 항목 (마우스 hover 와 동일한 모양) */
+.dropdown__item.is--active {
+  background: var(--gray-100);
+}
+
+/* --- 선택된 항목: 체크마크 --- */
+.dropdown__check {
+  flex-shrink: 0;
+  color: var(--primary-600);
+  visibility: hidden;  
+}
+.dropdown__item[aria-selected="true"] .dropdown__check {
+  visibility: visible;
+}
+.dropdown__item[aria-selected="true"] {
+  color: var(--gray-900);
+  font-weight: 600;
+}
+
+/* 드롭다운_커스텀4_이미지 */
+.label-item {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-8);
+}
+
+.dropdown__avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;   /* 정사각형 아니어도 안 찌그러짐 */
+  flex-shrink: 0;
+}
+
+/* 드롭다운_커스텀5 */
+.dropdown__item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-8);
+  padding: var(--spacing-10) var(--spacing-14);
+  border-radius: 6px;
+  font-size: var(--text-14);
+  color: var(--gray-900);
+  cursor: pointer;
+}
+

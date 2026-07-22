@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dropdown</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/component/dropdown.css">
+  <style>
+    body {
+      padding: 1rem;
+    }
+    h2{
+      display: flex;
+      align-items: center;
+      gap: var(--gap-8);
+      font-size: 45px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: var( --primary-700);
+    }
+    .base {
+      display: inline-block;
+      font-size: 38px;
+      font-weight: 500;
+      color: var(--gray-800);
+    }
+    .grid--2 { --cols: 2; }
+    .grid--3 { --cols: 3; }
+    .grid--4 { --cols: 4; }
+    .grid--6 { --cols: 6; }
+    .grid--8 { --cols: 8; }
+  </style>
+</head>
+<body>
+  <h2>
+    <span class="base">component</span>
+    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">    
+    Dropdown
+  </h2>
+  <div class="grid grid--3" style="max-width: 1920px;">
+    <!-- 드롭다운_오리지널 -->
+    <select class="select" id="member" aria-label="담당자 선택">
+      <option>Phoenix Baker</option>
+      <option selected>Olivia Rhye</option>
+      <option>Lana Steiner</option>
+      <option>Demi Wilkinson</option>
+      <option>Candice Wu</option>
+      <option>Natali Craig</option>
+      <option>Drew Cano</option>
+    </select>
+    <!-- 드롭다운_커스탐1 -->
+    <div class="dropdown-custom" data-dropdown-custom>
+        <button type="button" class="dropdown__trigger" aria-expanded="false">
+          <span class="dropdown__value">Olivia Rhye</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <ul class="dropdown__list" role="listbox" aria-label="담당자 선택">
+          <li class="dropdown__item" role="option">Phoenix Baker</li>
+          <li class="dropdown__item" role="option">Olivia Rhye</li>
+          <li class="dropdown__item" role="option">Lana Steiner</li>
+          <li class="dropdown__item" role="option">Demi Wilkinson</li>
+          <li class="dropdown__item" role="option">Candice Wu</li>
+          <li class="dropdown__item" role="option">Natali Craig</li>
+          <li class="dropdown__item" role="option">Drew Cano</li>
+        </ul>
+    </div>
+    <!-- 드롭다운_커스텀2_아이콘 -->
+    <div class="dropdown-custom" data-dropdown-custom>
+        <button type="button" class="dropdown__trigger" aria-expanded="false">
+          <div class="label-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M16.6667 17.5V15.8333C16.6667 14.9493 16.3155 14.1014 15.6904 13.4763C15.0652 12.8512 14.2174 12.5 13.3333 12.5H6.66668C5.78262 12.5 4.93478 12.8512 4.30965 13.4763C3.68453 14.1014 3.33334 14.9493 3.33334 15.8333V17.5M13.3333 5.83333C13.3333 7.67428 11.841 9.16667 10 9.16667C8.15906 9.16667 6.66668 7.67428 6.66668 5.83333C6.66668 3.99238 8.15906 2.5 10 2.5C11.841 2.5 13.3333 3.99238 13.3333 5.83333Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="dropdown__value">Olivia Rhye</span>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <ul class="dropdown__list" role="listbox" aria-label="담당자 선택">
+          <li class="dropdown__item" role="option">Phoenix Baker</li>
+          <li class="dropdown__item" role="option">Olivia Rhye</li>
+          <li class="dropdown__item" role="option">Lana Steiner</li>
+          <li class="dropdown__item" role="option">Demi Wilkinson</li>
+          <li class="dropdown__item" role="option">Candice Wu</li>
+          <li class="dropdown__item" role="option">Natali Craig</li>
+          <li class="dropdown__item" role="option">Drew Cano</li>
+        </ul>
+    </div>
+    <!-- 드롭다운_커스텀3_이미지 -->
+    <div class="dropdown-custom" data-dropdown-custom>
+        <button type="button" class="dropdown__trigger" aria-expanded="false">
+          <div class="label-item" role="option" data-value="Olivia Rhye">
+            <img class="dropdown__avatar" src="/images/icon/user.png" alt="Olivia Rhye 프로필"  width="24" height="24">
+            <span class="dropdown__value">Olivia Rhye</span>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <ul class="dropdown__list" role="listbox" aria-label="담당자 선택">
+          <li class="dropdown__item" role="option">Phoenix Baker</li>
+          <li class="dropdown__item" role="option">Olivia Rhye</li>
+          <li class="dropdown__item" role="option">Lana Steiner</li>
+          <li class="dropdown__item" role="option">Demi Wilkinson</li>
+          <li class="dropdown__item" role="option">Candice Wu</li>
+          <li class="dropdown__item" role="option">Natali Craig</li>
+          <li class="dropdown__item" role="option">Drew Cano</li>
+        </ul>
+    </div>
+    <!-- 드롭다운_커스텀4_상태 -->
+    <div class="dropdown-custom" data-dropdown-custom>
+      <button type="button" class="dropdown__trigger" aria-expanded="false">
+        <div class="label-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+            <circle cx="4" cy="4" r="4" fill="#12B76A"/>
+          </svg>
+          <span class="dropdown__value">Olivia Rhye</span>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M5 7.5L10 12.5L15 7.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <ul class="dropdown__list" role="listbox" aria-label="담당자 선택">
+        <li class="dropdown__item" role="option">Phoenix Baker</li>
+        <li class="dropdown__item" role="option">Olivia Rhye</li>
+        <li class="dropdown__item" role="option">Lana Steiner</li>
+        <li class="dropdown__item" role="option">Demi Wilkinson</li>
+        <li class="dropdown__item" role="option">Candice Wu</li>
+        <li class="dropdown__item" role="option">Natali Craig</li>
+        <li class="dropdown__item" role="option">Drew Cano</li>
+      </ul>
+    </div>
+   <!-- 드롭다운_커스텀5_옵션+아이콘 -->
+    <div class="dropdown-custom" data-dropdown-custom>
+      <button type="button" class="dropdown__trigger" aria-expanded="false">
+        <div class="label-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512 14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014 3.3335 14.9493 3.3335 15.8333V17.5M13.3335 5.83333C13.3335 7.67428 11.8411 9.16667 10.0002 9.16667C8.15921 9.16667 6.66683 7.67428 6.66683 5.83333C6.66683 3.99238 8.15921 2.5 10.0002 2.5C11.8411 2.5 13.3335 3.99238 13.3335 5.83333Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="dropdown__value">Olivia Rhye</span>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M5 7.5L10 12.5L15 7.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <ul class="dropdown__list" role="listbox" aria-label="담당자 선택">
+        <li class="dropdown__item-icon" role="option">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512 14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014 3.3335 14.9493 3.3335 15.8333V17.5M13.3335 5.83333C13.3335 7.67428 11.8411 9.16667 10.0002 9.16667C8.15921 9.16667 6.66683 7.67428 6.66683 5.83333C6.66683 3.99238 8.15921 2.5 10.0002 2.5C11.8411 2.5 13.3335 3.99238 13.3335 5.83333Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Phoenix Baker
+        </li>
+        <li class="dropdown__item-icon" role="option">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512 14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014 3.3335 14.9493 3.3335 15.8333V17.5M13.3335 5.83333C13.3335 7.67428 11.8411 9.16667 10.0002 9.16667C8.15921 9.16667 6.66683 7.67428 6.66683 5.83333C6.66683 3.99238 8.15921 2.5 10.0002 2.5C11.8411 2.5 13.3335 3.99238 13.3335 5.83333Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Olivia Rhye
+        </li>
+        <li class="dropdown__item-icon" role="option">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512 14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014 3.3335 14.9493 3.3335 15.8333V17.5M13.3335 5.83333C13.3335 7.67428 11.8411 9.16667 10.0002 9.16667C8.15921 9.16667 6.66683 7.67428 6.66683 5.83333C6.66683 3.99238 8.15921 2.5 10.0002 2.5C11.8411 2.5 13.3335 3.99238 13.3335 5.83333Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Lana Steiner
+        </li>
+        <li class="dropdown__item-icon" role="option">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512 14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014 3.3335 14.9493 3.3335 15.8333V17.5M13.3335 5.83333C13.3335 7.67428 11.8411 9.16667 10.0002 9.16667C8.15921 9.16667 6.66683 7.67428 6.66683 5.83333C6.66683 3.99238 8.15921 2.5 10.0002 2.5C11.8411 2.5 13.3335 3.99238 13.3335 5.83333Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Demi Wilkinson
+        </li>
+        <li class="dropdown__item-icon" role="option">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512 14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014 3.3335 14.9493 3.3335 15.8333V17.5M13.3335 5.83333C13.3335 7.67428 11.8411 9.16667 10.0002 9.16667C8.15921 9.16667 6.66683 7.67428 6.66683 5.83333C6.66683 3.99238 8.15921 2.5 10.0002 2.5C11.8411 2.5 13.3335 3.99238 13.3335 5.83333Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Candice Wu
+        </li>
+        <li class="dropdown__item-icon" role="option">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512 14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014 3.3335 14.9493 3.3335 15.8333V17.5M13.3335 5.83333C13.3335 7.67428 11.8411 9.16667 10.0002 9.16667C8.15921 9.16667 6.66683 7.67428 6.66683 5.83333C6.66683 3.99238 8.15921 2.5 10.0002 2.5C11.8411 2.5 13.3335 3.99238 13.3335 5.83333Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Natali Craig
+        </li>
+        <li class="dropdown__item-icon" role="option">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512 14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014 3.3335 14.9493 3.3335 15.8333V17.5M13.3335 5.83333C13.3335 7.67428 11.8411 9.16667 10.0002 9.16667C8.15921 9.16667 6.66683 7.67428 6.66683 5.83333C6.66683 3.99238 8.15921 2.5 10.0002 2.5C11.8411 2.5 13.3335 3.99238 13.3335 5.83333Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Drew Cano
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

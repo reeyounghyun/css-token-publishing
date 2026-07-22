@@ -1,0 +1,158 @@
+:root {
+    /* 색(폰트/배경) */
+  --gray-50:  #F9FAFB;
+  --gray-100:  #F2F4F7;
+  --gray-200:  #EAECF0;
+  --gray-300:  #D0D5DD;
+  --gray-400:  #98A2B3;
+  --gray-500:  #667085;
+  --gray-600:  #475467;
+  --gray-700:  #344054;
+  --gray-800:  #1D2939;
+  --gray-900:  #101828;
+
+  /* 메인 컬러 */
+  --primary-50:  #F9F5FF;
+  --primary-100:  #F4EBFF;
+  --primary-200:  #E9D7FE;
+  --primary-300:  #D6BBFB;
+  --primary-400:  #B692F6;
+  --primary-500:  #9E77ED;
+  --primary-600:  #7F56D9;
+  --primary-700:  #6941C6;
+  --primary-800:  #53389E;
+  --primary-900 :  #42307D;
+  
+  /* 에러 */
+  --error-50 :  #FEF3F2;
+  --error-100 :  #FEE4E2;
+  --error-200 :  #FECDCA;
+  --error-300 :  #FDA29B;
+  --error-400 :  #F97066;
+  --error-500 :  #F04438;
+  --error-600 :  #D92D20;
+  --error-700 :  #B42318;
+  --error-800 :  #912018;
+  --error-900  :  #7A271A;
+
+  --White:white;
+  --black: black;
+  --gray:gray;
+
+  --menu-divider: #e5e9f0;
+  --slate-100: #f1f5f9;
+  --slate-700: #334155;
+  --box-border: #cbd5e1;      /* slate-300 */
+
+  /*sns 컬러 */
+  --brand-facebook:#1877F2;
+  --brand-facebook-hover:#166FE5;
+  --brand-apple:#000000;    
+  --brand-apple-hover:#1A1A1A;
+
+  /* 높이 */
+  --height-xs:2.25rem; /* 36px */
+  --height-sm:2.5rem;  /* 40px */
+  --height-md:2.75rem; /* 44px */
+  --height-lg:3rem;    /* 48px */
+  --height-xl:3.75rem; /* 60px */
+  --height-1xl:6.75rem; /* 108px */
+
+  /* radius */
+  --radius-xs:0.25rem;  /* 4px */
+  --radius-sm:0.375rem; /* 6px */
+  --radius-md:0.5rem;   /* 8px */
+  --radius-14:0.875rem; /* 14px */
+  --radius-lg:1rem;     /* 16px */
+  --radius-xl:999px;
+
+
+  /* 간격(padding,margin) */
+  --spacing-4:0.25rem;   /* 4px */
+  --spacing-6:0.375rem;  /* 6px */
+  --spacing-8:0.5rem;    /* 8px */
+  --spacing-10:0.625rem; /* 10px */
+  --spacing-12:0.75rem;  /* 12px */
+  --spacing-14:0.875rem; /* 14px */
+  --spacing-16:1rem;     /* 16px */
+  --spacing-18:1.125rem; /* 18px */
+  --spacing-20:1.25rem;  /* 20px */
+  --spacing-28:1.75rem;  /* 28px */
+
+
+  /* 그림자 */
+  --shadows-xs:0 1px 2px 0 rgba(16, 24, 40, 0.05);
+  --shadows-sm:0 1px 3px 0 rgba(16, 24, 40, 0.10), 0 1px 2px 0 rgba(16, 24, 40, 0.06);
+  --shadows-md:0 4px 8px -2px rgba(16, 24, 40, 0.10), 0 2px 4px -2px rgba(16, 24, 40, 0.06);
+  --shadows-lg:0 12px 16px -4px rgba(16, 24, 40, 0.08), 0 4px 6px -2px rgba(16, 24, 40, 0.03);
+  --shadows-xl:0 20px 24px -4px rgba(16, 24, 40, 0.08), 0 8px 8px -4px rgba(16, 24, 40, 0.03);
+  --shadows-2xl:0 24px 48px -12px rgba(16, 24, 40, 0.18);
+  --shadows-3xl:0 32px 64px -12px rgba(16, 24, 40, 0.14);
+
+  /* 폰트 굵기 */
+  --weight-regular:400;
+  --weight-medium:500;
+  --weight-Semibold:600;
+  --weight-bold:700;
+
+  /* 폰트 크기_본문 */
+  --text-14:0.875rem; /* 14px */
+  --text-16:1rem;     /* 16px */
+  --text-18:1.125rem; /* 18px */
+  --text-20:1.25rem;  /* 20px */
+  --text-22:1.375rem; /* 22px */
+  --text-24:1.5rem;   /* 24px */
+  --text-26:1.625rem; /* 26px */
+  --text-28:1.75rem;  /* 28px */
+  --text-30:1.875rem; /* 30px */
+  --text-32:2rem;     /* 32px */
+  --text-34:2.125rem; /* 34px */
+  --text-36:2.25rem;  /* 36px */
+  --text-38:2.375rem; /* 38px */
+  --text-40:2.5rem;   /* 40px */
+  --text-42:2.625rem; /* 42px */
+  --text-44:2.75rem;  /* 44px */
+  --text-46:2.875rem; /* 46px */
+  --text-48:3rem;     /* 48px */
+  --text-50:3.125rem; /* 50px */
+  --text-52:3.25rem;  /* 52px */
+  --text-54:3.375rem; /* 54px */
+  --text-56:3.5rem;   /* 56px */
+  --text-60:3.75rem;  /* 60px */
+  --text-72:4.5rem;   /* 72px */
+
+  /* 폰트 크기_제목 */
+  --display-xs:1.5rem;   /* 24px */
+  --display-sm:1.875rem; /* 30px */
+  --display-md:2.25rem;  /* 36px */
+  --display-lg:3rem;     /* 48px */
+  --display-xl:3.75rem;  /* 60px */
+  --display-2xl:4.5rem;  /* 72px */
+
+  /* flex_간격 */
+  --gap-4:  0.25rem;  /* 4px */
+  --gap-6:  0.375rem; /* 6px */
+  --gap-8:  0.5rem;   /* 8px */
+  --gap-10: 0.625rem; /* 10px */
+  --gap-12: 0.75rem;  /* 12px */
+  --gap-14: 0.875rem; /* 14px */
+  --gap-16: 1rem;     /* 16px */
+  --gap-18: 1.125rem; /* 18px */
+  --gap-20: 1.25rem;  /* 20px */
+  --gap-28: 1.75rem;  /* 28px */
+
+  /* transition */
+  --transition-fast:   0.15s ease;
+  --transition-normal: 0.18s ease;
+  --transition-slow:   0.2s ease;
+
+  /* z-index */
+  --z-dropdown: 10;
+  --z-modal:    100;
+  --z-toast:    1000;
+
+  /* 아이콘 크기 */
+  --icon-20: 1.25rem;  /* 20px */
+  --icon-22: 1.375rem; /* 22px */
+}
+ 

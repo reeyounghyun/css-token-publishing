@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Textarea</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/component/textarea.css">
+
+  <style>
+    body {
+      padding: 1rem;
+    }
+    h2{
+      display: flex;
+      align-items: center;
+      gap: var(--gap-8);
+      font-size: 45px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: var( --primary-700);
+    }
+    .base {
+      display: inline-block;
+      font-size: 38px;
+      font-weight: 500;
+      color: var(--gray-800);
+    }
+    .grid--2 { --cols: 2; }
+    .grid--3 { --cols: 3; }
+    .grid--4 { --cols: 4; }
+    .grid--6 { --cols: 6; }
+    .grid--8 { --cols: 8; }
+  </style>
+</head>
+<body>
+  <h2>
+    <span class="base">component</span>
+    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">    
+    Textarea
+  </h2>
+  <div class="grid grid--2" style="max-width: 1920px;">
+    <!-- textarea:기본 -->
+    <div class="textarea">
+      <label class="textarea__label" for="email">Description</label>
+      <div class="textarea__box">
+        <textarea class="textarea" placeholder="Enter a description..."></textarea>
+      </div>
+      <p>This is a hint text to help user.</p>
+    </div>
+    
+    <!-- textarea:에러 -->
+    <div class="textarea textarea__error">
+      <label class="textarea__label" for="email">Description</label>
+      <div class="textarea__box">
+        <textarea class="textarea" placeholder="Enter a description..."></textarea>
+      </div>
+      <p>This is a hint text to help user.</p>
+    </div>
+  </div>
+</body>
+</html>
