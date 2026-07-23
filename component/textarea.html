@@ -33,31 +33,60 @@
     .grid--4 { --cols: 4; }
     .grid--6 { --cols: 6; }
     .grid--8 { --cols: 8; }
+    .class-label {
+      display: block;
+      margin-top: 4px;
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: #98A2B3;
+    }
   </style>
 </head>
 <body>
   <h2>
     <span class="base">component</span>
-    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">    
+    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
     Textarea
   </h2>
   <div class="grid grid--2" style="max-width: 1920px;">
     <!-- textarea:기본 -->
     <div class="textarea">
-      <label class="textarea__label" for="email">Description</label>
+      <label class="textarea__label" for="desc">Description</label>
       <div class="textarea__box">
-        <textarea class="textarea" placeholder="Enter a description..."></textarea>
+        <textarea id="desc" class="textarea" placeholder="Enter a description..."></textarea>
       </div>
       <p>This is a hint text to help user.</p>
+      <code class="class-label">textarea</code>
     </div>
-    
+
     <!-- textarea:에러 -->
     <div class="textarea textarea__error">
-      <label class="textarea__label" for="email">Description</label>
+      <label class="textarea__label" for="desc-error">Description</label>
       <div class="textarea__box">
-        <textarea class="textarea" placeholder="Enter a description..."></textarea>
+        <textarea id="desc-error" class="textarea" placeholder="Enter a description..."></textarea>
       </div>
       <p>This is a hint text to help user.</p>
+      <code class="class-label">textarea textarea__error</code>
+    </div>
+
+    <!-- textarea:비활성 -->
+    <div class="textarea textarea__disabled">
+      <label class="textarea__label" for="desc-disabled">Description</label>
+      <div class="textarea__box">
+        <textarea id="desc-disabled" class="textarea" placeholder="Enter a description..." disabled></textarea>
+      </div>
+      <p>This is a hint text to help user.</p>
+      <code class="class-label">textarea textarea__disabled</code>
+    </div>
+
+    <!-- textarea:resize 제어(없음) -->
+    <div class="textarea textarea__resize-none">
+      <label class="textarea__label" for="desc-noresize">Description (크기 조절 불가)</label>
+      <div class="textarea__box">
+        <textarea id="desc-noresize" class="textarea" placeholder="Enter a description..."></textarea>
+      </div>
+      <p>This is a hint text to help user.</p>
+      <code class="class-label">textarea textarea__resize-none</code>
     </div>
   </div>
 </body>

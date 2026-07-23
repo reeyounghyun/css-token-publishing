@@ -28,6 +28,13 @@
       font-weight: 500;
       color: var(--gray-800);
     }
+    .class-label {
+      display: block;
+      margin-top: 8px;
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: #98A2B3;
+    }
   </style>
 </head>
 <body>
@@ -36,6 +43,14 @@
     <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
     Card
   </h2>
+
+  <h3 style="margin-bottom: 12px;">hover 가능형 (클릭 가능한 카드)</h3>
+  <button type="button" class="card card--hoverable" style="max-width: 360px;">
+    <img class="card__thumb" src="/images/icon/mail_icon.png" alt="">
+    <h4 class="card__title">알림 설정 바로가기</h4>
+    <p class="card__desc">카드 전체를 눌러서 이동합니다. hover/focus 시 테두리와 그림자가 살짝 진해집니다.</p>
+  </button>
+  <code class="class-label">card card--hoverable (button 태그)</code>
 
   <h3 style="margin-bottom: 12px;">기본 카드 (이미지 + 액션)</h3>
   <div class="card-grid" style="max-width: 900px;">

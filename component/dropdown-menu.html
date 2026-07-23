@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dropdown Menu</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/component/checkbox.css">
+  <link rel="stylesheet" href="/css/component/dropdown-menu.css">
+  <style>
+    body {
+      padding: 1rem;
+    }
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: var(--gap-8);
+      font-size: 45px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: var( --primary-700);
+    }
+    .base {
+      display: inline-block;
+      font-size: 38px;
+      font-weight: 500;
+      color: var(--gray-800);
+    }
+    .grid--2 { --cols: 2; }
+    .grid--3 { --cols: 3; }
+    .grid--4 { --cols: 4; }
+    .grid--6 { --cols: 6; }
+    .grid--8 { --cols: 8; }
+  </style>
+</head>
+<body>
+  <h2>
+    <span class="base">component</span>
+    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">    
+    Dropdowns Menu
+  </h2>
+  <div class="grid grid--4" style="max-width: 1920px;">
+    <div class="menu-item nav-1">
+      <nav class="dropdown__menu" aria-label="사용자 메뉴">
+        <ul class="dropdown__group" role="menu">
+          <li role="none"><a class="dropdown__link" role="menuitem" href="#">View profile</a></li>
+          <li role="none"><a class="dropdown__link" role="menuitem" href="#">Settings</a></li>
+          <li role="none"><a class="dropdown__link" role="menuitem" href="#">Keyboard shortcuts</a></li>
+          <li role="none"><a class="dropdown__link" role="menuitem" href="#">Company profile</a></li>
+          <li role="none"><a class="dropdown__link" role="menuitem" href="#">Team</a></li>
+          <li role="none"><a class="dropdown__link" role="menuitem" href="#">Invite colleagues</a></li>
+          <li role="none"><a class="dropdown__link" role="menuitem" href="#">Changelog</a></li>
+          <li role="none"><a class="dropdown__link" role="menuitem" href="#">Slack Community</a></li>
+          <li role="none"><a class="dropdown__link" role="menuitem" href="#">Support</a></li>
+          <li role="none"><a class="dropdown__link" role="menuitem" href="#">API</a></li>
+        </ul>
+        <ul class="dropdown__group" role="menu">
+          <li role="none"><button class="dropdown__link" role="menuitem" type="button">Log out</button></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="menu-item nav-2">
+      <nav class="dropdown__menu" aria-label="사용자 메뉴">
+        <ul class="dropdown__group" role="menu">
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M13.3334 14V12.6667C13.3334 11.9594 13.0525 11.2811 12.5524 10.781C12.0523 10.281 11.374 10 10.6667 10H5.33341C4.62617 10 3.94789 10.281 3.4478 10.781C2.9477 11.2811 2.66675 11.9594 2.66675 12.6667V14M10.6667 4.66667C10.6667 6.13943 9.47284 7.33333 8.00008 7.33333C6.52732 7.33333 5.33341 6.13943 5.33341 4.66667C5.33341 3.19391 6.52732 2 8.00008 2C9.47284 2 10.6667 3.19391 10.6667 4.66667Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              View profile
+            </a>
+          </li>
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M8.00008 10C9.10465 10 10.0001 9.10459 10.0001 8.00002C10.0001 6.89545 9.10465 6.00002 8.00008 6.00002C6.89551 6.00002 6.00008 6.89545 6.00008 8.00002C6.00008 9.10459 6.89551 10 8.00008 10Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12.9334 10C12.8447 10.2011 12.8182 10.4241 12.8574 10.6404C12.8966 10.8567 12.9997 11.0562 13.1534 11.2134L13.1934 11.2534C13.3174 11.3772 13.4157 11.5242 13.4828 11.6861C13.5499 11.848 13.5845 12.0215 13.5845 12.1967C13.5845 12.3719 13.5499 12.5454 13.4828 12.7073C13.4157 12.8691 13.3174 13.0162 13.1934 13.14C13.0696 13.264 12.9225 13.3623 12.7607 13.4294C12.5988 13.4965 12.4253 13.5311 12.2501 13.5311C12.0749 13.5311 11.9014 13.4965 11.7395 13.4294C11.5776 13.3623 11.4306 13.264 11.3067 13.14L11.2667 13.1C11.1096 12.9463 10.9101 12.8432 10.6938 12.804C10.4775 12.7648 10.2545 12.7913 10.0534 12.88C9.85624 12.9645 9.68807 13.1049 9.56962 13.2837C9.45117 13.4626 9.3876 13.6722 9.38675 13.8867V14C9.38675 14.3536 9.24627 14.6928 8.99622 14.9428C8.74618 15.1929 8.40704 15.3334 8.05341 15.3334C7.69979 15.3334 7.36065 15.1929 7.11061 14.9428C6.86056 14.6928 6.72008 14.3536 6.72008 14V13.94C6.71492 13.7194 6.64349 13.5054 6.51509 13.3258C6.38668 13.1463 6.20724 13.0095 6.00008 12.9334C5.799 12.8446 5.57595 12.8181 5.35969 12.8574C5.14343 12.8966 4.94387 12.9997 4.78675 13.1534L4.74675 13.1934C4.62292 13.3173 4.47587 13.4157 4.314 13.4828C4.15214 13.5499 3.97864 13.5844 3.80341 13.5844C3.62819 13.5844 3.45469 13.5499 3.29283 13.4828C3.13096 13.4157 2.98391 13.3173 2.86008 13.1934C2.73611 13.0695 2.63777 12.9225 2.57067 12.7606C2.50357 12.5987 2.46903 12.4252 2.46903 12.25C2.46903 12.0748 2.50357 11.9013 2.57067 11.7394C2.63777 11.5776 2.73611 11.4305 2.86008 11.3067L2.90008 11.2667C3.05377 11.1096 3.15687 10.91 3.19608 10.6937C3.2353 10.4775 3.20882 10.2544 3.12008 10.0534C3.03557 9.85617 2.89525 9.68801 2.71639 9.56956C2.53753 9.45111 2.32794 9.38754 2.11341 9.38669H2.00008C1.64646 9.38669 1.30732 9.24621 1.05727 8.99616C0.807224 8.74611 0.666748 8.40698 0.666748 8.05335C0.666748 7.69973 0.807224 7.36059 1.05727 7.11055C1.30732 6.8605 1.64646 6.72002 2.00008 6.72002H2.06008C2.28074 6.71486 2.49475 6.64343 2.67428 6.51503C2.85381 6.38662 2.99056 6.20718 3.06675 6.00002C3.15549 5.79894 3.18196 5.57589 3.14275 5.35963C3.10354 5.14336 3.00044 4.94381 2.84675 4.78669L2.80675 4.74669C2.68278 4.62286 2.58443 4.4758 2.51734 4.31394C2.45024 4.15208 2.4157 3.97857 2.4157 3.80335C2.4157 3.62813 2.45024 3.45463 2.51734 3.29277C2.58443 3.1309 2.68278 2.98385 2.80675 2.86002C2.93058 2.73605 3.07763 2.63771 3.23949 2.57061C3.40136 2.50351 3.57486 2.46897 3.75008 2.46897C3.9253 2.46897 4.0988 2.50351 4.26067 2.57061C4.42253 2.63771 4.56958 2.73605 4.69341 2.86002L4.73341 2.90002C4.89053 3.05371 5.09009 3.15681 5.30636 3.19602C5.52262 3.23524 5.74567 3.20876 5.94675 3.12002H6.00008C6.19726 3.03551 6.36543 2.89519 6.48388 2.71633C6.60233 2.53747 6.66589 2.32788 6.66675 2.11335V2.00002C6.66675 1.6464 6.80722 1.30726 7.05727 1.05721C7.30732 0.807163 7.64646 0.666687 8.00008 0.666687C8.3537 0.666687 8.69284 0.807163 8.94289 1.05721C9.19294 1.30726 9.33341 1.6464 9.33341 2.00002V2.06002C9.33427 2.27454 9.39784 2.48414 9.51629 2.663C9.63474 2.84186 9.8029 2.98218 10.0001 3.06669C10.2012 3.15543 10.4242 3.1819 10.6405 3.14269C10.8567 3.10348 11.0563 3.00038 11.2134 2.84669L11.2534 2.80669C11.3772 2.68272 11.5243 2.58437 11.6862 2.51727C11.848 2.45018 12.0215 2.41564 12.1967 2.41564C12.372 2.41564 12.5455 2.45018 12.7073 2.51727C12.8692 2.58437 13.0163 2.68272 13.1401 2.80669C13.264 2.93052 13.3624 3.07757 13.4295 3.23943C13.4966 3.4013 13.5311 3.5748 13.5311 3.75002C13.5311 3.92524 13.4966 4.09874 13.4295 4.26061C13.3624 4.42247 13.264 4.56952 13.1401 4.69335L13.1001 4.73335C12.9464 4.89047 12.8433 5.09003 12.8041 5.30629C12.7649 5.52256 12.7913 5.74561 12.8801 5.94669V6.00002C12.9646 6.1972 13.1049 6.36537 13.2838 6.48382C13.4626 6.60227 13.6722 6.66583 13.8867 6.66669H14.0001C14.3537 6.66669 14.6928 6.80716 14.9429 7.05721C15.1929 7.30726 15.3334 7.6464 15.3334 8.00002C15.3334 8.35364 15.1929 8.69278 14.9429 8.94283C14.6928 9.19288 14.3537 9.33335 14.0001 9.33335H13.9401C13.7256 9.33421 13.516 9.39778 13.3371 9.51623C13.1582 9.63468 13.0179 9.80284 12.9334 10Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+              Settings
+            </a>
+          </li>
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8.66667 1.33331L2 9.33331H8L7.33333 14.6666L14 6.66665H8L8.66667 1.33331Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Keyboard shortcuts
+            </a>
+          </li>
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                <path d="M4.75 14.0833V7.41667H8.75V14.0833M0.75 5.41667L6.75 0.75L12.75 5.41667V12.75C12.75 13.1036 12.6095 13.4428 12.3595 13.6928C12.1094 13.9429 11.7703 14.0833 11.4167 14.0833H2.08333C1.72971 14.0833 1.39057 13.9429 1.14052 13.6928C0.890476 13.4428 0.75 13.1036 0.75 12.75V5.41667Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Company profile
+            </a>
+          </li>
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <g clip-path="url(#clip0_6347_2475)">
+                  <path d="M11.3334 14V12.6667C11.3334 11.9594 11.0525 11.2811 10.5524 10.781C10.0523 10.281 9.37399 10 8.66675 10H3.33341C2.62617 10 1.94789 10.281 1.4478 10.781C0.9477 11.2811 0.666748 11.9594 0.666748 12.6667V14M15.3334 14V12.6667C15.333 12.0758 15.1363 11.5018 14.7743 11.0349C14.4123 10.5679 13.9055 10.2344 13.3334 10.0867M10.6667 2.08667C11.2404 2.23353 11.7488 2.56713 12.1118 3.03487C12.4749 3.50261 12.672 4.07789 12.672 4.67C12.672 5.26211 12.4749 5.83739 12.1118 6.30513C11.7488 6.77287 11.2404 7.10647 10.6667 7.25333M8.66675 4.66667C8.66675 6.13943 7.47284 7.33333 6.00008 7.33333C4.52732 7.33333 3.33341 6.13943 3.33341 4.66667C3.33341 3.19391 4.52732 2 6.00008 2C7.47284 2 8.66675 3.19391 8.66675 4.66667Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_6347_2475">
+                    <rect width="16" height="16" fill="white"/>
+                  </clipPath>
+                </defs>
+              </svg>
+              Team
+            </a>
+          </li>
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <g clip-path="url(#clip0_6347_2479)">
+                  <path d="M10.6667 14V12.6667C10.6667 11.9594 10.3858 11.2811 9.8857 10.781C9.3856 10.281 8.70733 10 8.00008 10H3.33341C2.62617 10 1.94789 10.281 1.4478 10.781C0.9477 11.2811 0.666748 11.9594 0.666748 12.6667V14M13.3334 5.33333V9.33333M15.3334 7.33333H11.3334M8.33341 4.66667C8.33341 6.13943 7.13951 7.33333 5.66675 7.33333C4.19399 7.33333 3.00008 6.13943 3.00008 4.66667C3.00008 3.19391 4.19399 2 5.66675 2C7.13951 2 8.33341 3.19391 8.33341 4.66667Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_6347_2479">
+                    <rect width="16" height="16" fill="white"/>
+                  </clipPath>
+                </defs>
+              </svg>
+              Invite colleagues
+            </a>
+          </li>
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M1.33325 9.66667L7.99992 13L14.6666 9.66667M7.99992 3L1.33325 6.33333L7.99992 9.66667L14.6666 6.33333L7.99992 3Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Changelog
+            </a>
+          </li>
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                <path d="M9.08333 6.08333C8.53 6.08333 8.08333 5.63667 8.08333 5.08333V1.75C8.08333 1.19667 8.53 0.75 9.08333 0.75C9.63667 0.75 10.0833 1.19667 10.0833 1.75V5.08333C10.0833 5.63667 9.63667 6.08333 9.08333 6.08333Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M13.0833 6.08333H12.0833V5.08333C12.0833 4.53 12.53 4.08333 13.0833 4.08333C13.6367 4.08333 14.0833 4.53 14.0833 5.08333C14.0833 5.63667 13.6367 6.08333 13.0833 6.08333Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5.75 8.75C6.30333 8.75 6.75 9.19667 6.75 9.75V13.0833C6.75 13.6367 6.30333 14.0833 5.75 14.0833C5.19667 14.0833 4.75 13.6367 4.75 13.0833V9.75C4.75 9.19667 5.19667 8.75 5.75 8.75Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M1.75 8.75H2.75V9.75C2.75 10.3033 2.30333 10.75 1.75 10.75C1.19667 10.75 0.75 10.3033 0.75 9.75C0.75 9.19667 1.19667 8.75 1.75 8.75Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.75 9.08333C8.75 8.53 9.19667 8.08333 9.75 8.08333H13.0833C13.6367 8.08333 14.0833 8.53 14.0833 9.08333C14.0833 9.63667 13.6367 10.0833 13.0833 10.0833H9.75C9.19667 10.0833 8.75 9.63667 8.75 9.08333Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9.75 12.0833H8.75V13.0833C8.75 13.6367 9.19667 14.0833 9.75 14.0833C10.3033 14.0833 10.75 13.6367 10.75 13.0833C10.75 12.53 10.3033 12.0833 9.75 12.0833Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.08333 5.75C6.08333 5.19667 5.63667 4.75 5.08333 4.75H1.75C1.19667 4.75 0.75 5.19667 0.75 5.75C0.75 6.30333 1.19667 6.75 1.75 6.75H5.08333C5.63667 6.75 6.08333 6.30333 6.08333 5.75Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5.08333 2.75H6.08333V1.75C6.08333 1.19667 5.63667 0.75 5.08333 0.75C4.53 0.75 4.08333 1.19667 4.08333 1.75C4.08333 2.30333 4.53 2.75 5.08333 2.75Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Slack Community
+            </a>
+          </li>
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <g clip-path="url(#clip0_6347_2497)">
+                <path d="M6.05992 5.99998C6.21665 5.55442 6.52602 5.17872 6.93322 4.9394C7.34042 4.70009 7.81918 4.6126 8.2847 4.69245C8.75022 4.7723 9.17246 5.01433 9.47664 5.37566C9.78081 5.737 9.94729 6.19433 9.94658 6.66665C9.94658 7.99998 7.94658 8.66665 7.94658 8.66665M7.99992 11.3333H8.00659M14.6666 7.99998C14.6666 11.6819 11.6818 14.6666 7.99992 14.6666C4.31802 14.6666 1.33325 11.6819 1.33325 7.99998C1.33325 4.31808 4.31802 1.33331 7.99992 1.33331C11.6818 1.33331 14.6666 4.31808 14.6666 7.99998Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              <defs>
+                <clipPath id="clip0_6347_2497">
+                  <rect width="16" height="16" fill="white"/>
+                </clipPath>
+              </defs>
+            </svg>
+              Support
+            </a>
+          </li>
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M10.6666 12L14.6666 8L10.6666 4M5.33325 4L1.33325 8L5.33325 12" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              API
+            </a>
+          </li>
+        </ul>
+        <ul class="dropdown__group" role="menu">
+          <li role="none">
+            <button class="dropdown__link" role="menuitem" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M4.75 12.75H2.08333C1.72971 12.75 1.39057 12.6095 1.14052 12.3595C0.890476 12.1094 0.75 11.7703 0.75 11.4167V2.08333C0.75 1.72971 0.890476 1.39057 1.14052 1.14052C1.39057 0.890476 1.72971 0.75 2.08333 0.75H4.75M9.41667 3.41667L12.75 6.75L9.41667 10.0833M12.75 6.75H4.75" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Log out
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="checklist nav-3">
+      <ul class="checklist__group">
+        <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+        <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+        <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+        <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+        <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+        <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+        <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+        <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+        <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+        <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+        <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+      </ul>
+    </div>
+    <div class="menu-item nav-4">
+      <nav class="dropdown__menu" aria-label="사용자 메뉴">
+        <div class="dropdown__profile">
+          <div class="dropdown__avatar">
+            <span class="dropdown__initials" aria-hidden="true">OR</span>
+            <span class="dropdown__status" title="온라인"></span>
+          </div>
+          <div class="dropdown__userinfo">
+            <span class="dropdown__name">Olivia Rhye</span>
+            <a class="dropdown__email" href="mailto:olivia@untitledui.com">olivia@untitledui.com</a>
+          </div>
+        </div>
+        <ul class="dropdown__group" role="menu">
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M13.3334 14V12.6667C13.3334 11.9594 13.0525 11.2811 12.5524 10.781C12.0523 10.281 11.374 10 10.6667 10H5.33341C4.62617 10 3.94789 10.281 3.4478 10.781C2.9477 11.2811 2.66675 11.9594 2.66675 12.6667V14M10.6667 4.66667C10.6667 6.13943 9.47284 7.33333 8.00008 7.33333C6.52732 7.33333 5.33341 6.13943 5.33341 4.66667C5.33341 3.19391 6.52732 2 8.00008 2C9.47284 2 10.6667 3.19391 10.6667 4.66667Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              View profile
+            </a>
+          </li>
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M8.00008 10C9.10465 10 10.0001 9.10459 10.0001 8.00002C10.0001 6.89545 9.10465 6.00002 8.00008 6.00002C6.89551 6.00002 6.00008 6.89545 6.00008 8.00002C6.00008 9.10459 6.89551 10 8.00008 10Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12.9334 10C12.8447 10.2011 12.8182 10.4241 12.8574 10.6404C12.8966 10.8567 12.9997 11.0562 13.1534 11.2134L13.1934 11.2534C13.3174 11.3772 13.4157 11.5242 13.4828 11.6861C13.5499 11.848 13.5845 12.0215 13.5845 12.1967C13.5845 12.3719 13.5499 12.5454 13.4828 12.7073C13.4157 12.8691 13.3174 13.0162 13.1934 13.14C13.0696 13.264 12.9225 13.3623 12.7607 13.4294C12.5988 13.4965 12.4253 13.5311 12.2501 13.5311C12.0749 13.5311 11.9014 13.4965 11.7395 13.4294C11.5776 13.3623 11.4306 13.264 11.3067 13.14L11.2667 13.1C11.1096 12.9463 10.9101 12.8432 10.6938 12.804C10.4775 12.7648 10.2545 12.7913 10.0534 12.88C9.85624 12.9645 9.68807 13.1049 9.56962 13.2837C9.45117 13.4626 9.3876 13.6722 9.38675 13.8867V14C9.38675 14.3536 9.24627 14.6928 8.99622 14.9428C8.74618 15.1929 8.40704 15.3334 8.05341 15.3334C7.69979 15.3334 7.36065 15.1929 7.11061 14.9428C6.86056 14.6928 6.72008 14.3536 6.72008 14V13.94C6.71492 13.7194 6.64349 13.5054 6.51509 13.3258C6.38668 13.1463 6.20724 13.0095 6.00008 12.9334C5.799 12.8446 5.57595 12.8181 5.35969 12.8574C5.14343 12.8966 4.94387 12.9997 4.78675 13.1534L4.74675 13.1934C4.62292 13.3173 4.47587 13.4157 4.314 13.4828C4.15214 13.5499 3.97864 13.5844 3.80341 13.5844C3.62819 13.5844 3.45469 13.5499 3.29283 13.4828C3.13096 13.4157 2.98391 13.3173 2.86008 13.1934C2.73611 13.0695 2.63777 12.9225 2.57067 12.7606C2.50357 12.5987 2.46903 12.4252 2.46903 12.25C2.46903 12.0748 2.50357 11.9013 2.57067 11.7394C2.63777 11.5776 2.73611 11.4305 2.86008 11.3067L2.90008 11.2667C3.05377 11.1096 3.15687 10.91 3.19608 10.6937C3.2353 10.4775 3.20882 10.2544 3.12008 10.0534C3.03557 9.85617 2.89525 9.68801 2.71639 9.56956C2.53753 9.45111 2.32794 9.38754 2.11341 9.38669H2.00008C1.64646 9.38669 1.30732 9.24621 1.05727 8.99616C0.807224 8.74611 0.666748 8.40698 0.666748 8.05335C0.666748 7.69973 0.807224 7.36059 1.05727 7.11055C1.30732 6.8605 1.64646 6.72002 2.00008 6.72002H2.06008C2.28074 6.71486 2.49475 6.64343 2.67428 6.51503C2.85381 6.38662 2.99056 6.20718 3.06675 6.00002C3.15549 5.79894 3.18196 5.57589 3.14275 5.35963C3.10354 5.14336 3.00044 4.94381 2.84675 4.78669L2.80675 4.74669C2.68278 4.62286 2.58443 4.4758 2.51734 4.31394C2.45024 4.15208 2.4157 3.97857 2.4157 3.80335C2.4157 3.62813 2.45024 3.45463 2.51734 3.29277C2.58443 3.1309 2.68278 2.98385 2.80675 2.86002C2.93058 2.73605 3.07763 2.63771 3.23949 2.57061C3.40136 2.50351 3.57486 2.46897 3.75008 2.46897C3.9253 2.46897 4.0988 2.50351 4.26067 2.57061C4.42253 2.63771 4.56958 2.73605 4.69341 2.86002L4.73341 2.90002C4.89053 3.05371 5.09009 3.15681 5.30636 3.19602C5.52262 3.23524 5.74567 3.20876 5.94675 3.12002H6.00008C6.19726 3.03551 6.36543 2.89519 6.48388 2.71633C6.60233 2.53747 6.66589 2.32788 6.66675 2.11335V2.00002C6.66675 1.6464 6.80722 1.30726 7.05727 1.05721C7.30732 0.807163 7.64646 0.666687 8.00008 0.666687C8.3537 0.666687 8.69284 0.807163 8.94289 1.05721C9.19294 1.30726 9.33341 1.6464 9.33341 2.00002V2.06002C9.33427 2.27454 9.39784 2.48414 9.51629 2.663C9.63474 2.84186 9.8029 2.98218 10.0001 3.06669C10.2012 3.15543 10.4242 3.1819 10.6405 3.14269C10.8567 3.10348 11.0563 3.00038 11.2134 2.84669L11.2534 2.80669C11.3772 2.68272 11.5243 2.58437 11.6862 2.51727C11.848 2.45018 12.0215 2.41564 12.1967 2.41564C12.372 2.41564 12.5455 2.45018 12.7073 2.51727C12.8692 2.58437 13.0163 2.68272 13.1401 2.80669C13.264 2.93052 13.3624 3.07757 13.4295 3.23943C13.4966 3.4013 13.5311 3.5748 13.5311 3.75002C13.5311 3.92524 13.4966 4.09874 13.4295 4.26061C13.3624 4.42247 13.264 4.56952 13.1401 4.69335L13.1001 4.73335C12.9464 4.89047 12.8433 5.09003 12.8041 5.30629C12.7649 5.52256 12.7913 5.74561 12.8801 5.94669V6.00002C12.9646 6.1972 13.1049 6.36537 13.2838 6.48382C13.4626 6.60227 13.6722 6.66583 13.8867 6.66669H14.0001C14.3537 6.66669 14.6928 6.80716 14.9429 7.05721C15.1929 7.30726 15.3334 7.6464 15.3334 8.00002C15.3334 8.35364 15.1929 8.69278 14.9429 8.94283C14.6928 9.19288 14.3537 9.33335 14.0001 9.33335H13.9401C13.7256 9.33421 13.516 9.39778 13.3371 9.51623C13.1582 9.63468 13.0179 9.80284 12.9334 10Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+              Settings
+            </a>
+          </li>
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8.66667 1.33331L2 9.33331H8L7.33333 14.6666L14 6.66665H8L8.66667 1.33331Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Keyboard shortcuts
+            </a>
+          </li>
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                <path d="M4.75 14.0833V7.41667H8.75V14.0833M0.75 5.41667L6.75 0.75L12.75 5.41667V12.75C12.75 13.1036 12.6095 13.4428 12.3595 13.6928C12.1094 13.9429 11.7703 14.0833 11.4167 14.0833H2.08333C1.72971 14.0833 1.39057 13.9429 1.14052 13.6928C0.890476 13.4428 0.75 13.1036 0.75 12.75V5.41667Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Company profile
+            </a>
+          </li>
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <g clip-path="url(#clip0_6347_2475)">
+                  <path d="M11.3334 14V12.6667C11.3334 11.9594 11.0525 11.2811 10.5524 10.781C10.0523 10.281 9.37399 10 8.66675 10H3.33341C2.62617 10 1.94789 10.281 1.4478 10.781C0.9477 11.2811 0.666748 11.9594 0.666748 12.6667V14M15.3334 14V12.6667C15.333 12.0758 15.1363 11.5018 14.7743 11.0349C14.4123 10.5679 13.9055 10.2344 13.3334 10.0867M10.6667 2.08667C11.2404 2.23353 11.7488 2.56713 12.1118 3.03487C12.4749 3.50261 12.672 4.07789 12.672 4.67C12.672 5.26211 12.4749 5.83739 12.1118 6.30513C11.7488 6.77287 11.2404 7.10647 10.6667 7.25333M8.66675 4.66667C8.66675 6.13943 7.47284 7.33333 6.00008 7.33333C4.52732 7.33333 3.33341 6.13943 3.33341 4.66667C3.33341 3.19391 4.52732 2 6.00008 2C7.47284 2 8.66675 3.19391 8.66675 4.66667Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_6347_2475">
+                    <rect width="16" height="16" fill="white"/>
+                  </clipPath>
+                </defs>
+              </svg>
+              Team
+            </a>
+          </li>
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <g clip-path="url(#clip0_6347_2479)">
+                  <path d="M10.6667 14V12.6667C10.6667 11.9594 10.3858 11.2811 9.8857 10.781C9.3856 10.281 8.70733 10 8.00008 10H3.33341C2.62617 10 1.94789 10.281 1.4478 10.781C0.9477 11.2811 0.666748 11.9594 0.666748 12.6667V14M13.3334 5.33333V9.33333M15.3334 7.33333H11.3334M8.33341 4.66667C8.33341 6.13943 7.13951 7.33333 5.66675 7.33333C4.19399 7.33333 3.00008 6.13943 3.00008 4.66667C3.00008 3.19391 4.19399 2 5.66675 2C7.13951 2 8.33341 3.19391 8.33341 4.66667Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_6347_2479">
+                    <rect width="16" height="16" fill="white"/>
+                  </clipPath>
+                </defs>
+              </svg>
+              Invite colleagues
+            </a>
+          </li>
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M1.33325 9.66667L7.99992 13L14.6666 9.66667M7.99992 3L1.33325 6.33333L7.99992 9.66667L14.6666 6.33333L7.99992 3Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Changelog
+            </a>
+          </li>
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                <path d="M9.08333 6.08333C8.53 6.08333 8.08333 5.63667 8.08333 5.08333V1.75C8.08333 1.19667 8.53 0.75 9.08333 0.75C9.63667 0.75 10.0833 1.19667 10.0833 1.75V5.08333C10.0833 5.63667 9.63667 6.08333 9.08333 6.08333Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M13.0833 6.08333H12.0833V5.08333C12.0833 4.53 12.53 4.08333 13.0833 4.08333C13.6367 4.08333 14.0833 4.53 14.0833 5.08333C14.0833 5.63667 13.6367 6.08333 13.0833 6.08333Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5.75 8.75C6.30333 8.75 6.75 9.19667 6.75 9.75V13.0833C6.75 13.6367 6.30333 14.0833 5.75 14.0833C5.19667 14.0833 4.75 13.6367 4.75 13.0833V9.75C4.75 9.19667 5.19667 8.75 5.75 8.75Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M1.75 8.75H2.75V9.75C2.75 10.3033 2.30333 10.75 1.75 10.75C1.19667 10.75 0.75 10.3033 0.75 9.75C0.75 9.19667 1.19667 8.75 1.75 8.75Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.75 9.08333C8.75 8.53 9.19667 8.08333 9.75 8.08333H13.0833C13.6367 8.08333 14.0833 8.53 14.0833 9.08333C14.0833 9.63667 13.6367 10.0833 13.0833 10.0833H9.75C9.19667 10.0833 8.75 9.63667 8.75 9.08333Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9.75 12.0833H8.75V13.0833C8.75 13.6367 9.19667 14.0833 9.75 14.0833C10.3033 14.0833 10.75 13.6367 10.75 13.0833C10.75 12.53 10.3033 12.0833 9.75 12.0833Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.08333 5.75C6.08333 5.19667 5.63667 4.75 5.08333 4.75H1.75C1.19667 4.75 0.75 5.19667 0.75 5.75C0.75 6.30333 1.19667 6.75 1.75 6.75H5.08333C5.63667 6.75 6.08333 6.30333 6.08333 5.75Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5.08333 2.75H6.08333V1.75C6.08333 1.19667 5.63667 0.75 5.08333 0.75C4.53 0.75 4.08333 1.19667 4.08333 1.75C4.08333 2.30333 4.53 2.75 5.08333 2.75Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Slack Community
+            </a>
+          </li>
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <g clip-path="url(#clip0_6347_2497)">
+                <path d="M6.05992 5.99998C6.21665 5.55442 6.52602 5.17872 6.93322 4.9394C7.34042 4.70009 7.81918 4.6126 8.2847 4.69245C8.75022 4.7723 9.17246 5.01433 9.47664 5.37566C9.78081 5.737 9.94729 6.19433 9.94658 6.66665C9.94658 7.99998 7.94658 8.66665 7.94658 8.66665M7.99992 11.3333H8.00659M14.6666 7.99998C14.6666 11.6819 11.6818 14.6666 7.99992 14.6666C4.31802 14.6666 1.33325 11.6819 1.33325 7.99998C1.33325 4.31808 4.31802 1.33331 7.99992 1.33331C11.6818 1.33331 14.6666 4.31808 14.6666 7.99998Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              <defs>
+                <clipPath id="clip0_6347_2497">
+                  <rect width="16" height="16" fill="white"/>
+                </clipPath>
+              </defs>
+            </svg>
+              Support
+            </a>
+          </li>
+          <li role="none">
+            <a class="dropdown__link" role="menuitem" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M10.6666 12L14.6666 8L10.6666 4M5.33325 4L1.33325 8L5.33325 12" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              API
+            </a>
+          </li>
+        </ul>
+        <ul class="dropdown__group" role="menu">
+          <li role="none">
+            <button class="dropdown__link" role="menuitem" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M4.75 12.75H2.08333C1.72971 12.75 1.39057 12.6095 1.14052 12.3595C0.890476 12.1094 0.75 11.7703 0.75 11.4167V2.08333C0.75 1.72971 0.890476 1.39057 1.14052 1.14052C1.39057 0.890476 1.72971 0.75 2.08333 0.75H4.75M9.41667 3.41667L12.75 6.75L9.41667 10.0833M12.75 6.75H4.75" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Log out
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="checklist nav-5" >
+      <nav class="dropdown__menu" style="border: 1px solid transparent;" aria-label="사용자 메뉴">
+        <div class="dropdown__profile">
+          <div class="dropdown__avatar">
+            <span class="dropdown__initials" aria-hidden="true">OR</span>
+            <span class="dropdown__status" title="온라인"></span>
+          </div>
+          <div class="dropdown__userinfo">
+            <span class="dropdown__name">Olivia Rhye</span>
+            <a class="dropdown__email" href="mailto:olivia@untitledui.com">olivia@untitledui.com</a>
+          </div>
+        </div>
+        <ul class="checklist__group">
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="checklist nav-6">
+      <nav class="dropdown__menu" style="border: 1px solid transparent;" aria-label="사용자 메뉴">
+        <div class="dropdown__profile">
+          <div class="dropdown__userinfo">
+            <span class="dropdown__name">Olivia Rhye</span>
+          </div>
+        </div>
+        <ul class="checklist__group">
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+          <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</body>
+</html>

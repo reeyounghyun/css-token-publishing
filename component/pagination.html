@@ -78,6 +78,58 @@
       </nav>
     </div>
 
+    <!-- Pagination : 숫자형, 마지막 페이지 활성 -->
+    <div>
+      <h5>Pagination : 마지막 페이지 활성</h5>
+      <nav class="pagination" aria-label="페이지네이션">
+        <button type="button" class="pagination__arrow" aria-label="이전 페이지">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <ul class="pagination__list">
+          <li><button type="button" class="pagination__item">1</button></li>
+          <li><button type="button" class="pagination__item">2</button></li>
+          <li><span class="pagination__dots">…</span></li>
+          <li><button type="button" class="pagination__item">8</button></li>
+          <li><button type="button" class="pagination__item">9</button></li>
+          <li><button type="button" class="pagination__item is-active" aria-current="page">10</button></li>
+        </ul>
+        <!-- 마지막 페이지면 disabled -->
+        <button type="button" class="pagination__arrow" aria-label="다음 페이지" disabled>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Pagination : 숫자형, 페이지 적을 때(생략 없음) -->
+    <div>
+      <h5>Pagination : 페이지 적을 때 (…생략 없음)</h5>
+      <nav class="pagination" aria-label="페이지네이션">
+        <button type="button" class="pagination__arrow" aria-label="이전 페이지" disabled>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <ul class="pagination__list">
+          <li><button type="button" class="pagination__item is-active" aria-current="page">1</button></li>
+          <li><button type="button" class="pagination__item">2</button></li>
+          <li><button type="button" class="pagination__item">3</button></li>
+        </ul>
+        <button type="button" class="pagination__arrow" aria-label="다음 페이지">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+
     <!-- 화살표+텍스트 / 양끝 배치 -->
     <div>
       <h5> 화살표+텍스트 / 양끝 배치 기본</h5>
