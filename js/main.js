@@ -20,9 +20,10 @@
       trigger.setAttribute('aria-expanded', open);
     });
 
-    // 2) 선택
+    // 2) 선택 (aria-disabled="true" 항목은 무시)
     root.querySelectorAll('.dropdown__item').forEach(item => {
       item.addEventListener('click', () => {
+        if (item.getAttribute('aria-disabled') === 'true') return;
         value.textContent = item.textContent;
         root.classList.remove('is--open');
         trigger.setAttribute('aria-expanded', 'false');
