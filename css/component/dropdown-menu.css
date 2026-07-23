@@ -3,10 +3,10 @@
   width: 100%;
 }
 .dropdown__menu {
-  background: var(--White);
-  border: 1px solid var(--menu-divider);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-14);
-  box-shadow: 0 6px 20px var(--shadows-xs);
+  box-shadow: var(--shadows-lg);
   padding: var(--spacing-6) 0;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .dropdown__menu .dropdown__group + .dropdown__group {
-  border-top: 1px solid var(--menu-divider);
+  border-top: 1px solid var(--color-border-subtle);
 }
 
 /* 메뉴 항목 (a / button 공통) */
@@ -30,7 +30,7 @@
   padding: var(--spacing-10) var(--spacing-16);
   font-size: var(--text-14);
   font-weight: var( --weight-medium);
-  color: var(--gray-700);
+  color: var(--color-text-secondary);
   text-align: left;
   transition: background-color var(--transition-fast);
   cursor: pointer;
@@ -38,21 +38,21 @@
 
 .dropdown__menu .dropdown__link:hover,
 .dropdown__menu .dropdown__link:focus-visible {
-  background: var(--slate-100);
+  background: var(--color-bg-muted);
 }
 
 .dropdown__menu .dropdown__link:focus-visible {
-  border: 2px solid var(--gray-100);
+  border: 2px solid var(--color-border-faint);
   border-radius: var(--radius-md);
-  background: var(--White);
+  background: var(--color-bg-surface);
   box-shadow:var( --shadows-lg)
 }
 
 /* 리스트 컨테이너 */
 .checklist {
   width: 240px;
-  background: var(--White);
-  border: 1px solid var(--menu-divider);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-14);
   box-shadow: var(--shadows-xs);
   padding: var(--spacing-6) 0;
@@ -64,7 +64,7 @@
 }
 
 .checklist__group + .checklist__group {
-  border-top: 1px solid var(--menu-divider);
+  border-top: 1px solid var(--color-border-subtle);
 }
 
 /* 항목: label로 감싸서 텍스트 클릭 시에도 토글 */
@@ -73,14 +73,14 @@
   align-items: center;
   gap: var(--gap-8);
   padding: var(--spacing-10) var(--spacing-14);
-  color: var(--slate-700);
+  color: var(--color-text-secondary);
   font-size: var( --text-14);
   cursor: pointer;
   transition: background-color var(--transition-fast);
 }
 
 .checklist__item:hover {
-  background: var(--slate-100);
+  background: var(--color-bg-muted);
 }
 
 /* 체크박스는 checkbox.css의 .checkbox 공통 컴포넌트를 그대로 재사용 (아래 checked/focus-visible 등 중복 정의 없음) */
@@ -92,7 +92,7 @@
   align-items: center;
   gap: var(--gap-8);
   padding: var(--spacing-10) var(--spacing-16);
-  border-bottom: 1px solid var(--menu-divider);
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .dropdown__avatar {
@@ -114,8 +114,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--gray-100);
-  color: var(--gray-600);
+  background: var(--color-bg-muted);
+  color: var(--color-text-tertiary);
   font-size: var(--text-14);
   font-weight: var(--weight-medium);
 }
@@ -127,8 +127,8 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--error-400);  
-  border: 2px solid var(--White);
+  background: var(--color-status-dot);
+  border: 2px solid var(--color-bg-surface);
 }
 
 .dropdown__userinfo {
@@ -140,13 +140,13 @@
 .dropdown__name {
   font-size: var(--text-14);
   font-weight: var(--weight-Semibold);
-  color: var(--gray-900);
+  color: var(--color-text-primary);
   line-height: 142.857%;
 }
 
 .dropdown__email {
   font-size: var(--text-14);
-  color: var(--gray-600);
+  color: var(--color-text-tertiary);
   line-height: 142.857%;
   text-decoration: none;
   overflow: hidden;

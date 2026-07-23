@@ -1,10 +1,27 @@
 /* 기본 카드 */
 .card {
-  background: var(--White);
-  border: 1px solid var(--gray-200);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadows-xs);
   padding: var(--spacing-20);
+}
+
+/* hover 가능형 — 클릭 가능한 카드(리스트 아이템 등)에 사용. <button>에 붙는 걸 전제 */
+.card--hoverable {
+  display: block;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+.card--hoverable:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadows-md);
+}
+.card--hoverable:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--color-ring-accent);
 }
 
 .card__thumb {
@@ -12,7 +29,7 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   border-radius: var(--radius-md);
-  background: var(--gray-100);
+  background: var(--color-bg-muted);
   object-fit: cover;
   margin-bottom: var(--spacing-16);
 }
@@ -20,12 +37,12 @@
 .card__title {
   font-size: var(--text-18);
   font-weight: var(--weight-Semibold);
-  color: var(--gray-900);
+  color: var(--color-text-primary);
 }
 
 .card__desc {
   font-size: var(--text-14);
-  color: var(--gray-500);
+  color: var(--color-text-quaternary);
   margin-top: var(--spacing-4);
   line-height: 142.857%;
 }
@@ -61,12 +78,12 @@
 }
 .card__label {
   font-size: var(--text-14);
-  color: var(--gray-500);
+  color: var(--color-text-quaternary);
 }
 .card__value {
   font-size: var(--text-30);
   font-weight: var(--weight-Semibold);
-  color: var(--gray-900);
+  color: var(--color-text-primary);
 }
 .card__delta {
   display: inline-flex;
@@ -77,10 +94,10 @@
   width: fit-content;
 }
 .card__delta--up {
-  color: var(--primary-700);
+  color: var(--color-text-accent);
 }
 .card__delta--down {
-  color: var(--error-600);
+  color: var(--color-text-danger);
 }
 
 /* 데모용 그리드 (자동 줄바꿈) */
@@ -100,7 +117,7 @@
   align-items: center;
   gap: var(--gap-12);
   padding: var(--spacing-12) 0;
-  border-bottom: 1px solid var(--gray-100);
+  border-bottom: 1px solid var(--color-border-faint);
 }
 .card-list__item:last-child {
   border-bottom: 0;
@@ -114,8 +131,8 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--primary-50);
-  color: var(--primary-600);
+  background: var(--color-bg-accent-subtle);
+  color: var(--color-icon-accent);
 }
 .card-list__body {
   flex: 1;
@@ -124,11 +141,11 @@
 .card-list__title {
   font-size: var(--text-14);
   font-weight: var(--weight-medium);
-  color: var(--gray-900);
+  color: var(--color-text-primary);
 }
 .card-list__desc {
   font-size: var(--text-14);
-  color: var(--gray-500);
+  color: var(--color-text-quaternary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -136,7 +153,7 @@
 .card-list__time {
   flex-shrink: 0;
   font-size: var(--text-14);
-  color: var(--gray-400);
+  color: var(--color-text-faint);
 }
 
 /* ============ 이미지/그래프 플레이스홀더 카드 ============ */
@@ -146,9 +163,9 @@
   justify-content: center;
   aspect-ratio: 16 / 9;
   border-radius: var(--radius-md);
-  background: var(--gray-50);
-  border: 1px dashed var(--gray-200);
-  color: var(--gray-400);
+  background: var(--color-bg-subtle);
+  border: 1px dashed var(--color-border-subtle);
+  color: var(--color-text-faint);
   font-size: var(--text-14);
   margin-bottom: var(--spacing-16);
 }

@@ -13,23 +13,33 @@
 
 /* 색상 변형 */
 .badge--default {
-  background: var(--gray-100);
-  color: var(--gray-700);
+  background: var(--color-bg-muted);
+  color: var(--color-text-secondary);
 }
 .badge--primary {
-  background: var(--primary-50);
-  color: var(--primary-700);
+  background: var(--color-bg-accent-subtle);
+  color: var(--color-text-accent);
 }
 .badge--error {
-  background: var(--error-50);
-  color: var(--error-700);
+  background: var(--color-bg-danger-subtle);
+  color: var(--color-text-danger-hover);
 }
 
 /* 테두리만 있는 버전 */
 .badge--outline {
   background: transparent;
-  border: 1px solid var(--gray-300);
-  color: var(--gray-700);
+  border: 1px solid var(--color-border-default);
+  color: var(--color-text-secondary);
+}
+
+/* 크기 변형 (기본 = md) */
+.badge--sm {
+  padding: var(--spacing-4) var(--spacing-6);
+  font-size: var(--text-12);
+}
+.badge--lg {
+  padding: var(--spacing-6) var(--spacing-12);
+  font-size: var(--text-16);
 }
 
 /* 점 표시 (상태 뱃지) */
@@ -59,4 +69,10 @@
 }
 .badge__remove:hover {
   opacity: 1;
+}
+.badge__remove:focus-visible {
+  outline: none;
+  opacity: 1;
+  box-shadow: 0 0 0 4px var(--color-ring-accent);
+  border-radius: 50%;
 }

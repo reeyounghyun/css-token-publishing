@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--spacing-16);
-  background: rgba(16, 24, 40, 0.5);
+  background: var(--color-overlay-scrim);
   z-index: var(--z-modal);
 }
 .modal-overlay.is-open {
@@ -17,7 +17,7 @@
 .modal {
   width: 100%;
   max-width: 400px;
-  background: var(--White);
+  background: var(--color-bg-surface);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadows-xl);
   padding: var(--spacing-20);
@@ -37,7 +37,7 @@
 .modal__title {
   font-size: var(--text-18);
   font-weight: var(--weight-Semibold);
-  color: var(--gray-900);
+  color: var(--color-text-primary);
 }
 .modal__close {
   display: inline-flex;
@@ -48,23 +48,23 @@
   height: var(--icon-20);
   background: transparent;
   border: 0;
-  color: var(--gray-400);
+  color: var(--color-icon-faint);
   cursor: pointer;
   transition: color var(--transition-fast);
 }
 .modal__close:hover {
-  color: var(--gray-600);
+  color: var(--color-icon-strong);
 }
 .modal__close:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 4px var(--primary-100);
+  box-shadow: 0 0 0 4px var(--color-ring-accent);
   border-radius: var(--radius-xs);
 }
 
 /* 본문 */
 .modal__body {
   font-size: var(--text-14);
-  color: var(--gray-600);
+  color: var(--color-text-tertiary);
   line-height: 142.857%;
 }
 
@@ -98,7 +98,7 @@ body.modal-open {
 .modal-profile__name {
   font-size: var(--text-18);
   font-weight: var(--weight-Semibold);
-  color: var(--gray-900);
+  color: var(--color-text-primary);
   margin-bottom: var(--spacing-4);
 }
 
@@ -111,12 +111,12 @@ body.modal-open {
 .modal-info-grid__label {
   display: block;
   font-size: var(--text-14);
-  color: var(--gray-500);
+  color: var(--color-text-quaternary);
   margin-bottom: var(--spacing-4);
 }
 .modal-info-grid__value {
   display: block;
   font-size: var(--text-14);
   font-weight: var(--weight-medium);
-  color: var(--gray-900);
+  color: var(--color-text-primary);
 }

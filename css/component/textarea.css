@@ -1,6 +1,6 @@
 /* textarea:기본 */
 .textarea label {
-  color: var(--gray-700);
+  color: var(--color-text-secondary);
   font-size: var( --text-14);
   font-weight: 500;
   line-height: var(--spacing-20);
@@ -13,8 +13,8 @@
   height: var( --height-1xl);
   padding: var(--spacing-10) var(--spacing-14);
   border-radius: var(--radius-sm);
-  border: 1px solid var(--gray-300);
-  background: var(--White);
+  border: 1px solid var(--color-border-default);
+  background: var(--color-bg-surface);
   box-shadow: var(--shadows-xs);
 }
 
@@ -25,8 +25,17 @@
   border: transparent;
 }
 
+.textarea .textarea__box:focus-within {
+  border-color: var(--color-border-accent);
+  box-shadow: var(--shadows-xs), 0 0 0 4px var(--color-ring-accent);
+}
+.textarea__error .textarea__box:focus-within {
+  border-color: var(--color-border-danger);
+  box-shadow: var(--shadows-xs), 0 0 0 4px var(--color-ring-danger);
+}
+
 .textarea .textarea__box textarea::placeholder {
-  color: var(--gray-500);
+  color: var(--color-text-quaternary);
   font-size: var(--text-16);
   font-style: normal;
   font-weight: var(--weight-regular);
@@ -34,7 +43,7 @@
 }
 
 .textarea p {
-  color: var(--gray-500);
+  color: var(--color-text-quaternary);
   font-size: var(--text-14);
   font-weight: var(--weight-regular);
   line-height: 142.857%;
@@ -48,15 +57,29 @@
   padding-block: var(--spacing-10);
   padding-inline: var(--spacing-14);
   border-radius: var( --radius-md);
-  border: 1px solid var(--error-300);
-  background: var(--White);
+  border: 1px solid var(--color-border-danger);
+  background: var(--color-bg-surface);
   box-shadow: var(--shadows-xs);
 }
 
 .textarea__error p {
-  color: var(--error-500);
+  color: var(--color-text-danger-medium);
   font-size: var(--text-14);
   font-weight: var(--weight-regular);
   line-height: 142.857%;
   margin-top: var(--spacing-6);
+}
+
+/* textarea:비활성 */
+.textarea__disabled .textarea__box {
+  background: var(--color-bg-subtle);
+}
+.textarea__disabled textarea {
+  color: var(--color-text-quaternary);
+  cursor: not-allowed;
+}
+
+/* resize 제어 — 기본은 reset.css에서 세로(vertical)로 이미 지정됨 */
+.textarea__resize-none .textarea__box textarea {
+  resize: none;
 }

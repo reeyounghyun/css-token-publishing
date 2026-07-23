@@ -1,4 +1,8 @@
 :root {
+  /* ============================================================
+     PRIMITIVE — 원시값. 여기서만 실제 색상값을 쓴다.
+     css/component/*.css는 이 구역의 색상 토큰을 직접 참조하지 않는다.
+     ============================================================ */
     /* 색(폰트/배경) */
   --gray-50:  #F9FAFB;
   --gray-100:  #F2F4F7;
@@ -35,14 +39,21 @@
   --error-800 :  #912018;
   --error-900  :  #7A271A;
 
+  /* 경고 */
+  --warning-50 :  #FFFAEB;
+  --warning-100 :  #FEF0C7;
+  --warning-200 :  #FEDF89;
+  --warning-300 :  #FEC84B;
+  --warning-400 :  #FDB022;
+  --warning-500 :  #F79009;
+  --warning-600 :  #DC6803;
+  --warning-700 :  #B54708;
+  --warning-800 :  #93370D;
+  --warning-900  :  #7A2E0E;
+
   --White:white;
   --black: black;
   --gray:gray;
-
-  --menu-divider: #e5e9f0;
-  --slate-100: #f1f5f9;
-  --slate-700: #334155;
-  --box-border: #cbd5e1;      /* slate-300 */
 
   /*sns 컬러 */
   --brand-facebook:#1877F2;
@@ -57,6 +68,7 @@
   --height-lg:3rem;    /* 48px */
   --height-xl:3.75rem; /* 60px */
   --height-1xl:6.75rem; /* 108px */
+  --height-56:3.5rem; /* 56px — sbtn(SNS 로그인 버튼) 전용 */
 
   /* radius */
   --radius-xs:0.25rem;  /* 4px */
@@ -96,6 +108,7 @@
   --weight-bold:700;
 
   /* 폰트 크기_본문 */
+  --text-12:0.75rem; /* 12px — badge--sm 전용 */
   --text-14:0.875rem; /* 14px */
   --text-16:1rem;     /* 16px */
   --text-18:1.125rem; /* 18px */
@@ -140,6 +153,7 @@
   --gap-18: 1.125rem; /* 18px */
   --gap-20: 1.25rem;  /* 20px */
   --gap-28: 1.75rem;  /* 28px */
+  --gap-56: 3.5rem;   /* 56px — sbtn 그룹 간격 전용 */
 
   /* transition */
   --transition-fast:   0.15s ease;
@@ -154,5 +168,78 @@
   /* 아이콘 크기 */
   --icon-20: 1.25rem;  /* 20px */
   --icon-22: 1.375rem; /* 22px */
+
+  /* ============================================================
+     SEMANTIC — 역할. css/component/*.css는 색상은 이 구역만 참조한다.
+     컬러가 바뀔 때 이 매핑 몇 줄만 갈아끼우면 전체가 따라온다.
+     ============================================================ */
+
+  /* 텍스트 */
+  --color-text-primary:       var(--gray-900);  /* #101828 · 제목/최고 강조 */
+  --color-text-strong:        var(--gray-800);  /* #1D2939 · 기본보다 한 단계 진한 hover 텍스트 */
+  --color-text-secondary:     var(--gray-700);  /* #344054 · 기본 컨트롤/라벨 텍스트 */
+  --color-text-tertiary:      var(--gray-600);  /* #475467 · 본문/설명 텍스트 */
+  --color-text-quaternary:    var(--gray-500);  /* #667085 · 힌트/placeholder/보조 텍스트 */
+  --color-text-faint:         var(--gray-400);  /* #98A2B3 · 가장 옅은 텍스트(비활성 포함) */
+  --color-text-inverse:       var(--White);     /* white · 채워진/어두운 배경 위 텍스트 */
+  --color-text-accent:        var(--primary-700);  /* #6941C6 */
+  --color-text-accent-medium: var(--primary-600);  /* #7F56D9 */
+  --color-text-accent-strong: var(--primary-800);  /* #53389E */
+  --color-text-danger:        var(--error-600);  /* #D92D20 */
+  --color-text-danger-medium: var(--error-500);  /* #F04438 · 에러 필드 하단 안내문구 */
+  --color-text-danger-hover:  var(--error-700);  /* #B42318 */
+  --color-text-warning:       var(--warning-700);  /* #B54708 */
+
+  /* 아이콘 */
+  --color-icon-primary:  var(--gray-900);  /* #101828 */
+  --color-icon-default:  var(--gray-500);  /* #667085 */
+  --color-icon-faint:    var(--gray-400);  /* #98A2B3 */
+  --color-icon-disabled: var(--gray-300);  /* #D0D5DD */
+  --color-icon-strong:   var(--gray-600);  /* #475467 · hover 등 강조 */
+  --color-icon-accent:   var(--primary-600);  /* #7F56D9 */
+  --color-icon-danger:   var(--error-500);  /* #F04438 */
+  --color-icon-warning:  var(--warning-500);  /* #F79009 */
+
+  /* 테두리 */
+  --color-border-default:       var(--gray-300);  /* #D0D5DD */
+  --color-border-subtle:        var(--gray-200);  /* #EAECF0 */
+  --color-border-strong:        var(--gray-400);  /* #98A2B3 · hover */
+  --color-border-accent-subtle: var(--primary-200);  /* #E9D7FE */
+  --color-border-accent:        var(--primary-300);  /* #D6BBFB */
+  --color-border-accent-strong: var(--primary-600);  /* #7F56D9 */
+  --color-border-accent-hover:  var(--primary-700);  /* #6941C6 */
+  --color-border-accent-active: var(--primary-800);  /* #53389E */
+  --color-border-danger:        var(--error-300);  /* #FDA29B */
+  --color-border-danger-subtle: var(--error-200);  /* #FECDCA */
+  --color-border-warning-subtle: var(--warning-200);  /* #FEDF89 */
+  --color-border-inverse:       var(--gray-700);  /* #344054 · 체크박스/라디오 선택 표시 */
+  --color-border-faint:         var(--gray-100);  /* #F2F4F7 · 옅은 구분선, checkbox/dropdown focus-visible 테두리 */
+
+  /* 배경 */
+  --color-bg-surface:       var(--White);     /* white */
+  --color-bg-subtle:        var(--gray-50);   /* #F9FAFB */
+  --color-bg-muted:         var(--gray-100);  /* #F2F4F7 */
+  --color-bg-strong:        var(--gray-200);  /* #EAECF0 */
+  --color-bg-inverse:       var(--gray-700);  /* #344054 · 체크박스/라디오 선택 표시 */
+  --color-bg-accent-subtle: var(--primary-50);   /* #F9F5FF */
+  --color-bg-accent:        var(--primary-600);  /* #7F56D9 */
+  --color-bg-accent-hover:  var(--primary-700);  /* #6941C6 */
+  --color-bg-accent-active: var(--primary-800);  /* #53389E */
+  --color-bg-danger-subtle: var(--error-50);   /* #FEF3F2 */
+  --color-bg-danger-muted:  var(--error-100);  /* #FEE4E2 */
+  --color-bg-warning-subtle: var(--warning-50);  /* #FFFAEB */
+  --color-bg-control-disabled: var(--gray-300);  /* #D0D5DD · 체크박스/라디오 checked+disabled 채움 */
+
+  /* 포커스 링 / 아웃라인 */
+  --color-ring-accent:        var(--primary-200);  /* #E9D7FE · btn 기준으로 통일 */
+  --color-ring-accent-subtle: var(--primary-100);  /* #F4EBFF · switch pressed 등 마우스 인터랙션 링 */
+  --color-ring-danger:        var(--error-100);  /* #FEE4E2 */
+  --color-ring-neutral:       var(--gray-400);   /* #98A2B3 · switch 토글 focus-visible */
+  --color-ring-neutral-subtle: var(--gray-100);  /* #F2F4F7 · switch pressed(off 상태) 링 */
+
+  /* 상태 표시 */
+  --color-status-dot: var(--error-400);  /* #F97066 */
+  --color-spinner-track: rgba(16, 24, 40, 0.15);   /* switch 로딩 스피너 트랙 */
+  --color-overlay-scrim: rgba(16, 24, 40, 0.5);    /* 모달 배경 딤 */
 }
  

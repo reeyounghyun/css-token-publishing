@@ -9,7 +9,7 @@
 .pagination__list {
   display: flex;
   align-items: center;
-  gap: var(--spacing-4); 
+  gap: var(--spacing-4);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -26,7 +26,7 @@
   border: 0;
   border-radius: var(--radius-md);
   background: transparent;
-  color: var(--gray-500);
+  color: var(--color-text-quaternary);
   font-size: var(--text-14);
   font-weight: var(--weight-medium);
   cursor: pointer;
@@ -34,14 +34,14 @@
 
 /* hover */
 .pagination__item:hover {
-  background: var(--gray-50);
-  color: var(--gray-800);
+  background: var(--color-bg-subtle);
+  color: var(--color-text-strong);
 }
 
 /* 현재 페이지 : 연보라 배경 (스위치 on 결이랑 통일) */
 .pagination__item.is-active {
-  background: var(--primary-50);
-  color: var(--primary-700);
+  background: var(--color-bg-accent-subtle);
+  color: var(--color-text-accent);
 }
 
 /* 생략 … */
@@ -51,7 +51,7 @@
   justify-content: center;
   min-width: 40px;
   height: 40px;
-  color: var(--gray-500);
+  color: var(--color-text-quaternary);
 }
 
 /* 좌우 화살표 */
@@ -64,17 +64,17 @@
   border: 0;
   border-radius: var(--radius-md);
   background: transparent;
-  color: var(--gray-500);
+  color: var(--color-text-quaternary);
   cursor: pointer;
 }
 .pagination__arrow:hover {
-  background: var(--gray-50);
-  color: var(--gray-800);
+  background: var(--color-bg-subtle);
+  color: var(--color-text-strong);
 }
 
 /* disabled (첫/마지막) */
 .pagination__arrow:disabled {
-  color: var(--gray-300);
+  color: var(--color-icon-disabled);
   cursor: not-allowed;
 }
 .pagination__arrow:disabled:hover {
@@ -89,22 +89,22 @@
 
 /* ---- 화살표 + 텍스트 버전 ---- */
 .pagination__arrow--text {
-  width: auto;   
+  width: auto;
   gap: var(--spacing-8);
   padding-inline: var(--spacing-12);
-  color: var(--gray-600);
+  color: var(--color-text-tertiary);
   font-size: var(--text-14);
   font-weight: var(--weight-medium);
 }
 
 /* ---- Page X of Y 텍스트형 ---- */
 .pagination__text {
-  color: var(--gray-700);
+  color: var(--color-text-secondary);
   font-size: var(--text-14);
   font-weight: var(--weight-medium);
 }
 .pagination__text strong {
-  font-weight: var(--weight-Semibold); 
+  font-weight: var(--weight-Semibold);
 }
 
 /* 숫자+텍스트 둘 다  폼은 형태 */
@@ -112,7 +112,7 @@
 .pagination__item:focus-visible,
 .pagination__arrow:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 4px var(--primary-100);
+  box-shadow: 0 0 0 4px var(--color-ring-accent);
 }
 
 /* ---- 텍스트형은 평소 숨김 (넓을 땐 숫자만) ---- */
@@ -123,14 +123,14 @@
 /* ============ 반응형 : 좁아지면 숫자 → 텍스트 ============ */
 @media (max-width: 640px) {
   .pagination__list {
-    display: none;         
+    display: none;
   }
   .pagination__text_none {
     display: inline;        /* Page X of Y 노출 */
   }
   /* 좁은 화면에선 화살표 텍스트 빼고 아이콘만 (선택) */
   .pagination__arrow--text {
-    font-size: 0;          
+    font-size: 0;
     gap: 0;
     width: 40px;
     padding-inline: 0;

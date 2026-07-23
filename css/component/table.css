@@ -2,9 +2,9 @@
 .table-wrap {
   width: 100%;
   overflow-x: auto;
-  border: 1px solid var(--gray-200);
+  border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-md);
-  background: var(--White);
+  background: var(--color-bg-surface);
 }
 
 .table {
@@ -17,35 +17,35 @@
 /* 헤더 */
 .table thead th {
   padding: var(--spacing-12) var(--spacing-16);
-  background: var(--gray-50);
-  color: var(--gray-500);
+  background: var(--color-bg-subtle);
+  color: var(--color-text-quaternary);
   font-weight: var(--weight-medium);
   text-align: left;
   white-space: nowrap;
-  border-bottom: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
 /* 바디 */
 .table tbody td {
   padding: var(--spacing-12) var(--spacing-16);
-  color: var(--gray-700);
-  border-bottom: 1px solid var(--gray-200);
+  color: var(--color-text-secondary);
+  border-bottom: 1px solid var(--color-border-subtle);
   transition: background-color var(--transition-fast);
 }
 .table tbody tr:last-child td {
   border-bottom: 0;
 }
 .table tbody tr:hover td {
-  background: var(--gray-50);
+  background: var(--color-bg-subtle);
 }
 
 /* 보조 텍스트 (이메일, 부제 등) */
 .table__cell-title {
-  color: var(--gray-900);
+  color: var(--color-text-primary);
   font-weight: var(--weight-medium);
 }
 .table__cell-sub {
-  color: var(--gray-500);
+  color: var(--color-text-quaternary);
   font-size: var(--text-14);
 }
 
@@ -68,7 +68,60 @@
 .table__empty {
   padding: var(--spacing-28);
   text-align: center;
-  color: var(--gray-500);
+  color: var(--color-text-quaternary);
+}
+
+/* 로딩 상태 */
+.table__loading {
+  padding: var(--spacing-28);
+  text-align: center;
+  color: var(--color-text-quaternary);
+}
+.table__loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: var(--spacing-8);
+  vertical-align: -3px;
+  border: 2px solid var(--color-spinner-track);
+  border-top-color: var(--color-icon-accent);
+  border-radius: 50%;
+  animation: table-spin 0.7s linear infinite;
+}
+@keyframes table-spin { to { transform: rotate(360deg); } }
+
+/* 정렬 가능한 헤더 */
+.table__sort {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  font-weight: var(--weight-medium);
+  cursor: pointer;
+}
+.table__sort svg {
+  flex-shrink: 0;
+  color: var(--color-icon-disabled);
+}
+th[aria-sort="ascending"] .table__sort,
+th[aria-sort="descending"] .table__sort {
+  color: var(--color-text-primary);
+}
+th[aria-sort="ascending"] .table__sort svg,
+th[aria-sort="descending"] .table__sort svg {
+  color: var(--color-icon-accent);
+}
+th[aria-sort="descending"] .table__sort svg {
+  transform: rotate(180deg);
+}
+.table__sort:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--color-ring-accent);
+  border-radius: var(--radius-xs);
 }
 
 /* 헤더 위 툴바 (제목 + 액션) */
@@ -82,7 +135,18 @@
 .table-toolbar__title {
   font-size: var(--text-18);
   font-weight: var(--weight-Semibold);
-  color: var(--gray-900);
+  color: var(--color-text-primary);
+}
+
+/* ============ 고정 헤더 (세로 스크롤 컨테이너 안에서 헤더 고정) ============ */
+.table-wrap--scroll-y {
+  max-height: 280px;
+  overflow-y: auto;
+}
+.table-wrap--scroll-y thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 /* ============ 피벗형 테이블 (첫 컬럼 고정 + 가로 스크롤) ============ */
@@ -99,23 +163,116 @@
   left: 0;
   z-index: 1;
   text-align: left;
-  background: var(--White);
-  border-right: 1px solid var(--gray-200);
+  background: var(--color-bg-surface);
+  border-right: 1px solid var(--color-border-subtle);
 }
 .table--pivot thead th:first-child {
   z-index: 2;
-  background: var(--gray-50);
+  background: var(--color-bg-subtle);
 }
 .table--pivot tbody tr:hover td:first-child {
-  background: var(--gray-50);
+  background: var(--color-bg-subtle);
 }
 
 /* 총 합계 행 */
 .table--pivot tbody tr.table__row--total td {
-  background: var(--gray-50);
-  color: var(--gray-900);
+  background: var(--color-bg-subtle);
+  color: var(--color-text-primary);
   font-weight: var(--weight-Semibold);
 }
 .table--pivot tbody tr.table__row--total td:first-child {
-  background: var(--gray-100);
+  background: var(--color-bg-muted);
+}
+
+/* ============================================================
+   Grid Table — table 태그 없이 div + CSS Grid로 구현한 변형
+   위 .table 규칙과 1:1 대응 (클래스만 grid-table__ 접두사)
+   ============================================================ */
+.grid-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: var(--text-14);
+}
+
+.grid-table__row {
+  display: grid;
+  grid-template-columns: var(--grid-table-cols, repeat(4, 1fr));
+  align-items: center;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.grid-table__row:last-child {
+  border-bottom: 0;
+}
+
+.grid-table__row--header {
+  background: var(--color-bg-subtle);
+}
+.grid-table__row--header .grid-table__cell {
+  color: var(--color-text-quaternary);
+  font-weight: var(--weight-medium);
+  white-space: nowrap;
+}
+
+.grid-table__row:not(.grid-table__row--header):hover {
+  background: var(--color-bg-subtle);
+}
+
+.grid-table__cell {
+  padding: var(--spacing-12) var(--spacing-16);
+  color: var(--color-text-secondary);
+  transition: background-color var(--transition-fast);
+}
+.grid-table__cell--center {
+  text-align: center;
+}
+
+/* 보조 텍스트 (이메일 등) — .table__cell-title/-sub와 동일한 규칙 */
+.grid-table__cell-title {
+  color: var(--color-text-primary);
+  font-weight: var(--weight-medium);
+}
+.grid-table__cell-sub {
+  color: var(--color-text-quaternary);
+  font-size: var(--text-14);
+}
+
+/* 셀 안 버튼(Edit/Delete 등) — 촘촘하게, .table td .btn과 동일 규칙 */
+.grid-table__cell .btn {
+  height: auto;
+  padding: var(--spacing-4) var(--spacing-8);
+  font-weight: var(--weight-medium);
+}
+
+/* ---- 피벗형 (첫 컬럼 고정 + 가로 스크롤) ---- */
+.grid-table--pivot .grid-table__cell {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* 첫 번째 셀(행 제목) 고정 */
+.grid-table--pivot .grid-table__cell:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  text-align: left;
+  background: var(--color-bg-surface);
+  border-right: 1px solid var(--color-border-subtle);
+}
+.grid-table--pivot .grid-table__row--header .grid-table__cell:first-child {
+  z-index: 2;
+  background: var(--color-bg-subtle);
+}
+.grid-table--pivot .grid-table__row:not(.grid-table__row--header):hover .grid-table__cell:first-child {
+  background: var(--color-bg-subtle);
+}
+
+/* 총 합계 행 */
+.grid-table--pivot .grid-table__row--total .grid-table__cell {
+  background: var(--color-bg-subtle);
+  color: var(--color-text-primary);
+  font-weight: var(--weight-Semibold);
+}
+.grid-table--pivot .grid-table__row--total .grid-table__cell:first-child {
+  background: var(--color-bg-muted);
 }

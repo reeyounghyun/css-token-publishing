@@ -17,7 +17,7 @@
 }
 .size-row + .size-row {
   margin-top: 1rem;
-} 
+}
 
 /* 스위치 (체크박스 커스텀) */
 .toggle__input {
@@ -28,7 +28,7 @@
   width: 44px;
   height: 24px;
   border-radius: 999px;
-  background: var(--gray-200);
+  background: var(--color-bg-strong);
   cursor: pointer;
   transition: background-color var(--transition-slow);
 }
@@ -42,15 +42,14 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--White);
-  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.1),
-              0 1px 2px rgba(16, 24, 40, 0.06);
+  background: var(--color-bg-surface);
+  box-shadow: var(--shadows-sm);
   transition: transform var(--transition-slow);
 }
 
 /* on 상태: 트랙 컬러 + 썸 오른쪽 이동 */
 .toggle__input:checked {
-  background: var(--primary-600);
+  background: var(--color-bg-accent);
 }
 
 .toggle__input:checked::before {
@@ -58,7 +57,7 @@
 }
 
 .toggle__input:focus-visible {
-  outline: 2px solid var(--gray-400);
+  outline: 2px solid var(--color-ring-neutral);
   outline-offset: 2px;
 }
 
@@ -72,16 +71,16 @@
 }
 
 .toggle__title {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--gray-700);
+  font-size: var(--text-14);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-secondary);
   line-height: 1.43;
 }
 
 .toggle__desc {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--gray-500);
+  font-size: var(--text-14);
+  font-weight: var(--weight-regular);
+  color: var(--color-text-quaternary);
   line-height: 1.43;
 }
 
@@ -101,30 +100,30 @@
   height: 12px;
 }
 .toggle--sm .toggle__input:checked::before {
-  transform: translateX(12px);  
+  transform: translateX(12px);
 }
 
 /* ----- Pressed: 트랙 둘레 링 (focus는 네 base의 outline 유지) ----- */
 .toggle__input:active,
 .toggle__input.is-pressed {
-  box-shadow: 0 0 0 4px var(--gray-100, #f2f4f7);
+  box-shadow: 0 0 0 4px var(--color-ring-neutral-subtle);
 }
 .toggle__input:checked:active,
 .toggle__input:checked.is-pressed {
-  box-shadow: 0 0 0 4px var(--primary-100, #f4ebff);
+  box-shadow: 0 0 0 4px var(--color-ring-accent-subtle);
 }
 
 /* ----- Loading: 썸 위 회전 스피너 (thumb 20 기준) ----- */
 .toggle__input.is-loading::after {
   content: "";
   position: absolute;
-  top: 6px;      
+  top: 6px;
   left: 6px;
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  border: 2px solid rgba(16, 24, 40, 0.15);
-  border-top-color: var(--primary-600, #7f56d9);
+  border: 2px solid var(--color-spinner-track);
+  border-top-color: var(--color-border-accent-strong);
   animation: toggle-spin 0.7s linear infinite;
 }
 .toggle__input.is-loading:checked::after {
@@ -132,7 +131,7 @@
 }
 .toggle__input.is-loading {
   cursor: progress;
-  pointer-events: none;   
+  pointer-events: none;
   /* 로딩 중 토글 방지 (JS 없이) */
 }
 
@@ -159,48 +158,48 @@
 .toggle:has(.toggle__input:disabled) {
   cursor: not-allowed;
 }
-.note { 
+.note {
   margin-bottom:var(--spacing-28);
-  font-size:var(--text-14); 
-  color:#667085; 
+  font-size:var(--text-14);
+  color:var(--color-text-quaternary);
 }
-.grid { 
-  display:grid; 
-  grid-template-columns:repeat(var(--cols),minmax(0,1fr)); 
+.grid {
+  display:grid;
+  grid-template-columns:repeat(var(--cols),minmax(0,1fr));
   gap:var( --gap-20);
 }
-.grid--2 { 
+.grid--2 {
   --cols:2;
-} 
-.grid--4 { 
-  --cols:4; 
 }
-.state-group__title { 
+.grid--4 {
+  --cols:4;
+}
+.state-group__title {
   margin-bottom:var( --spacing-6);
-  font-size:var( --text-20); 
-  font-weight:var(--weight-Semibold); 
-  color:#7f56d9; 
+  font-size:var( --text-20);
+  font-weight:var(--weight-Semibold);
+  color:var(--color-text-accent-medium);
 }
-.state-head { 
+.state-head {
   margin-bottom:var( --spacing-10);
 }
-.state-head__cell { 
-  font-size:var(--text-16); 
-  font-weight:var( --weight-medium); 
-  color:#667085; 
+.state-head__cell {
+  font-size:var(--text-16);
+  font-weight:var( --weight-medium);
+  color:var(--color-text-quaternary);
 }
-.size-row { 
+.size-row {
   margin-bottom:var( --spacing-16);
 }
-.size-row__label { 
-  display:block; 
-  font-size:var( --text-14); 
+.size-row__label {
+  display:block;
+  font-size:var( --text-14);
   margin-bottom:var(--spacing-10);
-  font-weight:var(--weight-medium); 
-  color:#344054; 
+  font-weight:var(--weight-medium);
+  color:var(--color-text-secondary);
 }
-.state-cell { 
-  display:flex; 
+.state-cell {
+  display:flex;
   align-items:center;
   min-height:36px;
 }
