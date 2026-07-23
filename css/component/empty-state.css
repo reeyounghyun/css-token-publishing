@@ -1,0 +1,44 @@
+/* 빈 상태 — 데이터/검색결과가 없는 화면 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--spacing-28);
+}
+
+.empty-state__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--spacing-16);
+  border-radius: 50%;
+  background: var(--color-bg-muted);
+  color: var(--color-icon-default);
+}
+
+.empty-state__title {
+  font-size: var(--text-16);
+  font-weight: var(--weight-Semibold);
+  color: var(--color-text-primary);
+}
+
+.empty-state__desc {
+  max-width: 320px;
+  margin-top: var(--spacing-4);
+  color: var(--color-text-quaternary);
+  font-size: var(--text-14);
+  line-height: 142.857%;
+}
+
+.empty-state__action {
+  margin-top: var(--spacing-20);
+}
+
+/* 에러/실패 상태 — 아이콘만 색상 변경 */
+.empty-state--error .empty-state__icon {
+  background: var(--color-bg-danger-subtle);
+  color: var(--color-icon-danger);
+}

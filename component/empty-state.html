@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empty State</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/component/button.css">
+  <link rel="stylesheet" href="/css/component/empty-state.css">
+  <style>
+    body {
+      padding: 1rem;
+    }
+    h2{
+      display: flex;
+      align-items: center;
+      gap: var(--gap-8);
+      font-size: 45px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: var( --primary-700);
+    }
+    .base {
+      display: inline-block;
+      font-size: 38px;
+      font-weight: 500;
+      color: var(--gray-800);
+    }
+    .demo-box {
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-md);
+      max-width: 400px;
+    }
+    .class-label {
+      display: block;
+      margin-bottom: 8px;
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: #98A2B3;
+    }
+  </style>
+</head>
+<body>
+  <h2>
+    <span class="base">component</span>
+    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
+    Empty State
+  </h2>
+
+  <h3 style="margin-bottom: 12px;">기본 (액션 버튼 있음)</h3>
+  <code class="class-label">empty-state &gt; empty-state__icon, empty-state__title, empty-state__desc, empty-state__action</code>
+  <div class="demo-box">
+    <div class="empty-state">
+      <div class="empty-state__icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M3 7L12 12L21 7M3 7L12 2L21 7M3 7V17L12 22M21 7V17L12 22M12 12V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3 class="empty-state__title">아직 항목이 없습니다</h3>
+      <p class="empty-state__desc">새 프로젝트를 추가해서 팀 작업을 시작해보세요.</p>
+      <button type="button" class="btn btn--primary btn--sm empty-state__action">프로젝트 추가</button>
+    </div>
+  </div>
+
+  <h3 style="margin: 32px 0 12px;">검색 결과 없음 (액션 버튼 없음)</h3>
+  <code class="class-label">empty-state (empty-state__action 생략)</code>
+  <div class="demo-box">
+    <div class="empty-state">
+      <div class="empty-state__icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M21 21L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3 class="empty-state__title">검색 결과가 없습니다</h3>
+      <p class="empty-state__desc">"마케팅 대시보드"와 일치하는 항목을 찾지 못했습니다. 다른 검색어로 시도해보세요.</p>
+    </div>
+  </div>
+
+  <h3 style="margin: 32px 0 12px;">에러 / 불러오기 실패</h3>
+  <code class="class-label">empty-state empty-state--error</code>
+  <div class="demo-box">
+    <div class="empty-state empty-state--error">
+      <div class="empty-state__icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M12 8V12M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3 class="empty-state__title">데이터를 불러오지 못했습니다</h3>
+      <p class="empty-state__desc">네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.</p>
+      <button type="button" class="btn btn--default btn--sm empty-state__action">다시 시도</button>
+    </div>
+  </div>
+</body>
+</html>

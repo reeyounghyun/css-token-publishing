@@ -164,6 +164,7 @@
   --z-dropdown: 10;
   --z-modal:    100;
   --z-toast:    1000;
+  --z-tooltip:  1100;
 
   /* 아이콘 크기 */
   --icon-20: 1.25rem;  /* 20px */

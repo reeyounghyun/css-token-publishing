@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tooltip</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/component/tooltip.css">
+  <style>
+    body {
+      padding: 1rem;
+    }
+    h2{
+      display: flex;
+      align-items: center;
+      gap: var(--gap-8);
+      font-size: 45px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: var( --primary-700);
+    }
+    .base {
+      display: inline-block;
+      font-size: 38px;
+      font-weight: 500;
+      color: var(--gray-800);
+    }
+    .demo-row {
+      display: flex;
+      gap: 80px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 40px 0;
+    }
+    .class-label {
+      display: block;
+      margin-top: 40px;
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: #98A2B3;
+    }
+  </style>
+</head>
+<body>
+  <h2>
+    <span class="base">component</span>
+    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
+    Tooltip
+  </h2>
+
+  <h3 style="margin-bottom: 12px;">방향 (hover 또는 Tab으로 focus)</h3>
+  <div class="demo-row">
+    <div>
+      <span class="tooltip tooltip--top">
+        <button type="button" class="tooltip__trigger" aria-describedby="tt-top">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 13.3333V10M10 6.66667H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <span class="tooltip__content" role="tooltip" id="tt-top">위쪽에 뜨는 툴팁입니다.</span>
+      </span>
+      <code class="class-label">tooltip tooltip--top (기본값)</code>
+    </div>
+    <div>
+      <span class="tooltip tooltip--bottom">
+        <button type="button" class="tooltip__trigger" aria-describedby="tt-bottom">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 13.3333V10M10 6.66667H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <span class="tooltip__content" role="tooltip" id="tt-bottom">아래쪽에 뜨는 툴팁입니다.</span>
+      </span>
+      <code class="class-label">tooltip tooltip--bottom</code>
+    </div>
+    <div>
+      <span class="tooltip tooltip--left">
+        <button type="button" class="tooltip__trigger" aria-describedby="tt-left">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 13.3333V10M10 6.66667H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <span class="tooltip__content" role="tooltip" id="tt-left">왼쪽에 뜨는 툴팁입니다.</span>
+      </span>
+      <code class="class-label">tooltip tooltip--left</code>
+    </div>
+    <div>
+      <span class="tooltip tooltip--right">
+        <button type="button" class="tooltip__trigger" aria-describedby="tt-right">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 13.3333V10M10 6.66667H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <span class="tooltip__content" role="tooltip" id="tt-right">오른쪽에 뜨는 툴팁입니다.</span>
+      </span>
+      <code class="class-label">tooltip tooltip--right</code>
+    </div>
+  </div>
+
+  <h3 style="margin: 24px 0 12px;">텍스트에 붙이기</h3>
+  <div class="demo-row">
+    <div>
+      <span class="tooltip tooltip--top">
+        <button type="button" class="tooltip__trigger" aria-describedby="tt-text" style="text-decoration: underline dotted; color: var(--color-text-secondary);">
+          제한된 기능
+        </button>
+        <span class="tooltip__content" role="tooltip" id="tt-text">프로 플랜에서만 사용할 수 있습니다.</span>
+      </span>
+      <code class="class-label">tooltip__trigger에 아이콘 대신 텍스트</code>
+    </div>
+  </div>
+</body>
+</html>

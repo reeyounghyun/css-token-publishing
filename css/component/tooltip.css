@@ -1,0 +1,112 @@
+/* 툴팁 — hover/focus 시 뜨는 설명. JS 없이 CSS만으로 동작 */
+.tooltip {
+  position: relative;
+  display: inline-flex;
+}
+
+.tooltip__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  color: var(--color-icon-default);
+  cursor: pointer;
+}
+.tooltip__trigger:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--color-ring-accent);
+  border-radius: var(--radius-xs);
+}
+
+.tooltip__content {
+  position: absolute;
+  z-index: var(--z-tooltip);
+  width: max-content;
+  max-width: 220px;
+  padding: var(--spacing-6) var(--spacing-10);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+  font-size: var(--text-14);
+  font-weight: var(--weight-regular);
+  line-height: 142.857%;
+  text-align: center;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+}
+
+/* 화살표 */
+.tooltip__content::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--color-bg-inverse);
+  transform: rotate(45deg);
+}
+
+/* hover 또는 키보드 focus 시 노출 */
+.tooltip:hover .tooltip__content,
+.tooltip:focus-within .tooltip__content {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ---- 방향 (기본 = top) ---- */
+.tooltip__content,
+.tooltip--top .tooltip__content {
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.tooltip--top .tooltip__content::after,
+.tooltip__content::after {
+  bottom: -4px;
+  left: 50%;
+  margin-left: -4px;
+}
+
+.tooltip--bottom .tooltip__content {
+  top: calc(100% + 8px);
+  bottom: auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.tooltip--bottom .tooltip__content::after {
+  top: -4px;
+  bottom: auto;
+  left: 50%;
+  margin-left: -4px;
+}
+
+.tooltip--left .tooltip__content {
+  top: 50%;
+  right: calc(100% + 8px);
+  bottom: auto;
+  left: auto;
+  transform: translateY(-50%);
+}
+.tooltip--left .tooltip__content::after {
+  top: 50%;
+  right: -4px;
+  bottom: auto;
+  left: auto;
+  margin-top: -4px;
+}
+
+.tooltip--right .tooltip__content {
+  top: 50%;
+  left: calc(100% + 8px);
+  bottom: auto;
+  transform: translateY(-50%);
+}
+.tooltip--right .tooltip__content::after {
+  top: 50%;
+  left: -4px;
+  margin-top: -4px;
+  margin-left: 0;
+}

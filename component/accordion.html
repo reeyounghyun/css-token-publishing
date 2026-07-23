@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accordion</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/component/accordion.css">
+  <style>
+    body {
+      padding: 1rem;
+    }
+    h2{
+      display: flex;
+      align-items: center;
+      gap: var(--gap-8);
+      font-size: 45px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: var( --primary-700);
+    }
+    .base {
+      display: inline-block;
+      font-size: 38px;
+      font-weight: 500;
+      color: var(--gray-800);
+    }
+    .class-label {
+      display: block;
+      margin-top: 8px;
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: #98A2B3;
+    }
+  </style>
+</head>
+<body>
+  <h2>
+    <span class="base">component</span>
+    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
+    Accordion
+  </h2>
+
+  <h3 style="margin-bottom: 12px;">기본 (여러 개 동시 열림 가능)</h3>
+  <code class="class-label">accordion &gt; accordion__item(details) &gt; accordion__trigger(summary) + accordion__icon, accordion__content</code>
+  <div class="accordion" style="max-width: 480px;">
+    <details class="accordion__item" open>
+      <summary class="accordion__trigger">
+        환불은 어떻게 받을 수 있나요?
+        <svg class="accordion__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </summary>
+      <div class="accordion__content">구매 후 7일 이내에 고객센터로 문의하시면 환불 처리를 도와드립니다. 이미 사용한 크레딧은 환불 대상에서 제외됩니다.</div>
+    </details>
+    <details class="accordion__item">
+      <summary class="accordion__trigger">
+        플랜은 언제든 변경할 수 있나요?
+        <svg class="accordion__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </summary>
+      <div class="accordion__content">네, 설정 &gt; 결제 메뉴에서 언제든 상위/하위 플랜으로 변경할 수 있습니다. 변경 사항은 다음 결제 주기부터 적용됩니다.</div>
+    </details>
+    <details class="accordion__item">
+      <summary class="accordion__trigger">
+        팀원을 몇 명까지 초대할 수 있나요?
+        <svg class="accordion__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </summary>
+      <div class="accordion__content">프로 플랜은 최대 10명, 엔터프라이즈 플랜은 무제한으로 팀원을 초대할 수 있습니다.</div>
+    </details>
+    <details class="accordion__item is-disabled">
+      <summary class="accordion__trigger" tabindex="-1">
+        문의 준비중 (비활성)
+        <svg class="accordion__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </summary>
+      <div class="accordion__content">아직 준비되지 않은 항목입니다.</div>
+    </details>
+  </div>
+</body>
+</html>

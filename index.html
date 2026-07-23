@@ -3,403 +3,586 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Brickify</title>
-
-  <!-- 첫 화면에 쓰는 굵기만 미리 받기 -->
-  <link rel="preload" href="fonts/Pretendard-Regular.subset.woff2" as="font" type="font/woff2" crossorigin>
-
+  <title>css-token-publishing — 컴포넌트 인덱스</title>
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <!--
+    이 페이지는 컴포넌트 css(button.css 등)를 전혀 불러오지 않는다.
+    컴포넌트 미리보기는 전부 iframe으로 각 component/*.html을 그대로 띄우는 방식이라
+    문서 자체가 분리돼 있어서 스타일이 섞일 수 없다 (#ix + all:unset보다 확실한 격리).
+    아래 스타일은 전부 이 인덱스 툴 자체의 UI이며 .ix- 접두사를 쓴다.
+  -->
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Pretendard", system-ui, -apple-system, "Malgun Gothic", sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-900);
+    }
+
+    #ix {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: var(--spacing-28) var(--spacing-20) 80px;
+    }
+
+    .ix-header h1 {
+      font-size: var(--text-32);
+      font-weight: var(--weight-bold);
+    }
+    .ix-header p {
+      margin-top: var(--spacing-8);
+      color: var(--gray-600);
+      font-size: var(--text-16);
+    }
+    .ix-header code {
+      font-family: ui-monospace, monospace;
+      background: var(--gray-100);
+      padding: 2px 6px;
+      border-radius: var(--radius-xs);
+    }
+
+    .ix-section {
+      margin-top: 56px;
+    }
+    .ix-section__title {
+      font-size: var(--text-24);
+      font-weight: var(--weight-bold);
+      margin-bottom: var(--spacing-6);
+    }
+    .ix-section__desc {
+      color: var(--gray-500);
+      font-size: var(--text-14);
+      margin-bottom: var(--spacing-20);
+    }
+
+    .ix-subtitle {
+      font-size: var(--text-16);
+      font-weight: var(--weight-Semibold);
+      margin: var(--spacing-28) 0 var(--spacing-12);
+      color: var(--gray-700);
+    }
+
+    /* ---- 토큰 카탈로그 공통 ---- */
+    .ix-swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: var(--spacing-10);
+    }
+    .ix-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      background: #fff;
+      overflow: hidden;
+      cursor: pointer;
+      font: inherit;
+      text-align: left;
+      padding: 0;
+    }
+    .ix-swatch:hover {
+      border-color: var(--gray-300);
+    }
+    .ix-swatch:focus-visible {
+      outline: 2px solid var(--primary-600);
+      outline-offset: 2px;
+    }
+    .ix-swatch__color {
+      height: 56px;
+    }
+    .ix-swatch__meta {
+      padding: var(--spacing-8) var(--spacing-10);
+    }
+    .ix-swatch__name {
+      display: block;
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: var(--gray-700);
+      word-break: break-all;
+    }
+    .ix-swatch__hex {
+      display: block;
+      margin-top: 2px;
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: var(--gray-400);
+    }
+    .ix-swatch.is-copied .ix-swatch__hex {
+      color: var(--primary-600);
+    }
+    .ix-swatch.is-copied .ix-swatch__hex::after {
+      content: " · 복사됨";
+    }
+
+    /* ---- 타이포 ---- */
+    .ix-type-list {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      background: #fff;
+      overflow: hidden;
+    }
+    .ix-type-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--spacing-20);
+      padding: var(--spacing-12) var(--spacing-16);
+      border-bottom: 1px solid var(--gray-100);
+      cursor: pointer;
+      background: transparent;
+      border-left: 0; border-right: 0; border-top: 0;
+      width: 100%;
+      font: inherit;
+      text-align: left;
+    }
+    .ix-type-row:last-child { border-bottom: 0; }
+    .ix-type-row:hover { background: var(--gray-50); }
+    .ix-type-row:focus-visible { outline: 2px solid var(--primary-600); outline-offset: -2px; }
+    .ix-type-row__sample {
+      flex: 1;
+      min-width: 0;
+      color: var(--gray-900);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .ix-type-row__meta {
+      flex-shrink: 0;
+      width: 160px;
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: var(--gray-400);
+      text-align: right;
+    }
+    .ix-type-row.is-copied .ix-type-row__meta { color: var(--primary-600); }
+
+    /* ---- spacing ---- */
+    .ix-spacing-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-8);
+    }
+    .ix-spacing-row {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-16);
+      background: transparent;
+      border: 0;
+      padding: var(--spacing-4) 0;
+      cursor: pointer;
+      font: inherit;
+      text-align: left;
+      width: 100%;
+    }
+    .ix-spacing-row:focus-visible { outline: 2px solid var(--primary-600); }
+    .ix-spacing-row__bar {
+      height: 12px;
+      background: var(--primary-500);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .ix-spacing-row__label {
+      font-family: ui-monospace, monospace;
+      font-size: 12px;
+      color: var(--gray-600);
+    }
+    .ix-spacing-row.is-copied .ix-spacing-row__label { color: var(--primary-600); }
+
+    /* ---- radius / shadow ---- */
+    .ix-box-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: var(--spacing-16);
+    }
+    .ix-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-8);
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      font: inherit;
+      padding: var(--spacing-8);
+    }
+    .ix-box:focus-visible { outline: 2px solid var(--primary-600); border-radius: 4px; }
+    .ix-box__shape {
+      width: 64px;
+      height: 64px;
+      background: #fff;
+      border: 1px solid var(--gray-200);
+    }
+    .ix-box__label {
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: var(--gray-500);
+      text-align: center;
+    }
+    .ix-box.is-copied .ix-box__label { color: var(--primary-600); }
+
+    /* ---- 컴포넌트 검색/그리드 ---- */
+    .ix-search {
+      width: 100%;
+      max-width: 360px;
+      padding: var(--spacing-10) var(--spacing-14);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-md);
+      background: #fff;
+      font-size: var(--text-16);
+      color: var(--gray-900);
+    }
+    .ix-search:focus-visible {
+      outline: none;
+      border-color: var(--primary-300);
+      box-shadow: 0 0 0 4px var(--primary-100);
+    }
+    .ix-search-meta {
+      margin-top: var(--spacing-8);
+      font-size: var(--text-14);
+      color: var(--gray-400);
+    }
+
+    .ix-component-grid {
+      margin-top: var(--spacing-20);
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+      gap: var(--spacing-20);
+    }
+    .ix-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      background: #fff;
+      overflow: hidden;
+    }
+    .ix-card__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-12);
+      padding: var(--spacing-14) var(--spacing-16);
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .ix-card__title {
+      font-size: var(--text-18);
+      font-weight: var(--weight-Semibold);
+      color: var(--gray-900);
+    }
+    .ix-card__title small {
+      display: block;
+      margin-top: 2px;
+      font-weight: var(--weight-regular);
+      font-size: var(--text-14);
+      color: var(--gray-500);
+    }
+    .ix-card__open {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-4);
+      padding: var(--spacing-6) var(--spacing-12);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-sm);
+      background: #fff;
+      color: var(--gray-700);
+      font-size: var(--text-14);
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .ix-card__open:hover { background: var(--gray-50); }
+    .ix-card__open:focus-visible { outline: 2px solid var(--primary-600); outline-offset: 2px; }
+    .ix-card__frame-wrap {
+      height: 360px;
+      overflow: auto;
+      background: var(--gray-50);
+    }
+    .ix-card iframe {
+      width: 100%;
+      height: 900px;
+      border: 0;
+      display: block;
+      background: #fff;
+    }
+    .ix-card.is-hidden { display: none; }
+
+    .ix-empty {
+      padding: 40px;
+      text-align: center;
+      color: var(--gray-400);
+    }
+  </style>
 </head>
 <body>
-  <a href="#content" class="skip-nav">본문 바로가기</a>
+  <div id="ix">
+    <header class="ix-header">
+      <h1>css-token-publishing</h1>
+      <p>퍼블리싱 컴포넌트 창고. <code>tokens.css</code>의 값과 실제 컴포넌트 상태를 한 페이지에서 확인하고, 필요한 코드를 복사해서 새 프로젝트에 바로 붙여넣으세요.</p>
+    </header>
 
-  <main id="content">
-    <section class="main-section">
-      <header id="header" class="main-wrap">
-        <div class="logo-image">
-          <img src="images/mainLogo.svg" alt="logo">
-        </div>
-        <nav class="nav">
-          <ul>
-            <li class="menu-link text-Regular">Item 1</li>
-            <li class="menu-link">Item 2</li>
-            <li class="menu-link">Item 3</li>
-            <li class="menu-link">Item 4</li>
-            <li class="menu-btn">Brickify</li>
-          </ul>
-        </nav>
-      </header>
-      <div class="main-wrap">
-        <div class="main-area">
-          <h2>Brickify Figma</h2>
-          <p>Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all.</p>
-        </div>
-        <div class="main-image">
-          <img src="images/main-brick.png" alt="main image">
-        </div>
-      </div>
+    <section class="ix-section">
+      <h2 class="ix-section__title">토큰 카탈로그</h2>
+      <p class="ix-section__desc">클릭하면 <code>var(--토큰명)</code>이 클립보드에 복사됩니다. tokens.css의 실제 값을 그대로 읽어와서 보여줍니다.</p>
+
+      <h3 class="ix-subtitle">색상 — primitive</h3>
+      <div id="ix-color-primitive" class="ix-swatch-grid"></div>
+
+      <h3 class="ix-subtitle">색상 — semantic (컴포넌트는 이것만 참조)</h3>
+      <div id="ix-color-semantic"></div>
+
+      <h3 class="ix-subtitle">타이포 — 본문 (text-*)</h3>
+      <div id="ix-type-text" class="ix-type-list"></div>
+
+      <h3 class="ix-subtitle">타이포 — 제목 (display-*)</h3>
+      <div id="ix-type-display" class="ix-type-list"></div>
+
+      <h3 class="ix-subtitle">spacing</h3>
+      <div id="ix-spacing" class="ix-spacing-list"></div>
+
+      <h3 class="ix-subtitle">radius</h3>
+      <div id="ix-radius" class="ix-box-grid"></div>
+
+      <h3 class="ix-subtitle">shadow</h3>
+      <div id="ix-shadow" class="ix-box-grid"></div>
     </section>
-    <!-- 컨탠츠 시작 -->32
-    <div class="content-wrap">
-      <section>
-        <div class="common_title">
-          <h3>Image Section</h3>
-          <span class="item-badge">1 - 8 columns</span>
-        </div>
-        <!-- grid 사용법: --cols 로 컬럼 수 주입-->
-        <div class="img-rows">
-          <ul class="grid grid--1">
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-          </ul>
-          <ul class="grid grid--2">
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-          </ul>
-          <ul class="grid grid--3">
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-          </ul> 
-          <ul class="grid grid--4">
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-          </ul>
-          <ul class="grid grid--6">
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-          </ul>
-          <ul class="grid grid--8">
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-            <li class="box-img"><img src="images/content_icon.svg" alt=""></li>
-          </ul>
-        </div>
-      </section>
-      <section>
-        <div class="common_title">
-          <h3>Card Section</h3>
-          <span class="sub-title">Text cards</span>
-          <span class="item-badge">2 - 4 columns</span>
-        </div>
-        <!-- grid 사용법: --cols 로 컬럼 수 주입-->
-        <div class="img-rows">
-          <ul class="grid grid--2">
-            <li class="card">
-              <h4 class="card__title">Lorem bricksum </h4>
-              <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. <br/>
-              Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
-              </p>
-            </li>
-            <li class="card">
-              <h4 class="card__title">Lorem bricksum </h4>
-              <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. <br/>
-              Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
-              </p>
-            </li>
-          </ul>
-          <ul class="grid grid--3">
-            <li class="card">
-              <h4 class="card__title">Lorem bricksum </h4>
-              <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. <br/>
-              Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
-              </p>
-            </li>
-            <li class="card">
-              <h4 class="card__title">Lorem bricksum </h4>
-              <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. <br/>
-              Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
-              </p>
-            </li>
-            <li class="card">
-              <h4 class="card__title">Lorem bricksum </h4>
-              <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. <br/>
-              Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
-              </p>
-            </li>
-          </ul>
-          <ul class="grid grid--4">
-            <li class="card">
-              <h4 class="card__title">Lorem bricksum </h4>
-              <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. <br/>
-              Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
-              </p>
-            </li>
-            <li class="card">
-              <h4 class="card__title">Lorem bricksum </h4>
-              <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. <br/>
-              Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
-              </p>
-            </li>
-            <li class="card">
-              <h4 class="card__title">Lorem bricksum </h4>
-              <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. <br/>
-              Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
-              </p>
-            </li>
-            <li class="card">
-              <h4 class="card__title">Lorem bricksum </h4>
-              <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. <br/>
-              Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
-              </p>
-            </li>
-          </ul>
-        </div>
-      </section>
-      <section>
-        <div class="common_title">
-          <h3>Card Section</h3>
-          <span class="sub-title">Text cards</span>
-          <span class="item-badge">2 - 4 columns</span>
-        </div>
-        <!-- grid 사용법: --cols 로 컬럼 수 주입-->
-        <div class="img-rows">
-          <ul class="grid grid--img2">
-            <li class="card card--img">
-              <div class="card__thumb"><img src="images/content_icon.svg" alt=""></div>
-              <div class="card__body">
-                <h4 class="card__title">Lorem bricksum</h4>
-                <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
-                <br/>
-                Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
-                </p>
-              </div>
-            </li>
-            <li class="card card--img">
-              <div class="card__thumb"><img src="images/content_icon.svg" alt=""></div>
-              <div class="card__body">
-                <h4 class="card__title">Lorem bricksum</h4>
-                <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
-                <br/>
-                Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
-                </p>
-              </div>
-            </li>
-          </ul>
 
-          <ul class="grid grid--img3">
-            <li class="card card--img">
-              <div class="card__thumb"><img src="images/content_icon.svg" alt=""></div>
-              <div class="card__body">
-                <h4 class="card__title">Lorem bricksum</h4>
-                <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
-                <br/>
-                Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
-                </p>
-              </div>
-            </li>
-            <li class="card card--img">
-              <div class="card__thumb"><img src="images/content_icon.svg" alt=""></div>
-              <div class="card__body">
-                <h4 class="card__title">Lorem bricksum</h4>
-                <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
-                <br/>
-                Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
-                </p>
-              </div>
-            </li>
-            <li class="card card--img">
-              <div class="card__thumb"><img src="images/content_icon.svg" alt=""></div>
-              <div class="card__body">
-                <h4 class="card__title">Lorem bricksum</h4>
-                <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
-                <br/>
-                Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
-                </p>
-              </div>
-            </li>
-          </ul>
+    <section class="ix-section">
+      <h2 class="ix-section__title">컴포넌트</h2>
+      <p class="ix-section__desc">각 카드는 실제 <code>component/*.html</code>을 그대로 띄운 것입니다 (iframe). 스크롤해서 전체 상태/변형을 확인하세요.</p>
 
-          <ul class="grid grid--img4">
-            <li class="card card--img">
-              <div class="card__thumb"><img src="images/content_icon.svg" alt=""></div>
-              <div class="card__body">
-                <h4 class="card__title">Lorem bricksum</h4>
-                <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
-                <br/>
-                Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
-                </p>
-              </div>
-            </li>
-            <li class="card card--img">
-              <div class="card__thumb"><img src="images/content_icon.svg" alt=""></div>
-              <div class="card__body">
-                <h4 class="card__title">Lorem bricksum</h4>
-                <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
-                <br/>
-                Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
-                </p>
-              </div>
-            </li>
-            <li class="card card--img">
-              <div class="card__thumb"><img src="images/content_icon.svg" alt=""></div>
-              <div class="card__body">
-                <h4 class="card__title">Lorem bricksum</h4>
-                <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
-                <br/>
-                Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
-                </p>
-              </div>
-            </li>
-            <li class="card card--img">
-              <div class="card__thumb"><img src="images/content_icon.svg" alt=""></div>
-              <div class="card__body">
-                <h4 class="card__title">Lorem bricksum</h4>
-                <p class="card__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
-                <br/>
-                Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square."
-                </p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </section>
-      <section>
-        <div class="common_title">
-          <h3>Text Section</h3>
-          <span class="item-badge">2 - 6 columns</span>
-        </div>
-        <div class="img-rows">
-          <ul class="grid grid--txt2">
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-            </p>
-            </li>
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-              </p>
-            </li>
-          </ul>
-          <ul class="grid grid--txt3">
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-              </p>
-            </li>
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-              </p>
-            </li>
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-              </p>
-            </li>
-          </ul>
-          <ul class="grid grid--txt4">
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-              </p>
-            </li>
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-              </p>
-            </li>
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-              </p>
-            </li>
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-              </p>
-            </li>
-          </ul>
-          <ul class="grid grid--txt5">
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-              </p>
-            </li>
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-              </p>
-            </li>
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-              </p>
-            </li>
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-              </p>
-            </li>
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-              </p>
-            </li>
-          </ul>
-          <ul class="grid grid--txt6">
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-              </p>
-            </li>
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-              </p>
-            </li>
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-              </p>
-            </li>
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-              </p>
-            </li>
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-              </p>
-            </li>
-            <li class="txt">
-              <h4 class="txt__title">Lorem bricksum</h4>
-              <p class="txt__desc">Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things. Each of us a pixel in the mosaic of existence, striving to fit snugly into the matrix of society. It's a world of connections and intersections, where the mortar of destiny binds us together like the ultimate cosmic bricklayer. And as we journey through this brick-laden cosmos, let us not forget the immortal words of Sir Brickalot: "To square, or not to square, that is the grid. Whether 'tis nobler in the mind to suffer the circles and triangles of outrageous geometry, or to take arms against a sea of curves and by opposing, be square." Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. Squarely planted in the heart of design, the lorem brick ipsum sings a melodious ode to the most underappreciated shape of them all. In the grid of life, we're all but tiny bricks in the grand scheme of things
-              </p>
-            </li>
-          </ul>
-        </div>
-      </section>
-    </div>
-    <footer id="footer">
-      <div class="footer-bottom">
-        <div class="footer-box">
-          <div class="logo-image">
-            <img src="images/mainLogo.svg" alt="logo">
-          </div>
-          <p class="footer-text">
-            Lorem bricksum dolor sit amet, consectetur ad-griddy elit. Sed in the land of bricktastic dreams, where the gridlines form a symphony of right angles that even Beethoven would envy. 
-          </p>
-        </div>
-        <div class="right-cat">© 2023 Brickify</div>
-      </div>
-    </footer>
-  </main>
-  <script src="js/main.js"></script>
+      <input type="search" id="ix-search" class="ix-search" placeholder="컴포넌트 검색 (예: button, 드롭다운, badge)" aria-label="컴포넌트 검색">
+      <div class="ix-search-meta" id="ix-search-meta"></div>
+
+      <div class="ix-component-grid" id="ix-grid"></div>
+      <p class="ix-empty" id="ix-empty" hidden>검색 결과가 없습니다.</p>
+    </section>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      function tokenValue(name) {
+        return getComputedStyle(root).getPropertyValue('--' + name).trim();
+      }
+
+      // ---- 복사 공통 ----
+      function wireCopy(el, text) {
+        el.addEventListener('click', function () {
+          navigator.clipboard.writeText(text).then(function () {
+            el.classList.add('is-copied');
+            setTimeout(function () { el.classList.remove('is-copied'); }, 1200);
+          });
+        });
+      }
+
+      // ---- 색상 primitive ----
+      var PRIMITIVE_GROUPS = [
+        { label: 'gray', steps: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] },
+        { label: 'primary', steps: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] },
+        { label: 'error', steps: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] },
+        { label: 'warning', steps: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] }
+      ];
+      var primitiveWrap = document.getElementById('ix-color-primitive');
+      PRIMITIVE_GROUPS.forEach(function (group) {
+        group.steps.forEach(function (step) {
+          var name = group.label + '-' + step;
+          var hex = tokenValue(name);
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'ix-swatch';
+          btn.innerHTML =
+            '<span class="ix-swatch__color" style="background:var(--' + name + ')"></span>' +
+            '<span class="ix-swatch__meta">' +
+              '<span class="ix-swatch__name">--' + name + '</span>' +
+              '<span class="ix-swatch__hex">' + hex + '</span>' +
+            '</span>';
+          wireCopy(btn, 'var(--' + name + ')');
+          primitiveWrap.appendChild(btn);
+        });
+      });
+
+      // ---- 색상 semantic ----
+      var SEMANTIC_GROUPS = [
+        { label: '텍스트 (color-text-*)', tokens: ['color-text-primary', 'color-text-strong', 'color-text-secondary', 'color-text-tertiary', 'color-text-quaternary', 'color-text-faint', 'color-text-inverse', 'color-text-accent', 'color-text-accent-medium', 'color-text-accent-strong', 'color-text-danger', 'color-text-danger-medium', 'color-text-danger-hover', 'color-text-warning'] },
+        { label: '아이콘 (color-icon-*)', tokens: ['color-icon-primary', 'color-icon-default', 'color-icon-faint', 'color-icon-disabled', 'color-icon-strong', 'color-icon-accent', 'color-icon-danger', 'color-icon-warning'] },
+        { label: '테두리 (color-border-*)', tokens: ['color-border-default', 'color-border-subtle', 'color-border-strong', 'color-border-accent-subtle', 'color-border-accent', 'color-border-accent-strong', 'color-border-accent-hover', 'color-border-accent-active', 'color-border-danger', 'color-border-danger-subtle', 'color-border-warning-subtle', 'color-border-inverse', 'color-border-faint'] },
+        { label: '배경 (color-bg-*)', tokens: ['color-bg-surface', 'color-bg-subtle', 'color-bg-muted', 'color-bg-strong', 'color-bg-inverse', 'color-bg-accent-subtle', 'color-bg-accent', 'color-bg-accent-hover', 'color-bg-accent-active', 'color-bg-danger-subtle', 'color-bg-danger-muted', 'color-bg-warning-subtle', 'color-bg-control-disabled'] },
+        { label: '포커스 링 (color-ring-*)', tokens: ['color-ring-accent', 'color-ring-accent-subtle', 'color-ring-danger', 'color-ring-neutral', 'color-ring-neutral-subtle'] },
+        { label: '상태 표시', tokens: ['color-status-dot'] }
+      ];
+      var semanticWrap = document.getElementById('ix-color-semantic');
+      SEMANTIC_GROUPS.forEach(function (group) {
+        var h4 = document.createElement('p');
+        h4.textContent = group.label;
+        h4.style.cssText = 'font-family:ui-monospace,monospace;font-size:12px;color:var(--gray-400);margin:16px 0 8px;';
+        semanticWrap.appendChild(h4);
+
+        var grid = document.createElement('div');
+        grid.className = 'ix-swatch-grid';
+        group.tokens.forEach(function (name) {
+          var hex = tokenValue(name);
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'ix-swatch';
+          btn.innerHTML =
+            '<span class="ix-swatch__color" style="background:var(--' + name + ')"></span>' +
+            '<span class="ix-swatch__meta">' +
+              '<span class="ix-swatch__name">--' + name + '</span>' +
+              '<span class="ix-swatch__hex">' + hex + '</span>' +
+            '</span>';
+          wireCopy(btn, 'var(--' + name + ')');
+          grid.appendChild(btn);
+        });
+        semanticWrap.appendChild(grid);
+      });
+
+      // ---- 타이포 ----
+      var TEXT_STEPS = [12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 60, 72];
+      var textWrap = document.getElementById('ix-type-text');
+      TEXT_STEPS.forEach(function (step) {
+        var name = 'text-' + step;
+        var row = document.createElement('button');
+        row.type = 'button';
+        row.className = 'ix-type-row';
+        row.innerHTML =
+          '<span class="ix-type-row__sample" style="font-size:var(--' + name + ')">Ag 안녕하세요</span>' +
+          '<span class="ix-type-row__meta">--' + name + ' · ' + tokenValue(name) + '</span>';
+        wireCopy(row, 'var(--' + name + ')');
+        textWrap.appendChild(row);
+      });
+
+      var DISPLAY_STEPS = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
+      var displayWrap = document.getElementById('ix-type-display');
+      DISPLAY_STEPS.forEach(function (step) {
+        var name = 'display-' + step;
+        var row = document.createElement('button');
+        row.type = 'button';
+        row.className = 'ix-type-row';
+        row.innerHTML =
+          '<span class="ix-type-row__sample" style="font-size:var(--' + name + ')">Ag 안녕</span>' +
+          '<span class="ix-type-row__meta">--' + name + ' · ' + tokenValue(name) + '</span>';
+        wireCopy(row, 'var(--' + name + ')');
+        displayWrap.appendChild(row);
+      });
+
+      // ---- spacing (gap-*은 spacing-*과 값이 동일해서 별도 표시 안 함) ----
+      var SPACING_STEPS = [4, 6, 8, 10, 12, 14, 16, 18, 20, 28];
+      var spacingWrap = document.getElementById('ix-spacing');
+      SPACING_STEPS.forEach(function (step) {
+        var name = 'spacing-' + step;
+        var row = document.createElement('button');
+        row.type = 'button';
+        row.className = 'ix-spacing-row';
+        row.innerHTML =
+          '<span class="ix-spacing-row__bar" style="width:var(--' + name + ')"></span>' +
+          '<span class="ix-spacing-row__label">--' + name + ' · ' + tokenValue(name) + ' (' + step + 'px)</span>';
+        wireCopy(row, 'var(--' + name + ')');
+        spacingWrap.appendChild(row);
+      });
+
+      // ---- radius ----
+      var RADIUS_STEPS = ['xs', 'sm', 'md', '14', 'lg', 'xl'];
+      var radiusWrap = document.getElementById('ix-radius');
+      RADIUS_STEPS.forEach(function (step) {
+        var name = 'radius-' + step;
+        var box = document.createElement('button');
+        box.type = 'button';
+        box.className = 'ix-box';
+        box.innerHTML =
+          '<span class="ix-box__shape" style="border-radius:var(--' + name + ');background:var(--primary-100)"></span>' +
+          '<span class="ix-box__label">--' + name + '</span>';
+        wireCopy(box, 'var(--' + name + ')');
+        radiusWrap.appendChild(box);
+      });
+
+      // ---- shadow ----
+      var SHADOW_STEPS = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl'];
+      var shadowWrap = document.getElementById('ix-shadow');
+      SHADOW_STEPS.forEach(function (step) {
+        var name = 'shadows-' + step;
+        var box = document.createElement('button');
+        box.type = 'button';
+        box.className = 'ix-box';
+        box.innerHTML =
+          '<span class="ix-box__shape" style="box-shadow:var(--' + name + ');border-color:transparent;border-radius:8px;"></span>' +
+          '<span class="ix-box__label">--' + name + '</span>';
+        wireCopy(box, 'var(--' + name + ')');
+        shadowWrap.appendChild(box);
+      });
+
+      // ============================================================
+      // 컴포넌트 인덱스 — 새 컴포넌트를 추가하면 반드시 이 배열에도 추가해야 노출됨
+      // ============================================================
+      var COMPONENTS = [
+        { file: 'button.html', name: 'Button', desc: '버튼, SNS 로그인 버튼, 로딩 상태' },
+        { file: 'input.html', name: 'Input', desc: '비밀번호/이메일/전화번호/기본 텍스트, 사이즈 3종' },
+        { file: 'textarea.html', name: 'Textarea', desc: '기본/에러/비활성/resize 제어' },
+        { file: 'checkbox.html', name: 'Checkbox / Radio', desc: '체크박스, 라디오' },
+        { file: 'switch.html', name: 'Switch', desc: '토글 스위치 (상태/사이즈)' },
+        { file: 'dropdown.html', name: 'Dropdown', desc: '셀렉트, 커스텀 드롭다운 5종, disabled 항목, 구분선' },
+        { file: 'dropdown-menu.html', name: 'Dropdown Menu', desc: '드롭다운 메뉴, 체크리스트' },
+        { file: 'alert.html', name: 'Alert / Banner', desc: 'info/success/warning/error' },
+        { file: 'toast.html', name: 'Toast', desc: 'info/success/warning/error' },
+        { file: 'badge.html', name: 'Badge / Tag', desc: '색상·크기 변형, 삭제 가능한 태그' },
+        { file: 'card.html', name: 'Card', desc: '기본/가로형/통계/리스트/플레이스홀더/hover 가능형' },
+        { file: 'table.html', name: 'Table', desc: '기본/정렬가능 헤더/빈 상태/로딩/고정헤더/피벗/Grid Table' },
+        { file: 'tabs.html', name: 'Tabs', desc: 'Underline/Pill, disabled 탭' },
+        { file: 'pagination.html', name: 'Pagination', desc: '숫자형/텍스트형/양끝배치 등 7종' },
+        { file: 'modal.html', name: 'Modal', desc: 'sm/md/lg, 폼/테이블, 하단버튼 없는 버전' },
+        { file: 'tooltip.html', name: 'Tooltip', desc: '4방향, JS 없이 동작' },
+        { file: 'accordion.html', name: 'Accordion', desc: '<details>/<summary> 기반, JS 없이 동작' },
+        { file: 'empty-state.html', name: 'Empty State', desc: '기본/검색결과 없음/에러' }
+      ];
+
+      var grid = document.getElementById('ix-grid');
+      var emptyMsg = document.getElementById('ix-empty');
+      var searchMeta = document.getElementById('ix-search-meta');
+
+      COMPONENTS.forEach(function (comp) {
+        var card = document.createElement('article');
+        card.className = 'ix-card';
+        card.dataset.name = (comp.name + ' ' + comp.desc + ' ' + comp.file).toLowerCase();
+
+        var header = document.createElement('div');
+        header.className = 'ix-card__header';
+        header.innerHTML =
+          '<span class="ix-card__title">' + comp.name + '<small>' + comp.desc + '</small></span>' +
+          '<a class="ix-card__open" href="component/' + comp.file + '" target="_blank" rel="noopener">새 창에서 열기 ↗</a>';
+        card.appendChild(header);
+
+        var frameWrap = document.createElement('div');
+        frameWrap.className = 'ix-card__frame-wrap';
+        var iframe = document.createElement('iframe');
+        iframe.src = 'component/' + comp.file;
+        iframe.loading = 'lazy';
+        iframe.title = comp.name + ' 미리보기';
+        frameWrap.appendChild(iframe);
+        card.appendChild(frameWrap);
+
+        grid.appendChild(card);
+      });
+
+      var searchInput = document.getElementById('ix-search');
+      function applyFilter() {
+        var q = searchInput.value.trim().toLowerCase();
+        var visible = 0;
+        Array.prototype.forEach.call(grid.children, function (card) {
+          var match = !q || card.dataset.name.indexOf(q) !== -1;
+          card.classList.toggle('is-hidden', !match);
+          if (match) visible++;
+        });
+        emptyMsg.hidden = visible !== 0;
+        searchMeta.textContent = q
+          ? visible + '개 / 전체 ' + COMPONENTS.length + '개'
+          : '전체 ' + COMPONENTS.length + '개 컴포넌트';
+      }
+      searchInput.addEventListener('input', applyFilter);
+      applyFilter();
+    })();
+  </script>
 </body>
 </html>
