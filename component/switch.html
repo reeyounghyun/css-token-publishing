@@ -33,15 +33,23 @@
     .grid--4 { --cols: 4; }
     .grid--6 { --cols: 6; }
     .grid--8 { --cols: 8; }
+    .class-label {
+      display: block;
+      margin-top: 4px;
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: #98A2B3;
+    }
   </style>
 </head>
 <body>
   <h2>
     <span class="base">component</span>
-    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">    
+    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
     switch
   </h2>
   <div class="grid grid--1" style="max-width: 1300px;">
+    <p class="class-label">label class="toggle [toggle--sm]" &gt; input class="toggle__input" [is-pressed|is-loading] [checked] [disabled]</p>
     <div class="state-wrap">
       <section class="state-group">
         <h3 class="state-group__title">Active: True</h3>
@@ -96,32 +104,44 @@
     </div>
     <div class="custom-toggle grid grid--2" style="gap: 40px;">
       <!-- off (기본) -->
-      <label class="toggle">
-        <input type="checkbox" class="toggle__input" role="switch">
-      </label>
+      <div>
+        <label class="toggle">
+          <input type="checkbox" class="toggle__input" role="switch">
+        </label>
+        <code class="class-label">toggle &gt; toggle__input</code>
+      </div>
       <!-- off (기본) -->
-      <label class="toggle">
-        <input type="checkbox" class="toggle__input" role="switch">
-        <span class="toggle__text">
-          <span class="toggle__title">Remember me</span>
-        </span>
-      </label>
+      <div>
+        <label class="toggle">
+          <input type="checkbox" class="toggle__input" role="switch">
+          <span class="toggle__text">
+            <span class="toggle__title">Remember me</span>
+          </span>
+        </label>
+        <code class="class-label">toggle &gt; toggle__input + toggle__text &gt; toggle__title</code>
+      </div>
       <!-- off (기본) -->
-      <label class="toggle">
-        <input type="checkbox" class="toggle__input" role="switch">
-        <span class="toggle__text">
-          <span class="toggle__title">Remember me</span>
-          <span class="toggle__desc">Save my login details for next time.</span>
-        </span>
-      </label>
+      <div>
+        <label class="toggle">
+          <input type="checkbox" class="toggle__input" role="switch">
+          <span class="toggle__text">
+            <span class="toggle__title">Remember me</span>
+            <span class="toggle__desc">Save my login details for next time.</span>
+          </span>
+        </label>
+        <code class="class-label">toggle &gt; toggle__input + toggle__text &gt; toggle__title, toggle__desc</code>
+      </div>
       <!-- on (checked 예시) -->
-      <label class="toggle">
-        <input type="checkbox" class="toggle__input" role="switch" checked>
-        <span class="toggle__text">
-          <span class="toggle__title">Remember me</span>
-          <span class="toggle__desc">Save my login details for next time.</span>
-        </span>
-      </label>
+      <div>
+        <label class="toggle">
+          <input type="checkbox" class="toggle__input" role="switch" checked>
+          <span class="toggle__text">
+            <span class="toggle__title">Remember me</span>
+            <span class="toggle__desc">Save my login details for next time.</span>
+          </span>
+        </label>
+        <code class="class-label">toggle__input checked</code>
+      </div>
     </div>
   </div>
 </body>

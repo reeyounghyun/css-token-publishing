@@ -36,6 +36,13 @@
       gap: var(--gap-12);
       flex-wrap: wrap;
     }
+    .class-label {
+      display: block;
+      margin-bottom: 8px;
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: #98A2B3;
+    }
   </style>
 </head>
 <body>
@@ -45,6 +52,9 @@
     Modal
   </h2>
 
+  <code class="class-label">
+    기본 모달=modal / 확인·취소=modal / 큰 모달=modal modal--lg / 폼·테이블 모달=modal / 작은 모달=modal modal--sm / 하단버튼 없는 모달=modal(modal__footer 생략)
+  </code>
   <div class="demo-row">
     <button type="button" class="btn btn--primary" data-modal-open="modal-basic">기본 모달</button>
     <button type="button" class="btn btn--default" data-modal-open="modal-confirm">확인/취소 모달</button>

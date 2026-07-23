@@ -32,6 +32,13 @@
     .grid--4 { --cols: 4; }
     .grid--6 { --cols: 6; }
     .grid--8 { --cols: 8; }
+    .class-label {
+      display: block;
+      margin-top: 6px;
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: #98A2B3;
+    }
   </style>
 </head>
 <body>
@@ -42,15 +49,18 @@
   </h2>
   <div class="grid grid--3" style="max-width: 1920px;">
     <!-- 드롭다운_오리지널 -->
-    <select class="select" id="member" aria-label="담당자 선택">
-      <option>Phoenix Baker</option>
-      <option selected>Olivia Rhye</option>
-      <option>Lana Steiner</option>
-      <option>Demi Wilkinson</option>
-      <option>Candice Wu</option>
-      <option>Natali Craig</option>
-      <option>Drew Cano</option>
-    </select>
+    <div>
+      <select class="select" id="member" aria-label="담당자 선택">
+        <option>Phoenix Baker</option>
+        <option selected>Olivia Rhye</option>
+        <option>Lana Steiner</option>
+        <option>Demi Wilkinson</option>
+        <option>Candice Wu</option>
+        <option>Natali Craig</option>
+        <option>Drew Cano</option>
+      </select>
+      <code class="class-label">select (네이티브)</code>
+    </div>
     <!-- 드롭다운_커스탐1 -->
     <div class="dropdown-custom" data-dropdown-custom>
         <button type="button" class="dropdown__trigger" aria-expanded="false">
@@ -68,6 +78,7 @@
           <li class="dropdown__item" role="option">Natali Craig</li>
           <li class="dropdown__item" role="option">Drew Cano</li>
         </ul>
+        <code class="class-label">dropdown-custom[data-dropdown-custom] &gt; dropdown__trigger, dropdown__list &gt; dropdown__item</code>
     </div>
     <!-- 드롭다운_커스텀2_아이콘 -->
     <div class="dropdown-custom" data-dropdown-custom>
@@ -92,6 +103,7 @@
           <li class="dropdown__item" role="option" aria-disabled="true">Natali Craig (휴직중)</li>
           <li class="dropdown__item" role="option">Drew Cano</li>
         </ul>
+        <code class="class-label">dropdown__divider + dropdown__item[aria-disabled="true"]</code>
     </div>
     <!-- 드롭다운_커스텀3_이미지 -->
     <div class="dropdown-custom" data-dropdown-custom>
@@ -113,6 +125,7 @@
           <li class="dropdown__item" role="option">Natali Craig</li>
           <li class="dropdown__item" role="option">Drew Cano</li>
         </ul>
+        <code class="class-label">dropdown__avatar (이미지)</code>
     </div>
     <!-- 드롭다운_커스텀4_상태 -->
     <div class="dropdown-custom" data-dropdown-custom>
@@ -136,6 +149,7 @@
         <li class="dropdown__item" role="option">Natali Craig</li>
         <li class="dropdown__item" role="option">Drew Cano</li>
       </ul>
+      <code class="class-label">label-item &gt; svg(상태점) + dropdown__value</code>
     </div>
    <!-- 드롭다운_커스텀5_옵션+아이콘 -->
     <div class="dropdown-custom" data-dropdown-custom>
@@ -194,6 +208,7 @@
           Drew Cano
         </li>
       </ul>
+      <code class="class-label">dropdown__item-icon (옵션 안에 아이콘 포함)</code>
     </div>
   </div>
 

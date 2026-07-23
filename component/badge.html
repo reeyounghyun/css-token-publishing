@@ -51,10 +51,22 @@
 
   <h3 style="margin-bottom: 12px;">색상 변형</h3>
   <div class="demo-row">
-    <span class="badge badge--default">Default</span>
-    <span class="badge badge--primary">Active</span>
-    <span class="badge badge--error">Error</span>
-    <span class="badge badge--outline">Outline</span>
+    <div>
+      <span class="badge badge--default">Default</span>
+      <code class="class-label">badge badge--default</code>
+    </div>
+    <div>
+      <span class="badge badge--primary">Active</span>
+      <code class="class-label">badge badge--primary</code>
+    </div>
+    <div>
+      <span class="badge badge--error">Error</span>
+      <code class="class-label">badge badge--error</code>
+    </div>
+    <div>
+      <span class="badge badge--outline">Outline</span>
+      <code class="class-label">badge badge--outline</code>
+    </div>
   </div>
 
   <h3 style="margin: 32px 0 12px;">크기 변형</h3>
@@ -75,12 +87,22 @@
 
   <h3 style="margin: 32px 0 12px;">점 표시 (상태)</h3>
   <div class="demo-row">
-    <span class="badge badge--primary"><span class="badge__dot"></span>Active</span>
-    <span class="badge badge--default"><span class="badge__dot"></span>Invited</span>
-    <span class="badge badge--error"><span class="badge__dot"></span>Suspended</span>
+    <div>
+      <span class="badge badge--primary"><span class="badge__dot"></span>Active</span>
+      <code class="class-label">badge badge--primary &gt; badge__dot</code>
+    </div>
+    <div>
+      <span class="badge badge--default"><span class="badge__dot"></span>Invited</span>
+      <code class="class-label">badge badge--default &gt; badge__dot</code>
+    </div>
+    <div>
+      <span class="badge badge--error"><span class="badge__dot"></span>Suspended</span>
+      <code class="class-label">badge badge--error &gt; badge__dot</code>
+    </div>
   </div>
 
   <h3 style="margin: 32px 0 12px;">삭제 가능한 태그 (필터 chip)</h3>
+  <code class="class-label" style="margin-bottom: 8px;">badge badge--outline &gt; badge__remove (data-tag-remove)</code>
   <div class="demo-row" id="tag-demo">
     <span class="badge badge--outline">디자인
       <button type="button" class="badge__remove" aria-label="삭제" data-tag-remove>

@@ -33,6 +33,16 @@
       gap: var(--gap-12);
       max-width: 280px;
     }
+    .class-label {
+      margin-left: auto;
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: #98A2B3;
+    }
+    .group .check-item {
+      display: flex;
+      align-items: center;
+    }
   </style>
 </head>
 <body>
@@ -43,42 +53,52 @@
   </h2>
 
   <h3 style="margin-bottom: 12px;">Checkbox</h3>
+  <p class="class-label" style="margin: 0 0 8px;">class는 항상 "checkbox" 고정, 상태는 checked/disabled 속성으로</p>
   <div class="group">
     <label class="check-item">
       <input type="checkbox" class="checkbox">
       <span class="check-item__text">기본 (선택 안 됨)</span>
+      <code class="class-label">checkbox</code>
     </label>
     <label class="check-item">
       <input type="checkbox" class="checkbox" checked>
       <span class="check-item__text">선택됨</span>
+      <code class="class-label">checkbox checked</code>
     </label>
     <label class="check-item">
       <input type="checkbox" class="checkbox" disabled>
       <span class="check-item__text">비활성</span>
+      <code class="class-label">checkbox disabled</code>
     </label>
     <label class="check-item">
       <input type="checkbox" class="checkbox" checked disabled>
       <span class="check-item__text">선택됨 + 비활성</span>
+      <code class="class-label">checkbox checked disabled</code>
     </label>
   </div>
 
   <h3 style="margin: 32px 0 12px;">Radio</h3>
+  <p class="class-label" style="margin: 0 0 8px;">class는 항상 "radio" 고정, 상태는 checked/disabled 속성으로</p>
   <div class="group">
     <label class="check-item">
       <input type="radio" name="plan" class="radio">
       <span class="check-item__text">무료 플랜</span>
+      <code class="class-label">radio</code>
     </label>
     <label class="check-item">
       <input type="radio" name="plan" class="radio" checked>
       <span class="check-item__text">프로 플랜</span>
+      <code class="class-label">radio checked</code>
     </label>
     <label class="check-item">
       <input type="radio" name="plan" class="radio" disabled>
       <span class="check-item__text">엔터프라이즈 (문의 필요)</span>
+      <code class="class-label">radio disabled</code>
     </label>
     <label class="check-item">
       <input type="radio" name="plan-disabled" class="radio" checked disabled>
       <span class="check-item__text">선택됨 + 비활성</span>
+      <code class="class-label">radio checked disabled</code>
     </label>
   </div>
 </body>

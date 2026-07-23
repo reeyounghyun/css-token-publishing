@@ -33,6 +33,13 @@
     .grid--4 { --cols: 4; }
     .grid--6 { --cols: 6; }
     .grid--8 { --cols: 8; }
+    .class-label {
+      display: block;
+      margin-top: 8px;
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: #98A2B3;
+    }
   </style>
 </head>
 <body>
@@ -60,6 +67,7 @@
           <li role="none"><button class="dropdown__link" role="menuitem" type="button">Log out</button></li>
         </ul>
       </nav>
+      <code class="class-label">menu-item &gt; dropdown__menu &gt; dropdown__group &gt; dropdown__link</code>
     </div>
     <div class="menu-item nav-2">
       <nav class="dropdown__menu" aria-label="사용자 메뉴">
@@ -185,6 +193,7 @@
           </li>
         </ul>
       </nav>
+      <code class="class-label">dropdown__link &gt; svg(아이콘) + 텍스트</code>
     </div>
     <div class="checklist nav-3">
       <ul class="checklist__group">
@@ -200,6 +209,7 @@
         <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
         <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
       </ul>
+      <code class="class-label">checklist &gt; checklist__group &gt; checklist__item &gt; checkbox</code>
     </div>
     <div class="menu-item nav-4">
       <nav class="dropdown__menu" aria-label="사용자 메뉴">
@@ -335,6 +345,7 @@
           </li>
         </ul>
       </nav>
+      <code class="class-label">dropdown__menu &gt; dropdown__profile + dropdown__group(아이콘 포함)</code>
     </div>
     <div class="checklist nav-5" >
       <nav class="dropdown__menu" style="border: 1px solid transparent;" aria-label="사용자 메뉴">
@@ -362,6 +373,7 @@
           <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
         </ul>
       </nav>
+      <code class="class-label">checklist &gt; dropdown__profile + checklist__group</code>
     </div>
     <div class="checklist nav-6">
       <nav class="dropdown__menu" style="border: 1px solid transparent;" aria-label="사용자 메뉴">
@@ -384,6 +396,7 @@
           <li><label class="checklist__item"><input type="checkbox" class="checkbox"><span>List item</span></label></li>
         </ul>
       </nav>
+      <code class="class-label">checklist &gt; dropdown__userinfo(아바타 없음) + checklist__group</code>
     </div>
   </div>
 </body>

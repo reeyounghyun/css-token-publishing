@@ -29,6 +29,13 @@
       font-weight: 500;
       color: var(--gray-800);
     }
+    .class-label {
+      display: block;
+      margin-bottom: 8px;
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: #98A2B3;
+    }
   </style>
 </head>
 <body>
@@ -39,6 +46,7 @@
   </h2>
 
   <h2 style="margin-top: 48px;">Empty state</h2>
+  <code class="class-label">table &gt; table__empty</code>
   <div class="table-wrap" style="max-width: 900px;">
     <table class="table">
       <thead>
@@ -58,6 +66,7 @@
     </table>
   </div>
 
+  <code class="class-label" style="margin: 24px 0 8px;">table &gt; table__cell-title, table__cell-sub, table__cell--center</code>
   <div class="table-toolbar" style="max-width: 900px;">
     <span class="table-toolbar__title">Team members</span>
     <button type="button" class="btn btn--primary btn--sm">Add member</button>
@@ -120,6 +129,7 @@
   </div>
 
   <h2 style="margin-top: 48px;">정렬 가능한 헤더</h2>
+  <code class="class-label">th[aria-sort="ascending|descending|none"] &gt; table__sort</code>
   <div class="table-wrap" style="max-width: 900px;">
     <table class="table">
       <thead>
@@ -153,6 +163,7 @@
   </div>
 
   <h2 style="margin-top: 48px;">로딩 상태</h2>
+  <code class="class-label">table__loading &gt; table__loading-spinner</code>
   <div class="table-wrap" style="max-width: 900px;">
     <table class="table">
       <thead>
@@ -173,7 +184,7 @@
   </div>
 
   <h2 style="margin-top: 48px;">고정 헤더 (세로 스크롤 시 헤더 고정)</h2>
-  <code style="display:block;margin-bottom:8px;font-family:ui-monospace, monospace;font-size:11px;color:#98A2B3;">table-wrap table-wrap--scroll-y</code>
+  <code class="class-label">table-wrap table-wrap--scroll-y</code>
   <div class="table-wrap table-wrap--scroll-y" style="max-width: 900px;">
     <table class="table">
       <thead>
@@ -196,6 +207,7 @@
   </div>
 
   <h2 style="margin-top: 48px;">피벗 테이블 (첫 컬럼 고정 + 가로 스크롤)</h2>
+  <code class="class-label">table table--pivot &gt; table__row--total</code>
   <div class="table-toolbar" style="max-width: 900px;">
     <span class="table-toolbar__title">제품별 월별 매출 (백만원)</span>
   </div>
@@ -254,6 +266,7 @@
   </div>
 
   <h2 style="margin-top: 48px;">Grid Table (table 태그 없이 div + CSS Grid)</h2>
+  <code class="class-label">grid-table &gt; grid-table__row(--header), grid-table__cell(-title|-sub|--center)</code>
   <div class="table-toolbar" style="max-width: 900px;">
     <span class="table-toolbar__title">Team members</span>
     <button type="button" class="btn btn--primary btn--sm">Add member</button>
@@ -315,6 +328,7 @@
   </div>
 
   <h2 style="margin-top: 48px;">Grid Table 피벗형 (첫 컬럼 고정 + 가로 스크롤, table 태그 없음)</h2>
+  <code class="class-label">grid-table grid-table--pivot &gt; grid-table__row--total</code>
   <div class="table-toolbar" style="max-width: 500px;">
     <span class="table-toolbar__title">제품별 월별 매출 (백만원)</span>
   </div>

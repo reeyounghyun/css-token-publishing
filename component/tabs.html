@@ -27,6 +27,13 @@
       font-weight: 500;
       color: var(--gray-800);
     }
+    .class-label {
+      display: block;
+      margin-bottom: 8px;
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: #98A2B3;
+    }
   </style>
 </head>
 <body>
@@ -37,6 +44,7 @@
   </h2>
 
   <h3 style="margin-bottom: 12px;">기본 (Underline)</h3>
+  <code class="class-label">tabs &gt; tabs__list &gt; tabs__tab[aria-selected][disabled]</code>
   <div class="tabs" data-tabs style="max-width: 480px;">
     <div class="tabs__list" role="tablist">
       <button type="button" class="tabs__tab" role="tab" id="tab-overview" aria-selected="true" data-tab="overview">개요</button>
@@ -50,6 +58,7 @@
   </div>
 
   <h3 style="margin: 32px 0 12px;">Pill (세그먼트 컨트롤)</h3>
+  <code class="class-label">tabs tabs--pill</code>
   <div class="tabs tabs--pill" data-tabs style="max-width: 480px;">
     <div class="tabs__list" role="tablist">
       <button type="button" class="tabs__tab" role="tab" aria-selected="true" data-tab="monthly">월간</button>
