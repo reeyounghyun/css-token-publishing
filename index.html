@@ -14,6 +14,9 @@
   -->
   <style>
     * { box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       margin: 0;
       font-family: "Pretendard", system-ui, -apple-system, "Malgun Gothic", sans-serif;
@@ -21,12 +24,11 @@
       color: var(--gray-900);
     }
 
-    #ix {
+    .ix-header {
       max-width: 1400px;
       margin: 0 auto;
-      padding: var(--spacing-28) var(--spacing-20) 80px;
+      padding: var(--spacing-28) var(--spacing-20) 0;
     }
-
     .ix-header h1 {
       font-size: var(--text-32);
       font-weight: var(--weight-bold);
@@ -42,9 +44,143 @@
       padding: 2px 6px;
       border-radius: var(--radius-xs);
     }
+    .ix-sidebar-toggle {
+      display: none;
+      align-items: center;
+      gap: var(--spacing-6);
+      padding: var(--spacing-8) var(--spacing-14);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-md);
+      background: #fff;
+      color: var(--gray-700);
+      font-size: var(--text-14);
+      cursor: pointer;
+    }
+    .ix-sidebar-toggle:hover {
+      background: var(--gray-50);
+    }
+
+    /* ---- 레이아웃: 사이드바 + 본문 ---- */
+    #ix-shell {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-28);
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: var(--spacing-28) var(--spacing-20) 80px;
+    }
+    #ix-sidebar {
+      flex: 0 0 240px;
+      position: sticky;
+      top: var(--spacing-20);
+      max-height: calc(100vh - var(--spacing-40, 40px));
+      overflow-y: auto;
+    }
+    #ix-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .ix-nav-group {
+      margin-bottom: var(--spacing-16);
+    }
+    .ix-nav-group__label {
+      display: block;
+      padding: var(--spacing-6) var(--spacing-8);
+      font-size: var(--text-14);
+      font-weight: var(--weight-Semibold);
+      color: var(--gray-900);
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+    }
+    a.ix-nav-group__label:hover {
+      background: var(--gray-100);
+    }
+    .ix-nav-group__label.is-placeholder {
+      color: var(--gray-400);
+      cursor: default;
+    }
+    .ix-nav-group__row {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .ix-nav-group__row .ix-nav-group__label {
+      flex: 1;
+      min-width: 0;
+    }
+    .ix-nav-toggle {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: 0;
+      border-radius: var(--radius-sm);
+      color: var(--gray-700);
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform var(--transition-fast), background var(--transition-fast);
+    }
+    .ix-nav-toggle:hover {
+      background: var(--gray-100);
+      color: var(--gray-700);
+    }
+    .ix-nav-toggle[aria-expanded="false"] {
+      transform: rotate(-90deg);
+    }
+    .ix-nav-group.is-collapsed .ix-nav-sublist {
+      display: none;
+    }
+    .ix-nav-sublist {
+      list-style: none;
+      margin: var(--spacing-4) 0 0;
+      padding: 0 0 0 var(--spacing-8);
+      border-left: 1px solid var(--gray-200);
+    }
+    .ix-nav-sublist li {
+      margin: 0;
+    }
+    .ix-nav-sublist a {
+      display: block;
+      padding: var(--spacing-4) var(--spacing-8);
+      font-size: var(--text-14);
+      color: var(--gray-600);
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+    }
+    .ix-nav-sublist a:hover {
+      background: var(--gray-100);
+      color: var(--gray-900);
+    }
+    .ix-nav-sublist a.is-active {
+      background: var(--primary-50);
+      color: var(--primary-700);
+      font-weight: var(--weight-medium);
+    }
+    .ix-nav-group__label.is-active {
+      background: var(--primary-50);
+      color: var(--primary-700);
+    }
+    .ix-nav-subgroup {
+      margin-top: var(--spacing-8);
+      padding: 0 var(--spacing-8) var(--spacing-4);
+      font-size: 11px;
+      font-family: ui-monospace, monospace;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
 
     .ix-section {
       margin-top: 56px;
+      scroll-margin-top: var(--spacing-20);
+    }
+    .ix-section:first-child {
+      margin-top: 0;
     }
     .ix-section__title {
       font-size: var(--text-24);
@@ -62,6 +198,18 @@
       font-weight: var(--weight-Semibold);
       margin: var(--spacing-28) 0 var(--spacing-12);
       color: var(--gray-700);
+      scroll-margin-top: var(--spacing-20);
+    }
+
+    /* ---- 준비중 플레이스홀더 ---- */
+    .ix-placeholder {
+      padding: 48px;
+      text-align: center;
+      border: 1px dashed var(--gray-300);
+      border-radius: var(--radius-lg);
+      background: #fff;
+      color: var(--gray-400);
+      font-size: var(--text-14);
     }
 
     /* ---- 토큰 카탈로그 공통 ---- */
@@ -224,6 +372,74 @@
     }
     .ix-box.is-copied .ix-box__label { color: var(--primary-600); }
 
+    /* ---- transition ---- */
+    .ix-transition-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: var(--spacing-16);
+    }
+    .ix-transition-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-10);
+      padding: var(--spacing-16);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      background: #fff;
+      cursor: pointer;
+      font: inherit;
+    }
+    .ix-transition-card__demo {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--primary-500);
+    }
+    .ix-transition-card:hover .ix-transition-card__demo {
+      transform: translateY(-10px);
+      background: var(--primary-700);
+    }
+    .ix-transition-card__label {
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: var(--gray-500);
+      text-align: center;
+    }
+    .ix-transition-card.is-copied .ix-transition-card__label { color: var(--primary-600); }
+
+    /* ---- z-index ---- */
+    .ix-zindex-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-8);
+    }
+    .ix-zindex-row {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-16);
+      background: transparent;
+      border: 0;
+      padding: var(--spacing-4) 0;
+      cursor: pointer;
+      font: inherit;
+      text-align: left;
+      width: 100%;
+    }
+    .ix-zindex-row:focus-visible { outline: 2px solid var(--primary-600); }
+    .ix-zindex-row__bar {
+      height: 12px;
+      background: var(--primary-500);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .ix-zindex-row__label {
+      font-family: ui-monospace, monospace;
+      font-size: 12px;
+      color: var(--gray-600);
+    }
+    .ix-zindex-row.is-copied .ix-zindex-row__label { color: var(--primary-600); }
+
     /* ---- 컴포넌트 검색/그리드 ---- */
     .ix-search {
       width: 100%;
@@ -259,6 +475,7 @@
       border-radius: var(--radius-lg);
       background: #fff;
       overflow: hidden;
+      scroll-margin-top: var(--spacing-20);
     }
     .ix-card__header {
       display: flex;
@@ -300,13 +517,15 @@
       height: 360px;
       overflow: auto;
       background: var(--gray-50);
+      padding: var(--spacing-16);
     }
     .ix-card iframe {
       width: 100%;
       height: 900px;
-      border: 0;
       display: block;
       background: #fff;
+      border: 1px dashed var(--gray-300);
+      border-radius: var(--radius-md);
     }
     .ix-card.is-hidden { display: none; }
 
@@ -315,55 +534,247 @@
       text-align: center;
       color: var(--gray-400);
     }
+
+    /* ---- 반응형 ---- */
+    @media (max-width: 1024px) {
+      #ix-sidebar {
+        flex-basis: 200px;
+      }
+      .ix-component-grid {
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .ix-header {
+        padding: 76px var(--spacing-16) 0;
+      }
+      #ix-shell {
+        flex-direction: column;
+        padding: var(--spacing-20) var(--spacing-16) 56px;
+      }
+      .ix-sidebar-toggle {
+        display: flex;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 40;
+        border-radius: 0;
+        border: 0;
+        border-bottom: 1px solid var(--gray-200);
+        background: var(--gray-50);
+      }
+      #ix-sidebar {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 30;
+        width: 100%;
+        flex-basis: auto;
+        max-height: none;
+        margin: 0;
+        padding: 76px var(--spacing-20) var(--spacing-20);
+        background: var(--gray-50);
+        border-bottom: 0;
+        overflow-y: auto;
+      }
+      #ix-sidebar.is-open {
+        display: block;
+      }
+      #ix-main {
+        width: 100%;
+      }
+      .ix-component-grid {
+        grid-template-columns: 1fr;
+      }
+      .ix-search {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ix-header h1 {
+        font-size: var(--text-24);
+      }
+      .ix-swatch-grid {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      }
+      .ix-box-grid,
+      .ix-transition-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      }
+      .ix-card__frame-wrap {
+        height: 280px;
+      }
+      .ix-type-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-4);
+      }
+      .ix-type-row__meta {
+        width: auto;
+        text-align: left;
+      }
+    }
   </style>
 </head>
 <body>
-  <div id="ix">
-    <header class="ix-header">
-      <h1>css-token-publishing</h1>
-      <p>퍼블리싱 컴포넌트 창고. <code>tokens.css</code>의 값과 실제 컴포넌트 상태를 한 페이지에서 확인하고, 필요한 코드를 복사해서 새 프로젝트에 바로 붙여넣으세요.</p>
-    </header>
+  <header class="ix-header">
+    <h1>css-token-publishing</h1>
+    <p>퍼블리싱 컴포넌트 창고. <code>tokens.css</code>의 값과 실제 컴포넌트 상태를 한 페이지에서 확인하고, 필요한 코드를 복사해서 새 프로젝트에 바로 붙여넣으세요.</p>
+  </header>
 
-    <section class="ix-section">
-      <h2 class="ix-section__title">토큰 카탈로그</h2>
-      <p class="ix-section__desc">클릭하면 <code>var(--토큰명)</code>이 클립보드에 복사됩니다. tokens.css의 실제 값을 그대로 읽어와서 보여줍니다.</p>
+  <div id="ix-shell">
+    <button type="button" id="ix-sidebar-toggle" class="ix-sidebar-toggle" aria-expanded="false" aria-controls="ix-sidebar">☰ 메뉴</button>
+    <nav id="ix-sidebar" aria-label="문서 목차">
+      <div class="ix-nav-group">
+        <a class="ix-nav-group__label is-placeholder" href="#section-intro">1. 시스템 소개</a>
+      </div>
 
-      <h3 class="ix-subtitle">색상 — primitive</h3>
-      <div id="ix-color-primitive" class="ix-swatch-grid"></div>
+      <div class="ix-nav-group" data-nav-group>
+        <div class="ix-nav-group__row">
+          <a class="ix-nav-group__label" href="#section-tokens">2. Design Tokens</a>
+          <button type="button" class="ix-nav-toggle" aria-expanded="true" aria-label="Design Tokens 하위 목록 접기/펼치기">▾</button>
+        </div>
+        <ul class="ix-nav-sublist">
+          <li><a href="#tokens-color">Color</a></li>
+          <li><a href="#tokens-typo">Typography</a></li>
+          <li><a href="#tokens-spacing">Spacing</a></li>
+          <li><a href="#tokens-radius">Radius</a></li>
+          <li><a href="#tokens-shadow">Shadow</a></li>
+          <li><a href="#tokens-transition">Transition</a></li>
+          <li><a href="#tokens-zindex">Z-Index</a></li>
+          <li><a href="#tokens-icon">Icon Size</a></li>
+          <li><a href="#tokens-weight">Font Weight</a></li>
+        </ul>
+      </div>
 
-      <h3 class="ix-subtitle">색상 — semantic (컴포넌트는 이것만 참조)</h3>
-      <div id="ix-color-semantic"></div>
+      <div class="ix-nav-group">
+        <a class="ix-nav-group__label is-placeholder" href="#section-principles">3. 공통 원칙</a>
+      </div>
 
-      <h3 class="ix-subtitle">타이포 — 본문 (text-*)</h3>
-      <div id="ix-type-text" class="ix-type-list"></div>
+      <div class="ix-nav-group" data-nav-group>
+        <div class="ix-nav-group__row">
+          <a class="ix-nav-group__label" href="#section-components">4. 컴포넌트 목록</a>
+          <button type="button" class="ix-nav-toggle" aria-expanded="true" aria-label="컴포넌트 목록 하위 목록 접기/펼치기">▾</button>
+        </div>
+        <ul class="ix-nav-sublist" id="ix-nav-components"></ul>
+      </div>
 
-      <h3 class="ix-subtitle">타이포 — 제목 (display-*)</h3>
-      <div id="ix-type-display" class="ix-type-list"></div>
+      <div class="ix-nav-group">
+        <a class="ix-nav-group__label is-placeholder" href="#section-utilities">5. Utilities</a>
+      </div>
 
-      <h3 class="ix-subtitle">spacing</h3>
-      <div id="ix-spacing" class="ix-spacing-list"></div>
+      <div class="ix-nav-group">
+        <a class="ix-nav-group__label is-placeholder" href="#section-patterns">6. Patterns</a>
+      </div>
+    </nav>
 
-      <h3 class="ix-subtitle">radius</h3>
-      <div id="ix-radius" class="ix-box-grid"></div>
+    <main id="ix-main">
+      <section class="ix-section" id="section-intro">
+        <h2 class="ix-section__title">시스템 소개</h2>
+        <p class="ix-placeholder">준비중 — 이 문서가 무엇을 위한 것인지에 대한 소개가 여기 들어갈 예정입니다.</p>
+      </section>
 
-      <h3 class="ix-subtitle">shadow</h3>
-      <div id="ix-shadow" class="ix-box-grid"></div>
-    </section>
+      <section class="ix-section" id="section-tokens">
+        <h2 class="ix-section__title">Design Tokens</h2>
+        <p class="ix-section__desc">클릭하면 <code>var(--토큰명)</code>이 클립보드에 복사됩니다. tokens.css의 실제 값을 그대로 읽어와서 보여줍니다.</p>
 
-    <section class="ix-section">
-      <h2 class="ix-section__title">컴포넌트</h2>
-      <p class="ix-section__desc">각 카드는 실제 <code>component/*.html</code>을 그대로 띄운 것입니다 (iframe). 스크롤해서 전체 상태/변형을 확인하세요.</p>
+        <h3 class="ix-subtitle" id="tokens-color">색상 — primitive</h3>
+        <div id="ix-color-primitive" class="ix-swatch-grid"></div>
 
-      <input type="search" id="ix-search" class="ix-search" placeholder="컴포넌트 검색 (예: button, 드롭다운, badge)" aria-label="컴포넌트 검색">
-      <div class="ix-search-meta" id="ix-search-meta"></div>
+        <h3 class="ix-subtitle">색상 — semantic (컴포넌트는 이것만 참조)</h3>
+        <div id="ix-color-semantic"></div>
 
-      <div class="ix-component-grid" id="ix-grid"></div>
-      <p class="ix-empty" id="ix-empty" hidden>검색 결과가 없습니다.</p>
-    </section>
+        <h3 class="ix-subtitle" id="tokens-typo">타이포 — 본문 (text-*)</h3>
+        <div id="ix-type-text" class="ix-type-list"></div>
+
+        <h3 class="ix-subtitle">타이포 — 제목 (display-*)</h3>
+        <div id="ix-type-display" class="ix-type-list"></div>
+
+        <h3 class="ix-subtitle" id="tokens-spacing">spacing</h3>
+        <div id="ix-spacing" class="ix-spacing-list"></div>
+
+        <h3 class="ix-subtitle" id="tokens-radius">radius</h3>
+        <div id="ix-radius" class="ix-box-grid"></div>
+
+        <h3 class="ix-subtitle" id="tokens-shadow">shadow</h3>
+        <div id="ix-shadow" class="ix-box-grid"></div>
+
+        <h3 class="ix-subtitle" id="tokens-transition">transition</h3>
+        <div id="ix-transition" class="ix-transition-grid"></div>
+
+        <h3 class="ix-subtitle" id="tokens-zindex">z-index</h3>
+        <div id="ix-zindex" class="ix-zindex-list"></div>
+
+        <h3 class="ix-subtitle" id="tokens-icon">icon size</h3>
+        <div id="ix-icon" class="ix-box-grid"></div>
+
+        <h3 class="ix-subtitle" id="tokens-weight">font weight</h3>
+        <div id="ix-weight" class="ix-type-list"></div>
+      </section>
+
+      <section class="ix-section" id="section-principles">
+        <h2 class="ix-section__title">공통 원칙</h2>
+        <p class="ix-placeholder">준비중 — 전역 Do·Don't, BEM 네이밍, 접근성 기본 원칙이 여기 정리될 예정입니다.</p>
+      </section>
+
+      <section class="ix-section" id="section-components">
+        <h2 class="ix-section__title">컴포넌트</h2>
+        <p class="ix-section__desc">각 카드는 실제 <code>component/*.html</code>을 그대로 띄운 것입니다 (iframe). 스크롤해서 전체 상태/변형을 확인하세요.</p>
+
+        <input type="search" id="ix-search" class="ix-search" placeholder="컴포넌트 검색 (예: button, 드롭다운, badge)" aria-label="컴포넌트 검색">
+        <div class="ix-search-meta" id="ix-search-meta"></div>
+
+        <div class="ix-component-grid" id="ix-grid"></div>
+        <p class="ix-empty" id="ix-empty" hidden>검색 결과가 없습니다.</p>
+      </section>
+
+      <section class="ix-section" id="section-utilities">
+        <h2 class="ix-section__title">Utilities</h2>
+        <p class="ix-placeholder">준비중 — 개발자가 자주 찾는 유틸리티 클래스와 적용된 토큰을 렌더링 결과와 함께 정리할 예정입니다.</p>
+      </section>
+
+      <section class="ix-section" id="section-patterns">
+        <h2 class="ix-section__title">Patterns</h2>
+        <p class="ix-placeholder">준비중 — Search + Table, Dashboard, Login 등 여러 컴포넌트를 조합한 실무 화면 패턴이 여기 정리될 예정입니다.</p>
+      </section>
+    </main>
   </div>
 
   <script>
     (function () {
+      // ---- 태블릿/모바일: 사이드바 햄버거로 전체화면 메뉴 열고 닫기 ----
+      var sidebarToggle = document.getElementById('ix-sidebar-toggle');
+      var sidebarEl = document.getElementById('ix-sidebar');
+      if (sidebarToggle && sidebarEl) {
+        function setSidebarOpen(open) {
+          sidebarEl.classList.toggle('is-open', open);
+          sidebarToggle.setAttribute('aria-expanded', String(open));
+          sidebarToggle.textContent = open ? '✕ 닫기' : '☰ 메뉴';
+          document.body.style.overflow = open ? 'hidden' : '';
+        }
+        sidebarToggle.addEventListener('click', function () {
+          setSidebarOpen(!sidebarEl.classList.contains('is-open'));
+        });
+        sidebarEl.addEventListener('click', function (e) {
+          if (e.target.tagName === 'A' && window.matchMedia('(max-width: 900px)').matches) {
+            setSidebarOpen(false);
+          }
+        });
+      }
+
+      // ---- 사이드바 하위 목록 접기/펼치기 ----
+      document.querySelectorAll('.ix-nav-toggle').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var group = btn.closest('.ix-nav-group');
+          var expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!expanded));
+          group.classList.toggle('is-collapsed', expanded);
+        });
+      });
+
       var root = document.documentElement;
       function tokenValue(name) {
         return getComputedStyle(root).getPropertyValue('--' + name).trim();
@@ -514,37 +925,107 @@
         shadowWrap.appendChild(box);
       });
 
+      // ---- transition ----
+      var TRANSITION_STEPS = ['fast', 'normal', 'slow'];
+      var transitionWrap = document.getElementById('ix-transition');
+      TRANSITION_STEPS.forEach(function (step) {
+        var name = 'transition-' + step;
+        var card = document.createElement('button');
+        card.type = 'button';
+        card.className = 'ix-transition-card';
+        card.innerHTML =
+          '<span class="ix-transition-card__demo" style="transition:var(--' + name + ')"></span>' +
+          '<span class="ix-transition-card__label">--' + name + ' · ' + tokenValue(name) + '<br>(hover해서 속도 비교)</span>';
+        wireCopy(card, 'var(--' + name + ')');
+        transitionWrap.appendChild(card);
+      });
+
+      // ---- z-index ----
+      var ZINDEX_STEPS = ['dropdown', 'modal', 'toast', 'tooltip'];
+      var zindexWrap = document.getElementById('ix-zindex');
+      ZINDEX_STEPS.forEach(function (step) {
+        var name = 'z-' + step;
+        var value = parseFloat(tokenValue(name)) || 1;
+        var barWidth = Math.round(Math.log10(value) * 40);
+        var row = document.createElement('button');
+        row.type = 'button';
+        row.className = 'ix-zindex-row';
+        row.innerHTML =
+          '<span class="ix-zindex-row__bar" style="width:' + barWidth + 'px"></span>' +
+          '<span class="ix-zindex-row__label">--' + name + ' · ' + tokenValue(name) + '</span>';
+        wireCopy(row, 'var(--' + name + ')');
+        zindexWrap.appendChild(row);
+      });
+
+      // ---- icon size ----
+      var ICON_STEPS = [20, 22];
+      var iconWrap = document.getElementById('ix-icon');
+      ICON_STEPS.forEach(function (step) {
+        var name = 'icon-' + step;
+        var box = document.createElement('button');
+        box.type = 'button';
+        box.className = 'ix-box';
+        box.innerHTML =
+          '<span class="ix-box__shape" style="width:var(--' + name + ');height:var(--' + name + ');background:var(--primary-500);border-radius:var(--radius-xs);"></span>' +
+          '<span class="ix-box__label">--' + name + '</span>';
+        wireCopy(box, 'var(--' + name + ')');
+        iconWrap.appendChild(box);
+      });
+
+      // ---- font weight ----
+      var WEIGHT_STEPS = ['regular', 'medium', 'Semibold', 'bold'];
+      var weightWrap = document.getElementById('ix-weight');
+      WEIGHT_STEPS.forEach(function (step) {
+        var name = 'weight-' + step;
+        var row = document.createElement('button');
+        row.type = 'button';
+        row.className = 'ix-type-row';
+        row.innerHTML =
+          '<span class="ix-type-row__sample" style="font-weight:var(--' + name + ')">Ag 안녕하세요</span>' +
+          '<span class="ix-type-row__meta">--' + name + ' · ' + tokenValue(name) + '</span>';
+        wireCopy(row, 'var(--' + name + ')');
+        weightWrap.appendChild(row);
+      });
+
       // ============================================================
       // 컴포넌트 인덱스 — 새 컴포넌트를 추가하면 반드시 이 배열에도 추가해야 노출됨
+      // category는 TODO2.md의 IA(2-2 표)를 그대로 따름 — 사이드바 하위 목록도 여기서 같이 생성됨
       // ============================================================
       var COMPONENTS = [
-        { file: 'button.html', name: 'Button', desc: '버튼, SNS 로그인 버튼, 로딩 상태' },
-        { file: 'input.html', name: 'Input', desc: '비밀번호/이메일/전화번호/기본 텍스트, 사이즈 3종' },
-        { file: 'textarea.html', name: 'Textarea', desc: '기본/에러/비활성/resize 제어' },
-        { file: 'checkbox.html', name: 'Checkbox / Radio', desc: '체크박스, 라디오' },
-        { file: 'switch.html', name: 'Switch', desc: '토글 스위치 (상태/사이즈)' },
-        { file: 'dropdown.html', name: 'Dropdown', desc: '셀렉트, 커스텀 드롭다운 5종, disabled 항목, 구분선' },
-        { file: 'dropdown-menu.html', name: 'Dropdown Menu', desc: '드롭다운 메뉴, 체크리스트' },
-        { file: 'alert.html', name: 'Alert / Banner', desc: 'info/success/warning/error' },
-        { file: 'toast.html', name: 'Toast', desc: 'info/success/warning/error' },
-        { file: 'badge.html', name: 'Badge / Tag', desc: '색상·크기 변형, 삭제 가능한 태그' },
-        { file: 'card.html', name: 'Card', desc: '기본/가로형/통계/리스트/플레이스홀더/hover 가능형' },
-        { file: 'table.html', name: 'Table', desc: '기본/정렬가능 헤더/빈 상태/로딩/고정헤더/피벗/Grid Table' },
-        { file: 'tabs.html', name: 'Tabs', desc: 'Underline/Pill, disabled 탭' },
-        { file: 'pagination.html', name: 'Pagination', desc: '숫자형/텍스트형/양끝배치 등 7종' },
-        { file: 'modal.html', name: 'Modal', desc: 'sm/md/lg, 폼/테이블, 하단버튼 없는 버전' },
-        { file: 'tooltip.html', name: 'Tooltip', desc: '4방향, JS 없이 동작' },
-        { file: 'accordion.html', name: 'Accordion', desc: '<details>/<summary> 기반, JS 없이 동작' },
-        { file: 'empty-state.html', name: 'Empty State', desc: '기본/검색결과 없음/에러' }
+        { file: 'button.html', name: 'Button', desc: '버튼, SNS 로그인 버튼, 로딩 상태', category: '입력 (Forms)' },
+        { file: 'input.html', name: 'Input', desc: '비밀번호/이메일/전화번호/기본 텍스트, 사이즈 3종', category: '입력 (Forms)' },
+        { file: 'textarea.html', name: 'Textarea', desc: '기본/에러/비활성/resize 제어', category: '입력 (Forms)' },
+        { file: 'checkbox.html', name: 'Checkbox / Radio', desc: '체크박스, 라디오', category: '입력 (Forms)' },
+        { file: 'switch.html', name: 'Switch', desc: '토글 스위치 (상태/사이즈)', category: '입력 (Forms)' },
+        { file: 'dropdown.html', name: 'Dropdown', desc: '셀렉트, 커스텀 드롭다운 5종, disabled 항목, 구분선', category: '입력 (Forms)' },
+        { file: 'dropdown-menu.html', name: 'Dropdown Menu', desc: '드롭다운 메뉴, 체크리스트', category: '탐색/이동 (Navigation)' },
+        { file: 'pagination.html', name: 'Pagination', desc: '숫자형/텍스트형/양끝배치 등 7종', category: '탐색/이동 (Navigation)' },
+        { file: 'tabs.html', name: 'Tabs', desc: 'Underline/Pill, disabled 탭', category: '탐색/이동 (Navigation)' },
+        { file: 'accordion.html', name: 'Accordion', desc: '<details>/<summary> 기반, JS 없이 동작', category: '조회/노출 (Data Display)' },
+        { file: 'badge.html', name: 'Badge / Tag', desc: '색상·크기 변형, 삭제 가능한 태그', category: '조회/노출 (Data Display)' },
+        { file: 'card.html', name: 'Card', desc: '기본/가로형/통계/리스트/플레이스홀더/hover 가능형', category: '조회/노출 (Data Display)' },
+        { file: 'table.html', name: 'Table', desc: '기본/정렬가능 헤더/빈 상태/로딩/고정헤더/피벗/Grid Table', category: '조회/노출 (Data Display)' },
+        { file: 'empty-state.html', name: 'Empty State', desc: '기본/검색결과 없음/에러', category: '조회/노출 (Data Display)' },
+        { file: 'tooltip.html', name: 'Tooltip', desc: '4방향, JS 없이 동작', category: '조회/노출 (Data Display)' },
+        { file: 'alert.html', name: 'Alert / Banner', desc: 'info/success/warning/error', category: '알림/피드백 (Feedback)' },
+        { file: 'modal.html', name: 'Modal', desc: 'sm/md/lg, 폼/테이블, 하단버튼 없는 버전', category: '알림/피드백 (Feedback)' },
+        { file: 'toast.html', name: 'Toast', desc: 'info/success/warning/error', category: '알림/피드백 (Feedback)' }
       ];
 
       var grid = document.getElementById('ix-grid');
       var emptyMsg = document.getElementById('ix-empty');
       var searchMeta = document.getElementById('ix-search-meta');
+      var navComponents = document.getElementById('ix-nav-components');
 
+      function slug(file) {
+        return 'card-' + file.replace('.html', '');
+      }
+
+      var lastCategory = null;
       COMPONENTS.forEach(function (comp) {
         var card = document.createElement('article');
         card.className = 'ix-card';
+        card.id = slug(comp.file);
         card.dataset.name = (comp.name + ' ' + comp.desc + ' ' + comp.file).toLowerCase();
 
         var header = document.createElement('div');
@@ -564,6 +1045,21 @@
         card.appendChild(frameWrap);
 
         grid.appendChild(card);
+
+        // 사이드바 하위 목록도 같은 데이터로 생성 (카테고리별 소제목 포함)
+        if (comp.category !== lastCategory) {
+          var groupLabel = document.createElement('li');
+          groupLabel.className = 'ix-nav-subgroup';
+          groupLabel.textContent = comp.category;
+          navComponents.appendChild(groupLabel);
+          lastCategory = comp.category;
+        }
+        var navItem = document.createElement('li');
+        var navLink = document.createElement('a');
+        navLink.href = '#' + slug(comp.file);
+        navLink.textContent = comp.name;
+        navItem.appendChild(navLink);
+        navComponents.appendChild(navItem);
       });
 
       var searchInput = document.getElementById('ix-search');
@@ -582,6 +1078,29 @@
       }
       searchInput.addEventListener('input', applyFilter);
       applyFilter();
+
+      // ---- 사이드바 "지금 여기 보고 있음" 표시 (스크롤 스파이) ----
+      // 컴포넌트 카드/사이드바 하위목록이 전부 생성된 뒤에 실행해야 id를 다 찾을 수 있음
+      var navLinks = Array.prototype.slice.call(document.querySelectorAll('#ix-sidebar a[href^="#"]'));
+      var linkByFragment = {};
+      navLinks.forEach(function (a) {
+        linkByFragment[a.getAttribute('href').slice(1)] = a;
+      });
+      function setActiveNav(id) {
+        var link = linkByFragment[id];
+        if (!link) return;
+        navLinks.forEach(function (a) { a.classList.remove('is-active'); });
+        link.classList.add('is-active');
+      }
+      var spyTargets = Object.keys(linkByFragment)
+        .map(function (id) { return document.getElementById(id); })
+        .filter(Boolean);
+      var spyObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) setActiveNav(entry.target.id);
+        });
+      }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+      spyTargets.forEach(function (t) { spyObserver.observe(t); });
     })();
   </script>
 </body>
