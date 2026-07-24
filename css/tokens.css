@@ -16,16 +16,16 @@
   --gray-900:  #101828;
 
   /* 메인 컬러 */
-  --primary-50:  #F9F5FF;
-  --primary-100:  #F4EBFF;
-  --primary-200:  #E9D7FE;
-  --primary-300:  #D6BBFB;
-  --primary-400:  #B692F6;
-  --primary-500:  #9E77ED;
-  --primary-600:  #7F56D9;
-  --primary-700:  #6941C6;
-  --primary-800:  #53389E;
-  --primary-900 :  #42307D;
+  --primary-50:  #EFF8FF;
+  --primary-100:  #D1E9FF;
+  --primary-200:  #B2DDFF;
+  --primary-300:  #84CAFF;
+  --primary-400:  #53B1FD;
+  --primary-500:  #2E90FA;
+  --primary-600:  #1570EF;
+  --primary-700:  #175CD3;
+  --primary-800:  #1849A9;
+  --primary-900 :  #194185;
   
   /* 에러 */
   --error-50 :  #FEF3F2;
@@ -183,9 +183,9 @@
   --color-text-quaternary:    var(--gray-500);  /* #667085 · 힌트/placeholder/보조 텍스트 */
   --color-text-faint:         var(--gray-400);  /* #98A2B3 · 가장 옅은 텍스트(비활성 포함) */
   --color-text-inverse:       var(--White);     /* white · 채워진/어두운 배경 위 텍스트 */
-  --color-text-accent:        var(--primary-700);  /* #6941C6 */
-  --color-text-accent-medium: var(--primary-600);  /* #7F56D9 */
-  --color-text-accent-strong: var(--primary-800);  /* #53389E */
+  --color-text-accent:        var(--primary-700);  /* #175CD3 */
+  --color-text-accent-medium: var(--primary-600);  /* #1570EF */
+  --color-text-accent-strong: var(--primary-800);  /* #1849A9 */
   --color-text-danger:        var(--error-600);  /* #D92D20 */
   --color-text-danger-medium: var(--error-500);  /* #F04438 · 에러 필드 하단 안내문구 */
   --color-text-danger-hover:  var(--error-700);  /* #B42318 */
@@ -197,7 +197,7 @@
   --color-icon-faint:    var(--gray-400);  /* #98A2B3 */
   --color-icon-disabled: var(--gray-300);  /* #D0D5DD */
   --color-icon-strong:   var(--gray-600);  /* #475467 · hover 등 강조 */
-  --color-icon-accent:   var(--primary-600);  /* #7F56D9 */
+  --color-icon-accent:   var(--primary-600);  /* #1570EF */
   --color-icon-danger:   var(--error-500);  /* #F04438 */
   --color-icon-warning:  var(--warning-500);  /* #F79009 */
 
@@ -205,11 +205,11 @@
   --color-border-default:       var(--gray-300);  /* #D0D5DD */
   --color-border-subtle:        var(--gray-200);  /* #EAECF0 */
   --color-border-strong:        var(--gray-400);  /* #98A2B3 · hover */
-  --color-border-accent-subtle: var(--primary-200);  /* #E9D7FE */
-  --color-border-accent:        var(--primary-300);  /* #D6BBFB */
-  --color-border-accent-strong: var(--primary-600);  /* #7F56D9 */
-  --color-border-accent-hover:  var(--primary-700);  /* #6941C6 */
-  --color-border-accent-active: var(--primary-800);  /* #53389E */
+  --color-border-accent-subtle: var(--primary-200);  /* #B2DDFF */
+  --color-border-accent:        var(--primary-300);  /* #84CAFF */
+  --color-border-accent-strong: var(--primary-600);  /* #1570EF */
+  --color-border-accent-hover:  var(--primary-700);  /* #175CD3 */
+  --color-border-accent-active: var(--primary-800);  /* #1849A9 */
   --color-border-danger:        var(--error-300);  /* #FDA29B */
   --color-border-danger-subtle: var(--error-200);  /* #FECDCA */
   --color-border-warning-subtle: var(--warning-200);  /* #FEDF89 */
@@ -222,18 +222,18 @@
   --color-bg-muted:         var(--gray-100);  /* #F2F4F7 */
   --color-bg-strong:        var(--gray-200);  /* #EAECF0 */
   --color-bg-inverse:       var(--gray-700);  /* #344054 · 체크박스/라디오 선택 표시 */
-  --color-bg-accent-subtle: var(--primary-50);   /* #F9F5FF */
-  --color-bg-accent:        var(--primary-600);  /* #7F56D9 */
-  --color-bg-accent-hover:  var(--primary-700);  /* #6941C6 */
-  --color-bg-accent-active: var(--primary-800);  /* #53389E */
+  --color-bg-accent-subtle: var(--primary-50);   /* #EFF8FF */
+  --color-bg-accent:        var(--primary-600);  /* #1570EF */
+  --color-bg-accent-hover:  var(--primary-700);  /* #175CD3 */
+  --color-bg-accent-active: var(--primary-800);  /* #1849A9 */
   --color-bg-danger-subtle: var(--error-50);   /* #FEF3F2 */
   --color-bg-danger-muted:  var(--error-100);  /* #FEE4E2 */
   --color-bg-warning-subtle: var(--warning-50);  /* #FFFAEB */
   --color-bg-control-disabled: var(--gray-300);  /* #D0D5DD · 체크박스/라디오 checked+disabled 채움 */
 
   /* 포커스 링 / 아웃라인 */
-  --color-ring-accent:        var(--primary-200);  /* #E9D7FE · btn 기준으로 통일 */
-  --color-ring-accent-subtle: var(--primary-100);  /* #F4EBFF · switch pressed 등 마우스 인터랙션 링 */
+  --color-ring-accent:        var(--primary-200);  /* #B2DDFF · btn 기준으로 통일 */
+  --color-ring-accent-subtle: var(--primary-100);  /* #D1E9FF · switch pressed 등 마우스 인터랙션 링 */
   --color-ring-danger:        var(--error-100);  /* #FEE4E2 */
   --color-ring-neutral:       var(--gray-400);   /* #98A2B3 · switch 토글 focus-visible */
   --color-ring-neutral-subtle: var(--gray-100);  /* #F2F4F7 · switch pressed(off 상태) 링 */
