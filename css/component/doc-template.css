@@ -1,0 +1,184 @@
+/* ============================================================
+   doc-template.css — 컴포넌트 문서 페이지 공용 골격
+   6단계 템플릿(Overview/Variants/Options/States/Examples/Guidelines)을
+   쓰는 모든 component/*.html이 공유하는 문서 chrome.
+   실제 컴포넌트 스타일(button.css 등)과는 다른 축이라 분리함.
+   ============================================================ */
+
+/* ---- 페이지 헤더 (타이틀 + 설명) ---- */
+.page-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--gray-200);
+}
+.page-header h2 {
+  font-size: var(--display-sm);
+  font-weight: var(--weight-Semibold);
+  color: var(--color-text-primary);
+}
+.page-header p {
+  margin-top: 4px;
+  font-size: var(--text-16);
+  color: var(--gray-500);
+}
+.is-embedded .page-header { display: none; }
+
+/* ---- 데모 캡션 (class-label) ---- */
+.class-label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  color: #98A2B3;
+}
+
+/* ---- 데모 카드 (board / sgroup 공용 골격)
+   overflow:hidden을 쓰지 않는다 — 툴팁/드롭다운처럼 박스 밖으로
+   튀어나오는 팝업 콘텐츠가 잘려버리기 때문에, 헤더 위쪽 모서리만
+   따로 둥글게 줘서 카드 모양을 맞춘다. ---- */
+.board,
+.sgroup {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-subtle);
+}
+.sgroup {
+  display: flex;
+  flex-direction: column;
+}
+.board__header,
+.sgroup__header {
+  padding: var(--spacing-12) var(--spacing-20);
+  background: var(--color-bg-muted);
+  border-bottom: 1px solid var(--color-border-subtle);
+  border-top-left-radius: var(--radius-md);
+  border-top-right-radius: var(--radius-md);
+}
+.board__header .class-label,
+.sgroup__header .class-label {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+.board__body {
+  padding: var(--spacing-20);
+}
+.sgroup__body {
+  display: flex;
+  align-items: flex-start;
+  padding: var(--spacing-20);
+}
+.board > .code-panel,
+.sgroup > .code-panel {
+  margin: 0 var(--spacing-20) var(--spacing-20);
+}
+
+/* ---- 매트릭스 행 헤더 (사이즈/상태별 그룹) ---- */
+.matrix__row-header {
+  grid-column: 1 / -1;
+  padding-top: var(--spacing-12);
+  margin-top: var(--spacing-4);
+  border-top: 1px solid var(--color-border-subtle);
+}
+.matrix__row-label {
+  font-size: var(--text-14);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-quaternary);
+}
+.matrix .code-panel {
+  grid-column: 1 / -1;
+}
+
+/* ---- 문서 섹션 (Overview/Variants/Options/... 공통 래퍼) ---- */
+.doc-section {
+  max-width: 768px;
+  margin-bottom: 40px;
+}
+.doc-section__title {
+  font-size: var(--text-16);
+  font-weight: var(--weight-Semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-12);
+}
+
+/* ---- Variants/Options 표 ---- */
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.doc-table th,
+.doc-table td {
+  text-align: left;
+  padding: var(--spacing-12) var(--spacing-16);
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-size: var(--text-14);
+}
+.doc-table th {
+  background: var(--color-bg-muted);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-tertiary);
+}
+.doc-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.doc-table td:first-child {
+  white-space: nowrap;
+}
+.doc-table td:last-child {
+  color: var(--color-text-tertiary);
+}
+.doc-code {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+  background: var(--color-bg-muted);
+  color: var(--color-text-primary);
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+}
+.doc-code + .doc-code {
+  margin-left: var(--spacing-4);
+}
+
+/* ---- Guidelines 권장/지양 박스 ---- */
+.doc-guideline-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-16);
+  margin-top: var(--spacing-16);
+}
+.doc-guideline {
+  padding: var(--spacing-16);
+  border-radius: var(--radius-md);
+  border: 1px solid;
+}
+.doc-guideline h4 {
+  font-size: var(--text-14);
+  font-weight: var(--weight-Semibold);
+  margin-bottom: var(--spacing-8);
+}
+.doc-guideline ul {
+  margin: 0;
+  padding-left: 1.1em;
+  font-size: var(--text-14);
+  color: var(--color-text-tertiary);
+}
+.doc-guideline ul li + li {
+  margin-top: 4px;
+}
+.doc-guideline--do {
+  background: var(--color-bg-accent-subtle);
+  border-color: var(--color-border-accent-subtle);
+}
+.doc-guideline--do h4 {
+  color: var(--color-text-accent);
+}
+.doc-guideline--dont {
+  background: var(--color-bg-danger-subtle);
+  border-color: var(--color-border-danger-subtle);
+}
+.doc-guideline--dont h4 {
+  color: var(--color-text-danger);
+}

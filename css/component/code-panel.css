@@ -1,0 +1,52 @@
+/* 코드 미리보기 패널 — 실제 마크업을 보여주고 클릭으로 복사
+   .code-panel(바깥) > .code-panel__toolbar(Copy 버튼, 스크롤 안 함) + .code-panel__scroll(가로 스크롤 코드)
+   Copy 버튼을 코드 위에 얹는(overlay) 대신 별도 줄로 분리한다 — 긴 줄이 뷰포트 끝까지 차면
+   overlay 방식은 스크롤 전에도 버튼과 텍스트가 같은 자리에서 부딪히기 때문. */
+.code-panel {
+  margin-top: var(--spacing-8);
+  background: #0B0D12;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.code-panel__toolbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--spacing-8) var(--spacing-8) 0;
+}
+.code-panel__scroll {
+  padding: var(--spacing-16);
+  overflow-x: auto;
+}
+
+.code-panel__code {
+  margin: 0;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.9;
+  color: #E5E7EB;
+  white-space: pre;
+}
+
+.code-panel__copy {
+  padding: var(--spacing-4) var(--spacing-10);
+  background: #1F242E;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  color: #E5E7EB;
+  font-size: 11px;
+  font-weight: var(--weight-medium);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+.code-panel__copy:hover {
+  background: #2A3040;
+}
+.code-panel__copy:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+.code-panel__copy.is-copied {
+  background: var(--primary-600);
+  border-color: var(--primary-600);
+  color: var(--White);
+}
