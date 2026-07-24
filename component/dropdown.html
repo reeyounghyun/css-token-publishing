@@ -8,210 +8,306 @@
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/component/dropdown.css">
+  <link rel="stylesheet" href="/css/component/code-panel.css">
+  <link rel="stylesheet" href="/css/component/doc-template.css">
   <style>
     body {
       padding: 1rem;
     }
-    h2{
+    .dd-row {
       display: flex;
-      align-items: center;
-      gap: var(--gap-8);
-      font-size: 45px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: var( --primary-700);
-    }
-    .base {
-      display: inline-block;
-      font-size: 38px;
-      font-weight: 500;
-      color: var(--gray-800);
-    }
-    .grid--2 { --cols: 2; }
-    .grid--3 { --cols: 3; }
-    .grid--4 { --cols: 4; }
-    .grid--6 { --cols: 6; }
-    .grid--8 { --cols: 8; }
-    .class-label {
-      display: block;
-      margin-top: 6px;
-      font-family: ui-monospace, monospace;
-      font-size: 11px;
-      color: #98A2B3;
+      gap: var(--spacing-28);
+      flex-wrap: wrap;
+      padding: var(--spacing-20);
     }
   </style>
 </head>
 <body>
-  <h2>
-    <span class="base">component</span>
-    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">    
-    Dropdown
-  </h2>
-  <div class="grid grid--3" style="max-width: 1920px;">
-    <!-- 드롭다운_오리지널 -->
-    <div>
-      <select class="select" id="member" aria-label="담당자 선택">
-        <option>Phoenix Baker</option>
-        <option selected>Olivia Rhye</option>
-        <option>Lana Steiner</option>
-        <option>Demi Wilkinson</option>
-        <option>Candice Wu</option>
-        <option>Natali Craig</option>
-        <option>Drew Cano</option>
-      </select>
-      <code class="class-label">select (네이티브)</code>
-    </div>
-    <!-- 드롭다운_커스탐1 -->
-    <div class="dropdown-custom" data-dropdown-custom>
-        <button type="button" class="dropdown__trigger" aria-expanded="false">
-          <span class="dropdown__value">Olivia Rhye</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M5 7.5L10 12.5L15 7.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <ul class="dropdown__list" role="listbox" aria-label="담당자 선택">
-          <li class="dropdown__item" role="option">Phoenix Baker</li>
-          <li class="dropdown__item" role="option">Olivia Rhye</li>
-          <li class="dropdown__item" role="option">Lana Steiner</li>
-          <li class="dropdown__item" role="option">Demi Wilkinson</li>
-          <li class="dropdown__item" role="option">Candice Wu</li>
-          <li class="dropdown__item" role="option">Natali Craig</li>
-          <li class="dropdown__item" role="option">Drew Cano</li>
-        </ul>
-        <code class="class-label">dropdown-custom[data-dropdown-custom] &gt; dropdown__trigger, dropdown__list &gt; dropdown__item</code>
-    </div>
-    <!-- 드롭다운_커스텀2_아이콘 -->
-    <div class="dropdown-custom" data-dropdown-custom>
-        <button type="button" class="dropdown__trigger" aria-expanded="false">
-          <div class="label-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M16.6667 17.5V15.8333C16.6667 14.9493 16.3155 14.1014 15.6904 13.4763C15.0652 12.8512 14.2174 12.5 13.3333 12.5H6.66668C5.78262 12.5 4.93478 12.8512 4.30965 13.4763C3.68453 14.1014 3.33334 14.9493 3.33334 15.8333V17.5M13.3333 5.83333C13.3333 7.67428 11.841 9.16667 10 9.16667C8.15906 9.16667 6.66668 7.67428 6.66668 5.83333C6.66668 3.99238 8.15906 2.5 10 2.5C11.841 2.5 13.3333 3.99238 13.3333 5.83333Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="dropdown__value">Olivia Rhye</span>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M5 7.5L10 12.5L15 7.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <ul class="dropdown__list" role="listbox" aria-label="담당자 선택">
-          <li class="dropdown__item" role="option">Phoenix Baker</li>
-          <li class="dropdown__item" role="option">Olivia Rhye</li>
-          <li class="dropdown__item" role="option">Lana Steiner</li>
-          <li class="dropdown__divider" role="separator"></li>
-          <li class="dropdown__item" role="option">Demi Wilkinson</li>
-          <li class="dropdown__item" role="option">Candice Wu</li>
-          <li class="dropdown__item" role="option" aria-disabled="true">Natali Craig (휴직중)</li>
-          <li class="dropdown__item" role="option">Drew Cano</li>
-        </ul>
-        <code class="class-label">dropdown__divider + dropdown__item[aria-disabled="true"]</code>
-    </div>
-    <!-- 드롭다운_커스텀3_이미지 -->
-    <div class="dropdown-custom" data-dropdown-custom>
-        <button type="button" class="dropdown__trigger" aria-expanded="false">
-          <div class="label-item" role="option" data-value="Olivia Rhye">
-            <img class="dropdown__avatar" src="/images/icon/user.png" alt="Olivia Rhye 프로필"  width="24" height="24">
-            <span class="dropdown__value">Olivia Rhye</span>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M5 7.5L10 12.5L15 7.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <ul class="dropdown__list" role="listbox" aria-label="담당자 선택">
-          <li class="dropdown__item" role="option">Phoenix Baker</li>
-          <li class="dropdown__item" role="option">Olivia Rhye</li>
-          <li class="dropdown__item" role="option">Lana Steiner</li>
-          <li class="dropdown__item" role="option">Demi Wilkinson</li>
-          <li class="dropdown__item" role="option">Candice Wu</li>
-          <li class="dropdown__item" role="option">Natali Craig</li>
-          <li class="dropdown__item" role="option">Drew Cano</li>
-        </ul>
-        <code class="class-label">dropdown__avatar (이미지)</code>
-    </div>
-    <!-- 드롭다운_커스텀4_상태 -->
-    <div class="dropdown-custom" data-dropdown-custom>
-      <button type="button" class="dropdown__trigger" aria-expanded="false">
-        <div class="label-item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
-            <circle cx="4" cy="4" r="4" fill="#12B76A"/>
-          </svg>
-          <span class="dropdown__value">Olivia Rhye</span>
-        </div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path d="M5 7.5L10 12.5L15 7.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      <ul class="dropdown__list" role="listbox" aria-label="담당자 선택">
-        <li class="dropdown__item" role="option">Phoenix Baker</li>
-        <li class="dropdown__item" role="option">Olivia Rhye</li>
-        <li class="dropdown__item" role="option">Lana Steiner</li>
-        <li class="dropdown__item" role="option">Demi Wilkinson</li>
-        <li class="dropdown__item" role="option">Candice Wu</li>
-        <li class="dropdown__item" role="option">Natali Craig</li>
-        <li class="dropdown__item" role="option">Drew Cano</li>
-      </ul>
-      <code class="class-label">label-item &gt; svg(상태점) + dropdown__value</code>
-    </div>
-   <!-- 드롭다운_커스텀5_옵션+아이콘 -->
-    <div class="dropdown-custom" data-dropdown-custom>
-      <button type="button" class="dropdown__trigger" aria-expanded="false">
-        <div class="label-item">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512 14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014 3.3335 14.9493 3.3335 15.8333V17.5M13.3335 5.83333C13.3335 7.67428 11.8411 9.16667 10.0002 9.16667C8.15921 9.16667 6.66683 7.67428 6.66683 5.83333C6.66683 3.99238 8.15921 2.5 10.0002 2.5C11.8411 2.5 13.3335 3.99238 13.3335 5.83333Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span class="dropdown__value">Olivia Rhye</span>
-        </div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path d="M5 7.5L10 12.5L15 7.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      <ul class="dropdown__list" role="listbox" aria-label="담당자 선택">
-        <li class="dropdown__item-icon" role="option">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512 14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014 3.3335 14.9493 3.3335 15.8333V17.5M13.3335 5.83333C13.3335 7.67428 11.8411 9.16667 10.0002 9.16667C8.15921 9.16667 6.66683 7.67428 6.66683 5.83333C6.66683 3.99238 8.15921 2.5 10.0002 2.5C11.8411 2.5 13.3335 3.99238 13.3335 5.83333Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Phoenix Baker
-        </li>
-        <li class="dropdown__item-icon" role="option">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512 14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014 3.3335 14.9493 3.3335 15.8333V17.5M13.3335 5.83333C13.3335 7.67428 11.8411 9.16667 10.0002 9.16667C8.15921 9.16667 6.66683 7.67428 6.66683 5.83333C6.66683 3.99238 8.15921 2.5 10.0002 2.5C11.8411 2.5 13.3335 3.99238 13.3335 5.83333Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Olivia Rhye
-        </li>
-        <li class="dropdown__item-icon" role="option">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512 14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014 3.3335 14.9493 3.3335 15.8333V17.5M13.3335 5.83333C13.3335 7.67428 11.8411 9.16667 10.0002 9.16667C8.15921 9.16667 6.66683 7.67428 6.66683 5.83333C6.66683 3.99238 8.15921 2.5 10.0002 2.5C11.8411 2.5 13.3335 3.99238 13.3335 5.83333Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Lana Steiner
-        </li>
-        <li class="dropdown__item-icon" role="option">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512 14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014 3.3335 14.9493 3.3335 15.8333V17.5M13.3335 5.83333C13.3335 7.67428 11.8411 9.16667 10.0002 9.16667C8.15921 9.16667 6.66683 7.67428 6.66683 5.83333C6.66683 3.99238 8.15921 2.5 10.0002 2.5C11.8411 2.5 13.3335 3.99238 13.3335 5.83333Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Demi Wilkinson
-        </li>
-        <li class="dropdown__item-icon" role="option">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512 14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014 3.3335 14.9493 3.3335 15.8333V17.5M13.3335 5.83333C13.3335 7.67428 11.8411 9.16667 10.0002 9.16667C8.15921 9.16667 6.66683 7.67428 6.66683 5.83333C6.66683 3.99238 8.15921 2.5 10.0002 2.5C11.8411 2.5 13.3335 3.99238 13.3335 5.83333Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Candice Wu
-        </li>
-        <li class="dropdown__item-icon" role="option">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512 14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014 3.3335 14.9493 3.3335 15.8333V17.5M13.3335 5.83333C13.3335 7.67428 11.8411 9.16667 10.0002 9.16667C8.15921 9.16667 6.66683 7.67428 6.66683 5.83333C6.66683 3.99238 8.15921 2.5 10.0002 2.5C11.8411 2.5 13.3335 3.99238 13.3335 5.83333Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Natali Craig
-        </li>
-        <li class="dropdown__item-icon" role="option">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512 14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014 3.3335 14.9493 3.3335 15.8333V17.5M13.3335 5.83333C13.3335 7.67428 11.8411 9.16667 10.0002 9.16667C8.15921 9.16667 6.66683 7.67428 6.66683 5.83333C6.66683 3.99238 8.15921 2.5 10.0002 2.5C11.8411 2.5 13.3335 3.99238 13.3335 5.83333Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Drew Cano
-        </li>
-      </ul>
-      <code class="class-label">dropdown__item-icon (옵션 안에 아이콘 포함)</code>
-    </div>
+  <script>if (window.self !== window.top) { document.documentElement.classList.add('is-embedded'); }</script>
+  <div class="page-header">
+    <h2>Dropdown</h2>
+    <p>셀렉트, 커스텀 드롭다운 5종, disabled 항목, 구분선</p>
   </div>
 
+  <section class="doc-section">
+    <h3 class="doc-section__title">Overview</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      Dropdown은 여러 옵션 중 하나를 골라 트리거에 표시하는 컨트롤이다. 단순한 목록엔 네이티브 <code class="doc-code">select</code>를 쓰고,
+      아이콘·아바타·상태점처럼 옵션을 꾸며야 하면 커스텀 드롭다운(<code class="doc-code">dropdown-custom</code>)을 쓴다. 프로필/메뉴 목적이면 Dropdown Menu 컴포넌트를 대신 참고한다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Variants</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>구현</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">select</code></td>
+          <td>네이티브 select. 스타일링 제약은 있지만 접근성·모바일 대응이 가장 안정적</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">dropdown-custom</code></td>
+          <td>커스텀 구현. 아이콘/아바타/상태점 등 자유롭게 꾸밀 수 있지만 <code class="doc-code">data-dropdown-custom</code> JS가 필요</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">select (네이티브)  vs  dropdown-custom[data-dropdown-custom] &gt; dropdown__trigger, dropdown__list &gt; dropdown__item</code>
+      </div>
+      <div class="board__body">
+        <div class="dd-row" data-code-source>
+          <select class="select" id="member" aria-label="담당자 선택">
+            <option>Phoenix Baker</option>
+            <option selected>Olivia Rhye</option>
+            <option>Lana Steiner</option>
+          </select>
+          <div class="dropdown-custom" data-dropdown-custom>
+            <button type="button" class="dropdown__trigger" aria-expanded="false">
+              <span class="dropdown__value">Olivia Rhye</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="dropdown__list" role="listbox" aria-label="담당자 선택">
+              <li class="dropdown__item" role="option">Phoenix Baker</li>
+              <li class="dropdown__item" role="option">Olivia Rhye</li>
+              <li class="dropdown__item" role="option">Lana Steiner</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Options</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스/속성</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>아이콘</td>
+          <td>선택. 트리거/옵션에 <code class="doc-code">svg</code>를 추가해 항목을 구분</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">dropdown__avatar</code></td>
+          <td>선택. 옵션 앞에 원형 프로필 이미지</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">dropdown__divider</code></td>
+          <td>선택. 옵션 사이에 구분선을 넣어 그룹 분리</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">aria-disabled="true"</code></td>
+          <td>선택. 클릭해도 선택되지 않는 비활성 옵션 (<code class="doc-code">dropdown__item</code>에 부여)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">dropdown__divider + dropdown__item[aria-disabled="true"]</code>
+      </div>
+      <div class="board__body">
+        <div style="max-width: 240px; padding: 4px 0;" data-code-source>
+          <div class="dropdown-custom" data-dropdown-custom>
+            <button type="button" class="dropdown__trigger" aria-expanded="false">
+              <div class="label-item">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M16.7 17.5v-1.7a2.9 2.9 0 0 0-2.9-2.9H6.7a2.9 2.9 0 0 0-2.9 2.9v1.7M13.3 5.8a3.3 3.3 0 1 1-6.7 0 3.3 3.3 0 0 1 6.7 0Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="dropdown__value">Olivia Rhye</span>
+              </div>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="dropdown__list" role="listbox" aria-label="담당자 선택">
+              <li class="dropdown__item" role="option">Phoenix Baker</li>
+              <li class="dropdown__item" role="option">Olivia Rhye</li>
+              <li class="dropdown__divider" role="separator"></li>
+              <li class="dropdown__item" role="option" aria-disabled="true">Natali Craig (휴직중)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">States</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>속성</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">aria-expanded="true"</code></td>
+          <td>열림 상태. 트리거 클릭 시 <code class="doc-code">data-dropdown-custom</code> JS가 토글</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">aria-selected="true"</code></td>
+          <td>선택된 옵션. <code class="doc-code">dropdown__check</code> 체크마크가 표시됨</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">is--active</code></td>
+          <td>키보드로 이동 중인 항목 (hover와 동일한 모양)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">dropdown__item[aria-selected="true"] &gt; dropdown__check</code>
+      </div>
+      <div class="board__body">
+        <div style="max-width: 240px; padding: 4px 0;" data-code-source>
+          <div class="dropdown-custom" data-dropdown-custom>
+            <button type="button" class="dropdown__trigger" aria-expanded="true">
+              <span class="dropdown__value">Olivia Rhye</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M15 12.5L10 7.5L5 12.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="dropdown__list" role="listbox" aria-label="담당자 선택" style="display: block; position: static; box-shadow: none;">
+              <li class="dropdown__item" role="option">Phoenix Baker</li>
+              <li class="dropdown__item" role="option" aria-selected="true">
+                Olivia Rhye
+                <svg class="dropdown__check" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M16.7 5L7.5 14.2 3.3 10" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </li>
+              <li class="dropdown__item" role="option">Lana Steiner</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Examples</h3>
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">담당자 선택 — 아바타 이미지 조합</code>
+      </div>
+      <div class="board__body">
+        <div style="max-width: 240px; padding: 4px 0;" data-code-source>
+          <div class="dropdown-custom" data-dropdown-custom>
+            <button type="button" class="dropdown__trigger" aria-expanded="false">
+              <div class="label-item">
+                <img class="dropdown__avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%232E90FA'/%3E%3Ctext x='12' y='16' font-family='sans-serif' font-size='9' fill='white' text-anchor='middle'%3EOR%3C/text%3E%3C/svg%3E" alt="Olivia Rhye 프로필" width="24" height="24">
+                <span class="dropdown__value">Olivia Rhye</span>
+              </div>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="dropdown__list" role="listbox" aria-label="담당자 선택">
+              <li class="dropdown__item" role="option">
+                <div class="label-item">
+                  <img class="dropdown__avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%23F04438'/%3E%3Ctext x='12' y='16' font-family='sans-serif' font-size='9' fill='white' text-anchor='middle'%3EPB%3C/text%3E%3C/svg%3E" alt="" width="24" height="24">
+                  <span>Phoenix Baker</span>
+                </div>
+              </li>
+              <li class="dropdown__item" role="option">
+                <div class="label-item">
+                  <img class="dropdown__avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%232E90FA'/%3E%3Ctext x='12' y='16' font-family='sans-serif' font-size='9' fill='white' text-anchor='middle'%3EOR%3C/text%3E%3C/svg%3E" alt="" width="24" height="24">
+                  <span>Olivia Rhye</span>
+                </div>
+              </li>
+              <li class="dropdown__item" role="option">
+                <div class="label-item">
+                  <img class="dropdown__avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%23F79009'/%3E%3Ctext x='12' y='16' font-family='sans-serif' font-size='9' fill='white' text-anchor='middle'%3ELS%3C/text%3E%3C/svg%3E" alt="" width="24" height="24">
+                  <span>Lana Steiner</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Guidelines</h3>
+    <div class="doc-guideline-grid">
+      <div class="doc-guideline doc-guideline--do">
+        <h4>✓ 권장</h4>
+        <ul>
+          <li>선택된 항목은 체크마크나 굵은 글씨로 명확히 표시</li>
+          <li>커스텀 드롭다운도 <code class="doc-code">role</code>/<code class="doc-code">aria-*</code> 속성을 네이티브 select만큼 갖추기</li>
+          <li>옵션이 많으면(20개 이상) 검색 가능한 형태 고려 (이 컴포넌트는 검색 없음)</li>
+        </ul>
+      </div>
+      <div class="doc-guideline doc-guideline--dont">
+        <h4>✕ 지양</h4>
+        <ul>
+          <li>옵션이 2~3개뿐인데 드롭다운 사용 (Radio가 더 빠름)</li>
+          <li>커스텀 드롭다운에서 <code class="doc-code">aria-expanded</code>/<code class="doc-code">role</code> 속성 생략</li>
+          <li>더 이상 쓰이지 않는 <code class="doc-code">.dropdown</code> 클래스 재사용 (<code class="doc-code">.dropdown-custom</code>만 사용)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <script src="/js/main.js"></script>
+  <script>
+    (function () {
+      function escapeHTML(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function dedent(str) {
+        var lines = str.replace(/^\n+|\s+$/g, '').split('\n');
+        var minIndent = Infinity;
+        lines.forEach(function (line) {
+          if (!line.trim()) return;
+          var indent = line.match(/^\s*/)[0].length;
+          minIndent = Math.min(minIndent, indent);
+        });
+        if (!isFinite(minIndent)) minIndent = 0;
+        return lines.map(function (line) { return line.slice(minIndent); }).join('\n');
+      }
+
+      function wireCopy(panel, rawCode) {
+        var codeEl = panel.querySelector('.code-panel__code');
+        var copyBtn = panel.querySelector('[data-code-copy]');
+        codeEl.innerHTML = escapeHTML(rawCode);
+
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(rawCode).then(function () {
+            copyBtn.classList.add('is-copied');
+            copyBtn.textContent = 'Copied';
+            setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyBtn.textContent = 'Copy';
+            }, 1200);
+          });
+        });
+      }
+
+      document.querySelectorAll('[data-code-panel]').forEach(function (panel) {
+        var section = panel.closest('.board, .sgroup');
+        var source = section.querySelector('[data-code-source]');
+        wireCopy(panel, dedent(source.innerHTML));
+      });
+    })();
+  </script>
 </body>
 </html>

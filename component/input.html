@@ -8,317 +8,305 @@
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/component/input.css">
-
+  <link rel="stylesheet" href="/css/component/code-panel.css">
+  <link rel="stylesheet" href="/css/component/doc-template.css">
   <style>
     body {
       padding: 1rem;
     }
-    h2{
+    .field-row {
       display: flex;
-      align-items: center;
-      gap: var(--gap-8);
-      font-size: 45px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: var( --primary-700);
-    }
-    .base {
-      display: inline-block;
-      font-size: 38px;
-      font-weight: 500;
-      color: var(--gray-800);
-    }
-    .grid--2 { --cols: 2; }
-    .grid--3 { --cols: 3; }
-    .grid--4 { --cols: 4; }
-    .grid--6 { --cols: 6; }
-    .grid--8 { --cols: 8; }
-    .class-label {
-      display: block;
-      margin-top: 4px;
-      font-family: ui-monospace, monospace;
-      font-size: 11px;
-      color: #98A2B3;
+      gap: var(--spacing-20);
+      flex-wrap: wrap;
+      padding: var(--spacing-20);
     }
   </style>
 </head>
 <body>
-  <h2>
-    <span class="base">component</span>
-    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
-    Input
-  </h2>
-  <div class="grid grid--2" style="max-width: 1920px;">
-    <!-- 기본 텍스트 (default) -->
-    <div class="field">
-      <label class="field__label" for="text-default">이름</label>
-      <div class="field__box">
-        <input type="text" id="text-default" class="field__input" placeholder="이름을 입력하세요">
-      </div>
-      <p>This is a hint text to help user.</p>
-      <code class="class-label">field</code>
-    </div>
-
-    <!-- Disabled -->
-    <div class="field field--disabled">
-      <label class="field__label" for="text-disabled">이름</label>
-      <div class="field__box">
-        <input type="text" id="text-disabled" class="field__input" placeholder="비활성 상태" disabled>
-      </div>
-      <p>This is a hint text to help user.</p>
-      <code class="class-label">field field--disabled</code>
-    </div>
-
-    <!-- Readonly -->
-    <div class="field">
-      <label class="field__label" for="text-readonly">이름</label>
-      <div class="field__box">
-        <input type="text" id="text-readonly" class="field__input" value="수정 불가 값" readonly>
-      </div>
-      <p>This is a hint text to help user.</p>
-      <code class="class-label">field (input readonly 속성)</code>
-    </div>
-
-    <!-- 사이즈 3종 -->
-    <div class="field field--sm">
-      <label class="field__label" for="text-sm">Small</label>
-      <div class="field__box">
-        <input type="text" id="text-sm" class="field__input" placeholder="Small">
-      </div>
-      <code class="class-label">field field--sm</code>
-    </div>
-    <div class="field">
-      <label class="field__label" for="text-md">Medium (기본)</label>
-      <div class="field__box">
-        <input type="text" id="text-md" class="field__input" placeholder="Medium">
-      </div>
-      <code class="class-label">field</code>
-    </div>
-    <div class="field field--lg">
-      <label class="field__label" for="text-lg">Large</label>
-      <div class="field__box">
-        <input type="text" id="text-lg" class="field__input" placeholder="Large">
-      </div>
-      <code class="class-label">field field--lg</code>
-    </div>
-
-    <!-- Password : 마스킹(기본)_ver1 -->
-    <div class="field field--password">
-      <label class="field__label" for="pw-1">Password 마스킹(기본)_ver1</label>
-      <div class="field__box">
-        <input type="password" id="pw-1" class="field__input" placeholder="Password">
-        <button type="button" class="field__btn" aria-label="비밀번호 표시">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 14 13" fill="none">
-            <path d="M13.534 5.71354C12.9847 4.55635 12.3311 3.6126 11.573 2.88229L10.778 3.67729C11.4263 4.29682 11.991 5.10729 12.4793 6.11666C11.1793 8.80729 9.33398 10.0854 6.8121 10.0854C6.05512 10.0854 5.35788 9.96885 4.72038 9.73572L3.85898 10.5971C4.74439 11.006 5.72877 11.2104 6.8121 11.2104C9.81523 11.2104 12.0559 9.64635 13.534 6.51822C13.5934 6.39242 13.6242 6.25501 13.6242 6.11588C13.6242 5.97675 13.5934 5.83934 13.534 5.71354ZM12.5407 0.703536L11.8746 0.0366608C11.863 0.0250387 11.8492 0.0158189 11.834 0.0095284C11.8189 0.00323786 11.8026 0 11.7862 0C11.7697 0 11.7535 0.00323786 11.7383 0.0095284C11.7231 0.0158189 11.7093 0.0250387 11.6977 0.0366608L9.98882 1.74479C9.04663 1.26354 7.98773 1.02291 6.8121 1.02291C3.80898 1.02291 1.56835 2.58697 0.090227 5.7151C0.0308135 5.84091 0 5.97831 0 6.11744C0 6.25657 0.0308135 6.39398 0.090227 6.51979C0.680748 7.76354 1.39169 8.76046 2.22304 9.51057L0.569602 11.1635C0.546178 11.187 0.533019 11.2188 0.533019 11.2519C0.533019 11.285 0.546178 11.3168 0.569602 11.3403L1.23663 12.0073C1.26007 12.0307 1.29185 12.0439 1.32499 12.0439C1.35813 12.0439 1.38991 12.0307 1.41335 12.0073L12.5407 0.880411C12.5523 0.868802 12.5615 0.855016 12.5678 0.839841C12.5741 0.824666 12.5774 0.8084 12.5774 0.791973C12.5774 0.775546 12.5741 0.759281 12.5678 0.744106C12.5615 0.728931 12.5523 0.715145 12.5407 0.703536ZM1.14491 6.11666C2.44648 3.42604 4.29179 2.14791 6.8121 2.14791C7.66429 2.14791 8.43913 2.29416 9.1421 2.5915L8.04367 3.68994C7.52346 3.41238 6.92782 3.30937 6.34461 3.39611C5.7614 3.48284 5.22151 3.75472 4.80459 4.17165C4.38766 4.58857 4.11578 5.12846 4.02905 5.71167C3.94232 6.29488 4.04533 6.89052 4.32288 7.41072L3.01945 8.71416C2.29804 8.07744 1.67616 7.21479 1.14491 6.11666ZM4.9996 6.11666C4.99988 5.84114 5.06514 5.56956 5.19009 5.324C5.31504 5.07844 5.49615 4.86581 5.71871 4.70339C5.94128 4.54098 6.19901 4.43335 6.47099 4.38926C6.74296 4.34517 7.0215 4.36585 7.28398 4.44963L5.08257 6.65104C5.02739 6.47829 4.9994 6.29801 4.9996 6.11666Z" fill="black" fill-opacity="0.25"/>
-            <path d="M6.74974 7.86652C6.69568 7.86652 6.6424 7.86403 6.58959 7.85918L5.76428 8.68449C6.26067 8.87459 6.8015 8.91684 7.32138 8.80612C7.84127 8.6954 8.31796 8.43646 8.69382 8.0606C9.06968 7.68474 9.32862 7.20806 9.43934 6.68817C9.55005 6.16828 9.50781 5.62745 9.31771 5.13106L8.4924 5.95637C8.49724 6.00919 8.49974 6.06247 8.49974 6.11653C8.49986 6.34638 8.45468 6.57399 8.36678 6.78637C8.27888 6.99874 8.14998 7.19171 7.98745 7.35424C7.82493 7.51676 7.63196 7.64566 7.41958 7.73357C7.20721 7.82147 6.97959 7.86665 6.74974 7.86652Z" fill="black" fill-opacity="0.25"/>
-          </svg>
-        </button>
-      </div>
-      <code class="class-label">field field--password</code>
-    </div>
-    <!-- Password : 마스킹(기본)_ver2 -->
-    <div class="field field--password">
-      <label class="field__label" for="pw-2">Password 마스킹(기본)_ver2</label>
-      <div class="field__box">
-        <input type="password" id="pw-2" class="field__input" placeholder="Password">
-        <button type="button" class="field__btn" aria-label="비밀번호 표시">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 12" fill="none">
-            <path d="M15.2257 5.27695C13.5593 1.7666 11.0404 0 7.66361 0C4.2851 0 1.76791 1.7666 0.101505 5.27871C0.0346652 5.42024 0 5.57482 0 5.73135C0 5.88787 0.0346652 6.04245 0.101505 6.18398C1.76791 9.69434 4.28686 11.4609 7.66361 11.4609C11.0421 11.4609 13.5593 9.69434 15.2257 6.18223C15.3611 5.89746 15.3611 5.56699 15.2257 5.27695V5.27695ZM7.66361 10.1953C4.82826 10.1953 2.75229 8.75742 1.28803 5.73047C2.75229 2.70352 4.82826 1.26562 7.66361 1.26562C10.499 1.26562 12.5749 2.70352 14.0392 5.73047C12.5767 8.75742 10.5007 10.1953 7.66361 10.1953ZM7.5933 2.63672C5.88471 2.63672 4.49955 4.02188 4.49955 5.73047C4.49955 7.43906 5.88471 8.82422 7.5933 8.82422C9.3019 8.82422 10.6871 7.43906 10.6871 5.73047C10.6871 4.02188 9.3019 2.63672 7.5933 2.63672ZM7.5933 7.69922C6.50522 7.69922 5.62455 6.81855 5.62455 5.73047C5.62455 4.64238 6.50522 3.76172 7.5933 3.76172C8.68139 3.76172 9.56205 4.64238 9.56205 5.73047C9.56205 6.81855 8.68139 7.69922 7.5933 7.69922Z" fill="black" fill-opacity="0.25"/>
-          </svg>
-        </button>
-      </div>
-      <code class="class-label">field field--password</code>
-    </div>
-    <!--  -->
-
-    <!-- Password : 마스킹 + 값 채움 (Typing/Filled 칸)_ver1 -->
-    <div class="field field--password">
-      <label class="field__label" for="pw2-1">Password 마스킹 + 값 채움 (Typing/Filled 칸)_ver1</label>
-      <div class="field__box">
-        <input type="password" id="pw2-1" class="field__input" value="password" placeholder="Password">
-        <button type="button" class="field__btn" aria-label="비밀번호 표시">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 14" fill="none">
-            <path d="M15.2257 6.42773C14.6078 5.12589 13.8724 4.06417 13.0197 3.24257L12.1253 4.13695C12.8546 4.83392 13.4899 5.7457 14.0392 6.88124C12.5767 9.9082 10.5007 11.3461 7.66361 11.3461C6.81201 11.3461 6.02762 11.215 5.31043 10.9527L4.34135 11.9218C5.33744 12.3817 6.44486 12.6117 7.66361 12.6117C11.0421 12.6117 13.5628 10.8521 15.2257 7.333C15.2926 7.19147 15.3272 7.03689 15.3272 6.88037C15.3272 6.72384 15.2926 6.56926 15.2257 6.42773ZM14.1083 0.791478L13.3589 0.0412434C13.3459 0.0281686 13.3304 0.0177963 13.3133 0.0107194C13.2962 0.00364259 13.2779 0 13.2594 0C13.241 0 13.2227 0.00364259 13.2056 0.0107194C13.1885 0.0177963 13.173 0.0281686 13.1599 0.0412434L11.2374 1.96288C10.1775 1.42148 8.98619 1.15077 7.66361 1.15077C4.2851 1.15077 1.7644 2.91035 0.101505 6.42949C0.0346652 6.57102 0 6.7256 0 6.88212C0 7.03865 0.0346652 7.19323 0.101505 7.33476C0.765841 8.73398 1.56565 9.85552 2.50092 10.6994L0.640802 12.559C0.61445 12.5853 0.599647 12.6211 0.599647 12.6584C0.599647 12.6957 0.61445 12.7314 0.640802 12.7578L1.39121 13.5082C1.41758 13.5345 1.45334 13.5494 1.49062 13.5494C1.5279 13.5494 1.56365 13.5345 1.59002 13.5082L14.1083 0.990462C14.1214 0.977402 14.1317 0.961893 14.1388 0.944821C14.1459 0.927749 14.1495 0.90945 14.1495 0.89097C14.1495 0.87249 14.1459 0.854191 14.1388 0.837119C14.1317 0.820047 14.1214 0.804538 14.1083 0.791478ZM1.28803 6.88124C2.75229 3.85429 4.82826 2.4164 7.66361 2.4164C8.62233 2.4164 9.49402 2.58093 10.2849 2.91544L9.04912 4.15118C8.46389 3.83893 7.79379 3.72305 7.13769 3.82062C6.48158 3.9182 5.8742 4.22406 5.40516 4.6931C4.93612 5.16214 4.63025 5.76952 4.53268 6.42563C4.4351 7.08174 4.55099 7.75183 4.86324 8.33706L3.39688 9.80343C2.58529 9.08712 1.88569 8.11663 1.28803 6.88124ZM5.62455 6.88124C5.62486 6.57128 5.69828 6.26576 5.83885 5.9895C5.97942 5.71324 6.18317 5.47404 6.43355 5.29132C6.68394 5.1086 6.97389 4.98752 7.27986 4.93792C7.58583 4.88831 7.89919 4.91158 8.19447 5.00583L5.71789 7.48242C5.65582 7.28807 5.62433 7.08526 5.62455 6.88124Z" fill="black" fill-opacity="0.25"/>
-            <path d="M7.59346 8.84984C7.53264 8.84984 7.4727 8.84703 7.41329 8.84158L6.48481 9.77005C7.04325 9.98392 7.65168 10.0314 8.23656 9.90689C8.82143 9.78233 9.3577 9.49102 9.78054 9.06818C10.2034 8.64534 10.4947 8.10906 10.6193 7.52419C10.7438 6.93932 10.6963 6.33088 10.4824 5.77245L9.55394 6.70092C9.55939 6.76033 9.56221 6.82027 9.56221 6.88109C9.56234 7.13967 9.51152 7.39574 9.41263 7.63467C9.31374 7.87359 9.16873 8.09068 8.98588 8.27352C8.80304 8.45636 8.58595 8.60137 8.34703 8.70026C8.10811 8.79915 7.85204 8.84998 7.59346 8.84984Z" fill="black" fill-opacity="0.25"/>
-          </svg>
-        </button>
-      </div>
-      <code class="class-label">field field--password</code>
-    </div>
-    <!-- Password : 마스킹 + 값 채움 (Typing/Filled 칸)_ver2 -->
-    <div class="field field--password">
-      <label class="field__label" for="pw2-2">Password 마스킹 + 값 채움 (Typing/Filled 칸)_ver2</label>
-      <div class="field__box">
-        <input type="password" id="pw2-2" class="field__input" value="password" placeholder="Password">
-        <button type="button" class="field__btn" aria-label="비밀번호 표시">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 18 18" fill="none">
-            <path d="M16.5622 8.54648C14.8957 5.03613 12.3768 3.26953 9.00004 3.26953C5.62152 3.26953 3.10434 5.03613 1.43793 8.54824C1.37109 8.68978 1.33643 8.84436 1.33643 9.00088C1.33643 9.1574 1.37109 9.31198 1.43793 9.45352C3.10434 12.9639 5.62328 14.7305 9.00004 14.7305C12.3786 14.7305 14.8957 12.9639 16.5622 9.45176C16.6975 9.16699 16.6975 8.83652 16.5622 8.54648V8.54648ZM9.00004 13.4648C6.16469 13.4648 4.08871 12.027 2.62445 9C4.08871 5.97305 6.16469 4.53516 9.00004 4.53516C11.8354 4.53516 13.9114 5.97305 15.3756 9C13.9131 12.027 11.8371 13.4648 9.00004 13.4648ZM8.92973 5.90625C7.22113 5.90625 5.83598 7.29141 5.83598 9C5.83598 10.7086 7.22113 12.0938 8.92973 12.0938C10.6383 12.0938 12.0235 10.7086 12.0235 9C12.0235 7.29141 10.6383 5.90625 8.92973 5.90625ZM8.92973 10.9688C7.84164 10.9688 6.96098 10.0881 6.96098 9C6.96098 7.91191 7.84164 7.03125 8.92973 7.03125C10.0178 7.03125 10.8985 7.91191 10.8985 9C10.8985 10.0881 10.0178 10.9688 8.92973 10.9688Z" fill="black" fill-opacity="0.25"/>
-          </svg>
-        </button>
-      </div>
-      <code class="class-label">field field--password</code>
-    </div>
-    <!--  -->
-
-    <!-- Password : 노출_ver1  -->
-    <div class="field field--password">
-      <label class="field__label" for="pw3-1">Password  노출_ver1</label>
-      <div class="field__box">
-        <input type="text" id="pw3-1" class="field__input" value="Password" placeholder="Password">
-        <button type="button" class="field__btn" aria-label="비밀번호 숨김">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" fill="none">
-            <path d="M15.2257 6.42773C14.6078 5.12589 13.8724 4.06417 13.0197 3.24257L12.1253 4.13695C12.8546 4.83392 13.4899 5.7457 14.0392 6.88124C12.5767 9.9082 10.5007 11.3461 7.66361 11.3461C6.81201 11.3461 6.02762 11.215 5.31043 10.9527L4.34135 11.9218C5.33744 12.3817 6.44486 12.6117 7.66361 12.6117C11.0421 12.6117 13.5628 10.8521 15.2257 7.333C15.2926 7.19147 15.3272 7.03689 15.3272 6.88037C15.3272 6.72384 15.2926 6.56926 15.2257 6.42773ZM14.1083 0.791478L13.3589 0.0412434C13.3459 0.0281686 13.3304 0.0177963 13.3133 0.0107194C13.2962 0.00364259 13.2779 0 13.2594 0C13.241 0 13.2227 0.00364259 13.2056 0.0107194C13.1885 0.0177963 13.173 0.0281686 13.1599 0.0412434L11.2374 1.96288C10.1775 1.42148 8.98619 1.15077 7.66361 1.15077C4.2851 1.15077 1.7644 2.91035 0.101505 6.42949C0.0346652 6.57102 0 6.7256 0 6.88212C0 7.03865 0.0346652 7.19323 0.101505 7.33476C0.765841 8.73398 1.56565 9.85552 2.50092 10.6994L0.640802 12.559C0.61445 12.5853 0.599647 12.6211 0.599647 12.6584C0.599647 12.6957 0.61445 12.7314 0.640802 12.7578L1.39121 13.5082C1.41758 13.5345 1.45334 13.5494 1.49062 13.5494C1.5279 13.5494 1.56365 13.5345 1.59002 13.5082L14.1083 0.990462C14.1214 0.977402 14.1317 0.961893 14.1388 0.944821C14.1459 0.927749 14.1495 0.90945 14.1495 0.89097C14.1495 0.87249 14.1459 0.854191 14.1388 0.837119C14.1317 0.820047 14.1214 0.804538 14.1083 0.791478ZM1.28803 6.88124C2.75229 3.85429 4.82826 2.4164 7.66361 2.4164C8.62233 2.4164 9.49402 2.58093 10.2849 2.91544L9.04912 4.15118C8.46389 3.83893 7.79379 3.72305 7.13769 3.82062C6.48158 3.9182 5.8742 4.22406 5.40516 4.6931C4.93612 5.16214 4.63025 5.76952 4.53268 6.42563C4.4351 7.08174 4.55099 7.75183 4.86324 8.33706L3.39688 9.80343C2.58529 9.08712 1.88569 8.11663 1.28803 6.88124ZM5.62455 6.88124C5.62486 6.57128 5.69828 6.26576 5.83885 5.9895C5.97942 5.71324 6.18317 5.47404 6.43355 5.29132C6.68394 5.1086 6.97389 4.98752 7.27986 4.93792C7.58583 4.88831 7.89919 4.91158 8.19447 5.00583L5.71789 7.48242C5.65582 7.28807 5.62433 7.08526 5.62455 6.88124Z" fill="black" fill-opacity="0.25"/>
-            <path d="M7.59346 8.84984C7.53264 8.84984 7.4727 8.84703 7.41329 8.84158L6.48481 9.77005C7.04325 9.98392 7.65168 10.0314 8.23656 9.90689C8.82143 9.78233 9.3577 9.49102 9.78054 9.06818C10.2034 8.64534 10.4947 8.10906 10.6193 7.52419C10.7438 6.93932 10.6963 6.33088 10.4824 5.77245L9.55394 6.70092C9.55939 6.76033 9.56221 6.82027 9.56221 6.88109C9.56234 7.13967 9.51152 7.39574 9.41263 7.63467C9.31374 7.87359 9.16873 8.09068 8.98588 8.27352C8.80304 8.45636 8.58595 8.60137 8.34703 8.70026C8.10811 8.79915 7.85204 8.84998 7.59346 8.84984Z" fill="black" fill-opacity="0.25"/>
-          </svg>
-        </button>
-      </div>
-      <code class="class-label">field field--password</code>
-    </div>
-    <!-- Password : 노출_ver2 -->
-    <div class="field field--password">
-      <label class="field__label" for="pw3-2">Password  노출_ver2</label>
-      <div class="field__box">
-        <input type="text" id="pw3-2" class="field__input" value="Password" placeholder="Password">
-        <button type="button" class="field__btn" aria-label="비밀번호 숨김">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M16.5622 8.54648C14.8957 5.03613 12.3768 3.26953 9.00004 3.26953C5.62152 3.26953 3.10434 5.03613 1.43793 8.54824C1.37109 8.68978 1.33643 8.84436 1.33643 9.00088C1.33643 9.1574 1.37109 9.31198 1.43793 9.45352C3.10434 12.9639 5.62328 14.7305 9.00004 14.7305C12.3786 14.7305 14.8957 12.9639 16.5622 9.45176C16.6975 9.16699 16.6975 8.83652 16.5622 8.54648V8.54648ZM9.00004 13.4648C6.16469 13.4648 4.08871 12.027 2.62445 9C4.08871 5.97305 6.16469 4.53516 9.00004 4.53516C11.8354 4.53516 13.9114 5.97305 15.3756 9C13.9131 12.027 11.8371 13.4648 9.00004 13.4648ZM8.92973 5.90625C7.22113 5.90625 5.83598 7.29141 5.83598 9C5.83598 10.7086 7.22113 12.0938 8.92973 12.0938C10.6383 12.0938 12.0235 10.7086 12.0235 9C12.0235 7.29141 10.6383 5.90625 8.92973 5.90625ZM8.92973 10.9688C7.84164 10.9688 6.96098 10.0881 6.96098 9C6.96098 7.91191 7.84164 7.03125 8.92973 7.03125C10.0178 7.03125 10.8985 7.91191 10.8985 9C10.8985 10.0881 10.0178 10.9688 8.92973 10.9688Z" fill="black" fill-opacity="0.25"/>
-          </svg>
-        </button>
-      </div>
-      <code class="class-label">field field--password</code>
-    </div>
-    <!--  -->
-
-    <!-- Disabled_ver1  -->
-    <div class="field field--password field--disabled">
-      <label class="field__label" for="pw4-1">Password Disabled_ver1</label>
-      <div class="field__box">
-        <input type="password" id="pw4-1" class="field__input" value="password" placeholder="Password" disabled>
-        <button type="button" class="field__btn" aria-label="비밀번호 표시" disabled>
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M16.5622 8.54687C15.9442 7.24503 15.2089 6.18331 14.3561 5.36171L13.4617 6.25609C14.191 6.95306 14.8263 7.86484 15.3756 9.00038C13.9131 12.0273 11.8371 13.4652 9.00004 13.4652C8.14844 13.4652 7.36404 13.3341 6.64686 13.0718L5.67777 14.0409C6.67387 14.5009 7.78129 14.7309 9.00004 14.7309C12.3786 14.7309 14.8993 12.9713 16.5622 9.45214C16.629 9.31061 16.6637 9.15603 16.6637 8.99951C16.6637 8.84298 16.629 8.6884 16.5622 8.54687ZM15.4447 2.91062L14.6954 2.16038C14.6823 2.14731 14.6668 2.13694 14.6497 2.12986C14.6326 2.12278 14.6143 2.11914 14.5959 2.11914C14.5774 2.11914 14.5591 2.12278 14.542 2.12986C14.5249 2.13694 14.5094 2.14731 14.4964 2.16038L12.5738 4.08202C11.5139 3.54062 10.3226 3.26992 9.00004 3.26992C5.62152 3.26992 3.10082 5.02949 1.43793 8.54863C1.37109 8.69016 1.33643 8.84474 1.33643 9.00126C1.33643 9.15779 1.37109 9.31237 1.43793 9.4539C2.10227 10.8531 2.90207 11.9747 3.83735 12.8185L1.97723 14.6781C1.95088 14.7045 1.93607 14.7402 1.93607 14.7775C1.93607 14.8148 1.95088 14.8506 1.97723 14.8769L2.72764 15.6273C2.75401 15.6537 2.78976 15.6685 2.82704 15.6685C2.86432 15.6685 2.90008 15.6537 2.92645 15.6273L15.4447 3.1096C15.4578 3.09654 15.4682 3.08103 15.4752 3.06396C15.4823 3.04689 15.486 3.02859 15.486 3.01011C15.486 2.99163 15.4823 2.97333 15.4752 2.95626C15.4682 2.93919 15.4578 2.92368 15.4447 2.91062ZM2.62445 9.00038C4.08871 5.97343 6.16469 4.53554 9.00004 4.53554C9.95875 4.53554 10.8305 4.70007 11.6213 5.03458L10.3855 6.27033C9.80032 5.95807 9.13022 5.84219 8.47411 5.93976C7.818 6.03734 7.21063 6.3432 6.74159 6.81224C6.27255 7.28129 5.96668 7.88866 5.86911 8.54477C5.77153 9.20088 5.88742 9.87097 6.19967 10.4562L4.7333 11.9226C3.92172 11.2063 3.22211 10.2358 2.62445 9.00038ZM6.96098 9.00038C6.96129 8.69042 7.03471 8.3849 7.17527 8.10864C7.31584 7.83238 7.51959 7.59318 7.76998 7.41046C8.02036 7.22774 8.31032 7.10666 8.61629 7.05706C8.92226 7.00745 9.23561 7.03072 9.5309 7.12497L7.05432 9.60156C6.99224 9.40721 6.96075 9.2044 6.96098 9.00038Z" fill="black" fill-opacity="0.25"/>
-            <path d="M8.92989 10.969C8.86907 10.969 8.80913 10.9662 8.74971 10.9607L7.82124 11.8892C8.37968 12.1031 8.98811 12.1506 9.57298 12.026C10.1579 11.9015 10.6941 11.6102 11.117 11.1873C11.5398 10.7645 11.8311 10.2282 11.9557 9.64333C12.0802 9.05846 12.0327 8.45002 11.8188 7.89159L10.8904 8.82006C10.8958 8.87947 10.8986 8.93942 10.8986 9.00024C10.8988 9.25881 10.8479 9.51488 10.7491 9.75381C10.6502 9.99273 10.5052 10.2098 10.3223 10.3927C10.1395 10.5755 9.92238 10.7205 9.68346 10.8194C9.44454 10.9183 9.18847 10.9691 8.92989 10.969Z" fill="black" fill-opacity="0.25"/>
-          </svg>
-        </button>
-      </div>
-      <code class="class-label">field field--password field--disabled</code>
-    </div>
-    <!-- Disabled_ver2  -->
-    <div class="field field--password field--disabled">
-      <label class="field__label" for="pw4-2">Password Disabled_ver2</label>
-      <div class="field__box">
-        <input type="password" id="pw4-2" class="field__input" value="password" placeholder="Password" disabled>
-        <button type="button" class="field__btn" aria-label="비밀번호 표시" disabled>
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M16.5622 8.54648C14.8957 5.03613 12.3768 3.26953 9.00004 3.26953C5.62152 3.26953 3.10434 5.03613 1.43793 8.54824C1.37109 8.68978 1.33643 8.84436 1.33643 9.00088C1.33643 9.1574 1.37109 9.31198 1.43793 9.45352C3.10434 12.9639 5.62328 14.7305 9.00004 14.7305C12.3786 14.7305 14.8957 12.9639 16.5622 9.45176C16.6975 9.16699 16.6975 8.83652 16.5622 8.54648V8.54648ZM9.00004 13.4648C6.16469 13.4648 4.08871 12.027 2.62445 9C4.08871 5.97305 6.16469 4.53516 9.00004 4.53516C11.8354 4.53516 13.9114 5.97305 15.3756 9C13.9131 12.027 11.8371 13.4648 9.00004 13.4648ZM8.92973 5.90625C7.22113 5.90625 5.83598 7.29141 5.83598 9C5.83598 10.7086 7.22113 12.0938 8.92973 12.0938C10.6383 12.0938 12.0235 10.7086 12.0235 9C12.0235 7.29141 10.6383 5.90625 8.92973 5.90625ZM8.92973 10.9688C7.84164 10.9688 6.96098 10.0881 6.96098 9C6.96098 7.91191 7.84164 7.03125 8.92973 7.03125C10.0178 7.03125 10.8985 7.91191 10.8985 9C10.8985 10.0881 10.0178 10.9688 8.92973 10.9688Z" fill="black" fill-opacity="0.25"/>
-          </svg>
-        </button>
-      </div>
-      <code class="class-label">field field--password field--disabled</code>
-    </div>
-    <!--  -->
-
-    <!-- email:기본 -->
-    <div class="field">
-      <label class="field__label" for="email-default">Email</label>
-      <div class="field__box">
-        <span class="icon">아이콘</span>
-        <input type="email" id="email-default" class="field__input" placeholder="olivia@untitledui.com">
-        <button type="button" class="field__btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <g clip-path="url(#clip0_6327_236)">
-              <path d="M6.06001 5.99998C6.21675 5.55442 6.52611 5.17872 6.93331 4.9394C7.34052 4.70009 7.81927 4.61261 8.28479 4.69245C8.75032 4.7723 9.17255 5.01433 9.47673 5.37567C9.7809 5.737 9.94738 6.19433 9.94668 6.66665C9.94668 7.99998 7.94668 8.66665 7.94668 8.66665M8.00001 11.3333H8.00668M14.6667 7.99998C14.6667 11.6819 11.6819 14.6666 8.00001 14.6666C4.31811 14.6666 1.33334 11.6819 1.33334 7.99998C1.33334 4.31808 4.31811 1.33331 8.00001 1.33331C11.6819 1.33331 14.6667 4.31808 14.6667 7.99998Z" stroke="#98A2B3" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
-            <defs>
-              <clipPath id="clip0_6327_236">
-                <rect width="16" height="16" fill="white"/>
-              </clipPath>
-            </defs>
-          </svg>
-        </button>
-      </div>
-      <p>This is a hint text to help user.</p>
-      <code class="class-label">field</code>
-    </div>
-    
-    <!-- email:에러 -->
-    <div class="field field__error">
-      <label class="field__label" for="email-error">Email</label>
-      <div class="field__box">
-        <span class="icon">아이콘</span>
-        <input type="email" id="email-error" class="field__input" placeholder="olivia@untitledui.com">
-        <button type="button" class="field__btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <g clip-path="url(#clip0_1094_4748)">
-              <path d="M8.00001 5.33331V7.99998M8.00001 10.6666H8.00668M14.6667 7.99998C14.6667 11.6819 11.6819 14.6666 8.00001 14.6666C4.31811 14.6666 1.33334 11.6819 1.33334 7.99998C1.33334 4.31808 4.31811 1.33331 8.00001 1.33331C11.6819 1.33331 14.6667 4.31808 14.6667 7.99998Z" stroke="#F04438" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
-            <defs>
-              <clipPath id="clip0_1094_4748">
-                <rect width="16" height="16" fill="white"/>
-              </clipPath>
-            </defs>
-          </svg>
-        </button>
-      </div>
-      <p>This is a hint text to help user.</p>
-      <code class="class-label">field field__error</code>
-    </div>
-
-    <!-- phone number:기본 -->
-    <div class="field field__number">
-      <label class="field__label" for="phone-default">Phone number</label>
-      <div class="field__box">
-        <button type="button" class="lang__box">
-          <span>US</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M5 7.5L10 12.5L15 7.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <input type="tel" id="phone-default" class="field__input" placeholder="+1 (555) 000-0000">
-        <button type="button" class="field__btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <g clip-path="url(#clip0_6327_236-phone)">
-              <path d="M6.06001 5.99998C6.21675 5.55442 6.52611 5.17872 6.93331 4.9394C7.34052 4.70009 7.81927 4.61261 8.28479 4.69245C8.75032 4.7723 9.17255 5.01433 9.47673 5.37567C9.7809 5.737 9.94738 6.19433 9.94668 6.66665C9.94668 7.99998 7.94668 8.66665 7.94668 8.66665M8.00001 11.3333H8.00668M14.6667 7.99998C14.6667 11.6819 11.6819 14.6666 8.00001 14.6666C4.31811 14.6666 1.33334 11.6819 1.33334 7.99998C1.33334 4.31808 4.31811 1.33331 8.00001 1.33331C11.6819 1.33331 14.6667 4.31808 14.6667 7.99998Z" stroke="#98A2B3" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
-            <defs>
-              <clipPath id="clip0_6327_236-phone">
-                <rect width="16" height="16" fill="white"/>
-              </clipPath>
-            </defs>
-          </svg>
-        </button>
-      </div>
-      <p>This is a hint text to help user.</p>
-      <code class="class-label">field field__number</code>
-    </div>
-
-    <!-- phone number:에러 -->
-    <div class="field field__number field__error">
-      <label class="field__label" for="phone-error">Phone number</label>
-      <div class="field__box">
-        <button type="button" class="lang__box">
-          <span>US</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M5 7.5L10 12.5L15 7.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <input type="tel" id="phone-error" class="field__input" placeholder="+1 (555) 000-0000">
-        <button type="button" class="field__btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <g clip-path="url(#clip0_1094_4748-phone)">
-              <path d="M8.00001 5.33331V7.99998M8.00001 10.6666H8.00668M14.6667 7.99998C14.6667 11.6819 11.6819 14.6666 8.00001 14.6666C4.31811 14.6666 1.33334 11.6819 1.33334 7.99998C1.33334 4.31808 4.31811 1.33331 8.00001 1.33331C11.6819 1.33331 14.6667 4.31808 14.6667 7.99998Z" stroke="#F04438" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
-            <defs>
-              <clipPath id="clip0_1094_4748-phone">
-                <rect width="16" height="16" fill="white"/>
-              </clipPath>
-            </defs>
-          </svg>
-        </button>
-      </div>
-      <p>This is a hint text to help user.</p>
-      <code class="class-label">field field__number field__error</code>
-    </div>
+  <script>if (window.self !== window.top) { document.documentElement.classList.add('is-embedded'); }</script>
+  <div class="page-header">
+    <h2>Input</h2>
+    <p>비밀번호/이메일/전화번호/기본 텍스트, 사이즈 3종</p>
   </div>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Overview</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      Input(텍스트 필드)은 사용자로부터 짧은 텍스트를 입력받는 컴포넌트다. 이메일·전화번호처럼 형식이 정해진 입력엔 전용 레이아웃(아이콘, 국가코드)을 붙이고,
+      여러 줄이 필요하면 Textarea를 쓴다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Variants</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">field</code></td>
+          <td>기본 텍스트 입력</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">field--password</code></td>
+          <td>비밀번호. 눈 아이콘으로 마스킹 토글</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">field__number</code></td>
+          <td>전화번호. 왼쪽에 국가 코드 선택 버튼(<code class="doc-code">lang__box</code>) 추가 — 기존 네이밍이 <code class="doc-code">field--</code>가 아니라 <code class="doc-code">field__</code>라 예외적이지만 실제 쓰이는 클래스라 그대로 둠</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">field [field--password | field__number]</code>
+      </div>
+      <div class="board__body">
+        <div class="field-row" data-code-source>
+          <div class="field">
+            <label class="field__label" for="text-default">이름</label>
+            <div class="field__box">
+              <input type="text" id="text-default" class="field__input" placeholder="이름을 입력하세요">
+            </div>
+          </div>
+          <div class="field field--password">
+            <label class="field__label" for="pw-basic">Password</label>
+            <div class="field__box">
+              <input type="password" id="pw-basic" class="field__input" placeholder="Password">
+              <button type="button" class="field__btn" aria-label="비밀번호 표시">
+                <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M16.5622 8.54648C14.8957 5.03613 12.3768 3.26953 9.00004 3.26953C5.62152 3.26953 3.10434 5.03613 1.43793 8.54824C1.37109 8.68978 1.33643 8.84436 1.33643 9.00088C1.33643 9.1574 1.37109 9.31198 1.43793 9.45352C3.10434 12.9639 5.62328 14.7305 9.00004 14.7305C12.3786 14.7305 14.8957 12.9639 16.5622 9.45176C16.6975 9.16699 16.6975 8.83652 16.5622 8.54648V8.54648ZM9.00004 13.4648C6.16469 13.4648 4.08871 12.027 2.62445 9C4.08871 5.97305 6.16469 4.53516 9.00004 4.53516C11.8354 4.53516 13.9114 5.97305 15.3756 9C13.9131 12.027 11.8371 13.4648 9.00004 13.4648ZM8.92973 5.90625C7.22113 5.90625 5.83598 7.29141 5.83598 9C5.83598 10.7086 7.22113 12.0938 8.92973 12.0938C10.6383 12.0938 12.0235 10.7086 12.0235 9C12.0235 7.29141 10.6383 5.90625 8.92973 5.90625ZM8.92973 10.9688C7.84164 10.9688 6.96098 10.0881 6.96098 9C6.96098 7.91191 7.84164 7.03125 8.92973 7.03125C10.0178 7.03125 10.8985 7.91191 10.8985 9C10.8985 10.0881 10.0178 10.9688 8.92973 10.9688Z" fill="black" fill-opacity="0.25"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="field field__number">
+            <label class="field__label" for="phone-basic">Phone number</label>
+            <div class="field__box">
+              <button type="button" class="lang__box">
+                <span>US</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <input type="tel" id="phone-basic" class="field__input" placeholder="+1 (555) 000-0000">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Options</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">field--sm</code> · <code class="doc-code">field--lg</code></td>
+          <td>크기. 기본은 md(미지정)</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">icon</code></td>
+          <td>선택. <code class="doc-code">field__box</code> 맨 앞에 넣으면 입력 왼쪽에 아이콘 표시 (이메일 등)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">field--{sm|lg}  /  field__box &gt; icon(선택)</code>
+      </div>
+      <div class="board__body">
+        <div class="field-row" data-code-source>
+          <div class="field field--sm">
+            <label class="field__label" for="text-sm">Small</label>
+            <div class="field__box">
+              <input type="text" id="text-sm" class="field__input" placeholder="Small">
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="text-md">Medium (기본)</label>
+            <div class="field__box">
+              <input type="text" id="text-md" class="field__input" placeholder="Medium">
+            </div>
+          </div>
+          <div class="field field--lg">
+            <label class="field__label" for="text-lg">Large</label>
+            <div class="field__box">
+              <input type="text" id="text-lg" class="field__input" placeholder="Large">
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="email-icon">Email</label>
+            <div class="field__box">
+              <span class="icon">아이콘</span>
+              <input type="email" id="email-icon" class="field__input" placeholder="olivia@untitledui.com">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">States</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스/속성</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">field--disabled</code></td>
+          <td>비활성. 회색 배경, 입력 커서 <code class="doc-code">not-allowed</code></td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">readonly</code></td>
+          <td>수정 불가하지만 값은 보임 (네이티브 속성, disabled와 달리 값이 폼 제출에 포함됨)</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">field__error</code></td>
+          <td>검증 실패. 빨간 테두리 + 힌트 텍스트 색상 변경 — <code class="doc-code">field--</code>가 아닌 예외 네이밍</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">field [field--disabled] [readonly] [field__error]</code>
+      </div>
+      <div class="board__body">
+        <div class="field-row" data-code-source>
+          <div class="field field--disabled">
+            <label class="field__label" for="text-disabled">이름</label>
+            <div class="field__box">
+              <input type="text" id="text-disabled" class="field__input" placeholder="비활성 상태" disabled>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="text-readonly">이름</label>
+            <div class="field__box">
+              <input type="text" id="text-readonly" class="field__input" value="수정 불가 값" readonly>
+            </div>
+          </div>
+          <div class="field field__error">
+            <label class="field__label" for="email-error">Email</label>
+            <div class="field__box">
+              <span class="icon">아이콘</span>
+              <input type="email" id="email-error" class="field__input" placeholder="olivia@untitledui.com">
+            </div>
+            <p>올바른 이메일 형식이 아닙니다.</p>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Examples</h3>
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">로그인 폼 — 이메일 + 비밀번호 조합</code>
+      </div>
+      <div class="board__body">
+        <div style="max-width: 320px; padding: 4px 0; display: flex; flex-direction: column; gap: var(--spacing-16);" data-code-source>
+          <div class="field">
+            <label class="field__label" for="login-email">Email</label>
+            <div class="field__box">
+              <span class="icon">아이콘</span>
+              <input type="email" id="login-email" class="field__input" placeholder="olivia@untitledui.com">
+            </div>
+          </div>
+          <div class="field field--password">
+            <label class="field__label" for="login-pw">Password</label>
+            <div class="field__box">
+              <input type="password" id="login-pw" class="field__input" placeholder="Password">
+              <button type="button" class="field__btn" aria-label="비밀번호 표시">
+                <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M16.5622 8.54648C14.8957 5.03613 12.3768 3.26953 9.00004 3.26953C5.62152 3.26953 3.10434 5.03613 1.43793 8.54824C1.37109 8.68978 1.33643 8.84436 1.33643 9.00088C1.33643 9.1574 1.37109 9.31198 1.43793 9.45352C3.10434 12.9639 5.62328 14.7305 9.00004 14.7305C12.3786 14.7305 14.8957 12.9639 16.5622 9.45176C16.6975 9.16699 16.6975 8.83652 16.5622 8.54648V8.54648ZM9.00004 13.4648C6.16469 13.4648 4.08871 12.027 2.62445 9C4.08871 5.97305 6.16469 4.53516 9.00004 4.53516C11.8354 4.53516 13.9114 5.97305 15.3756 9C13.9131 12.027 11.8371 13.4648 9.00004 13.4648ZM8.92973 5.90625C7.22113 5.90625 5.83598 7.29141 5.83598 9C5.83598 10.7086 7.22113 12.0938 8.92973 12.0938C10.6383 12.0938 12.0235 10.7086 12.0235 9C12.0235 7.29141 10.6383 5.90625 8.92973 5.90625ZM8.92973 10.9688C7.84164 10.9688 6.96098 10.0881 6.96098 9C6.96098 7.91191 7.84164 7.03125 8.92973 7.03125C10.0178 7.03125 10.8985 7.91191 10.8985 9C10.8985 10.0881 10.0178 10.9688 8.92973 10.9688Z" fill="black" fill-opacity="0.25"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Guidelines</h3>
+    <div class="doc-guideline-grid">
+      <div class="doc-guideline doc-guideline--do">
+        <h4>✓ 권장</h4>
+        <ul>
+          <li>필수 안내는 <code class="doc-code">label</code>/힌트 텍스트에, placeholder는 예시로만</li>
+          <li>에러 시 힌트 텍스트를 구체적인 안내로 교체</li>
+          <li>비밀번호는 기본적으로 마스킹, 눈 아이콘으로만 토글 제공</li>
+        </ul>
+      </div>
+      <div class="doc-guideline doc-guideline--dont">
+        <h4>✕ 지양</h4>
+        <ul>
+          <li><code class="doc-code">label</code> 없이 placeholder만으로 용도 설명 (스크린리더 접근성 저해)</li>
+          <li>여러 줄 입력이 필요한데 Input 사용 (Textarea를 써야 함)</li>
+          <li>새 필드에 <code class="doc-code">field__error</code>/<code class="doc-code">field__number</code> 같은 예외 네이밍을 새로 복제 (신규 옵션은 <code class="doc-code">field--</code> 형태로)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      function escapeHTML(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function dedent(str) {
+        var lines = str.replace(/^\n+|\s+$/g, '').split('\n');
+        var minIndent = Infinity;
+        lines.forEach(function (line) {
+          if (!line.trim()) return;
+          var indent = line.match(/^\s*/)[0].length;
+          minIndent = Math.min(minIndent, indent);
+        });
+        if (!isFinite(minIndent)) minIndent = 0;
+        return lines.map(function (line) { return line.slice(minIndent); }).join('\n');
+      }
+
+      function wireCopy(panel, rawCode) {
+        var codeEl = panel.querySelector('.code-panel__code');
+        var copyBtn = panel.querySelector('[data-code-copy]');
+        codeEl.innerHTML = escapeHTML(rawCode);
+
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(rawCode).then(function () {
+            copyBtn.classList.add('is-copied');
+            copyBtn.textContent = 'Copied';
+            setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyBtn.textContent = 'Copy';
+            }, 1200);
+          });
+        });
+      }
+
+      document.querySelectorAll('[data-code-panel]').forEach(function (panel) {
+        var section = panel.closest('.board, .sgroup');
+        var source = section.querySelector('[data-code-source]');
+        wireCopy(panel, dedent(source.innerHTML));
+      });
+    })();
+  </script>
 </body>
 </html>

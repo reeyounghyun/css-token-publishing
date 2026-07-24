@@ -8,139 +8,266 @@
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/component/alert.css">
+  <link rel="stylesheet" href="/css/component/code-panel.css">
+  <link rel="stylesheet" href="/css/component/doc-template.css">
   <style>
     body {
       padding: 1rem;
     }
-    h2{
-      display: flex;
-      align-items: center;
-      gap: var(--gap-8);
-      font-size: 45px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: var( --primary-700);
-    }
-    .base {
-      display: inline-block;
-      font-size: 38px;
-      font-weight: 500;
-      color: var(--gray-800);
-    }
-    .demo-col {
+    .alert-col {
       display: flex;
       flex-direction: column;
       gap: var(--gap-12);
       max-width: 480px;
-    }
-    .class-label {
-      display: block;
-      margin-top: 4px;
-      font-family: ui-monospace, monospace;
-      font-size: 11px;
-      color: #98A2B3;
+      padding: var(--spacing-20);
     }
   </style>
 </head>
 <body>
-  <h2>
-    <span class="base">component</span>
-    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
-    Alert / Banner
-  </h2>
-
-  <h3 style="margin-bottom: 12px;">Banner (화면 상단 공지)</h3>
-  <div class="banner">
-    새로운 기능이 추가되었습니다.
-    <button type="button" class="banner__action">자세히 보기</button>
-    <button type="button" class="banner__close" aria-label="닫기" data-dismiss="banner">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
+  <script>if (window.self !== window.top) { document.documentElement.classList.add('is-embedded'); }</script>
+  <div class="page-header">
+    <h2>Alert / Banner</h2>
+    <p>info/success/warning/error</p>
   </div>
-  <code class="class-label">banner &gt; banner__action, banner__close</code>
 
-  <h3 style="margin: 32px 0 12px;">Alert (콘텐츠 안 메시지)</h3>
-  <div class="demo-col">
-    <div class="alert">
-      <svg class="alert__icon" viewBox="0 0 20 20" fill="none">
-        <path d="M10 6.66667V10M10 13.3333H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div class="alert__body">
-        <div class="alert__title">참고</div>
-        <div class="alert__desc">변경 사항은 저장 후 최대 5분 내에 반영됩니다.</div>
-      </div>
-      <button type="button" class="alert__close" aria-label="닫기" data-dismiss="alert">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-    </div>
-    <code class="class-label">alert (info, 기본)</code>
+  <section class="doc-section">
+    <h3 class="doc-section__title">Overview</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      Alert는 화면/섹션 안에서 상태나 주의사항을 알리는 인라인 메시지다. Banner는 화면/섹션 최상단에 전체 폭으로 걸리는 공지다 (아래 Examples 참고).
+      사용자 확인이 꼭 필요한 내용은 Alert 대신 Modal을 쓴다.
+    </p>
+  </section>
 
-    <div class="alert alert--primary">
-      <svg class="alert__icon" viewBox="0 0 20 20" fill="none">
-        <path d="M6.66667 10L9.16667 12.5L14.1667 6.66667M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div class="alert__body">
-        <div class="alert__title">저장 완료</div>
-        <div class="alert__desc">모든 변경 사항이 정상적으로 저장되었습니다.</div>
-      </div>
-      <button type="button" class="alert__close" aria-label="닫기" data-dismiss="alert">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-    </div>
-    <code class="class-label">alert alert--primary (success)</code>
+  <section class="doc-section">
+    <h3 class="doc-section__title">Variants</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">alert</code></td>
+          <td>기본형 (info). 회색 아이콘</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">alert--primary</code></td>
+          <td>성공. accent 색상</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">alert--warning</code></td>
+          <td>경고. warning 색상</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">alert--error</code></td>
+          <td>에러. danger 색상</td>
+        </tr>
+      </tbody>
+    </table>
 
-    <div class="alert alert--warning">
-      <svg class="alert__icon" viewBox="0 0 20 20" fill="none">
-        <path d="M8.685 3.02297L1.82164 14.9993C1.68282 15.2413 1.60942 15.5157 1.60872 15.795C1.60802 16.0743 1.68005 16.3491 1.81765 16.5918C1.95526 16.8345 2.15366 17.0366 2.39331 17.1782C2.63296 17.3198 2.90551 17.3958 3.18333 17.3987H16.9101C17.1879 17.3958 17.4604 17.3198 17.7001 17.1782C17.9397 17.0366 18.1381 16.8345 18.2757 16.5918C18.4133 16.3491 18.4854 16.0743 18.4847 15.795C18.484 15.5157 18.4106 15.2413 18.2717 14.9993L11.4084 3.02297C11.2669 2.78853 11.0672 2.59481 10.8288 2.46046C10.5904 2.32611 10.3212 2.25586 10.0475 2.25586C9.7738 2.25586 9.50464 2.32611 9.26621 2.46046C9.02778 2.59481 8.82807 2.78853 8.685 3.02297Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M10.0475 7.5V10.4167M10.0475 13.3333H10.0558" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div class="alert__body">
-        <div class="alert__title">저장 용량 임박</div>
-        <div class="alert__desc">저장 공간이 얼마 남지 않았습니다. 곧 90%에 도달합니다.</div>
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">alert [alert--{primary|warning|error}]</code>
       </div>
-      <button type="button" class="alert__close" aria-label="닫기" data-dismiss="alert">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
+      <div class="board__body">
+        <div class="alert-col" data-code-source>
+          <div class="alert">
+            <svg class="alert__icon" viewBox="0 0 20 20" fill="none">
+              <path d="M10 6.66667V10M10 13.3333H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="alert__body">
+              <div class="alert__title">참고</div>
+              <div class="alert__desc">변경 사항은 저장 후 최대 5분 내에 반영됩니다.</div>
+            </div>
+            <button type="button" class="alert__close" aria-label="닫기" data-dismiss="alert">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="alert alert--primary">
+            <svg class="alert__icon" viewBox="0 0 20 20" fill="none">
+              <path d="M6.66667 10L9.16667 12.5L14.1667 6.66667M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="alert__body">
+              <div class="alert__title">저장 완료</div>
+              <div class="alert__desc">모든 변경 사항이 정상적으로 저장되었습니다.</div>
+            </div>
+            <button type="button" class="alert__close" aria-label="닫기" data-dismiss="alert">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="alert alert--warning">
+            <svg class="alert__icon" viewBox="0 0 20 20" fill="none">
+              <path d="M8.685 3.02297L1.82164 14.9993C1.68282 15.2413 1.60942 15.5157 1.60872 15.795C1.60802 16.0743 1.68005 16.3491 1.81765 16.5918C1.95526 16.8345 2.15366 17.0366 2.39331 17.1782C2.63296 17.3198 2.90551 17.3958 3.18333 17.3987H16.9101C17.1879 17.3958 17.4604 17.3198 17.7001 17.1782C17.9397 17.0366 18.1381 16.8345 18.2757 16.5918C18.4133 16.3491 18.4854 16.0743 18.4847 15.795C18.484 15.5157 18.4106 15.2413 18.2717 14.9993L11.4084 3.02297C11.2669 2.78853 11.0672 2.59481 10.8288 2.46046C10.5904 2.32611 10.3212 2.25586 10.0475 2.25586C9.7738 2.25586 9.50464 2.32611 9.26621 2.46046C9.02778 2.59481 8.82807 2.78853 8.685 3.02297Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10.0475 7.5V10.4167M10.0475 13.3333H10.0558" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="alert__body">
+              <div class="alert__title">저장 용량 임박</div>
+              <div class="alert__desc">저장 공간이 얼마 남지 않았습니다. 곧 90%에 도달합니다.</div>
+            </div>
+            <button type="button" class="alert__close" aria-label="닫기" data-dismiss="alert">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="alert alert--error">
+            <svg class="alert__icon" viewBox="0 0 20 20" fill="none">
+              <path d="M10 6.66667V10M10 13.3333H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="alert__body">
+              <div class="alert__title">저장 실패</div>
+              <div class="alert__desc">네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.</div>
+            </div>
+            <button type="button" class="alert__close" aria-label="닫기" data-dismiss="alert">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
     </div>
-    <code class="class-label">alert alert--warning</code>
+  </section>
 
-    <div class="alert alert--error">
-      <svg class="alert__icon" viewBox="0 0 20 20" fill="none">
-        <path d="M10 6.66667V10M10 13.3333H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div class="alert__body">
-        <div class="alert__title">저장 실패</div>
-        <div class="alert__desc">네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.</div>
-      </div>
-      <button type="button" class="alert__close" aria-label="닫기" data-dismiss="alert">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-    </div>
-    <code class="class-label">alert alert--error</code>
+  <section class="doc-section">
+    <h3 class="doc-section__title">Options</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">alert__close</code></td>
+          <td>선택. 생략하면 사용자가 닫을 수 없는, 계속 유지되어야 하는 안내가 된다</td>
+        </tr>
+      </tbody>
+    </table>
 
-    <!-- 닫기 버튼 없는 버전 -->
-    <div class="alert">
-      <svg class="alert__icon" viewBox="0 0 20 20" fill="none">
-        <path d="M10 6.66667V10M10 13.3333H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div class="alert__body">
-        <div class="alert__title">닫기 버튼 없음</div>
-        <div class="alert__desc">계속 유지되어야 하는 안내는 닫기 버튼을 빼고 alert__close를 마크업에서 생략합니다.</div>
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">alert__close 생략 — 계속 유지되어야 하는 안내</code>
+      </div>
+      <div class="board__body">
+        <div style="max-width: 480px; padding: var(--spacing-20);" data-code-source>
+          <div class="alert">
+            <svg class="alert__icon" viewBox="0 0 20 20" fill="none">
+              <path d="M10 6.66667V10M10 13.3333H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="alert__body">
+              <div class="alert__title">닫기 버튼 없음</div>
+              <div class="alert__desc">계속 유지되어야 하는 안내는 마크업에서 alert__close를 생략합니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">States</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      별도 상태 클래스는 없다. <code class="doc-code">alert__close</code>에 <code class="doc-code">data-dismiss="alert"</code>가 있으면 <code class="doc-code">js/main.js</code>가 클릭 시 가장 가까운 <code class="doc-code">.alert</code>를 DOM에서 제거한다 — 위 Variants 데모에서 닫기 버튼을 눌러 확인할 수 있다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Examples</h3>
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">banner &gt; banner__action, banner__close — 화면 최상단 전체 폭 공지</code>
+      </div>
+      <div class="board__body">
+        <div data-code-source>
+          <div class="banner">
+            새로운 기능이 추가되었습니다.
+            <button type="button" class="banner__action">자세히 보기</button>
+            <button type="button" class="banner__close" aria-label="닫기" data-dismiss="banner">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Guidelines</h3>
+    <div class="doc-guideline-grid">
+      <div class="doc-guideline doc-guideline--do">
+        <h4>✓ 권장</h4>
+        <ul>
+          <li>제목은 짧게, 설명은 다음 행동까지 안내</li>
+          <li>사이트 전체에 걸친 공지는 Banner, 특정 화면/폼 안 메시지는 Alert</li>
+          <li>색상만으로 의미 전달하지 않기 (아이콘 + 텍스트 병행)</li>
+        </ul>
+      </div>
+      <div class="doc-guideline doc-guideline--dont">
+        <h4>✕ 지양</h4>
+        <ul>
+          <li>한 화면에 Alert 여러 개를 동시에 쌓아 보여주기</li>
+          <li>사용자 확인이 꼭 필요한 내용 (Modal을 써야 함)</li>
+          <li>Banner 안에 여러 개의 액션 버튼 넣기 (하나만)</li>
+        </ul>
       </div>
     </div>
-    <code class="class-label">alert (alert__close 버튼 생략)</code>
-  </div>
+  </section>
 
   <script src="/js/main.js"></script>
+  <script>
+    (function () {
+      function escapeHTML(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function dedent(str) {
+        var lines = str.replace(/^\n+|\s+$/g, '').split('\n');
+        var minIndent = Infinity;
+        lines.forEach(function (line) {
+          if (!line.trim()) return;
+          var indent = line.match(/^\s*/)[0].length;
+          minIndent = Math.min(minIndent, indent);
+        });
+        if (!isFinite(minIndent)) minIndent = 0;
+        return lines.map(function (line) { return line.slice(minIndent); }).join('\n');
+      }
+
+      function wireCopy(panel, rawCode) {
+        var codeEl = panel.querySelector('.code-panel__code');
+        var copyBtn = panel.querySelector('[data-code-copy]');
+        codeEl.innerHTML = escapeHTML(rawCode);
+
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(rawCode).then(function () {
+            copyBtn.classList.add('is-copied');
+            copyBtn.textContent = 'Copied';
+            setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyBtn.textContent = 'Copy';
+            }, 1200);
+          });
+        });
+      }
+
+      document.querySelectorAll('[data-code-panel]').forEach(function (panel) {
+        var section = panel.closest('.board, .sgroup');
+        var source = section.querySelector('[data-code-source]');
+        wireCopy(panel, dedent(source.innerHTML));
+      });
+    })();
+  </script>
 </body>
 </html>

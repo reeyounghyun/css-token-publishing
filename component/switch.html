@@ -3,146 +3,302 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>switch</title>
+  <title>Switch</title>
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/component/switch.css">
-
+  <link rel="stylesheet" href="/css/component/code-panel.css">
+  <link rel="stylesheet" href="/css/component/doc-template.css">
   <style>
     body {
       padding: 1rem;
     }
-    h2{
+    .grid--2 { --cols: 2; }
+    .grid--4 { --cols: 4; }
+    .state-group__title {
+      margin-bottom: var(--spacing-6);
+      font-size: var(--text-16);
+      font-weight: var(--weight-Semibold);
+      color: var(--color-text-accent-medium);
+    }
+    .state-head {
+      margin-bottom: var(--spacing-10);
+    }
+    .state-head__cell {
+      font-size: var(--text-14);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-quaternary);
+    }
+    .size-row {
+      margin-bottom: var(--spacing-16);
+    }
+    .size-row__label {
+      display: block;
+      font-size: var(--text-14);
+      margin-bottom: var(--spacing-10);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+    }
+    .state-cell {
       display: flex;
       align-items: center;
-      gap: var(--gap-8);
-      font-size: 45px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: var( --primary-700);
-    }
-    .base {
-      display: inline-block;
-      font-size: 38px;
-      font-weight: 500;
-      color: var(--gray-800);
-    }
-    .grid--2 { --cols: 2; }
-    .grid--3 { --cols: 3; }
-    .grid--4 { --cols: 4; }
-    .grid--6 { --cols: 6; }
-    .grid--8 { --cols: 8; }
-    .class-label {
-      display: block;
-      margin-top: 4px;
-      font-family: ui-monospace, monospace;
-      font-size: 11px;
-      color: #98A2B3;
+      min-height: 36px;
     }
   </style>
 </head>
 <body>
-  <h2>
-    <span class="base">component</span>
-    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
-    switch
-  </h2>
-  <div class="grid grid--1" style="max-width: 1300px;">
-    <p class="class-label">label class="toggle [toggle--sm]" &gt; input class="toggle__input" [is-pressed|is-loading] [checked] [disabled]</p>
-    <div class="state-wrap">
-      <section class="state-group">
-        <h3 class="state-group__title">Active: True</h3>
-        <div class="grid grid--4 state-head">
-          <span class="state-head__cell">Default</span>
-          <span class="state-head__cell">Pressed</span>
-          <span class="state-head__cell">Loading</span>
-          <span class="state-head__cell">Disabled</span>
-        </div>
-        <div class="size-row"><span class="size-row__label">Size: Default</span>
-          <div class="grid grid--4">
-            <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input" role="switch" checked></label></div>
-            <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input is-pressed" role="switch" checked></label></div>
-            <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input is-loading" role="switch" checked></label></div>
-            <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input" role="switch" checked disabled></label></div>
-          </div>
-        </div>
-        <div class="size-row"><span class="size-row__label">Size: Small</span>
-          <div class="grid grid--4">
-            <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input" role="switch" checked></label></div>
-            <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input is-pressed" role="switch" checked></label></div>
-            <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input is-loading" role="switch" checked></label></div>
-            <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input" role="switch" checked disabled></label></div>
-          </div>
-        </div>
-      </section>
-      <section class="state-group">
-        <h3 class="state-group__title">Active: False</h3>
-        <div class="grid grid--4 state-head">
-          <span class="state-head__cell">Default</span>
-          <span class="state-head__cell">Pressed</span>
-          <span class="state-head__cell">Loading</span>
-          <span class="state-head__cell">Disabled</span>
-        </div>
-        <div class="size-row"><span class="size-row__label">Default</span>
-          <div class="grid grid--4">
-            <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input" role="switch"></label></div>
-            <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input is-pressed" role="switch"></label></div>
-            <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input is-loading" role="switch"></label></div>
-            <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input" role="switch" disabled></label></div>
-          </div>
-        </div>
-        <div class="size-row"><span class="size-row__label">Small</span>
-          <div class="grid grid--4">
-            <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input" role="switch"></label></div>
-            <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input is-pressed" role="switch"></label></div>
-            <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input is-loading" role="switch"></label></div>
-            <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input" role="switch" disabled></label></div>
-          </div>
-        </div>
-      </section>
-    </div>
-    <div class="custom-toggle grid grid--2" style="gap: 40px;">
-      <!-- off (기본) -->
-      <div>
-        <label class="toggle">
-          <input type="checkbox" class="toggle__input" role="switch">
-        </label>
-        <code class="class-label">toggle &gt; toggle__input</code>
-      </div>
-      <!-- off (기본) -->
-      <div>
-        <label class="toggle">
-          <input type="checkbox" class="toggle__input" role="switch">
-          <span class="toggle__text">
-            <span class="toggle__title">Remember me</span>
-          </span>
-        </label>
-        <code class="class-label">toggle &gt; toggle__input + toggle__text &gt; toggle__title</code>
-      </div>
-      <!-- off (기본) -->
-      <div>
-        <label class="toggle">
-          <input type="checkbox" class="toggle__input" role="switch">
-          <span class="toggle__text">
-            <span class="toggle__title">Remember me</span>
-            <span class="toggle__desc">Save my login details for next time.</span>
-          </span>
-        </label>
-        <code class="class-label">toggle &gt; toggle__input + toggle__text &gt; toggle__title, toggle__desc</code>
-      </div>
-      <!-- on (checked 예시) -->
-      <div>
-        <label class="toggle">
-          <input type="checkbox" class="toggle__input" role="switch" checked>
-          <span class="toggle__text">
-            <span class="toggle__title">Remember me</span>
-            <span class="toggle__desc">Save my login details for next time.</span>
-          </span>
-        </label>
-        <code class="class-label">toggle__input checked</code>
-      </div>
-    </div>
+  <script>if (window.self !== window.top) { document.documentElement.classList.add('is-embedded'); }</script>
+  <div class="page-header">
+    <h2>Switch</h2>
+    <p>토글 스위치 (상태/사이즈)</p>
   </div>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Overview</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      스위치(Toggle)는 선택 즉시 효과가 반영되는 on/off 설정에 쓰는 컨트롤이다 (알림 켜기/끄기 등). 폼 제출이 필요한 다중 선택에는 Checkbox를 쓴다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Variants</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary);">
+      스타일 변형 없음 — <code class="doc-code">toggle</code> 기본형 하나만 존재한다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Options</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">toggle--sm</code></td>
+          <td>작은 크기. 기본은 md(미지정)</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">toggle__text</code> &gt; <code class="doc-code">toggle__title</code>, <code class="doc-code">toggle__desc</code></td>
+          <td>선택. 라벨 텍스트/설명 추가, 둘 다 생략하면 스위치만 남는다</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">toggle &gt; toggle__input [+ toggle__text &gt; toggle__title [+ toggle__desc]]</code>
+      </div>
+      <div class="board__body">
+        <div class="grid grid--2" style="gap: 40px;" data-code-source>
+          <label class="toggle">
+            <input type="checkbox" class="toggle__input" role="switch">
+          </label>
+          <label class="toggle">
+            <input type="checkbox" class="toggle__input" role="switch">
+            <span class="toggle__text">
+              <span class="toggle__title">Remember me</span>
+            </span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" class="toggle__input" role="switch">
+            <span class="toggle__text">
+              <span class="toggle__title">Remember me</span>
+              <span class="toggle__desc">Save my login details for next time.</span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">States</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">checked</code></td>
+          <td>on 상태. 트랙 색상 + 썸이 오른쪽으로 이동</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">is-pressed</code></td>
+          <td>누르는 중. 트랙 둘레에 링 표시</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">is-loading</code></td>
+          <td>처리 중. 썸 위에 스피너, 클릭 방지(<code class="doc-code">pointer-events:none</code>)</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">disabled</code></td>
+          <td>비활성. 50% 투명도</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">toggle [toggle--sm] &gt; toggle__input [is-pressed|is-loading] [checked] [disabled]</code>
+      </div>
+      <div class="board__body">
+        <div class="state-wrap">
+          <section class="state-group">
+            <h3 class="state-group__title">Active: True</h3>
+            <div class="grid grid--4 state-head">
+              <span class="state-head__cell">Default</span>
+              <span class="state-head__cell">Pressed</span>
+              <span class="state-head__cell">Loading</span>
+              <span class="state-head__cell">Disabled</span>
+            </div>
+            <div class="size-row">
+              <span class="size-row__label">Size: Default</span>
+              <div class="grid grid--4" data-code-source>
+                <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input" role="switch" checked></label></div>
+                <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input is-pressed" role="switch" checked></label></div>
+                <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input is-loading" role="switch" checked></label></div>
+                <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input" role="switch" checked disabled></label></div>
+              </div>
+              <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+            </div>
+            <div class="size-row">
+              <span class="size-row__label">Size: Small</span>
+              <div class="grid grid--4" data-code-source>
+                <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input" role="switch" checked></label></div>
+                <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input is-pressed" role="switch" checked></label></div>
+                <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input is-loading" role="switch" checked></label></div>
+                <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input" role="switch" checked disabled></label></div>
+              </div>
+              <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+            </div>
+          </section>
+          <section class="state-group">
+            <h3 class="state-group__title">Active: False</h3>
+            <div class="grid grid--4 state-head">
+              <span class="state-head__cell">Default</span>
+              <span class="state-head__cell">Pressed</span>
+              <span class="state-head__cell">Loading</span>
+              <span class="state-head__cell">Disabled</span>
+            </div>
+            <div class="size-row">
+              <span class="size-row__label">Size: Default</span>
+              <div class="grid grid--4" data-code-source>
+                <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input" role="switch"></label></div>
+                <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input is-pressed" role="switch"></label></div>
+                <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input is-loading" role="switch"></label></div>
+                <div class="state-cell"><label class="toggle"><input type="checkbox" class="toggle__input" role="switch" disabled></label></div>
+              </div>
+              <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+            </div>
+            <div class="size-row">
+              <span class="size-row__label">Size: Small</span>
+              <div class="grid grid--4" data-code-source>
+                <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input" role="switch"></label></div>
+                <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input is-pressed" role="switch"></label></div>
+                <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input is-loading" role="switch"></label></div>
+                <div class="state-cell"><label class="toggle toggle--sm"><input type="checkbox" class="toggle__input" role="switch" disabled></label></div>
+              </div>
+              <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Examples</h3>
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">로그인 상태 유지 — 제목+설명, 기본 checked</code>
+      </div>
+      <div class="board__body">
+        <div style="padding: 4px 0;" data-code-source>
+          <label class="toggle">
+            <input type="checkbox" class="toggle__input" role="switch" checked>
+            <span class="toggle__text">
+              <span class="toggle__title">Remember me</span>
+              <span class="toggle__desc">Save my login details for next time.</span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Guidelines</h3>
+    <div class="doc-guideline-grid">
+      <div class="doc-guideline doc-guideline--do">
+        <h4>✓ 권장</h4>
+        <ul>
+          <li>선택 즉시 반영되는 설정에만 사용 (저장 버튼이 따로 필요 없어야 함)</li>
+          <li>처리 중엔 <code class="doc-code">is-loading</code>으로 클릭을 막아 중복 요청 방지</li>
+          <li>라벨 텍스트는 지금 상태가 아니라 켰을 때 결과로 작성 (예: "다크 모드" O, "다크 모드 켜짐" X)</li>
+        </ul>
+      </div>
+      <div class="doc-guideline doc-guideline--dont">
+        <h4>✕ 지양</h4>
+        <ul>
+          <li>여러 개를 폼에 모아뒀다가 한 번에 "저장" 버튼으로 제출 (그럴 땐 Checkbox가 맞음)</li>
+          <li>라벨 없이 스위치만 여러 개 나열 (무엇을 켜는지 알 수 없음)</li>
+          <li>되돌릴 수 없는 파괴적 동작에 스위치 사용 (확인 절차 없이 즉시 실행됨)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      function escapeHTML(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function dedent(str) {
+        var lines = str.replace(/^\n+|\s+$/g, '').split('\n');
+        var minIndent = Infinity;
+        lines.forEach(function (line) {
+          if (!line.trim()) return;
+          var indent = line.match(/^\s*/)[0].length;
+          minIndent = Math.min(minIndent, indent);
+        });
+        if (!isFinite(minIndent)) minIndent = 0;
+        return lines.map(function (line) { return line.slice(minIndent); }).join('\n');
+      }
+
+      function wireCopy(panel, rawCode) {
+        var codeEl = panel.querySelector('.code-panel__code');
+        var copyBtn = panel.querySelector('[data-code-copy]');
+        codeEl.innerHTML = escapeHTML(rawCode);
+
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(rawCode).then(function () {
+            copyBtn.classList.add('is-copied');
+            copyBtn.textContent = 'Copied';
+            setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyBtn.textContent = 'Copy';
+            }, 1200);
+          });
+        });
+      }
+
+      document.querySelectorAll('[data-code-panel]').forEach(function (panel) {
+        var section = panel.closest('.board, .sgroup, .size-row');
+        var source = section.querySelector('[data-code-source]');
+        wireCopy(panel, dedent(source.innerHTML));
+      });
+    })();
+  </script>
 </body>
 </html>

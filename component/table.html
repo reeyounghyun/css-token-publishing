@@ -10,442 +10,362 @@
   <link rel="stylesheet" href="/css/component/button.css">
   <link rel="stylesheet" href="/css/component/badge.css">
   <link rel="stylesheet" href="/css/component/table.css">
+  <link rel="stylesheet" href="/css/component/code-panel.css">
+  <link rel="stylesheet" href="/css/component/doc-template.css">
   <style>
     body {
       padding: 1rem;
     }
-    h2{
-      display: flex;
-      align-items: center;
-      gap: var(--gap-8);
-      font-size: 45px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: var( --primary-700);
-    }
-    .base {
-      display: inline-block;
-      font-size: 38px;
-      font-weight: 500;
-      color: var(--gray-800);
-    }
-    .class-label {
-      display: block;
-      margin-bottom: 8px;
-      font-family: ui-monospace, monospace;
-      font-size: 11px;
-      color: #98A2B3;
-    }
   </style>
 </head>
 <body>
-  <h2>
-    <span class="base">component</span>
-    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
-    Table
-  </h2>
+  <script>if (window.self !== window.top) { document.documentElement.classList.add('is-embedded'); }</script>
+  <div class="page-header">
+    <h2>Table</h2>
+    <p>기본/정렬가능 헤더/빈 상태/로딩/고정헤더/피벗/Grid Table</p>
+  </div>
 
-  <h2 style="margin-top: 48px;">Empty state</h2>
-  <code class="class-label">table &gt; table__empty</code>
-  <div class="table-wrap" style="max-width: 900px;">
-    <table class="table">
+  <section class="doc-section">
+    <h3 class="doc-section__title">Overview</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      Table은 여러 행/열로 이뤄진 데이터를 보여주는 컴포넌트다. 시맨틱 <code class="doc-code">&lt;table&gt;</code> 마크업이 기본이고,
+      sticky 헤더/첫 컬럼 고정처럼 복잡한 레이아웃이 필요하면 <code class="doc-code">&lt;div&gt;</code> + CSS Grid로 만든 Grid Table을 대신 쓸 수 있다 (동일한 시각 결과, 접근성 <code class="doc-code">role</code>은 직접 부여해야 함).
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Variants</h3>
+    <table class="doc-table">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Role</th>
-          <th>Status</th>
-          <th class="table__cell--center">Edit</th>
-          <th class="table__cell--center">Delete</th>
+          <th>구현</th>
+          <th>설명</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td colspan="5" class="table__empty">아직 등록된 팀원이 없습니다.</td>
+          <td><code class="doc-code">table</code></td>
+          <td>시맨틱 <code class="doc-code">&lt;table&gt;</code> 마크업. 기본값으로 권장</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">grid-table</code></td>
+          <td><code class="doc-code">&lt;div&gt;</code> + CSS Grid. <code class="doc-code">role="table/row/cell/columnheader"</code>를 직접 부여해야 접근성이 동등해짐</td>
         </tr>
       </tbody>
     </table>
-  </div>
 
-  <code class="class-label" style="margin: 24px 0 8px;">table &gt; table__cell-title, table__cell-sub, table__cell--center</code>
-  <div class="table-toolbar" style="max-width: 900px;">
-    <span class="table-toolbar__title">Team members</span>
-    <button type="button" class="btn btn--primary btn--sm">Add member</button>
-  </div>
-
-  <div class="table-wrap" style="max-width: 900px;">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Role</th>
-          <th>Status</th>
-          <th class="table__cell--center">Edit</th>
-          <th class="table__cell--center">Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <div class="table__cell-title">Phoenix Baker</div>
-            <div class="table__cell-sub">phoenix@untitledui.com</div>
-          </td>
-          <td>Product Designer</td>
-          <td><span class="badge badge--primary"><span class="badge__dot"></span>Active</span></td>
-          <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm">Edit</button></td>
-          <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></td>
-        </tr>
-        <tr>
-          <td>
-            <div class="table__cell-title">Olivia Rhye</div>
-            <div class="table__cell-sub">olivia@untitledui.com</div>
-          </td>
-          <td>Frontend Developer</td>
-          <td><span class="badge badge--primary"><span class="badge__dot"></span>Active</span></td>
-          <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm">Edit</button></td>
-          <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></td>
-        </tr>
-        <tr>
-          <td>
-            <div class="table__cell-title">Lana Steiner</div>
-            <div class="table__cell-sub">lana@untitledui.com</div>
-          </td>
-          <td>UX Researcher</td>
-          <td><span class="badge badge--default"><span class="badge__dot"></span>Invited</span></td>
-          <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm">Edit</button></td>
-          <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></td>
-        </tr>
-        <tr>
-          <td>
-            <div class="table__cell-title">Demi Wilkinson</div>
-            <div class="table__cell-sub">demi@untitledui.com</div>
-          </td>
-          <td>Backend Developer</td>
-          <td><span class="badge badge--error"><span class="badge__dot"></span>Suspended</span></td>
-          <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm">Edit</button></td>
-          <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h2 style="margin-top: 48px;">정렬 가능한 헤더</h2>
-  <code class="class-label">th[aria-sort="ascending|descending|none"] &gt; table__sort</code>
-  <div class="table-wrap" style="max-width: 900px;">
-    <table class="table">
-      <thead>
-        <tr>
-          <th aria-sort="ascending">
-            <button type="button" class="table__sort">
-              Name
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2.5V9.5M6 2.5L3 5.5M6 2.5L9 5.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-          </th>
-          <th aria-sort="none">
-            <button type="button" class="table__sort">
-              Role
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2.5V9.5M6 2.5L3 5.5M6 2.5L9 5.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-          </th>
-          <th aria-sort="none">
-            <button type="button" class="table__sort">
-              Status
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2.5V9.5M6 2.5L3 5.5M6 2.5L9 5.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Candice Wu</td><td>Data Analyst</td><td><span class="badge badge--primary"><span class="badge__dot"></span>Active</span></td></tr>
-        <tr><td>Demi Wilkinson</td><td>Backend Developer</td><td><span class="badge badge--error"><span class="badge__dot"></span>Suspended</span></td></tr>
-        <tr><td>Lana Steiner</td><td>UX Researcher</td><td><span class="badge badge--default"><span class="badge__dot"></span>Invited</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h2 style="margin-top: 48px;">로딩 상태</h2>
-  <code class="class-label">table__loading &gt; table__loading-spinner</code>
-  <div class="table-wrap" style="max-width: 900px;">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Role</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td colspan="3" class="table__loading">
-            <span class="table__loading-spinner"></span>불러오는 중...
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h2 style="margin-top: 48px;">고정 헤더 (세로 스크롤 시 헤더 고정)</h2>
-  <code class="class-label">table-wrap table-wrap--scroll-y</code>
-  <div class="table-wrap table-wrap--scroll-y" style="max-width: 900px;">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Role</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Phoenix Baker</td><td>Product Designer</td><td><span class="badge badge--primary"><span class="badge__dot"></span>Active</span></td></tr>
-        <tr><td>Olivia Rhye</td><td>Frontend Developer</td><td><span class="badge badge--primary"><span class="badge__dot"></span>Active</span></td></tr>
-        <tr><td>Lana Steiner</td><td>UX Researcher</td><td><span class="badge badge--default"><span class="badge__dot"></span>Invited</span></td></tr>
-        <tr><td>Demi Wilkinson</td><td>Backend Developer</td><td><span class="badge badge--error"><span class="badge__dot"></span>Suspended</span></td></tr>
-        <tr><td>Candice Wu</td><td>Data Analyst</td><td><span class="badge badge--primary"><span class="badge__dot"></span>Active</span></td></tr>
-        <tr><td>Natali Craig</td><td>QA Engineer</td><td><span class="badge badge--default"><span class="badge__dot"></span>Invited</span></td></tr>
-        <tr><td>Drew Cano</td><td>DevOps Engineer</td><td><span class="badge badge--primary"><span class="badge__dot"></span>Active</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h2 style="margin-top: 48px;">피벗 테이블 (첫 컬럼 고정 + 가로 스크롤)</h2>
-  <code class="class-label">table table--pivot &gt; table__row--total</code>
-  <div class="table-toolbar" style="max-width: 900px;">
-    <span class="table-toolbar__title">제품별 월별 매출 (백만원)</span>
-  </div>
-  <div class="table-wrap" style="max-width: 500px;">
-    <table class="table table--pivot">
-      <thead>
-        <tr>
-          <th>구분</th>
-          <th>1월</th>
-          <th>2월</th>
-          <th>3월</th>
-          <th>4월</th>
-          <th>5월</th>
-          <th>6월</th>
-          <th>7월</th>
-          <th>8월</th>
-          <th>9월</th>
-          <th>10월</th>
-          <th>11월</th>
-          <th>12월</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>노트북</td>
-          <td>120</td><td>135</td><td>142</td><td>110</td><td>158</td><td>165</td>
-          <td>170</td><td>180</td><td>175</td><td>190</td><td>200</td><td>210</td>
-        </tr>
-        <tr>
-          <td>태블릿</td>
-          <td>80</td><td>85</td><td>90</td><td>78</td><td>95</td><td>100</td>
-          <td>105</td><td>110</td><td>108</td><td>115</td><td>120</td><td>125</td>
-        </tr>
-        <tr>
-          <td>스마트폰</td>
-          <td>300</td><td>310</td><td>295</td><td>320</td><td>330</td><td>340</td>
-          <td>350</td><td>345</td><td>360</td><td>370</td><td>380</td><td>400</td>
-        </tr>
-        <tr>
-          <td>이어폰</td>
-          <td>60</td><td>65</td><td>70</td><td>58</td><td>72</td><td>75</td>
-          <td>80</td><td>78</td><td>82</td><td>85</td><td>90</td><td>95</td>
-        </tr>
-        <tr>
-          <td>스마트워치</td>
-          <td>40</td><td>42</td><td>45</td><td>38</td><td>48</td><td>50</td>
-          <td>52</td><td>55</td><td>53</td><td>58</td><td>60</td><td>65</td>
-        </tr>
-        <tr class="table__row--total">
-          <td>합계</td>
-          <td>600</td><td>637</td><td>642</td><td>604</td><td>703</td><td>730</td>
-          <td>757</td><td>768</td><td>778</td><td>818</td><td>850</td><td>895</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h2 style="margin-top: 48px;">Grid Table (table 태그 없이 div + CSS Grid)</h2>
-  <code class="class-label">grid-table &gt; grid-table__row(--header), grid-table__cell(-title|-sub|--center)</code>
-  <div class="table-toolbar" style="max-width: 900px;">
-    <span class="table-toolbar__title">Team members</span>
-    <button type="button" class="btn btn--primary btn--sm">Add member</button>
-  </div>
-  <div class="table-wrap" style="max-width: 900px;">
-    <div class="grid-table" role="table" aria-label="Team members" style="--grid-table-cols: 2fr 1.2fr 1fr 0.6fr 0.6fr;">
-      <div class="grid-table__row grid-table__row--header" role="row">
-        <div class="grid-table__cell" role="columnheader">Name</div>
-        <div class="grid-table__cell" role="columnheader">Role</div>
-        <div class="grid-table__cell" role="columnheader">Status</div>
-        <div class="grid-table__cell grid-table__cell--center" role="columnheader">Edit</div>
-        <div class="grid-table__cell grid-table__cell--center" role="columnheader">Delete</div>
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">table  vs  grid-table &gt; grid-table__row(--header), grid-table__cell — 같은 데이터, 다른 마크업</code>
       </div>
-
-      <div class="grid-table__row" role="row">
-        <div class="grid-table__cell" role="cell">
-          <div class="grid-table__cell-title">Phoenix Baker</div>
-          <div class="grid-table__cell-sub">phoenix@untitledui.com</div>
+      <div class="board__body">
+        <div style="display: flex; flex-direction: column; gap: var(--spacing-28); padding: var(--spacing-20);" data-code-source>
+          <div>
+            <h4 style="font-size: var(--text-14); font-weight: var(--weight-Semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-8);">table (시맨틱 마크업)</h4>
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr><th>Name</th><th>Role</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Phoenix Baker</td><td>Product Designer</td></tr>
+                  <tr><td>Olivia Rhye</td><td>Frontend Developer</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <h4 style="font-size: var(--text-14); font-weight: var(--weight-Semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-8);">grid-table (div + CSS Grid)</h4>
+            <div class="table-wrap">
+              <div class="grid-table" role="table" aria-label="팀원" style="--grid-table-cols: 1fr 1fr;">
+                <div class="grid-table__row grid-table__row--header" role="row">
+                  <div class="grid-table__cell" role="columnheader">Name</div>
+                  <div class="grid-table__cell" role="columnheader">Role</div>
+                </div>
+                <div class="grid-table__row" role="row">
+                  <div class="grid-table__cell" role="cell">Phoenix Baker</div>
+                  <div class="grid-table__cell" role="cell">Product Designer</div>
+                </div>
+                <div class="grid-table__row" role="row">
+                  <div class="grid-table__cell" role="cell">Olivia Rhye</div>
+                  <div class="grid-table__cell" role="cell">Frontend Developer</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="grid-table__cell" role="cell">Product Designer</div>
-        <div class="grid-table__cell" role="cell"><span class="badge badge--primary"><span class="badge__dot"></span>Active</span></div>
-        <div class="grid-table__cell grid-table__cell--center" role="cell"><button type="button" class="btn btn--text btn--sm">Edit</button></div>
-        <div class="grid-table__cell grid-table__cell--center" role="cell"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></div>
       </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
 
-      <div class="grid-table__row" role="row">
-        <div class="grid-table__cell" role="cell">
-          <div class="grid-table__cell-title">Olivia Rhye</div>
-          <div class="grid-table__cell-sub">olivia@untitledui.com</div>
-        </div>
-        <div class="grid-table__cell" role="cell">Frontend Developer</div>
-        <div class="grid-table__cell" role="cell"><span class="badge badge--primary"><span class="badge__dot"></span>Active</span></div>
-        <div class="grid-table__cell grid-table__cell--center" role="cell"><button type="button" class="btn btn--text btn--sm">Edit</button></div>
-        <div class="grid-table__cell grid-table__cell--center" role="cell"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></div>
+  <section class="doc-section">
+    <h3 class="doc-section__title">Options</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">table-toolbar</code></td>
+          <td>선택. 표 위 제목 + 액션 버튼 영역</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">table--pivot</code> · <code class="doc-code">table__row--total</code></td>
+          <td>피벗형. 첫 컬럼 고정 + 가로 스크롤, 합계 행 강조 (<code class="doc-code">grid-table</code> 쪽엔 <code class="doc-code">grid-table--pivot</code>)</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">table-wrap--scroll-y</code></td>
+          <td>선택. 세로 스크롤 컨테이너 안에서 헤더를 <code class="doc-code">sticky</code>로 고정</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">table__cell--center</code></td>
+          <td>선택. 셀 가운데 정렬 (Edit/Delete 버튼 열 등)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">table table--pivot &gt; table__row--total — 첫 컬럼 고정 + 가로 스크롤 + 합계 행</code>
       </div>
-
-      <div class="grid-table__row" role="row">
-        <div class="grid-table__cell" role="cell">
-          <div class="grid-table__cell-title">Lana Steiner</div>
-          <div class="grid-table__cell-sub">lana@untitledui.com</div>
+      <div class="board__body">
+        <div style="padding: 4px 0;" data-code-source>
+          <div class="table-toolbar" style="max-width: 480px;">
+            <span class="table-toolbar__title">제품별 월별 매출 (백만원)</span>
+          </div>
+          <div class="table-wrap" style="max-width: 480px;">
+            <table class="table table--pivot">
+              <thead>
+                <tr>
+                  <th>구분</th><th>1월</th><th>2월</th><th>3월</th><th>4월</th><th>5월</th><th>6월</th>
+                  <th>7월</th><th>8월</th><th>9월</th><th>10월</th><th>11월</th><th>12월</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>노트북</td>
+                  <td>120</td><td>135</td><td>142</td><td>110</td><td>158</td><td>165</td>
+                  <td>170</td><td>180</td><td>175</td><td>190</td><td>200</td><td>210</td>
+                </tr>
+                <tr>
+                  <td>태블릿</td>
+                  <td>80</td><td>85</td><td>90</td><td>78</td><td>95</td><td>100</td>
+                  <td>105</td><td>110</td><td>108</td><td>115</td><td>120</td><td>125</td>
+                </tr>
+                <tr class="table__row--total">
+                  <td>합계</td>
+                  <td>200</td><td>220</td><td>232</td><td>188</td><td>253</td><td>265</td>
+                  <td>275</td><td>290</td><td>283</td><td>305</td><td>320</td><td>335</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div class="grid-table__cell" role="cell">UX Researcher</div>
-        <div class="grid-table__cell" role="cell"><span class="badge badge--default"><span class="badge__dot"></span>Invited</span></div>
-        <div class="grid-table__cell grid-table__cell--center" role="cell"><button type="button" class="btn btn--text btn--sm">Edit</button></div>
-        <div class="grid-table__cell grid-table__cell--center" role="cell"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></div>
       </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
 
-      <div class="grid-table__row" role="row">
-        <div class="grid-table__cell" role="cell">
-          <div class="grid-table__cell-title">Demi Wilkinson</div>
-          <div class="grid-table__cell-sub">demi@untitledui.com</div>
+  <section class="doc-section">
+    <h3 class="doc-section__title">States</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스/속성</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">table__empty</code></td>
+          <td>빈 상태. 데이터가 없을 때 안내 문구</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">table__loading</code> &gt; <code class="doc-code">table__loading-spinner</code></td>
+          <td>로딩 중. 스피너 + 문구</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">th[aria-sort]</code> &gt; <code class="doc-code">table__sort</code></td>
+          <td>정렬 가능한 헤더. 시각 상태만 있고 실제 정렬 JS는 없음</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">table__empty  /  table__loading  /  th[aria-sort="ascending"] &gt; table__sort</code>
+      </div>
+      <div class="board__body">
+        <div style="display: flex; flex-direction: column; gap: var(--spacing-16); padding: var(--spacing-20);" data-code-source>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr><th>Name</th><th>Role</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td colspan="3" class="table__empty">아직 등록된 팀원이 없습니다.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr><th>Name</th><th>Role</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td colspan="3" class="table__loading"><span class="table__loading-spinner"></span>불러오는 중...</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th aria-sort="ascending">
+                    <button type="button" class="table__sort">
+                      Name
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2.5V9.5M6 2.5L3 5.5M6 2.5L9 5.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                  </th>
+                  <th aria-sort="none">
+                    <button type="button" class="table__sort">
+                      Role
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2.5V9.5M6 2.5L3 5.5M6 2.5L9 5.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Candice Wu</td><td>Data Analyst</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div class="grid-table__cell" role="cell">Backend Developer</div>
-        <div class="grid-table__cell" role="cell"><span class="badge badge--error"><span class="badge__dot"></span>Suspended</span></div>
-        <div class="grid-table__cell grid-table__cell--center" role="cell"><button type="button" class="btn btn--text btn--sm">Edit</button></div>
-        <div class="grid-table__cell grid-table__cell--center" role="cell"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Examples</h3>
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">팀원 목록 — table__cell-title/-sub + badge + Edit/Delete 버튼</code>
+      </div>
+      <div class="board__body">
+        <div style="padding: 4px 0;" data-code-source>
+          <div class="table-toolbar" style="max-width: 640px;">
+            <span class="table-toolbar__title">Team members</span>
+            <button type="button" class="btn btn--primary btn--sm">Add member</button>
+          </div>
+          <div class="table-wrap" style="max-width: 640px;">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th class="table__cell--center">Edit</th>
+                  <th class="table__cell--center">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="table__cell-title">Phoenix Baker</div>
+                    <div class="table__cell-sub">phoenix@untitledui.com</div>
+                  </td>
+                  <td>Product Designer</td>
+                  <td><span class="badge badge--primary"><span class="badge__dot"></span>Active</span></td>
+                  <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm">Edit</button></td>
+                  <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table__cell-title">Lana Steiner</div>
+                    <div class="table__cell-sub">lana@untitledui.com</div>
+                  </td>
+                  <td>UX Researcher</td>
+                  <td><span class="badge badge--default"><span class="badge__dot"></span>Invited</span></td>
+                  <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm">Edit</button></td>
+                  <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Guidelines</h3>
+    <div class="doc-guideline-grid">
+      <div class="doc-guideline doc-guideline--do">
+        <h4>✓ 권장</h4>
+        <ul>
+          <li>가능하면 시맨틱 <code class="doc-code">&lt;table&gt;</code> 사용, Grid Table은 sticky 등 table로 어려운 경우에만</li>
+          <li>빈 결과는 안내 문구로, 로딩 중엔 스피너로 명확히 구분</li>
+          <li>정렬 가능한 헤더는 <code class="doc-code">aria-sort</code>를 실제 정렬 상태와 동기화</li>
+        </ul>
+      </div>
+      <div class="doc-guideline doc-guideline--dont">
+        <h4>✕ 지양</h4>
+        <ul>
+          <li>행이 수백 개인데 페이지네이션/가상스크롤 없이 전부 렌더링</li>
+          <li>Grid Table 쓰면서 <code class="doc-code">role</code> 속성 생략 (스크린리더가 표로 인식 못함)</li>
+          <li>피벗 테이블에서 첫 컬럼 고정 없이 가로 스크롤만 시키기 (행 제목을 잃어버림)</li>
+        </ul>
       </div>
     </div>
-  </div>
+  </section>
 
-  <h2 style="margin-top: 48px;">Grid Table 피벗형 (첫 컬럼 고정 + 가로 스크롤, table 태그 없음)</h2>
-  <code class="class-label">grid-table grid-table--pivot &gt; grid-table__row--total</code>
-  <div class="table-toolbar" style="max-width: 500px;">
-    <span class="table-toolbar__title">제품별 월별 매출 (백만원)</span>
-  </div>
-  <div class="table-wrap" style="max-width: 500px;">
-    <div class="grid-table grid-table--pivot" role="table" aria-label="제품별 월별 매출" style="--grid-table-cols: 100px repeat(12, minmax(64px, 1fr));">
-      <div class="grid-table__row grid-table__row--header" role="row">
-        <div class="grid-table__cell" role="columnheader">구분</div>
-        <div class="grid-table__cell" role="columnheader">1월</div>
-        <div class="grid-table__cell" role="columnheader">2월</div>
-        <div class="grid-table__cell" role="columnheader">3월</div>
-        <div class="grid-table__cell" role="columnheader">4월</div>
-        <div class="grid-table__cell" role="columnheader">5월</div>
-        <div class="grid-table__cell" role="columnheader">6월</div>
-        <div class="grid-table__cell" role="columnheader">7월</div>
-        <div class="grid-table__cell" role="columnheader">8월</div>
-        <div class="grid-table__cell" role="columnheader">9월</div>
-        <div class="grid-table__cell" role="columnheader">10월</div>
-        <div class="grid-table__cell" role="columnheader">11월</div>
-        <div class="grid-table__cell" role="columnheader">12월</div>
-      </div>
+  <script>
+    (function () {
+      function escapeHTML(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
 
-      <div class="grid-table__row" role="row">
-        <div class="grid-table__cell" role="cell">노트북</div>
-        <div class="grid-table__cell" role="cell">120</div>
-        <div class="grid-table__cell" role="cell">135</div>
-        <div class="grid-table__cell" role="cell">142</div>
-        <div class="grid-table__cell" role="cell">110</div>
-        <div class="grid-table__cell" role="cell">158</div>
-        <div class="grid-table__cell" role="cell">165</div>
-        <div class="grid-table__cell" role="cell">170</div>
-        <div class="grid-table__cell" role="cell">180</div>
-        <div class="grid-table__cell" role="cell">175</div>
-        <div class="grid-table__cell" role="cell">190</div>
-        <div class="grid-table__cell" role="cell">200</div>
-        <div class="grid-table__cell" role="cell">210</div>
-      </div>
+      function dedent(str) {
+        var lines = str.replace(/^\n+|\s+$/g, '').split('\n');
+        var minIndent = Infinity;
+        lines.forEach(function (line) {
+          if (!line.trim()) return;
+          var indent = line.match(/^\s*/)[0].length;
+          minIndent = Math.min(minIndent, indent);
+        });
+        if (!isFinite(minIndent)) minIndent = 0;
+        return lines.map(function (line) { return line.slice(minIndent); }).join('\n');
+      }
 
-      <div class="grid-table__row" role="row">
-        <div class="grid-table__cell" role="cell">태블릿</div>
-        <div class="grid-table__cell" role="cell">80</div>
-        <div class="grid-table__cell" role="cell">85</div>
-        <div class="grid-table__cell" role="cell">90</div>
-        <div class="grid-table__cell" role="cell">78</div>
-        <div class="grid-table__cell" role="cell">95</div>
-        <div class="grid-table__cell" role="cell">100</div>
-        <div class="grid-table__cell" role="cell">105</div>
-        <div class="grid-table__cell" role="cell">110</div>
-        <div class="grid-table__cell" role="cell">108</div>
-        <div class="grid-table__cell" role="cell">115</div>
-        <div class="grid-table__cell" role="cell">120</div>
-        <div class="grid-table__cell" role="cell">125</div>
-      </div>
+      function wireCopy(panel, rawCode) {
+        var codeEl = panel.querySelector('.code-panel__code');
+        var copyBtn = panel.querySelector('[data-code-copy]');
+        codeEl.innerHTML = escapeHTML(rawCode);
 
-      <div class="grid-table__row" role="row">
-        <div class="grid-table__cell" role="cell">스마트폰</div>
-        <div class="grid-table__cell" role="cell">300</div>
-        <div class="grid-table__cell" role="cell">310</div>
-        <div class="grid-table__cell" role="cell">295</div>
-        <div class="grid-table__cell" role="cell">320</div>
-        <div class="grid-table__cell" role="cell">330</div>
-        <div class="grid-table__cell" role="cell">340</div>
-        <div class="grid-table__cell" role="cell">350</div>
-        <div class="grid-table__cell" role="cell">345</div>
-        <div class="grid-table__cell" role="cell">360</div>
-        <div class="grid-table__cell" role="cell">370</div>
-        <div class="grid-table__cell" role="cell">380</div>
-        <div class="grid-table__cell" role="cell">400</div>
-      </div>
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(rawCode).then(function () {
+            copyBtn.classList.add('is-copied');
+            copyBtn.textContent = 'Copied';
+            setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyBtn.textContent = 'Copy';
+            }, 1200);
+          });
+        });
+      }
 
-      <div class="grid-table__row" role="row">
-        <div class="grid-table__cell" role="cell">이어폰</div>
-        <div class="grid-table__cell" role="cell">60</div>
-        <div class="grid-table__cell" role="cell">65</div>
-        <div class="grid-table__cell" role="cell">70</div>
-        <div class="grid-table__cell" role="cell">58</div>
-        <div class="grid-table__cell" role="cell">72</div>
-        <div class="grid-table__cell" role="cell">75</div>
-        <div class="grid-table__cell" role="cell">80</div>
-        <div class="grid-table__cell" role="cell">78</div>
-        <div class="grid-table__cell" role="cell">82</div>
-        <div class="grid-table__cell" role="cell">85</div>
-        <div class="grid-table__cell" role="cell">90</div>
-        <div class="grid-table__cell" role="cell">95</div>
-      </div>
-
-      <div class="grid-table__row" role="row">
-        <div class="grid-table__cell" role="cell">스마트워치</div>
-        <div class="grid-table__cell" role="cell">40</div>
-        <div class="grid-table__cell" role="cell">42</div>
-        <div class="grid-table__cell" role="cell">45</div>
-        <div class="grid-table__cell" role="cell">38</div>
-        <div class="grid-table__cell" role="cell">48</div>
-        <div class="grid-table__cell" role="cell">50</div>
-        <div class="grid-table__cell" role="cell">52</div>
-        <div class="grid-table__cell" role="cell">55</div>
-        <div class="grid-table__cell" role="cell">53</div>
-        <div class="grid-table__cell" role="cell">58</div>
-        <div class="grid-table__cell" role="cell">60</div>
-        <div class="grid-table__cell" role="cell">65</div>
-      </div>
-
-      <div class="grid-table__row grid-table__row--total" role="row">
-        <div class="grid-table__cell" role="cell">합계</div>
-        <div class="grid-table__cell" role="cell">600</div>
-        <div class="grid-table__cell" role="cell">637</div>
-        <div class="grid-table__cell" role="cell">642</div>
-        <div class="grid-table__cell" role="cell">604</div>
-        <div class="grid-table__cell" role="cell">703</div>
-        <div class="grid-table__cell" role="cell">730</div>
-        <div class="grid-table__cell" role="cell">757</div>
-        <div class="grid-table__cell" role="cell">768</div>
-        <div class="grid-table__cell" role="cell">778</div>
-        <div class="grid-table__cell" role="cell">818</div>
-        <div class="grid-table__cell" role="cell">850</div>
-        <div class="grid-table__cell" role="cell">895</div>
-      </div>
-    </div>
-  </div>
+      document.querySelectorAll('[data-code-panel]').forEach(function (panel) {
+        var section = panel.closest('.board, .sgroup');
+        var source = section.querySelector('[data-code-source]');
+        wireCopy(panel, dedent(source.innerHTML));
+      });
+    })();
+  </script>
 </body>
 </html>

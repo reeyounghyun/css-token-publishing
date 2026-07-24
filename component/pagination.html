@@ -3,251 +3,374 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>pagination</title>
+  <title>Pagination</title>
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/component/pagination.css">
-
+  <link rel="stylesheet" href="/css/component/code-panel.css">
+  <link rel="stylesheet" href="/css/component/doc-template.css">
   <style>
     body {
       padding: 1rem;
     }
-    h2{
+    .pg-row {
       display: flex;
-      align-items: center;
-      gap: var(--gap-8);
-      font-size: 45px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: var( --primary-700);
+      flex-direction: column;
+      gap: var(--spacing-28);
+      padding: var(--spacing-20);
     }
-    .base {
-      display: inline-block;
-      font-size: 38px;
-      font-weight: 500;
-      color: var(--gray-800);
-    }
-    h5 {
+    .pg-row h5 {
       font-size: var(--text-14);
       font-weight: var(--weight-medium);
-      color: var(--c-text);
-      margin-bottom: 0.25rem;
-    }
-    .grid--2 { --cols: 2; }
-    .grid--3 { --cols: 3; }
-    .grid--4 { --cols: 4; }
-    .grid--6 { --cols: 6; }
-    .grid--8 { --cols: 8; }
-    .class-label {
-      display: block;
-      margin-bottom: 4px;
-      font-family: ui-monospace, monospace;
-      font-size: 11px;
-      color: #98A2B3;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--spacing-8);
     }
   </style>
 </head>
 <body>
-  <h2>
-    <span class="base">component</span>
-    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">    
-    pagination
-  </h2>
-  <div class="grid grid--1" style="max-width: 600px; gap: 50px;">
-    <!-- Pagination : 숫자형 기본 -->
-    <div>
-      <h5>Pagination : 숫자형 기본</h5>
-      <code class="class-label">pagination &gt; pagination__arrow, pagination__list &gt; pagination__item.is-active</code>
-      <nav class="pagination" aria-label="페이지네이션">
-        <!-- 이전 : 첫 페이지면 disabled -->
-        <button type="button" class="pagination__arrow" aria-label="이전 페이지" disabled>
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <ul class="pagination__list">
-          <li><button type="button" class="pagination__item is-active" aria-current="page">1</button></li>
-          <li><button type="button" class="pagination__item">2</button></li>
-          <li><button type="button" class="pagination__item">3</button></li>
-          <li><span class="pagination__dots">…</span></li>
-          <li><button type="button" class="pagination__item">8</button></li>
-          <li><button type="button" class="pagination__item">9</button></li>
-          <li><button type="button" class="pagination__item">10</button></li>
-        </ul>
-        <!-- 다음 -->
-        <button type="button" class="pagination__arrow" aria-label="다음 페이지">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </nav>
-    </div>
-
-    <!-- Pagination : 숫자형, 마지막 페이지 활성 -->
-    <div>
-      <h5>Pagination : 마지막 페이지 활성</h5>
-      <code class="class-label">pagination__item.is-active + pagination__arrow[disabled]</code>
-      <nav class="pagination" aria-label="페이지네이션">
-        <button type="button" class="pagination__arrow" aria-label="이전 페이지">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <ul class="pagination__list">
-          <li><button type="button" class="pagination__item">1</button></li>
-          <li><button type="button" class="pagination__item">2</button></li>
-          <li><span class="pagination__dots">…</span></li>
-          <li><button type="button" class="pagination__item">8</button></li>
-          <li><button type="button" class="pagination__item">9</button></li>
-          <li><button type="button" class="pagination__item is-active" aria-current="page">10</button></li>
-        </ul>
-        <!-- 마지막 페이지면 disabled -->
-        <button type="button" class="pagination__arrow" aria-label="다음 페이지" disabled>
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </nav>
-    </div>
-
-    <!-- Pagination : 숫자형, 페이지 적을 때(생략 없음) -->
-    <div>
-      <h5>Pagination : 페이지 적을 때 (…생략 없음)</h5>
-      <code class="class-label">pagination (pagination__dots 없이 pagination__item만)</code>
-      <nav class="pagination" aria-label="페이지네이션">
-        <button type="button" class="pagination__arrow" aria-label="이전 페이지" disabled>
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <ul class="pagination__list">
-          <li><button type="button" class="pagination__item is-active" aria-current="page">1</button></li>
-          <li><button type="button" class="pagination__item">2</button></li>
-          <li><button type="button" class="pagination__item">3</button></li>
-        </ul>
-        <button type="button" class="pagination__arrow" aria-label="다음 페이지">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </nav>
-    </div>
-
-    <!-- 화살표+텍스트 / 양끝 배치 -->
-    <div>
-      <h5> 화살표+텍스트 / 양끝 배치 기본</h5>
-      <code class="class-label">pagination pagination--split &gt; pagination__arrow pagination__arrow--text</code>
-      <nav class="pagination pagination--split" aria-label="페이지네이션">
-        <button type="button" class="pagination__arrow pagination__arrow--text">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Previous
-        </button>
-        <ul class="pagination__list">
-          <li><button type="button" class="pagination__item is-active" aria-current="page">1</button></li>
-          <li><button type="button" class="pagination__item">2</button></li>
-          <li><button type="button" class="pagination__item">3</button></li>
-          <li><span class="pagination__dots">…</span></li>
-          <li><button type="button" class="pagination__item">8</button></li>
-          <li><button type="button" class="pagination__item">9</button></li>
-          <li><button type="button" class="pagination__item">10</button></li>
-        </ul>
-        <button type="button" class="pagination__arrow pagination__arrow--text">
-          Next
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </nav>
-    </div>
-
-    <div>
-      <h5> 텍스트형 : Page X of Y</h5>
-      <code class="class-label">pagination pagination--split &gt; pagination__text</code>
-      <!-- 텍스트형 : Page X of Y -->
-      <nav class="pagination pagination--split" aria-label="페이지네이션">
-        <button type="button" class="pagination__arrow pagination__arrow--text">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Previous
-        </button>
-        <span class="pagination__text">Page <strong>1</strong> of 10</span>
-        <button type="button" class="pagination__arrow pagination__arrow--text">
-          Next
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </nav>
-    </div>
-
-    <!-- ③ 아이콘만 + 양끝 (오른쪽 열 스타일) -->
-    <div>
-      <h5> 아이콘만 + 양끝 (오른쪽 열 스타일)</h5>
-      <code class="class-label">pagination pagination--split &gt; pagination__arrow(아이콘만), pagination__text</code>
-      <nav class="pagination pagination--split" aria-label="페이지네이션">
-        <button type="button" class="pagination__arrow" aria-label="이전 페이지">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <span class="pagination__text">Page <strong>1</strong> of 10</span>
-        <button type="button" class="pagination__arrow" aria-label="다음 페이지">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </nav>
-    </div>
-
-    <!-- 숫자 + 텍스트 둘 다 품은 형태 -->
-    <div>
-      <h5>숫자 + 텍스트 둘 다 품은 형 (창 좁히면 Page X of Y로 전환)</h5>
-      <code class="class-label">pagination__list + pagination__text_none (640px 이하에서 전환)</code>
-      <nav class="pagination pagination--split" aria-label="페이지네이션">
-        <button type="button" class="pagination__arrow pagination__arrow--text">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Previous
-        </button>
-        <!-- 넓을 때 : 숫자 -->
-        <ul class="pagination__list">
-          <li><a href="?page=1" class="pagination__item is-active" aria-current="page">1</a></li>
-          <li><a href="?page=2" class="pagination__item">2</a></li>
-          <li><a href="?page=3" class="pagination__item">3</a></li>
-          <li><span class="pagination__dots">…</span></li>
-          <li><a href="?page=8" class="pagination__item">8</a></li>
-          <li><a href="?page=9" class="pagination__item">9</a></li>
-          <li><a href="?page=10" class="pagination__item">10</a></li>
-        </ul>
-        <!-- 좁을 때 : 텍스트 (평소 숨김) -->
-        <span class="pagination__text_none">Page <strong>1</strong> of 10</span>
-        <button type="button" class="pagination__arrow pagination__arrow--text">
-          Next
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </nav>
-    </div>
+  <script>if (window.self !== window.top) { document.documentElement.classList.add('is-embedded'); }</script>
+  <div class="page-header">
+    <h2>Pagination</h2>
+    <p>숫자형/텍스트형/양끝배치 등 7종</p>
   </div>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Overview</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      페이지네이션은 목록/테이블 결과를 여러 페이지로 나눠 이동하는 컴포넌트다. 페이지 수가 많으면 숫자+생략(…), 적으면 숫자만 노출하고,
+      카드뷰처럼 "페이지"라는 개념이 흐릿한 화면에는 <code class="doc-code">Page X of Y</code> 텍스트형을 쓴다. 실제 페이지 전환 JS는 붙어있지 않은 정적 데모다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Variants</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>구성</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">pagination__list</code></td>
+          <td>숫자형. 페이지 번호를 직접 눌러 이동</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">pagination__text</code></td>
+          <td>텍스트형. <code class="doc-code">Page 1 of 10</code> 처럼 현재/전체만 안내</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">pagination__list</code> + <code class="doc-code">pagination__text_none</code></td>
+          <td>반응형 하이브리드. 평소엔 숫자, 640px 이하에서 텍스트로 자동 전환</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">pagination &gt; pagination__list 또는 pagination__text</code>
+      </div>
+      <div class="board__body">
+        <div class="pg-row" data-code-source>
+          <div>
+            <h5>숫자형</h5>
+            <nav class="pagination" aria-label="페이지네이션">
+              <button type="button" class="pagination__arrow" aria-label="이전 페이지" disabled>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <ul class="pagination__list">
+                <li><button type="button" class="pagination__item is-active" aria-current="page">1</button></li>
+                <li><button type="button" class="pagination__item">2</button></li>
+                <li><button type="button" class="pagination__item">3</button></li>
+                <li><span class="pagination__dots">…</span></li>
+                <li><button type="button" class="pagination__item">10</button></li>
+              </ul>
+              <button type="button" class="pagination__arrow" aria-label="다음 페이지">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </nav>
+          </div>
+          <div>
+            <h5>텍스트형</h5>
+            <nav class="pagination pagination--split" aria-label="페이지네이션">
+              <button type="button" class="pagination__arrow pagination__arrow--text">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Previous
+              </button>
+              <span class="pagination__text">Page <strong>1</strong> of 10</span>
+              <button type="button" class="pagination__arrow pagination__arrow--text">
+                Next
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Options</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">pagination--split</code></td>
+          <td>화살표를 양 끝에, 가운데 콘텐츠는 자유 배치 (기본은 왼쪽 정렬)</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">pagination__arrow--text</code></td>
+          <td>화살표에 Previous/Next 라벨 추가. 기본은 아이콘만</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">pagination__arrow(아이콘만) vs pagination__arrow--text(라벨 포함), 둘 다 pagination--split</code>
+      </div>
+      <div class="board__body">
+        <div class="pg-row" data-code-source>
+          <div>
+            <h5>아이콘만 + 양끝 배치</h5>
+            <nav class="pagination pagination--split" aria-label="페이지네이션">
+              <button type="button" class="pagination__arrow" aria-label="이전 페이지">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <span class="pagination__text">Page <strong>1</strong> of 10</span>
+              <button type="button" class="pagination__arrow" aria-label="다음 페이지">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </nav>
+          </div>
+          <div>
+            <h5>라벨 포함 + 양끝 배치</h5>
+            <nav class="pagination pagination--split" aria-label="페이지네이션">
+              <button type="button" class="pagination__arrow pagination__arrow--text">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Previous
+              </button>
+              <ul class="pagination__list">
+                <li><button type="button" class="pagination__item is-active" aria-current="page">1</button></li>
+                <li><button type="button" class="pagination__item">2</button></li>
+                <li><button type="button" class="pagination__item">3</button></li>
+              </ul>
+              <button type="button" class="pagination__arrow pagination__arrow--text">
+                Next
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">States</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">pagination__item.is-active</code></td>
+          <td>현재 페이지</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">pagination__arrow:disabled</code></td>
+          <td>첫 페이지에서 이전, 마지막 페이지에서 다음이 비활성</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">마지막 페이지 — 다음 화살표 disabled, 마지막 숫자 is-active</code>
+      </div>
+      <div class="board__body">
+        <div data-code-source style="padding: 4px 0;">
+          <nav class="pagination" aria-label="페이지네이션">
+            <button type="button" class="pagination__arrow" aria-label="이전 페이지">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="pagination__list">
+              <li><button type="button" class="pagination__item">1</button></li>
+              <li><button type="button" class="pagination__item">2</button></li>
+              <li><span class="pagination__dots">…</span></li>
+              <li><button type="button" class="pagination__item">9</button></li>
+              <li><button type="button" class="pagination__item is-active" aria-current="page">10</button></li>
+            </ul>
+            <button type="button" class="pagination__arrow" aria-label="다음 페이지" disabled>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </nav>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Examples</h3>
+
+    <div class="board" style="margin-bottom: 16px;">
+      <div class="board__header">
+        <code class="class-label">페이지가 적을 때 — pagination__dots 없이 pagination__item만</code>
+      </div>
+      <div class="board__body">
+        <div data-code-source style="padding: 4px 0;">
+          <nav class="pagination" aria-label="페이지네이션">
+            <button type="button" class="pagination__arrow" aria-label="이전 페이지" disabled>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="pagination__list">
+              <li><button type="button" class="pagination__item is-active" aria-current="page">1</button></li>
+              <li><button type="button" class="pagination__item">2</button></li>
+              <li><button type="button" class="pagination__item">3</button></li>
+            </ul>
+            <button type="button" class="pagination__arrow" aria-label="다음 페이지">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </nav>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">숫자+텍스트 반응형 조합 — 창을 640px 이하로 좁히면 실제로 텍스트형으로 바뀐다</code>
+      </div>
+      <div class="board__body">
+        <div data-code-source style="padding: 4px 0;">
+          <nav class="pagination pagination--split" aria-label="페이지네이션">
+            <button type="button" class="pagination__arrow pagination__arrow--text">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Previous
+            </button>
+            <ul class="pagination__list">
+              <li><a href="?page=1" class="pagination__item is-active" aria-current="page">1</a></li>
+              <li><a href="?page=2" class="pagination__item">2</a></li>
+              <li><a href="?page=3" class="pagination__item">3</a></li>
+              <li><span class="pagination__dots">…</span></li>
+              <li><a href="?page=10" class="pagination__item">10</a></li>
+            </ul>
+            <span class="pagination__text_none">Page <strong>1</strong> of 10</span>
+            <button type="button" class="pagination__arrow pagination__arrow--text">
+              Next
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </nav>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Guidelines</h3>
+    <div class="doc-guideline-grid">
+      <div class="doc-guideline doc-guideline--do">
+        <h4>✓ 권장</h4>
+        <ul>
+          <li>페이지가 많으면 숫자+생략(…), 적으면(5~7개 이하) 생략 없이 전부 노출</li>
+          <li>"페이지" 개념이 흐릿한 화면(카드뷰 등)엔 <code class="doc-code">pagination__text</code> 사용</li>
+          <li>이전/다음은 첫/마지막 페이지에서 항상 <code class="doc-code">disabled</code> 처리</li>
+        </ul>
+      </div>
+      <div class="doc-guideline doc-guideline--dont">
+        <h4>✕ 지양</h4>
+        <ul>
+          <li>전체 페이지 수를 모를 때 숫자형 강제 사용 (무한 스크롤이나 텍스트형이 적합)</li>
+          <li>현재 페이지 표시(<code class="doc-code">is-active</code>) 없이 숫자만 나열</li>
+          <li>클릭 영역을 40px 미만으로 줄이기 (터치 접근성 저하)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      function escapeHTML(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function dedent(str) {
+        var lines = str.replace(/^\n+|\s+$/g, '').split('\n');
+        var minIndent = Infinity;
+        lines.forEach(function (line) {
+          if (!line.trim()) return;
+          var indent = line.match(/^\s*/)[0].length;
+          minIndent = Math.min(minIndent, indent);
+        });
+        if (!isFinite(minIndent)) minIndent = 0;
+        return lines.map(function (line) { return line.slice(minIndent); }).join('\n');
+      }
+
+      function wireCopy(panel, rawCode) {
+        var codeEl = panel.querySelector('.code-panel__code');
+        var copyBtn = panel.querySelector('[data-code-copy]');
+        codeEl.innerHTML = escapeHTML(rawCode);
+
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(rawCode).then(function () {
+            copyBtn.classList.add('is-copied');
+            copyBtn.textContent = 'Copied';
+            setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyBtn.textContent = 'Copy';
+            }, 1200);
+          });
+        });
+      }
+
+      document.querySelectorAll('[data-code-panel]').forEach(function (panel) {
+        var section = panel.closest('.board, .sgroup');
+        var source = section.querySelector('[data-code-source]');
+        wireCopy(panel, dedent(source.innerHTML));
+      });
+    })();
+  </script>
 </body>
 </html>

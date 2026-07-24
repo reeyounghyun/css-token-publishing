@@ -8,98 +8,234 @@
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/component/checkbox.css">
+  <link rel="stylesheet" href="/css/component/code-panel.css">
+  <link rel="stylesheet" href="/css/component/doc-template.css">
   <style>
     body {
       padding: 1rem;
     }
-    h2{
-      display: flex;
-      align-items: center;
-      gap: var(--gap-8);
-      font-size: 45px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: var( --primary-700);
-    }
-    .base {
-      display: inline-block;
-      font-size: 38px;
-      font-weight: 500;
-      color: var(--gray-800);
-    }
-    .group {
+    .check-group {
       display: flex;
       flex-direction: column;
       gap: var(--gap-12);
-      max-width: 280px;
     }
-    .class-label {
-      margin-left: auto;
-      font-family: ui-monospace, monospace;
-      font-size: 11px;
-      color: #98A2B3;
-    }
-    .group .check-item {
+    .check-item {
       display: flex;
       align-items: center;
     }
   </style>
 </head>
 <body>
-  <h2>
-    <span class="base">component</span>
-    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
-    Checkbox / Radio
-  </h2>
-
-  <h3 style="margin-bottom: 12px;">Checkbox</h3>
-  <p class="class-label" style="margin: 0 0 8px;">class는 항상 "checkbox" 고정, 상태는 checked/disabled 속성으로</p>
-  <div class="group">
-    <label class="check-item">
-      <input type="checkbox" class="checkbox">
-      <span class="check-item__text">기본 (선택 안 됨)</span>
-      <code class="class-label">checkbox</code>
-    </label>
-    <label class="check-item">
-      <input type="checkbox" class="checkbox" checked>
-      <span class="check-item__text">선택됨</span>
-      <code class="class-label">checkbox checked</code>
-    </label>
-    <label class="check-item">
-      <input type="checkbox" class="checkbox" disabled>
-      <span class="check-item__text">비활성</span>
-      <code class="class-label">checkbox disabled</code>
-    </label>
-    <label class="check-item">
-      <input type="checkbox" class="checkbox" checked disabled>
-      <span class="check-item__text">선택됨 + 비활성</span>
-      <code class="class-label">checkbox checked disabled</code>
-    </label>
+  <script>if (window.self !== window.top) { document.documentElement.classList.add('is-embedded'); }</script>
+  <div class="page-header">
+    <h2>Checkbox / Radio</h2>
+    <p>체크박스, 라디오</p>
   </div>
 
-  <h3 style="margin: 32px 0 12px;">Radio</h3>
-  <p class="class-label" style="margin: 0 0 8px;">class는 항상 "radio" 고정, 상태는 checked/disabled 속성으로</p>
-  <div class="group">
-    <label class="check-item">
-      <input type="radio" name="plan" class="radio">
-      <span class="check-item__text">무료 플랜</span>
-      <code class="class-label">radio</code>
-    </label>
-    <label class="check-item">
-      <input type="radio" name="plan" class="radio" checked>
-      <span class="check-item__text">프로 플랜</span>
-      <code class="class-label">radio checked</code>
-    </label>
-    <label class="check-item">
-      <input type="radio" name="plan" class="radio" disabled>
-      <span class="check-item__text">엔터프라이즈 (문의 필요)</span>
-      <code class="class-label">radio disabled</code>
-    </label>
-    <label class="check-item">
-      <input type="radio" name="plan-disabled" class="radio" checked disabled>
-      <span class="check-item__text">선택됨 + 비활성</span>
-      <code class="class-label">radio checked disabled</code>
-    </label>
-  </div>
+  <section class="doc-section">
+    <h3 class="doc-section__title">Overview</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      체크박스는 여러 옵션 중 원하는 만큼(0개~전부) 선택할 때, 라디오는 같은 <code class="doc-code">name</code> 그룹 안에서 정확히 하나만 선택할 때 쓴다.
+      클래스는 항상 <code class="doc-code">checkbox</code>/<code class="doc-code">radio</code> 고정이고, 상태는 별도 BEM 수정자 없이 네이티브 <code class="doc-code">checked</code>/<code class="doc-code">disabled</code> 속성으로만 표현한다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Variants</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">checkbox</code></td>
+          <td>여러 개 동시 선택 가능</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">radio</code></td>
+          <td>같은 <code class="doc-code">name</code> 그룹 내에서 하나만 선택 가능</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Options</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary);">
+      독립적인 수정자 클래스는 없다 — 크기/색상 변형 없이 상태(States)로만 구분된다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">States</h3>
+
+    <div class="board" style="margin-bottom: 16px;">
+      <div class="board__header">
+        <code class="class-label">checkbox [checked] [disabled]</code>
+      </div>
+      <div class="board__body">
+        <div class="check-group" data-code-source style="max-width: 280px;">
+          <label class="check-item">
+            <input type="checkbox" class="checkbox">
+            <span class="check-item__text">기본 (선택 안 됨)</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" class="checkbox" checked>
+            <span class="check-item__text">선택됨</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" class="checkbox" disabled>
+            <span class="check-item__text">비활성</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" class="checkbox" checked disabled>
+            <span class="check-item__text">선택됨 + 비활성</span>
+          </label>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">radio [checked] [disabled]</code>
+      </div>
+      <div class="board__body">
+        <div class="check-group" data-code-source style="max-width: 280px;">
+          <label class="check-item">
+            <input type="radio" name="state-demo" class="radio">
+            <span class="check-item__text">기본 (선택 안 됨)</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="state-demo" class="radio" checked>
+            <span class="check-item__text">선택됨</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="state-demo-disabled" class="radio" disabled>
+            <span class="check-item__text">비활성</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="state-demo-disabled" class="radio" checked disabled>
+            <span class="check-item__text">선택됨 + 비활성</span>
+          </label>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Examples</h3>
+
+    <div class="board" style="margin-bottom: 16px;">
+      <div class="board__header">
+        <code class="class-label">이용약관 동의 — 체크박스 그룹</code>
+      </div>
+      <div class="board__body">
+        <div class="check-group" data-code-source style="max-width: 280px;">
+          <label class="check-item">
+            <input type="checkbox" class="checkbox" checked>
+            <span class="check-item__text">(필수) 이용약관 동의</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" class="checkbox">
+            <span class="check-item__text">(선택) 마케팅 정보 수신 동의</span>
+          </label>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">요금제 선택 — 라디오 그룹</code>
+      </div>
+      <div class="board__body">
+        <div class="check-group" data-code-source style="max-width: 280px;">
+          <label class="check-item">
+            <input type="radio" name="plan" class="radio">
+            <span class="check-item__text">무료 플랜</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="plan" class="radio" checked>
+            <span class="check-item__text">프로 플랜</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="plan" class="radio" disabled>
+            <span class="check-item__text">엔터프라이즈 (문의 필요)</span>
+          </label>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Guidelines</h3>
+    <div class="doc-guideline-grid">
+      <div class="doc-guideline doc-guideline--do">
+        <h4>✓ 권장</h4>
+        <ul>
+          <li>독립적인 on/off는 체크박스, 상호 배타적 선택은 라디오</li>
+          <li><code class="doc-code">label</code>로 감싸서 텍스트를 클릭해도 선택되게</li>
+          <li>같은 라디오 그룹은 반드시 동일한 <code class="doc-code">name</code> 공유</li>
+        </ul>
+      </div>
+      <div class="doc-guideline doc-guideline--dont">
+        <h4>✕ 지양</h4>
+        <ul>
+          <li>선택지가 1개뿐인 체크박스 (그럴 땐 Switch가 더 적합)</li>
+          <li>체크박스로 상호 배타적 선택 구현 (라디오를 써야 함)</li>
+          <li>disabled + checked 상태를 아무 설명 없이 방치 (왜 못 바꾸는지 안내 필요)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      function escapeHTML(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function dedent(str) {
+        var lines = str.replace(/^\n+|\s+$/g, '').split('\n');
+        var minIndent = Infinity;
+        lines.forEach(function (line) {
+          if (!line.trim()) return;
+          var indent = line.match(/^\s*/)[0].length;
+          minIndent = Math.min(minIndent, indent);
+        });
+        if (!isFinite(minIndent)) minIndent = 0;
+        return lines.map(function (line) { return line.slice(minIndent); }).join('\n');
+      }
+
+      function wireCopy(panel, rawCode) {
+        var codeEl = panel.querySelector('.code-panel__code');
+        var copyBtn = panel.querySelector('[data-code-copy]');
+        codeEl.innerHTML = escapeHTML(rawCode);
+
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(rawCode).then(function () {
+            copyBtn.classList.add('is-copied');
+            copyBtn.textContent = 'Copied';
+            setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyBtn.textContent = 'Copy';
+            }, 1200);
+          });
+        });
+      }
+
+      document.querySelectorAll('[data-code-panel]').forEach(function (panel) {
+        var section = panel.closest('.board, .sgroup');
+        var source = section.querySelector('[data-code-source]');
+        wireCopy(panel, dedent(source.innerHTML));
+      });
+    })();
+  </script>
 </body>
 </html>

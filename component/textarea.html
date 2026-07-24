@@ -8,86 +8,226 @@
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/component/textarea.css">
-
+  <link rel="stylesheet" href="/css/component/code-panel.css">
+  <link rel="stylesheet" href="/css/component/doc-template.css">
   <style>
     body {
       padding: 1rem;
     }
-    h2{
+    .ta-row {
       display: flex;
-      align-items: center;
-      gap: var(--gap-8);
-      font-size: 45px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: var( --primary-700);
+      gap: var(--spacing-20);
+      flex-wrap: wrap;
+      padding: var(--spacing-20);
     }
-    .base {
-      display: inline-block;
-      font-size: 38px;
-      font-weight: 500;
-      color: var(--gray-800);
-    }
-    .grid--2 { --cols: 2; }
-    .grid--3 { --cols: 3; }
-    .grid--4 { --cols: 4; }
-    .grid--6 { --cols: 6; }
-    .grid--8 { --cols: 8; }
-    .class-label {
-      display: block;
-      margin-top: 4px;
-      font-family: ui-monospace, monospace;
-      font-size: 11px;
-      color: #98A2B3;
+    .ta-row > .textarea {
+      flex: 1 1 260px;
+      max-width: 320px;
     }
   </style>
 </head>
 <body>
-  <h2>
-    <span class="base">component</span>
-    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
-    Textarea
-  </h2>
-  <div class="grid grid--2" style="max-width: 1920px;">
-    <!-- textarea:기본 -->
-    <div class="textarea">
-      <label class="textarea__label" for="desc">Description</label>
-      <div class="textarea__box">
-        <textarea id="desc" class="textarea" placeholder="Enter a description..."></textarea>
-      </div>
-      <p>This is a hint text to help user.</p>
-      <code class="class-label">textarea</code>
-    </div>
-
-    <!-- textarea:에러 -->
-    <div class="textarea textarea__error">
-      <label class="textarea__label" for="desc-error">Description</label>
-      <div class="textarea__box">
-        <textarea id="desc-error" class="textarea" placeholder="Enter a description..."></textarea>
-      </div>
-      <p>This is a hint text to help user.</p>
-      <code class="class-label">textarea textarea__error</code>
-    </div>
-
-    <!-- textarea:비활성 -->
-    <div class="textarea textarea__disabled">
-      <label class="textarea__label" for="desc-disabled">Description</label>
-      <div class="textarea__box">
-        <textarea id="desc-disabled" class="textarea" placeholder="Enter a description..." disabled></textarea>
-      </div>
-      <p>This is a hint text to help user.</p>
-      <code class="class-label">textarea textarea__disabled</code>
-    </div>
-
-    <!-- textarea:resize 제어(없음) -->
-    <div class="textarea textarea__resize-none">
-      <label class="textarea__label" for="desc-noresize">Description (크기 조절 불가)</label>
-      <div class="textarea__box">
-        <textarea id="desc-noresize" class="textarea" placeholder="Enter a description..."></textarea>
-      </div>
-      <p>This is a hint text to help user.</p>
-      <code class="class-label">textarea textarea__resize-none</code>
-    </div>
+  <script>if (window.self !== window.top) { document.documentElement.classList.add('is-embedded'); }</script>
+  <div class="page-header">
+    <h2>Textarea</h2>
+    <p>기본/에러/비활성/resize 제어</p>
   </div>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Overview</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      Textarea는 여러 줄의 긴 텍스트를 입력받는 필드다. 한 줄짜리 짧은 입력에는 Input을 쓰고, 설명·메모·리뷰처럼 줄바꿈이 필요한 입력에 쓴다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Variants</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary);">
+      스타일 변형 없음 — <code class="doc-code">textarea</code> 기본형 하나만 존재한다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Options</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">textarea__resize-none</code></td>
+          <td>세로 크기 조절 비활성화. 기본은 세로로 리사이즈 가능</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">textarea [textarea__resize-none]</code>
+      </div>
+      <div class="board__body">
+        <div class="ta-row" data-code-source>
+          <div class="textarea">
+            <label class="textarea__label" for="ta-resize">기본 (세로 조절 가능)</label>
+            <div class="textarea__box">
+              <textarea id="ta-resize" class="textarea" placeholder="Enter a description..."></textarea>
+            </div>
+            <p>우측 하단을 드래그해서 크기를 늘릴 수 있습니다.</p>
+          </div>
+          <div class="textarea textarea__resize-none">
+            <label class="textarea__label" for="ta-noresize">resize-none (크기 조절 불가)</label>
+            <div class="textarea__box">
+              <textarea id="ta-noresize" class="textarea" placeholder="Enter a description..."></textarea>
+            </div>
+            <p>높이가 고정되어 늘어나지 않습니다.</p>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">States</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">textarea__error</code></td>
+          <td>검증 실패. 빨간 테두리 + 힌트 텍스트 색상 변경</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">textarea__disabled</code></td>
+          <td>비활성. 회색 배경, 입력 커서 <code class="doc-code">not-allowed</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">textarea [textarea__error] [textarea__disabled]</code>
+      </div>
+      <div class="board__body">
+        <div class="ta-row" data-code-source>
+          <div class="textarea">
+            <label class="textarea__label" for="ta-default">기본</label>
+            <div class="textarea__box">
+              <textarea id="ta-default" class="textarea" placeholder="Enter a description..."></textarea>
+            </div>
+            <p>This is a hint text to help user.</p>
+          </div>
+          <div class="textarea textarea__error">
+            <label class="textarea__label" for="ta-error">에러</label>
+            <div class="textarea__box">
+              <textarea id="ta-error" class="textarea" placeholder="Enter a description..."></textarea>
+            </div>
+            <p>This is a hint text to help user.</p>
+          </div>
+          <div class="textarea textarea__disabled">
+            <label class="textarea__label" for="ta-disabled">비활성</label>
+            <div class="textarea__box">
+              <textarea id="ta-disabled" class="textarea" placeholder="Enter a description..." disabled></textarea>
+            </div>
+            <p>This is a hint text to help user.</p>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Examples</h3>
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">후기 작성 — 에러 상태에 구체적인 안내 문구</code>
+      </div>
+      <div class="board__body">
+        <div style="padding: 4px 0; max-width: 320px;" data-code-source>
+          <div class="textarea textarea__error">
+            <label class="textarea__label" for="ta-review">이용 후기</label>
+            <div class="textarea__box">
+              <textarea id="ta-review" class="textarea" placeholder="상품에 대한 솔직한 후기를 남겨주세요"></textarea>
+            </div>
+            <p>최소 10자 이상 작성해주세요.</p>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Guidelines</h3>
+    <div class="doc-guideline-grid">
+      <div class="doc-guideline doc-guideline--do">
+        <h4>✓ 권장</h4>
+        <ul>
+          <li>예상 입력 길이에 맞는 기본 높이 설정</li>
+          <li>에러 시 힌트 텍스트를 구체적인 안내로 교체 (예: "10자 이상 입력해주세요")</li>
+          <li>필수 안내는 <code class="doc-code">label</code>/힌트 텍스트에, placeholder는 예시로만</li>
+        </ul>
+      </div>
+      <div class="doc-guideline doc-guideline--dont">
+        <h4>✕ 지양</h4>
+        <ul>
+          <li>한 줄짜리 짧은 입력에 textarea 사용 (Input을 써야 함)</li>
+          <li><code class="doc-code">textarea__resize-none</code>을 기본값처럼 남용</li>
+          <li>에러 상태인데 원인 설명 없이 테두리 색만 바꾸기</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      function escapeHTML(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function dedent(str) {
+        var lines = str.replace(/^\n+|\s+$/g, '').split('\n');
+        var minIndent = Infinity;
+        lines.forEach(function (line) {
+          if (!line.trim()) return;
+          var indent = line.match(/^\s*/)[0].length;
+          minIndent = Math.min(minIndent, indent);
+        });
+        if (!isFinite(minIndent)) minIndent = 0;
+        return lines.map(function (line) { return line.slice(minIndent); }).join('\n');
+      }
+
+      function wireCopy(panel, rawCode) {
+        var codeEl = panel.querySelector('.code-panel__code');
+        var copyBtn = panel.querySelector('[data-code-copy]');
+        codeEl.innerHTML = escapeHTML(rawCode);
+
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(rawCode).then(function () {
+            copyBtn.classList.add('is-copied');
+            copyBtn.textContent = 'Copied';
+            setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyBtn.textContent = 'Copy';
+            }, 1200);
+          });
+        });
+      }
+
+      document.querySelectorAll('[data-code-panel]').forEach(function (panel) {
+        var section = panel.closest('.board, .sgroup');
+        var source = section.querySelector('[data-code-source]');
+        wireCopy(panel, dedent(source.innerHTML));
+      });
+    })();
+  </script>
 </body>
 </html>

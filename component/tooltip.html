@@ -8,107 +8,219 @@
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/component/tooltip.css">
+  <link rel="stylesheet" href="/css/component/code-panel.css">
+  <link rel="stylesheet" href="/css/component/doc-template.css">
   <style>
     body {
       padding: 1rem;
     }
-    h2{
-      display: flex;
-      align-items: center;
-      gap: var(--gap-8);
-      font-size: 45px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: var( --primary-700);
-    }
-    .base {
-      display: inline-block;
-      font-size: 38px;
-      font-weight: 500;
-      color: var(--gray-800);
-    }
-    .demo-row {
-      display: flex;
-      gap: 80px;
-      align-items: center;
-      flex-wrap: wrap;
-      padding: 40px 0;
-    }
-    .class-label {
-      display: block;
-      margin-top: 40px;
-      font-family: ui-monospace, monospace;
-      font-size: 11px;
-      color: #98A2B3;
-    }
   </style>
 </head>
 <body>
-  <h2>
-    <span class="base">component</span>
-    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
-    Tooltip
-  </h2>
-
-  <h3 style="margin-bottom: 12px;">방향 (hover 또는 Tab으로 focus)</h3>
-  <div class="demo-row">
-    <div>
-      <span class="tooltip tooltip--top">
-        <button type="button" class="tooltip__trigger" aria-describedby="tt-top">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M10 13.3333V10M10 6.66667H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <span class="tooltip__content" role="tooltip" id="tt-top">위쪽에 뜨는 툴팁입니다.</span>
-      </span>
-      <code class="class-label">tooltip tooltip--top (기본값)</code>
-    </div>
-    <div>
-      <span class="tooltip tooltip--bottom">
-        <button type="button" class="tooltip__trigger" aria-describedby="tt-bottom">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M10 13.3333V10M10 6.66667H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <span class="tooltip__content" role="tooltip" id="tt-bottom">아래쪽에 뜨는 툴팁입니다.</span>
-      </span>
-      <code class="class-label">tooltip tooltip--bottom</code>
-    </div>
-    <div>
-      <span class="tooltip tooltip--left">
-        <button type="button" class="tooltip__trigger" aria-describedby="tt-left">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M10 13.3333V10M10 6.66667H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <span class="tooltip__content" role="tooltip" id="tt-left">왼쪽에 뜨는 툴팁입니다.</span>
-      </span>
-      <code class="class-label">tooltip tooltip--left</code>
-    </div>
-    <div>
-      <span class="tooltip tooltip--right">
-        <button type="button" class="tooltip__trigger" aria-describedby="tt-right">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M10 13.3333V10M10 6.66667H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <span class="tooltip__content" role="tooltip" id="tt-right">오른쪽에 뜨는 툴팁입니다.</span>
-      </span>
-      <code class="class-label">tooltip tooltip--right</code>
-    </div>
+  <script>if (window.self !== window.top) { document.documentElement.classList.add('is-embedded'); }</script>
+  <div class="page-header">
+    <h2>Tooltip</h2>
+    <p>4방향, JS 없이 동작</p>
   </div>
 
-  <h3 style="margin: 24px 0 12px;">텍스트에 붙이기</h3>
-  <div class="demo-row">
-    <div>
-      <span class="tooltip tooltip--top">
-        <button type="button" class="tooltip__trigger" aria-describedby="tt-text" style="text-decoration: underline dotted; color: var(--color-text-secondary);">
-          제한된 기능
-        </button>
-        <span class="tooltip__content" role="tooltip" id="tt-text">프로 플랜에서만 사용할 수 있습니다.</span>
-      </span>
-      <code class="class-label">tooltip__trigger에 아이콘 대신 텍스트</code>
+  <section class="doc-section">
+    <h3 class="doc-section__title">Overview</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      툴팁은 아이콘·텍스트에 마우스를 올리거나 키보드로 포커스했을 때 짧은 보조 설명을 보여주는 요소다.
+      모바일에는 hover가 없으므로 필수 정보는 담지 않고, 있으면 도움이 되는 부가 설명에만 쓴다.
+      <code class="doc-code">:hover</code>/<code class="doc-code">:focus-within</code>만으로 동작해서 JS가 필요 없다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Variants</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">tooltip--top</code></td>
+          <td>위쪽에 표시 (기본값, 클래스 생략해도 동일)</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">tooltip--bottom</code></td>
+          <td>아래쪽에 표시</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">tooltip--left</code></td>
+          <td>왼쪽에 표시</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">tooltip--right</code></td>
+          <td>오른쪽에 표시</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">tooltip tooltip--{top|bottom|left|right} — 마우스를 올리거나 Tab으로 포커스</code>
+      </div>
+      <div class="board__body">
+        <div data-code-source style="display: flex; gap: 64px; flex-wrap: wrap; align-items: center; justify-content: center; padding: 32px 20px;">
+          <span class="tooltip tooltip--top">
+            <button type="button" class="tooltip__trigger" aria-describedby="tt-top">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 13.3333V10M10 6.66667H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <span class="tooltip__content" role="tooltip" id="tt-top">위쪽에 뜨는 툴팁입니다.</span>
+          </span>
+          <span class="tooltip tooltip--bottom">
+            <button type="button" class="tooltip__trigger" aria-describedby="tt-bottom">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 13.3333V10M10 6.66667H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <span class="tooltip__content" role="tooltip" id="tt-bottom">아래쪽에 뜨는 툴팁입니다.</span>
+          </span>
+          <span class="tooltip tooltip--left">
+            <button type="button" class="tooltip__trigger" aria-describedby="tt-left">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 13.3333V10M10 6.66667H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <span class="tooltip__content" role="tooltip" id="tt-left">왼쪽에 뜨는 툴팁입니다.</span>
+          </span>
+          <span class="tooltip tooltip--right">
+            <button type="button" class="tooltip__trigger" aria-describedby="tt-right">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 13.3333V10M10 6.66667H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <span class="tooltip__content" role="tooltip" id="tt-right">오른쪽에 뜨는 툴팁입니다.</span>
+          </span>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
     </div>
-  </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Options</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary);">
+      방향 외 독립적인 수정자 클래스는 없다. 트리거 안에 아이콘을 넣을지 텍스트를 넣을지는 클래스가 아니라 자식 콘텐츠 구성으로 결정한다 (아래 Examples 참고).
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">States</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary);">
+      열림/닫힘을 나타내는 별도 클래스가 없다. <code class="doc-code">:hover</code>/<code class="doc-code">:focus-within</code>일 때만 <code class="doc-code">tooltip__content</code>가 보인다 (기본은 <code class="doc-code">opacity:0; visibility:hidden</code>).
+      위 Variants 데모에 직접 마우스를 올리거나 Tab으로 이동해서 확인할 수 있다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Examples</h3>
+
+    <div class="board" style="margin-bottom: 16px;">
+      <div class="board__header">
+        <code class="class-label">tooltip__trigger에 아이콘 대신 텍스트 — 밑줄 점선으로 힌트 표시</code>
+      </div>
+      <div class="board__body">
+        <div data-code-source style="display: flex; justify-content: center; padding: 32px 20px;">
+          <span class="tooltip tooltip--top">
+            <button type="button" class="tooltip__trigger" aria-describedby="tt-text" style="text-decoration: underline dotted; color: var(--color-text-secondary);">
+              제한된 기능
+            </button>
+            <span class="tooltip__content" role="tooltip" id="tt-text">프로 플랜에서만 사용할 수 있습니다.</span>
+          </span>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">비활성 버튼에 이유 설명 — disabled 버튼은 자체 hover가 안 먹으므로 감싸는 span에 툴팁을 건다</code>
+      </div>
+      <div class="board__body">
+        <div data-code-source style="display: flex; justify-content: center; padding: 32px 20px;">
+          <span class="tooltip tooltip--top">
+            <span class="tooltip__trigger" tabindex="0" aria-describedby="tt-disabled" style="border: 1px solid var(--color-border-default); border-radius: var(--radius-md); padding: 0 var(--spacing-20); height: var(--height-md); color: var(--color-text-faint); cursor: not-allowed;">
+              내보내기
+            </span>
+            <span class="tooltip__content" role="tooltip" id="tt-disabled">권한이 없어 내보낼 수 없습니다.</span>
+          </span>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Guidelines</h3>
+    <div class="doc-guideline-grid">
+      <div class="doc-guideline doc-guideline--do">
+        <h4>✓ 권장</h4>
+        <ul>
+          <li>한 줄 이내의 짧은 보조 설명만</li>
+          <li>트리거에 <code class="doc-code">aria-describedby</code>로 <code class="doc-code">tooltip__content</code>의 id 연결</li>
+          <li>아이콘 트리거는 스크린리더용 텍스트(<code class="doc-code">aria-label</code> 등) 함께 제공</li>
+        </ul>
+      </div>
+      <div class="doc-guideline doc-guideline--dont">
+        <h4>✕ 지양</h4>
+        <ul>
+          <li>툴팁 안에만 있는 필수 정보 (모바일은 hover가 없어 아예 못 봄)</li>
+          <li>툴팁 안에 링크/버튼 등 인터랙티브 요소 넣기 (hover 벗어나면 닫혀서 클릭 불가)</li>
+          <li>긴 문단 텍스트 (max-width 220px 안에서 줄바꿈이 어색해짐)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      function escapeHTML(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function dedent(str) {
+        var lines = str.replace(/^\n+|\s+$/g, '').split('\n');
+        var minIndent = Infinity;
+        lines.forEach(function (line) {
+          if (!line.trim()) return;
+          var indent = line.match(/^\s*/)[0].length;
+          minIndent = Math.min(minIndent, indent);
+        });
+        if (!isFinite(minIndent)) minIndent = 0;
+        return lines.map(function (line) { return line.slice(minIndent); }).join('\n');
+      }
+
+      function wireCopy(panel, rawCode) {
+        var codeEl = panel.querySelector('.code-panel__code');
+        var copyBtn = panel.querySelector('[data-code-copy]');
+        codeEl.innerHTML = escapeHTML(rawCode);
+
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(rawCode).then(function () {
+            copyBtn.classList.add('is-copied');
+            copyBtn.textContent = 'Copied';
+            setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyBtn.textContent = 'Copy';
+            }, 1200);
+          });
+        });
+      }
+
+      document.querySelectorAll('[data-code-panel]').forEach(function (panel) {
+        var section = panel.closest('.board, .sgroup');
+        var source = section.querySelector('[data-code-source]');
+        wireCopy(panel, dedent(source.innerHTML));
+      });
+    })();
+  </script>
 </body>
 </html>

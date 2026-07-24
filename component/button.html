@@ -8,50 +8,115 @@
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/component/button.css">
+  <link rel="stylesheet" href="/css/component/tabs.css">
+  <link rel="stylesheet" href="/css/component/code-panel.css">
+  <link rel="stylesheet" href="/css/component/doc-template.css">
 
   <style>
     body {
       padding: 1rem;
-    }
-    h2{
-      display: flex;
-      align-items: center;
-      gap: var(--gap-8);
-      font-size: 45px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: var( --primary-700);
-    }
-    .base {
-      display: inline-block;
-      font-size: 38px;
-      font-weight: 500;
-      color: var(--gray-800);
     }
     .grid--2 { --cols: 2; }
     .grid--3 { --cols: 3; }
     .grid--4 { --cols: 4; }
     .grid--6 { --cols: 6; }
     .grid--8 { --cols: 8; }
-    .class-label {
-      display: block;
-      margin-bottom: 8px;
-      font-family: ui-monospace, monospace;
-      font-size: 12px;
-      color: #98A2B3;
-    }
   </style>
 </head>
 <body>
-  <h2>
-    <span class="base">component</span>
-    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">    
-    button
-  </h2>
-  <div class="grid grid--2 boards" style="max-width: 1920px;">
+  <script>if (window.self !== window.top) { document.documentElement.classList.add('is-embedded'); }</script>
+  <div class="page-header">
+    <h2>Button</h2>
+    <p>버튼, SNS 로그인 버튼, 로딩 상태</p>
+  </div>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Overview</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      버튼은 사용자가 화면에서 취할 수 있는 동작을 트리거하는 요소다. <code class="doc-code">btn--primary</code>는 화면의 가장 중요한 동작 하나에만 쓰고,
+      나머지 동작은 <code class="doc-code">btn--default</code>/<code class="doc-code">btn--dashed</code>/<code class="doc-code">btn--text</code>/<code class="doc-code">btn--link</code> 중 위계에 맞는 걸 고른다.
+      실제 조합 예시(아이콘, SNS 로그인, 버튼 그룹)는 아래 Examples를 참고한다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Variants</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">btn--primary</code></td>
+          <td>채워진 버튼. 주요 액션, 화면당 1개 권장</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">btn--default</code></td>
+          <td>외곽선 버튼. 기본 액션</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">btn--dashed</code></td>
+          <td>점선 버튼. 추가/생성 유도</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">btn--text</code></td>
+          <td>배경 없는 버튼. 보조 액션</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">btn--link</code></td>
+          <td>링크형 버튼. 내비게이션 성격</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Options</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">btn--sm</code><code class="doc-code">btn--lg</code></td>
+          <td>크기. 기본은 md(미지정)</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">btn--round</code></td>
+          <td>필(pill) 형태</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">is-danger</code></td>
+          <td>위험한 동작 강조. <code class="doc-code">btn--text</code>와 조합해서만 사용 (색만 덮어씀)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">States</h3>
+  </section>
+
+  <div class="tabs" data-tabs style="max-width: 768px;">
+    <div class="tabs__list" role="tablist">
+      <button type="button" class="tabs__tab" role="tab" id="tab-pressed" aria-selected="true" data-tab="pressed">Pressed</button>
+      <button type="button" class="tabs__tab" role="tab" id="tab-disabled" aria-selected="false" data-tab="disabled">Disabled</button>
+      <button type="button" class="tabs__tab" role="tab" id="tab-loading" aria-selected="false" data-tab="loading">Loading</button>
+    </div>
+
+    <div class="tabs__panel is-active" data-tab-panel="pressed" role="tabpanel">
     <!-- ============ PRESSED ============ -->
     <section class="board">
-      <code class="class-label">btn btn--{primary|default|dashed|text|link} btn--{lg|(기본=md)|sm} [btn--round] is-pressed</code>
+      <div class="board__header">
+        <code class="class-label">btn btn--{primary|default|dashed|text|link} btn--{lg|(기본=md)|sm} [btn--round] is-pressed</code>
+      </div>
+      <div class="board__body">
       <div class="matrix">
         <span class="matrix__head">Primary</span>
         <span class="matrix__head">Default</span>
@@ -59,48 +124,77 @@
         <span class="matrix__head">Text</span>
         <span class="matrix__head">Link</span>
 
+        <div class="matrix__row-header">
+          <span class="matrix__row-label">Large</span>
+        </div>
         <button class="btn btn--primary btn--lg is-pressed">Button</button>
         <button class="btn btn--default btn--lg is-pressed">Button</button>
         <button class="btn btn--dashed btn--lg is-pressed">Button</button>
         <button class="btn btn--text btn--lg is-pressed">Button</button>
         <button class="btn btn--link btn--lg is-pressed">Button</button>
+        <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
 
-        <button class="btn btn--primary is-pressed">Button</button>
-        <button class="btn btn--default is-pressed">Button</button>
-        <button class="btn btn--dashed is-pressed">Button</button>
-        <button class="btn btn--text is-pressed">Button</button>
-        <button class="btn btn--link is-pressed">Button</button>
-
-        <button class="btn btn--primary btn--sm is-pressed">Button</button>
-        <button class="btn btn--default btn--sm is-pressed">Button</button>
-        <button class="btn btn--dashed btn--sm is-pressed">Button</button>
-        <button class="btn btn--text btn--sm is-pressed">Button</button>
-        <button class="btn btn--link btn--sm is-pressed">Button</button>
-
-        <span class="matrix__divider"></span>
-
+        <div class="matrix__row-header">
+          <span class="matrix__row-label">Large · Round</span>
+        </div>
         <button class="btn btn--primary btn--lg btn--round is-pressed">Button</button>
         <button class="btn btn--default btn--lg btn--round is-pressed">Button</button>
         <button class="btn btn--dashed btn--lg btn--round is-pressed">Button</button>
         <button class="btn btn--text btn--lg btn--round is-pressed">Button</button>
         <button class="btn btn--link btn--lg btn--round is-pressed">Button</button>
+        <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
 
+        <div class="matrix__row-header">
+          <span class="matrix__row-label">Medium (기본)</span>
+        </div>
+        <button class="btn btn--primary is-pressed">Button</button>
+        <button class="btn btn--default is-pressed">Button</button>
+        <button class="btn btn--dashed is-pressed">Button</button>
+        <button class="btn btn--text is-pressed">Button</button>
+        <button class="btn btn--link is-pressed">Button</button>
+        <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+
+        <div class="matrix__row-header">
+          <span class="matrix__row-label">Medium · Round</span>
+        </div>
         <button class="btn btn--primary btn--round is-pressed">Button</button>
         <button class="btn btn--default btn--round is-pressed">Button</button>
         <button class="btn btn--dashed btn--round is-pressed">Button</button>
         <button class="btn btn--text btn--round is-pressed">Button</button>
         <button class="btn btn--link btn--round is-pressed">Button</button>
+        <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
 
+        <div class="matrix__row-header">
+          <span class="matrix__row-label">Small</span>
+        </div>
+        <button class="btn btn--primary btn--sm is-pressed">Button</button>
+        <button class="btn btn--default btn--sm is-pressed">Button</button>
+        <button class="btn btn--dashed btn--sm is-pressed">Button</button>
+        <button class="btn btn--text btn--sm is-pressed">Button</button>
+        <button class="btn btn--link btn--sm is-pressed">Button</button>
+        <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+
+        <div class="matrix__row-header">
+          <span class="matrix__row-label">Small · Round</span>
+        </div>
         <button class="btn btn--primary btn--sm btn--round is-pressed">Button</button>
         <button class="btn btn--default btn--sm btn--round is-pressed">Button</button>
         <button class="btn btn--dashed btn--sm btn--round is-pressed">Button</button>
         <button class="btn btn--text btn--sm btn--round is-pressed">Button</button>
         <button class="btn btn--link btn--sm btn--round is-pressed">Button</button>
+        <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+      </div>
       </div>
     </section>
+    </div>
+
+    <div class="tabs__panel" data-tab-panel="disabled" role="tabpanel">
     <!-- ============ DISABLED ============ -->
     <section class="board">
-      <code class="class-label">btn btn--{primary|default|dashed|text|link} btn--{lg|(기본=md)|sm} [btn--round] disabled</code>
+      <div class="board__header">
+        <code class="class-label">btn btn--{primary|default|dashed|text|link} btn--{lg|(기본=md)|sm} [btn--round] disabled</code>
+      </div>
+      <div class="board__body">
       <div class="matrix">
         <span class="matrix__head">Primary</span>
         <span class="matrix__head">Default</span>
@@ -108,49 +202,78 @@
         <span class="matrix__head">Text</span>
         <span class="matrix__head">Link</span>
 
+        <div class="matrix__row-header">
+          <span class="matrix__row-label">Large</span>
+        </div>
         <button class="btn btn--primary btn--lg" disabled>Button</button>
         <button class="btn btn--default btn--lg" disabled>Button</button>
         <button class="btn btn--dashed btn--lg" disabled>Button</button>
         <button class="btn btn--text btn--lg" disabled>Button</button>
         <button class="btn btn--link btn--lg" disabled>Button</button>
+        <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
 
-        <button class="btn btn--primary" disabled>Button</button>
-        <button class="btn btn--default" disabled>Button</button>
-        <button class="btn btn--dashed" disabled>Button</button>
-        <button class="btn btn--text" disabled>Button</button>
-        <button class="btn btn--link" disabled>Button</button>
-
-        <button class="btn btn--primary btn--sm" disabled>Button</button>
-        <button class="btn btn--default btn--sm" disabled>Button</button>
-        <button class="btn btn--dashed btn--sm" disabled>Button</button>
-        <button class="btn btn--text btn--sm" disabled>Button</button>
-        <button class="btn btn--link btn--sm" disabled>Button</button>
-
-        <span class="matrix__divider"></span>
-
+        <div class="matrix__row-header">
+          <span class="matrix__row-label">Large · Round</span>
+        </div>
         <button class="btn btn--primary btn--lg btn--round" disabled>Button</button>
         <button class="btn btn--default btn--lg btn--round" disabled>Button</button>
         <button class="btn btn--dashed btn--lg btn--round" disabled>Button</button>
         <button class="btn btn--text btn--lg btn--round" disabled>Button</button>
         <button class="btn btn--link btn--lg btn--round" disabled>Button</button>
+        <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
 
+        <div class="matrix__row-header">
+          <span class="matrix__row-label">Medium (기본)</span>
+        </div>
+        <button class="btn btn--primary" disabled>Button</button>
+        <button class="btn btn--default" disabled>Button</button>
+        <button class="btn btn--dashed" disabled>Button</button>
+        <button class="btn btn--text" disabled>Button</button>
+        <button class="btn btn--link" disabled>Button</button>
+        <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+
+        <div class="matrix__row-header">
+          <span class="matrix__row-label">Medium · Round</span>
+        </div>
         <button class="btn btn--primary btn--round" disabled>Button</button>
         <button class="btn btn--default btn--round" disabled>Button</button>
         <button class="btn btn--dashed btn--round" disabled>Button</button>
         <button class="btn btn--text btn--round" disabled>Button</button>
         <button class="btn btn--link btn--round" disabled>Button</button>
+        <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
 
+        <div class="matrix__row-header">
+          <span class="matrix__row-label">Small</span>
+        </div>
+        <button class="btn btn--primary btn--sm" disabled>Button</button>
+        <button class="btn btn--default btn--sm" disabled>Button</button>
+        <button class="btn btn--dashed btn--sm" disabled>Button</button>
+        <button class="btn btn--text btn--sm" disabled>Button</button>
+        <button class="btn btn--link btn--sm" disabled>Button</button>
+        <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+
+        <div class="matrix__row-header">
+          <span class="matrix__row-label">Small · Round</span>
+        </div>
         <button class="btn btn--primary btn--sm btn--round" disabled>Button</button>
         <button class="btn btn--default btn--sm btn--round" disabled>Button</button>
         <button class="btn btn--dashed btn--sm btn--round" disabled>Button</button>
         <button class="btn btn--text btn--sm btn--round" disabled>Button</button>
         <button class="btn btn--link btn--sm btn--round" disabled>Button</button>
+        <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+      </div>
       </div>
     </section>
+    </div>
+
+    <div class="tabs__panel" data-tab-panel="loading" role="tabpanel">
     <!-- ============ LOADING ============ -->
     <section class="board">
-      <code class="class-label">btn btn--{primary|default|dashed|text|link} is-loading &gt; span.btn__label</code>
-      <div class="matrix">
+      <div class="board__header">
+        <code class="class-label">btn btn--{primary|default|dashed|text|link} is-loading &gt; span.btn__label</code>
+      </div>
+      <div class="board__body">
+      <div class="matrix" data-code-source>
         <span class="matrix__head">Primary</span>
         <span class="matrix__head">Default</span>
         <span class="matrix__head">Dashed</span>
@@ -163,8 +286,46 @@
         <button class="btn btn--text is-loading"><span class="btn__label">Button</span></button>
         <button class="btn btn--link is-loading"><span class="btn__label">Button</span></button>
       </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </section>
+    </div>
+  </div>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Examples</h3>
+
+    <h4 style="font-size: var(--text-14); font-weight: var(--weight-Semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-8);">Icon</h4>
+    <section class="sgroup" style="margin-bottom: 24px;">
+      <div class="sgroup__header">
+        <code class="class-label">btn btn--{primary|default} &gt; svg (자식으로 넣으면 gap 토큰으로 자동 정렬)</code>
+      </div>
+      <div class="sgroup__body" data-code-source style="gap: var(--gap-16);">
+        <button class="btn btn--primary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3.33V12.67M3.33 8H12.67" stroke="currentColor" stroke-width="1.67" stroke-linecap="round"/></svg>
+          추가하기
+        </button>
+        <button class="btn btn--default">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3.33V12.67M3.33 8H12.67" stroke="currentColor" stroke-width="1.67" stroke-linecap="round"/></svg>
+          추가하기
+        </button>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
     </section>
 
+    <h4 style="font-size: var(--text-14); font-weight: var(--weight-Semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-8);">Button Group</h4>
+    <section class="sgroup" style="margin-bottom: 24px;">
+      <div class="sgroup__header">
+        <code class="class-label">btn btn--{default|primary} 나란히 배치 (취소/확인형 액션 그룹)</code>
+      </div>
+      <div class="sgroup__body" data-code-source style="gap: var(--gap-8);">
+        <button class="btn btn--default">취소</button>
+        <button class="btn btn--primary">저장하기</button>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </section>
+
+    <h4 style="font-size: var(--text-14); font-weight: var(--weight-Semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-8);">SNS 로그인</h4>
     <!--sns 로그인 버튼 -->
     <svg width="0" height="0" style="position:absolute" aria-hidden="true">
       <!-- 구글(컬러) -->
@@ -191,86 +352,181 @@
       <div class="sgroups">
         <!-- ===== Group 1 : filled (브랜드 공식) ===== -->
         <section class="sgroup">
-          <code class="class-label">sbtn sbtn--filled sbtn--{google|facebook|apple} [sbtn--icon]</code>
-          <div class="sgroup__col">
-            <button class="sbtn sbtn--filled sbtn--google">
-              <svg class="sbtn__icon"><use href="#ic-google-color"/></svg>
-              <span class="sbtn__label">Sign in with Google</span>
-            </button>
-            <button class="sbtn sbtn--filled sbtn--facebook">
-              <svg class="sbtn__icon"><use href="#ic-facebook"/></svg>
-              <span class="sbtn__label">Sign in with Facebook</span>
-            </button>
-            <button class="sbtn sbtn--filled sbtn--apple">
-              <svg class="sbtn__icon"><use href="#ic-apple"/></svg>
-              <span class="sbtn__label">Sign in with Apple</span>
-            </button>
+          <div class="sgroup__header">
+            <code class="class-label">sbtn sbtn--filled sbtn--{google|facebook|apple} [sbtn--icon]</code>
           </div>
-          <div class="sgroup__row">
-            <button class="sbtn sbtn--icon sbtn--filled sbtn--google" aria-label="Sign in with Google">
-              <svg class="sbtn__icon"><use href="#ic-google-color"/></svg></button>
-            <button class="sbtn sbtn--icon sbtn--filled sbtn--facebook" aria-label="Sign in with Facebook">
-              <svg class="sbtn__icon"><use href="#ic-facebook"/></svg></button>
-            <button class="sbtn sbtn--icon sbtn--filled sbtn--apple" aria-label="Sign in with Apple">
-              <svg class="sbtn__icon"><use href="#ic-apple"/></svg></button>
+          <div class="sgroup__body" data-code-source>
+            <div class="sgroup__col">
+              <button class="sbtn sbtn--filled sbtn--google">
+                <svg class="sbtn__icon"><use href="#ic-google-color"/></svg>
+                <span class="sbtn__label">Sign in with Google</span>
+              </button>
+              <button class="sbtn sbtn--filled sbtn--facebook">
+                <svg class="sbtn__icon"><use href="#ic-facebook"/></svg>
+                <span class="sbtn__label">Sign in with Facebook</span>
+              </button>
+              <button class="sbtn sbtn--filled sbtn--apple">
+                <svg class="sbtn__icon"><use href="#ic-apple"/></svg>
+                <span class="sbtn__label">Sign in with Apple</span>
+              </button>
+            </div>
+            <div class="sgroup__row">
+              <button class="sbtn sbtn--icon sbtn--filled sbtn--google" aria-label="Sign in with Google">
+                <svg class="sbtn__icon"><use href="#ic-google-color"/></svg></button>
+              <button class="sbtn sbtn--icon sbtn--filled sbtn--facebook" aria-label="Sign in with Facebook">
+                <svg class="sbtn__icon"><use href="#ic-facebook"/></svg></button>
+              <button class="sbtn sbtn--icon sbtn--filled sbtn--apple" aria-label="Sign in with Apple">
+                <svg class="sbtn__icon"><use href="#ic-apple"/></svg></button>
+            </div>
           </div>
+          <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
         </section>
 
         <!-- ===== Group 2 : outline (컬러 아이콘) ===== -->
         <section class="sgroup">
-          <code class="class-label">sbtn sbtn--outline sbtn--{google|facebook|apple} [sbtn--icon]</code>
-          <div class="sgroup__col">
-            <button class="sbtn sbtn--outline sbtn--google">
-              <svg class="sbtn__icon"><use href="#ic-google-color"/></svg>
-              <span class="sbtn__label">Sign in with Google</span>
-            </button>
-            <button class="sbtn sbtn--outline sbtn--facebook">
-              <svg class="sbtn__icon"><use href="#ic-facebook"/></svg>
-              <span class="sbtn__label">Sign in with Facebook</span>
-            </button>
-            <button class="sbtn sbtn--outline sbtn--apple">
-              <svg class="sbtn__icon"><use href="#ic-apple"/></svg>
-              <span class="sbtn__label">Sign in with Apple</span>
-            </button>
+          <div class="sgroup__header">
+            <code class="class-label">sbtn sbtn--outline sbtn--{google|facebook|apple} [sbtn--icon]</code>
           </div>
-          <div class="sgroup__row">
-            <button class="sbtn sbtn--icon sbtn--outline sbtn--google" aria-label="Sign in with Google">
-              <svg class="sbtn__icon"><use href="#ic-google-color"/></svg></button>
-            <button class="sbtn sbtn--icon sbtn--outline sbtn--facebook" aria-label="Sign in with Facebook">
-              <svg class="sbtn__icon"><use href="#ic-facebook"/></svg></button>
-            <button class="sbtn sbtn--icon sbtn--outline sbtn--apple" aria-label="Sign in with Apple">
-              <svg class="sbtn__icon"><use href="#ic-apple"/></svg></button>
+          <div class="sgroup__body" data-code-source>
+            <div class="sgroup__col">
+              <button class="sbtn sbtn--outline sbtn--google">
+                <svg class="sbtn__icon"><use href="#ic-google-color"/></svg>
+                <span class="sbtn__label">Sign in with Google</span>
+              </button>
+              <button class="sbtn sbtn--outline sbtn--facebook">
+                <svg class="sbtn__icon"><use href="#ic-facebook"/></svg>
+                <span class="sbtn__label">Sign in with Facebook</span>
+              </button>
+              <button class="sbtn sbtn--outline sbtn--apple">
+                <svg class="sbtn__icon"><use href="#ic-apple"/></svg>
+                <span class="sbtn__label">Sign in with Apple</span>
+              </button>
+            </div>
+            <div class="sgroup__row">
+              <button class="sbtn sbtn--icon sbtn--outline sbtn--google" aria-label="Sign in with Google">
+                <svg class="sbtn__icon"><use href="#ic-google-color"/></svg></button>
+              <button class="sbtn sbtn--icon sbtn--outline sbtn--facebook" aria-label="Sign in with Facebook">
+                <svg class="sbtn__icon"><use href="#ic-facebook"/></svg></button>
+              <button class="sbtn sbtn--icon sbtn--outline sbtn--apple" aria-label="Sign in with Apple">
+                <svg class="sbtn__icon"><use href="#ic-apple"/></svg></button>
+            </div>
           </div>
+          <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
         </section>
 
         <!-- ===== Group 3 : mono (그레이 아이콘) ===== -->
         <section class="sgroup">
-          <code class="class-label">sbtn sbtn--mono sbtn--{google|facebook|apple} [sbtn--icon]</code>
-          <div class="sgroup__col">
-            <button class="sbtn sbtn--mono sbtn--google">
-              <svg class="sbtn__icon"><use href="#ic-google-mono"/></svg>
-              <span class="sbtn__label">Sign in with Google</span>
-            </button>
-            <button class="sbtn sbtn--mono sbtn--facebook">
-              <svg class="sbtn__icon"><use href="#ic-facebook"/></svg>
-              <span class="sbtn__label">Sign in with Facebook</span>
-            </button>
-            <button class="sbtn sbtn--mono sbtn--apple">
-              <svg class="sbtn__icon"><use href="#ic-apple"/></svg>
-              <span class="sbtn__label">Sign in with Apple</span>
-            </button>
+          <div class="sgroup__header">
+            <code class="class-label">sbtn sbtn--mono sbtn--{google|facebook|apple} [sbtn--icon]</code>
           </div>
-          <div class="sgroup__row">
-            <button class="sbtn sbtn--icon sbtn--mono sbtn--google" aria-label="Sign in with Google">
-              <svg class="sbtn__icon"><use href="#ic-google-mono"/></svg></button>
-            <button class="sbtn sbtn--icon sbtn--mono sbtn--facebook" aria-label="Sign in with Facebook">
-              <svg class="sbtn__icon"><use href="#ic-facebook"/></svg></button>
-            <button class="sbtn sbtn--icon sbtn--mono sbtn--apple" aria-label="Sign in with Apple">
-              <svg class="sbtn__icon"><use href="#ic-apple"/></svg></button>
+          <div class="sgroup__body" data-code-source>
+            <div class="sgroup__col">
+              <button class="sbtn sbtn--mono sbtn--google">
+                <svg class="sbtn__icon"><use href="#ic-google-mono"/></svg>
+                <span class="sbtn__label">Sign in with Google</span>
+              </button>
+              <button class="sbtn sbtn--mono sbtn--facebook">
+                <svg class="sbtn__icon"><use href="#ic-facebook"/></svg>
+                <span class="sbtn__label">Sign in with Facebook</span>
+              </button>
+              <button class="sbtn sbtn--mono sbtn--apple">
+                <svg class="sbtn__icon"><use href="#ic-apple"/></svg>
+                <span class="sbtn__label">Sign in with Apple</span>
+              </button>
+            </div>
+            <div class="sgroup__row">
+              <button class="sbtn sbtn--icon sbtn--mono sbtn--google" aria-label="Sign in with Google">
+                <svg class="sbtn__icon"><use href="#ic-google-mono"/></svg></button>
+              <button class="sbtn sbtn--icon sbtn--mono sbtn--facebook" aria-label="Sign in with Facebook">
+                <svg class="sbtn__icon"><use href="#ic-facebook"/></svg></button>
+              <button class="sbtn sbtn--icon sbtn--mono sbtn--apple" aria-label="Sign in with Apple">
+                <svg class="sbtn__icon"><use href="#ic-apple"/></svg></button>
+            </div>
           </div>
+          <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
         </section>
       </div>
     </div>
-  </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Guidelines</h3>
+    <div class="doc-guideline-grid">
+      <div class="doc-guideline doc-guideline--do">
+        <h4>✓ 권장</h4>
+        <ul>
+          <li>버튼 라벨은 동사로 (예: "저장하기")</li>
+          <li>Primary 버튼은 화면당 1개만 사용</li>
+          <li>아이콘은 <code class="doc-code">svg</code>를 자식으로 넣으면 자동 정렬</li>
+          <li>로딩 시 라벨을 <code class="doc-code">span.btn__label</code>로 감싸기</li>
+        </ul>
+      </div>
+      <div class="doc-guideline doc-guideline--dont">
+        <h4>✕ 지양</h4>
+        <ul>
+          <li>한 화면에 primary 버튼 여러 개</li>
+          <li>크기 토큰 대신 임의 padding 지정</li>
+          <li>disabled 버튼 클릭 이벤트에 로직 의존</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <script src="/js/main.js"></script>
+  <script>
+    (function () {
+      function escapeHTML(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function dedent(str) {
+        var lines = str.replace(/^\n+|\s+$/g, '').split('\n');
+        var minIndent = Infinity;
+        lines.forEach(function (line) {
+          if (!line.trim()) return;
+          var indent = line.match(/^\s*/)[0].length;
+          minIndent = Math.min(minIndent, indent);
+        });
+        if (!isFinite(minIndent)) minIndent = 0;
+        return lines.map(function (line) { return line.slice(minIndent); }).join('\n');
+      }
+
+      function wireCopy(panel, rawCode) {
+        var codeEl = panel.querySelector('.code-panel__code');
+        var copyBtn = panel.querySelector('[data-code-copy]');
+        codeEl.innerHTML = escapeHTML(rawCode);
+
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(rawCode).then(function () {
+            copyBtn.classList.add('is-copied');
+            copyBtn.textContent = 'Copied';
+            setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyBtn.textContent = 'Copy';
+            }, 1200);
+          });
+        });
+      }
+
+      // 섹션 전체 단위 (Loading board, SNS 로그인 그룹) — 이미 5~6개라 작음
+      document.querySelectorAll('[data-code-panel]').forEach(function (panel) {
+        var section = panel.closest('.board, .sgroup');
+        var source = section.querySelector('[data-code-source]');
+        wireCopy(panel, dedent(source.innerHTML));
+      });
+
+      // 매트릭스 행 단위 (Pressed/Disabled) — code-panel 바로 앞에 오는 .btn 형제들만 모아서 그 행의 코드로 사용
+      document.querySelectorAll('[data-row-panel]').forEach(function (panel) {
+        var items = [];
+        var el = panel.previousElementSibling;
+        while (el && el.classList.contains('btn')) {
+          items.unshift(el);
+          el = el.previousElementSibling;
+        }
+        var rawCode = items.map(function (btn) { return btn.outerHTML; }).join('\n');
+        wireCopy(panel, rawCode);
+      });
+    })();
+  </script>
 </body>
 </html>

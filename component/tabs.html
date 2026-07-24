@@ -8,68 +8,191 @@
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/component/tabs.css">
+  <link rel="stylesheet" href="/css/component/code-panel.css">
+  <link rel="stylesheet" href="/css/component/doc-template.css">
   <style>
     body {
       padding: 1rem;
     }
-    h2{
-      display: flex;
-      align-items: center;
-      gap: var(--gap-8);
-      font-size: 45px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: var( --primary-700);
-    }
-    .base {
-      display: inline-block;
-      font-size: 38px;
-      font-weight: 500;
-      color: var(--gray-800);
-    }
-    .class-label {
-      display: block;
-      margin-bottom: 8px;
-      font-family: ui-monospace, monospace;
-      font-size: 11px;
-      color: #98A2B3;
-    }
   </style>
 </head>
 <body>
-  <h2>
-    <span class="base">component</span>
-    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
-    Tabs
-  </h2>
-
-  <h3 style="margin-bottom: 12px;">기본 (Underline)</h3>
-  <code class="class-label">tabs &gt; tabs__list &gt; tabs__tab[aria-selected][disabled]</code>
-  <div class="tabs" data-tabs style="max-width: 480px;">
-    <div class="tabs__list" role="tablist">
-      <button type="button" class="tabs__tab" role="tab" id="tab-overview" aria-selected="true" data-tab="overview">개요</button>
-      <button type="button" class="tabs__tab" role="tab" id="tab-activity" aria-selected="false" data-tab="activity">활동</button>
-      <button type="button" class="tabs__tab" role="tab" id="tab-settings" aria-selected="false" data-tab="settings">설정</button>
-      <button type="button" class="tabs__tab" role="tab" id="tab-billing" aria-selected="false" data-tab="billing" disabled>결제 (준비중)</button>
-    </div>
-    <div class="tabs__panel is-active" role="tabpanel" data-tab-panel="overview">계정 개요 정보가 여기에 표시됩니다. 가입일, 요약 통계 등을 보여주는 영역입니다.</div>
-    <div class="tabs__panel" role="tabpanel" data-tab-panel="activity">최근 활동 내역이 시간순으로 나열되는 영역입니다.</div>
-    <div class="tabs__panel" role="tabpanel" data-tab-panel="settings">알림, 권한 등 세부 설정을 변경하는 영역입니다.</div>
+  <script>if (window.self !== window.top) { document.documentElement.classList.add('is-embedded'); }</script>
+  <div class="page-header">
+    <h2>Tabs</h2>
+    <p>Underline/Pill, disabled 탭</p>
   </div>
 
-  <h3 style="margin: 32px 0 12px;">Pill (세그먼트 컨트롤)</h3>
-  <code class="class-label">tabs tabs--pill</code>
-  <div class="tabs tabs--pill" data-tabs style="max-width: 480px;">
-    <div class="tabs__list" role="tablist">
-      <button type="button" class="tabs__tab" role="tab" aria-selected="true" data-tab="monthly">월간</button>
-      <button type="button" class="tabs__tab" role="tab" aria-selected="false" data-tab="weekly">주간</button>
-      <button type="button" class="tabs__tab" role="tab" aria-selected="false" data-tab="daily">일간</button>
+  <section class="doc-section">
+    <h3 class="doc-section__title">Overview</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      탭은 같은 맥락의 콘텐츠를 여러 패널로 나눠서 한 번에 하나씩만 보여주는 컴포넌트다. 이 문서 사이트 자체에서도 Button 컴포넌트의 States 섹션 등에 이미 쓰이고 있다.
+      <code class="doc-code">js/main.js</code>의 <code class="doc-code">[data-tabs]</code> 로직이 클릭/방향키/Home/End 키보드 이동까지 처리한다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Variants</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">tabs</code></td>
+          <td>기본형. 밑줄(underline)로 활성 탭 표시</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">tabs--pill</code></td>
+          <td>세그먼트 컨트롤. 알약 모양 배경으로 활성 탭 표시</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Options</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary);">
+      독립적인 수정자 클래스는 없다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">States</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>속성</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">aria-selected="true"</code></td>
+          <td>현재 활성 탭. <code class="doc-code">tabs__panel.is-active</code>와 함께 토글됨</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">disabled</code></td>
+          <td>선택 불가한 탭 (예: 준비중인 기능)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Examples</h3>
+
+    <div class="board" style="margin-bottom: 16px;">
+      <div class="board__header">
+        <code class="class-label">계정 설정 — Underline, disabled 탭 포함</code>
+      </div>
+      <div class="board__body">
+        <div data-code-source>
+          <div class="tabs" data-tabs style="max-width: 480px;">
+            <div class="tabs__list" role="tablist">
+              <button type="button" class="tabs__tab" role="tab" id="tab-overview" aria-selected="true" data-tab="overview">개요</button>
+              <button type="button" class="tabs__tab" role="tab" id="tab-activity" aria-selected="false" data-tab="activity">활동</button>
+              <button type="button" class="tabs__tab" role="tab" id="tab-settings" aria-selected="false" data-tab="settings">설정</button>
+              <button type="button" class="tabs__tab" role="tab" id="tab-billing" aria-selected="false" data-tab="billing" disabled>결제 (준비중)</button>
+            </div>
+            <div class="tabs__panel is-active" role="tabpanel" data-tab-panel="overview">계정 개요 정보가 여기에 표시됩니다. 가입일, 요약 통계 등을 보여주는 영역입니다.</div>
+            <div class="tabs__panel" role="tabpanel" data-tab-panel="activity">최근 활동 내역이 시간순으로 나열되는 영역입니다.</div>
+            <div class="tabs__panel" role="tabpanel" data-tab-panel="settings">알림, 권한 등 세부 설정을 변경하는 영역입니다.</div>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
     </div>
-    <div class="tabs__panel is-active" role="tabpanel" data-tab-panel="monthly">월간 리포트 데이터입니다.</div>
-    <div class="tabs__panel" role="tabpanel" data-tab-panel="weekly">주간 리포트 데이터입니다.</div>
-    <div class="tabs__panel" role="tabpanel" data-tab-panel="daily">일간 리포트 데이터입니다.</div>
-  </div>
+
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">리포트 기간 선택 — Pill (세그먼트 컨트롤)</code>
+      </div>
+      <div class="board__body">
+        <div data-code-source>
+          <div class="tabs tabs--pill" data-tabs style="max-width: 480px;">
+            <div class="tabs__list" role="tablist">
+              <button type="button" class="tabs__tab" role="tab" aria-selected="true" data-tab="monthly">월간</button>
+              <button type="button" class="tabs__tab" role="tab" aria-selected="false" data-tab="weekly">주간</button>
+              <button type="button" class="tabs__tab" role="tab" aria-selected="false" data-tab="daily">일간</button>
+            </div>
+            <div class="tabs__panel is-active" role="tabpanel" data-tab-panel="monthly">월간 리포트 데이터입니다.</div>
+            <div class="tabs__panel" role="tabpanel" data-tab-panel="weekly">주간 리포트 데이터입니다.</div>
+            <div class="tabs__panel" role="tabpanel" data-tab-panel="daily">일간 리포트 데이터입니다.</div>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Guidelines</h3>
+    <div class="doc-guideline-grid">
+      <div class="doc-guideline doc-guideline--do">
+        <h4>✓ 권장</h4>
+        <ul>
+          <li>탭 라벨은 2단어 이내로 짧게</li>
+          <li>같은 화면 안에서 동시에 볼 필요 없는 콘텐츠에만 사용</li>
+          <li>준비 안 된 기능은 숨기지 말고 <code class="doc-code">disabled</code>로 존재만 알리기</li>
+        </ul>
+      </div>
+      <div class="doc-guideline doc-guideline--dont">
+        <h4>✕ 지양</h4>
+        <ul>
+          <li>탭 5~6개 이상 나열 (Dropdown이나 사이드 내비게이션이 더 적합)</li>
+          <li>탭 전환 시 페이지 전체를 새로고침 (SPA처럼 패널만 바뀌어야 함)</li>
+          <li>서로 이어지는 단계형 흐름(1단계→2단계)에 탭 사용 (그건 Stepper)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
   <script src="/js/main.js"></script>
+  <script>
+    (function () {
+      function escapeHTML(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function dedent(str) {
+        var lines = str.replace(/^\n+|\s+$/g, '').split('\n');
+        var minIndent = Infinity;
+        lines.forEach(function (line) {
+          if (!line.trim()) return;
+          var indent = line.match(/^\s*/)[0].length;
+          minIndent = Math.min(minIndent, indent);
+        });
+        if (!isFinite(minIndent)) minIndent = 0;
+        return lines.map(function (line) { return line.slice(minIndent); }).join('\n');
+      }
+
+      function wireCopy(panel, rawCode) {
+        var codeEl = panel.querySelector('.code-panel__code');
+        var copyBtn = panel.querySelector('[data-code-copy]');
+        codeEl.innerHTML = escapeHTML(rawCode);
+
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(rawCode).then(function () {
+            copyBtn.classList.add('is-copied');
+            copyBtn.textContent = 'Copied';
+            setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyBtn.textContent = 'Copy';
+            }, 1200);
+          });
+        });
+      }
+
+      document.querySelectorAll('[data-code-panel]').forEach(function (panel) {
+        var section = panel.closest('.board, .sgroup');
+        var source = section.querySelector('[data-code-source]');
+        wireCopy(panel, dedent(source.innerHTML));
+      });
+    })();
+  </script>
 </body>
 </html>

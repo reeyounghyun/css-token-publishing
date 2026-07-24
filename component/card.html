@@ -9,173 +9,259 @@
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/component/button.css">
   <link rel="stylesheet" href="/css/component/card.css">
+  <link rel="stylesheet" href="/css/component/code-panel.css">
+  <link rel="stylesheet" href="/css/component/doc-template.css">
   <style>
     body {
       padding: 1rem;
     }
-    h2{
+    .card-row {
       display: flex;
-      align-items: center;
-      gap: var(--gap-8);
-      font-size: 45px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: var( --primary-700);
+      gap: var(--gap-16);
+      flex-wrap: wrap;
+      align-items: flex-start;
+      padding: var(--spacing-20);
     }
-    .base {
-      display: inline-block;
-      font-size: 38px;
-      font-weight: 500;
-      color: var(--gray-800);
-    }
-    .class-label {
-      display: block;
-      margin-top: 8px;
-      font-family: ui-monospace, monospace;
-      font-size: 11px;
-      color: #98A2B3;
+    .card-row > * {
+      flex: 1 1 240px;
+      max-width: 320px;
     }
   </style>
 </head>
 <body>
-  <h2>
-    <span class="base">component</span>
-    <img src="/images/icon/arrow.png" alt="메뉴" width="23" height="32">
-    Card
-  </h2>
-
-  <h3 style="margin-bottom: 12px;">hover 가능형 (클릭 가능한 카드)</h3>
-  <button type="button" class="card card--hoverable" style="max-width: 360px;">
-    <img class="card__thumb" src="/images/icon/mail_icon.png" alt="">
-    <h4 class="card__title">알림 설정 바로가기</h4>
-    <p class="card__desc">카드 전체를 눌러서 이동합니다. hover/focus 시 테두리와 그림자가 살짝 진해집니다.</p>
-  </button>
-  <code class="class-label">card card--hoverable (button 태그)</code>
-
-  <h3 style="margin-bottom: 12px;">기본 카드 (이미지 + 액션)</h3>
-  <code class="class-label" style="margin-bottom: 8px;">card &gt; card__thumb, card__title, card__desc, card__footer</code>
-  <div class="card-grid" style="max-width: 900px;">
-    <div class="card">
-      <img class="card__thumb" src="/images/icon/mail_icon.png" alt="">
-      <h4 class="card__title">디자인 시스템 가이드</h4>
-      <p class="card__desc">토큰 기반으로 컴포넌트를 관리하는 방법을 정리한 문서입니다.</p>
-      <div class="card__footer">
-        <button type="button" class="btn btn--primary btn--sm">자세히 보기</button>
-        <button type="button" class="btn btn--default btn--sm">공유</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img class="card__thumb" src="/images/icon/mail_icon.png" alt="">
-      <h4 class="card__title">이번 분기 로드맵</h4>
-      <p class="card__desc">Q3 목표와 마일스톤을 한눈에 확인할 수 있어요.</p>
-      <div class="card__footer">
-        <button type="button" class="btn btn--primary btn--sm">자세히 보기</button>
-        <button type="button" class="btn btn--default btn--sm">공유</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img class="card__thumb" src="/images/icon/mail_icon.png" alt="">
-      <h4 class="card__title">팀 온보딩 체크리스트</h4>
-      <p class="card__desc">신규 입사자가 첫 주에 확인해야 할 항목들입니다.</p>
-      <div class="card__footer">
-        <button type="button" class="btn btn--primary btn--sm">자세히 보기</button>
-        <button type="button" class="btn btn--default btn--sm">공유</button>
-      </div>
-    </div>
+  <script>if (window.self !== window.top) { document.documentElement.classList.add('is-embedded'); }</script>
+  <div class="page-header">
+    <h2>Card</h2>
+    <p>기본/가로형/통계/리스트/플레이스홀더/hover 가능형</p>
   </div>
 
-  <h3 style="margin: 32px 0 12px;">가로형 카드</h3>
-  <code class="class-label" style="margin-bottom: 8px;">card card--horizontal &gt; card__thumb, card__body</code>
-  <div class="card card--horizontal" style="max-width: 480px;">
-    <img class="card__thumb" src="/images/icon/mail_icon.png" alt="">
-    <div class="card__body">
-      <h4 class="card__title">알림 설정</h4>
-      <p class="card__desc">이메일과 푸시 알림을 받을 항목을 선택하세요.</p>
-      <div class="card__footer">
-        <button type="button" class="btn btn--text btn--sm">설정 변경</button>
+  <section class="doc-section">
+    <h3 class="doc-section__title">Overview</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      카드는 관련된 정보를 하나의 컨테이너에 묶어 보여주는 컴포넌트다. 레이아웃(가로형/통계)이나 클릭 가능 여부에 따라 조합해서 쓴다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Variants</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">card</code></td>
+          <td>기본형. 세로 배치, 이미지 + 제목 + 설명 + 액션</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">card--horizontal</code></td>
+          <td>가로형. 왼쪽 썸네일 + 오른쪽 텍스트</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">card--stat</code></td>
+          <td>통계형. 숫자 지표 + 증감 표시</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">card [card--horizontal|card--stat]</code>
       </div>
-    </div>
-  </div>
-
-  <h3 style="margin: 32px 0 12px;">통계 카드</h3>
-  <code class="class-label" style="margin-bottom: 8px;">card card--stat &gt; card__label, card__value, card__delta card__delta--{up|down}</code>
-  <div class="card-grid" style="max-width: 900px;">
-    <div class="card card--stat">
-      <span class="card__label">이번 달 매출</span>
-      <span class="card__value">₩45,231,890</span>
-      <span class="card__delta card__delta--up">▲ 12.4% 전월 대비</span>
-    </div>
-    <div class="card card--stat">
-      <span class="card__label">신규 가입자</span>
-      <span class="card__value">1,204</span>
-      <span class="card__delta card__delta--up">▲ 8.1% 전월 대비</span>
-    </div>
-    <div class="card card--stat">
-      <span class="card__label">이탈률</span>
-      <span class="card__value">3.2%</span>
-      <span class="card__delta card__delta--down">▼ 0.6%p 전월 대비</span>
-    </div>
-  </div>
-
-  <h3 style="margin: 32px 0 12px;">리스트 / 활동 카드</h3>
-  <code class="class-label" style="margin-bottom: 8px;">card &gt; card-list &gt; card-list__item &gt; card-list__icon, card-list__body, card-list__time</code>
-  <div class="card" style="max-width: 360px;">
-    <h4 class="card__title" style="margin-bottom: 8px;">최근 활동</h4>
-    <div class="card-list">
-      <div class="card-list__item">
-        <span class="card-list__icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        <div class="card-list__body">
-          <div class="card-list__title">Olivia Rhye님이 문서를 승인했습니다</div>
-          <div class="card-list__desc">2026 상반기 예산안</div>
+      <div class="board__body">
+        <div class="card-row" data-code-source>
+          <div class="card">
+            <img class="card__thumb" src="/images/icon/mail_icon.png" alt="">
+            <h4 class="card__title">디자인 시스템 가이드</h4>
+            <p class="card__desc">토큰 기반으로 컴포넌트를 관리하는 방법을 정리한 문서입니다.</p>
+            <div class="card__footer">
+              <button type="button" class="btn btn--primary btn--sm">자세히 보기</button>
+            </div>
+          </div>
+          <div class="card card--horizontal">
+            <img class="card__thumb" src="/images/icon/mail_icon.png" alt="">
+            <div class="card__body">
+              <h4 class="card__title">알림 설정</h4>
+              <p class="card__desc">이메일과 푸시 알림을 받을 항목을 선택하세요.</p>
+              <div class="card__footer">
+                <button type="button" class="btn btn--text btn--sm">설정 변경</button>
+              </div>
+            </div>
+          </div>
+          <div class="card card--stat">
+            <span class="card__label">이번 달 매출</span>
+            <span class="card__value">₩45,231,890</span>
+            <span class="card__delta card__delta--up">▲ 12.4% 전월 대비</span>
+          </div>
         </div>
-        <span class="card-list__time">2분 전</span>
       </div>
-      <div class="card-list__item">
-        <span class="card-list__icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        <div class="card-list__body">
-          <div class="card-list__title">Phoenix Baker님이 팀에 참여했습니다</div>
-          <div class="card-list__desc">디자인팀</div>
-        </div>
-        <span class="card-list__time">1시간 전</span>
-      </div>
-      <div class="card-list__item">
-        <span class="card-list__icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        <div class="card-list__body">
-          <div class="card-list__title">새 배포가 완료되었습니다</div>
-          <div class="card-list__desc">v2.4.0 · production</div>
-        </div>
-        <span class="card-list__time">3시간 전</span>
-      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
     </div>
-  </div>
+  </section>
 
-  <h3 style="margin: 32px 0 12px;">이미지 / 그래프 플레이스홀더 카드</h3>
-  <code class="class-label" style="margin-bottom: 8px;">card &gt; card__placeholder</code>
-  <div class="card-grid" style="max-width: 900px;">
-    <div class="card">
-      <div class="card__placeholder">차트 영역</div>
-      <h4 class="card__title">주간 방문자</h4>
-      <p class="card__desc">실제 차트 라이브러리 연결 전 자리 표시용입니다.</p>
+  <section class="doc-section">
+    <h3 class="doc-section__title">Options</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>클래스</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">card--hoverable</code></td>
+          <td>선택. 카드 전체를 클릭 가능하게 만든다. <code class="doc-code">&lt;button&gt;</code> 태그에 붙이는 걸 전제로 함</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">card__footer</code></td>
+          <td>선택. 액션 버튼 영역, 없으면 정보만 보여주는 카드가 됨</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">card__placeholder</code></td>
+          <td>선택. 이미지/차트가 아직 없을 때 자리표시자</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="board" style="margin-top: 16px;">
+      <div class="board__header">
+        <code class="class-label">card card--hoverable (button 태그)  /  card__placeholder</code>
+      </div>
+      <div class="board__body">
+        <div class="card-row" data-code-source>
+          <button type="button" class="card card--hoverable">
+            <img class="card__thumb" src="/images/icon/mail_icon.png" alt="">
+            <h4 class="card__title">알림 설정 바로가기</h4>
+            <p class="card__desc">카드 전체를 눌러서 이동합니다. hover/focus 시 테두리와 그림자가 진해집니다.</p>
+          </button>
+          <div class="card">
+            <div class="card__placeholder">차트 영역</div>
+            <h4 class="card__title">주간 방문자</h4>
+            <p class="card__desc">실제 차트 라이브러리 연결 전 자리 표시용입니다.</p>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
     </div>
-    <div class="card">
-      <div class="card__placeholder">이미지 영역</div>
-      <h4 class="card__title">커버 이미지 미등록</h4>
-      <p class="card__desc">이미지가 없을 때 보여줄 기본 상태입니다.</p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">States</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      별도 상태 클래스는 없다. <code class="doc-code">card--hoverable</code>에 <code class="doc-code">:hover</code>/<code class="doc-code">:focus-visible</code>일 때 테두리·그림자가 진해지는 스타일만 있다 — 위 Options 데모에서 확인할 수 있다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Examples</h3>
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">최근 활동 — card &gt; card-list &gt; card-list__item &gt; card-list__icon, card-list__body, card-list__time</code>
+      </div>
+      <div class="board__body">
+        <div style="max-width: 360px; padding: 4px 0;" data-code-source>
+          <div class="card">
+            <h4 class="card__title" style="margin-bottom: 8px;">최근 활동</h4>
+            <div class="card-list">
+              <div class="card-list__item">
+                <span class="card-list__icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div class="card-list__body">
+                  <div class="card-list__title">Olivia Rhye님이 문서를 승인했습니다</div>
+                  <div class="card-list__desc">2026 상반기 예산안</div>
+                </div>
+                <span class="card-list__time">2분 전</span>
+              </div>
+              <div class="card-list__item">
+                <span class="card-list__icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div class="card-list__body">
+                  <div class="card-list__title">Phoenix Baker님이 팀에 참여했습니다</div>
+                  <div class="card-list__desc">디자인팀</div>
+                </div>
+                <span class="card-list__time">1시간 전</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
     </div>
-  </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Guidelines</h3>
+    <div class="doc-guideline-grid">
+      <div class="doc-guideline doc-guideline--do">
+        <h4>✓ 권장</h4>
+        <ul>
+          <li>카드 안 액션은 1~2개로 제한</li>
+          <li>클릭 가능한 카드는 <code class="doc-code">card--hoverable</code> + <code class="doc-code">&lt;button&gt;</code>으로 클릭 가능함을 명확히</li>
+          <li>통계 카드는 숫자를 가장 크게, 증감은 색상+화살표로 이중 표시</li>
+        </ul>
+      </div>
+      <div class="doc-guideline doc-guideline--dont">
+        <h4>✕ 지양</h4>
+        <ul>
+          <li>카드 안에 카드를 중첩</li>
+          <li><code class="doc-code">card--hoverable</code> 카드 내부에 또 다른 클릭 가능한 버튼/링크 넣기 (클릭 영역 충돌)</li>
+          <li>통계 카드 하나에 여러 지표 욱여넣기 (카드 하나 = 지표 하나)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      function escapeHTML(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function dedent(str) {
+        var lines = str.replace(/^\n+|\s+$/g, '').split('\n');
+        var minIndent = Infinity;
+        lines.forEach(function (line) {
+          if (!line.trim()) return;
+          var indent = line.match(/^\s*/)[0].length;
+          minIndent = Math.min(minIndent, indent);
+        });
+        if (!isFinite(minIndent)) minIndent = 0;
+        return lines.map(function (line) { return line.slice(minIndent); }).join('\n');
+      }
+
+      function wireCopy(panel, rawCode) {
+        var codeEl = panel.querySelector('.code-panel__code');
+        var copyBtn = panel.querySelector('[data-code-copy]');
+        codeEl.innerHTML = escapeHTML(rawCode);
+
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(rawCode).then(function () {
+            copyBtn.classList.add('is-copied');
+            copyBtn.textContent = 'Copied';
+            setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyBtn.textContent = 'Copy';
+            }, 1200);
+          });
+        });
+      }
+
+      document.querySelectorAll('[data-code-panel]').forEach(function (panel) {
+        var section = panel.closest('.board, .sgroup');
+        var source = section.querySelector('[data-code-source]');
+        wireCopy(panel, dedent(source.innerHTML));
+      });
+    })();
+  </script>
 </body>
 </html>

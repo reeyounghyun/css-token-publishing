@@ -201,7 +201,6 @@
 /*sns 로그인 버튼 */
 .page {
   max-width:920px;
-  margin:0 auto;
 }
 /* .page__eyebrow, .frame — button.html에서 실제로 쓰이지 않는 죽은 규칙(dead CSS). 색상 참조만 semantic으로 정리하고 값은 그대로 둠 */
 .page__eyebrow {
@@ -221,13 +220,12 @@
 }
 .sgroups {
   display:flex;
+  flex-direction: column;
   gap:var(--gap-56);
 }
-.sgroup {
-  display:flex;
+/* .sgroup / .sgroup__header / .sgroup__body 공통 골격은 css/component/doc-template.css 참조 */
+.sgroup__body {
   gap:var(--gap-56);
-  flex-wrap:wrap;
-  align-items:flex-start;
 }
 .sgroup__col {
   display:flex;
@@ -242,7 +240,7 @@
   flex-wrap:wrap;
 }
 @media (max-width:760px) {
-  .sgroup{ gap:var(--gap-28);}
+  .sgroup__body{ gap:var(--gap-28);}
   .sgroup__col{ width:100%;}
 }
 
