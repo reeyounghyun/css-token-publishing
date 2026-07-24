@@ -13,6 +13,7 @@
   document.querySelectorAll('[data-dropdown-custom]').forEach(root => {
     const trigger = root.querySelector('.dropdown__trigger');
     const value   = root.querySelector('.dropdown__value');
+    const triggerAvatar = trigger.querySelector('.dropdown__avatar');
 
     // 1) 토글
     trigger.addEventListener('click', () => {
@@ -24,7 +25,13 @@
     root.querySelectorAll('.dropdown__item').forEach(item => {
       item.addEventListener('click', () => {
         if (item.getAttribute('aria-disabled') === 'true') return;
-        value.textContent = item.textContent;
+        value.textContent = item.textContent.trim();
+        // 항목에 아바타가 있으면 트리거 아바타도 같이 바꿔서 선택된 사람이 보이게
+        const itemAvatar = item.querySelector('.dropdown__avatar');
+        if (triggerAvatar && itemAvatar) {
+          triggerAvatar.src = itemAvatar.src;
+          triggerAvatar.alt = itemAvatar.alt;
+        }
         root.classList.remove('is--open');
         trigger.setAttribute('aria-expanded', 'false');
       });
