@@ -39,7 +39,7 @@ v0.4 · 2026.07
 값이 바뀌면 이름도 같이 바꿔야 한다는 단점이 있지만,
 `--spacing-*` `--text-*`이 이미 숫자 표기라 한 파일 안에 두 체계를 두지 않는 쪽을 택한다.
 
-> **수정 필요** — `--radius-xs/sm/md/lg`, `--height-xs~xl`, `--height-1xl`, `--weight-Semibold`, `--White` 남아 있음.
+> 아직 규칙대로 정리 안 된 항목은 history.md의 "남은 작업(백로그)" 참고.
 
 ---
 
@@ -99,8 +99,7 @@ block__element--modifier
 **상태는 `is-` 접두사.** `is-active` `is-open` `is-disabled` `is-loading`
 `--`는 모디파이어 기호이므로 상태에 쓰지 않는다. `is--open` 같은 표기 금지.
 
-> **수정 필요** — `dropdown.css`와 `main.js`가 `is--open` / `is--active`를 쓰고 있음.
-> 나머지(modal · tabs · pagination)는 `is-`. 두 파일만 고치면 됨.
+> 아직 규칙대로 정리 안 된 항목은 history.md의 "남은 작업(백로그)" 참고.
 
 **안 하는 것**
 
@@ -128,13 +127,13 @@ block__element--modifier
 
 같은 뜻에 두 표기를 섞지 않는다.
 
-> **수정 필요** — `img`(7곳)를 `image`로 통일.
+> 아직 규칙대로 정리 안 된 항목은 history.md의 "남은 작업(백로그)" 참고.
 
 ### 표기
 
 kebab-case로 쓴다.
 
-> **수정 필요** — `dropdown__userinfo` → `dropdown__user-info`
+> 아직 규칙대로 정리 안 된 항목은 history.md의 "남은 작업(백로그)" 참고.
 
 ---
 
