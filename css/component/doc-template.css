@@ -5,11 +5,19 @@
    실제 컴포넌트 스타일(button.css 등)과는 다른 축이라 분리함.
    ============================================================ */
 
+/* ---- 페이지 컨테이너 ---- */
+.page-container {
+  background: var(--color-bg-canvas);
+  padding: var(--pad);
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
 /* ---- 페이지 헤더 (타이틀 + 설명) ---- */
 .page-header {
   margin-bottom: 24px;
   padding-bottom: 16px;
-  border-bottom: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--color-border-default);
 }
 .page-header h2 {
   font-size: var(--display-sm);
@@ -90,7 +98,7 @@
 
 /* ---- 문서 섹션 (Overview/Variants/Options/... 공통 래퍼) ---- */
 .doc-section {
-  max-width: 768px;
+  max-width: 1024px;
   margin-bottom: 40px;
 }
 .doc-section__title {
@@ -116,9 +124,12 @@
   font-size: var(--text-14);
 }
 .doc-table th {
-  background: var(--color-bg-muted);
+  background: var(--color-bg-accent-active);
   font-weight: var(--weight-medium);
-  color: var(--color-text-tertiary);
+  color: var(--color-text-inverse);
+}
+.doc-table tbody {
+  background: var(--color-bg-surface);
 }
 .doc-table tbody tr:last-child td {
   border-bottom: 0;

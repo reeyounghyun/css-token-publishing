@@ -29,6 +29,7 @@
 </head>
 <body>
   <script>if (window.self !== window.top) { document.documentElement.classList.add('is-embedded'); }</script>
+  <div class="page-container">
   <div class="page-header">
     <h2>Toast</h2>
     <p>info/success/warning/error</p>
@@ -235,6 +236,7 @@
       </div>
     </div>
   </section>
+  </div>
 
   <!-- 토스트가 실제로 쌓이는 위치 (화면 우하단 고정) -->
   <div class="toast-container" id="toast-container" aria-live="polite"></div>
@@ -282,5 +284,6 @@
       });
     })();
   </script>
+  <script src="/js/scroll-top.js"></script>
 </body>
 </html>

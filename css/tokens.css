@@ -5,6 +5,7 @@
      ============================================================ */
     /* 색(폰트/배경) */
   --gray-50:  #F9FAFB;
+  --gray-75:  #F8F8F8;
   --gray-100:  #F2F4F7;
   --gray-200:  #EAECF0;
   --gray-300:  #D0D5DD;
@@ -219,6 +220,7 @@
   /* 배경 */
   --color-bg-surface:       var(--White);     /* white */
   --color-bg-subtle:        var(--gray-50);   /* #F9FAFB */
+  --color-bg-canvas:        var(--gray-75);   /* #F8F8F8 · 문서 페이지 전체 배경 */
   --color-bg-muted:         var(--gray-100);  /* #F2F4F7 */
   --color-bg-strong:        var(--gray-200);  /* #EAECF0 */
   --color-bg-inverse:       var(--gray-700);  /* #344054 · 체크박스/라디오 선택 표시 */
