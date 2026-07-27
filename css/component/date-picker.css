@@ -1,0 +1,32 @@
+/* Date Picker — 네이티브 input[type="date"]. input.css의 field/field__box/field__input 구조를 그대로 재사용하고,
+   여기서는 브라우저 기본 달력 아이콘 색상만 디자인 토큰에 맞춰 조정한다. */
+.field__input[type="date"] {
+  color: var(--color-text-primary);
+}
+.field__input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.5;
+  filter: none;
+}
+.field__input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+.field--disabled .field__input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: not-allowed;
+  opacity: 0.25;
+}
+
+/* 기간 선택 — date input 2개 + 구분자 */
+.field-range {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+}
+.field-range .field {
+  max-width: 160px;
+}
+.field-range__sep {
+  color: var(--color-text-quaternary);
+  font-size: var(--text-14);
+  flex-shrink: 0;
+}

@@ -1,0 +1,86 @@
+/* Chart — 정적 막대 그래프. 데이터 바인딩/애니메이션 JS 없음, 값은 인라인 style(height/width %)로 직접 지정 */
+.chart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+}
+.chart__title {
+  font-size: var(--text-14);
+  font-weight: var(--weight-Semibold);
+  color: var(--color-text-secondary);
+}
+
+/* 세로 막대 (기본) */
+.chart__bars {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--spacing-12);
+  height: 160px;
+}
+.chart__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-6);
+  flex: 1;
+  height: 100%;
+  min-width: 0;
+}
+.chart__value {
+  font-size: var(--text-12);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-secondary);
+}
+.chart__bar {
+  width: 100%;
+  max-width: 32px;
+  border-radius: var(--radius-xs) var(--radius-xs) 0 0;
+  background: var(--color-bg-accent);
+}
+.chart__label {
+  font-size: var(--text-12);
+  color: var(--color-text-quaternary);
+  white-space: nowrap;
+}
+
+/* 강조(비교 대상) 막대 — 예: 이번 달, 최고 실적 */
+.chart__bar.is-accent {
+  background: var(--color-bg-accent-active);
+}
+/* 비활성/예상치 — 실측 데이터가 아직 없는 항목 */
+.chart__bar.is-muted {
+  background: var(--color-bg-strong);
+}
+
+/* 가로 막대 — 랭킹처럼 항목명이 길 때 */
+.chart--horizontal .chart__bars {
+  flex-direction: column;
+  align-items: stretch;
+  height: auto;
+  gap: var(--spacing-12);
+}
+.chart--horizontal .chart__col {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  height: auto;
+  gap: var(--spacing-12);
+}
+.chart--horizontal .chart__label {
+  width: 88px;
+  flex-shrink: 0;
+  text-align: right;
+}
+.chart--horizontal .chart__bar-track {
+  flex: 1;
+  min-width: 0;
+}
+.chart--horizontal .chart__bar {
+  max-width: none;
+  height: 16px;
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+}
+.chart--horizontal .chart__value {
+  flex-shrink: 0;
+}
