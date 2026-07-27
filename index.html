@@ -842,12 +842,147 @@
 
       <section class="ix-section" id="section-utilities">
         <h2 class="ix-section__title">Utilities</h2>
-        <p class="ix-placeholder">준비중 — 개발자가 자주 찾는 유틸리티 클래스와 적용된 토큰을 렌더링 결과와 함께 정리할 예정입니다.</p>
+        <p class="ix-section__desc">화면 하나를 통째로 구성하는 컴포넌트가 아니라, HTML에 클래스 하나만 붙여서 CSS 파일을 열지 않고 바로 미세 조정하는 원자적(atomic) 도우미 클래스. 클래스명은 <code>tokens.css</code>의 토큰 이름과 1:1 대응된다(값이 바뀌면 클래스명도 같이 바뀌는 걸 의도적으로 보장). <code>css/utilities.css</code>에서 관리.</p>
+
+        <h3 class="ix-subtitle" id="util-spacing">1. 여백 — margin / padding (<code>.m-spacing-N</code> / <code>.p-spacing-N</code>)</h3>
+        <p class="ix-section__desc">요소 하나에 margin 또는 padding을 4방향 동일하게 적용. 개별 컴포넌트 CSS에 여백 규칙을 새로 안 만들고 바로 붙여 쓰는 용도.</p>
+        <div class="ix-util-demo gap-spacing-16">
+          <div class="ix-util-demo__box p-spacing-8">p-spacing-8</div>
+          <div class="ix-util-demo__box p-spacing-16">p-spacing-16</div>
+          <div class="ix-util-demo__box p-spacing-28">p-spacing-28</div>
+        </div>
+        <table class="ix-util-table">
+          <thead><tr><th>클래스명</th><th>값</th></tr></thead>
+          <tbody>
+            <tr><td><code>.m-spacing-4</code> / <code>.p-spacing-4</code></td><td>4px</td></tr>
+            <tr><td><code>.m-spacing-6</code> / <code>.p-spacing-6</code></td><td>6px</td></tr>
+            <tr><td><code>.m-spacing-8</code> / <code>.p-spacing-8</code></td><td>8px</td></tr>
+            <tr><td><code>.m-spacing-10</code> / <code>.p-spacing-10</code></td><td>10px</td></tr>
+            <tr><td><code>.m-spacing-12</code> / <code>.p-spacing-12</code></td><td>12px</td></tr>
+            <tr><td><code>.m-spacing-14</code> / <code>.p-spacing-14</code></td><td>14px</td></tr>
+            <tr><td><code>.m-spacing-16</code> / <code>.p-spacing-16</code></td><td>16px</td></tr>
+            <tr><td><code>.m-spacing-18</code> / <code>.p-spacing-18</code></td><td>18px</td></tr>
+            <tr><td><code>.m-spacing-20</code> / <code>.p-spacing-20</code></td><td>20px</td></tr>
+            <tr><td><code>.m-spacing-28</code> / <code>.p-spacing-28</code></td><td>28px</td></tr>
+          </tbody>
+        </table>
+
+        <h3 class="ix-subtitle" id="util-gap">2. 간격 — gap (<code>.gap-spacing-N</code>)</h3>
+        <p class="ix-section__desc">flex/grid 부모에 적용해 자식 요소 사이 간격을 일정하게 유지. 개별 자식에 margin을 주는 방식보다 유지보수가 쉬움.</p>
+        <div class="ix-util-demo gap-spacing-16">
+          <div class="ix-util-demo__box p-spacing-8">Card 1</div>
+          <div class="ix-util-demo__box p-spacing-8">Card 2</div>
+          <div class="ix-util-demo__box p-spacing-8">Card 3</div>
+        </div>
+        <table class="ix-util-table">
+          <thead><tr><th>클래스명</th><th>값</th></tr></thead>
+          <tbody>
+            <tr><td><code>.gap-spacing-4</code></td><td>4px</td></tr>
+            <tr><td><code>.gap-spacing-6</code></td><td>6px</td></tr>
+            <tr><td><code>.gap-spacing-8</code></td><td>8px</td></tr>
+            <tr><td><code>.gap-spacing-10</code></td><td>10px</td></tr>
+            <tr><td><code>.gap-spacing-12</code></td><td>12px</td></tr>
+            <tr><td><code>.gap-spacing-14</code></td><td>14px</td></tr>
+            <tr><td><code>.gap-spacing-16</code></td><td>16px</td></tr>
+            <tr><td><code>.gap-spacing-18</code></td><td>18px</td></tr>
+            <tr><td><code>.gap-spacing-20</code></td><td>20px</td></tr>
+            <tr><td><code>.gap-spacing-28</code></td><td>28px</td></tr>
+          </tbody>
+        </table>
+
+        <h3 class="ix-subtitle" id="util-shadow">3. 그림자 — box-shadow (<code>.shadow-N</code>)</h3>
+        <p class="ix-section__desc">z축 고도감을 표현하는 box-shadow 7단계. 카드/모달/드롭다운처럼 배경 위에 떠 있는 요소에 사용.</p>
+        <div class="ix-util-demo gap-spacing-16">
+          <div class="ix-util-demo__box shadow-xs p-spacing-12">shadow-xs</div>
+          <div class="ix-util-demo__box shadow-sm p-spacing-12">shadow-sm</div>
+          <div class="ix-util-demo__box shadow-md p-spacing-12">shadow-md</div>
+          <div class="ix-util-demo__box shadow-lg p-spacing-12">shadow-lg</div>
+          <div class="ix-util-demo__box shadow-xl p-spacing-12">shadow-xl</div>
+          <div class="ix-util-demo__box shadow-2xl p-spacing-12">shadow-2xl</div>
+          <div class="ix-util-demo__box shadow-3xl p-spacing-12">shadow-3xl</div>
+        </div>
+        <table class="ix-util-table">
+          <thead><tr><th>클래스명</th><th>값</th></tr></thead>
+          <tbody>
+            <tr><td><code>.shadow-xs</code></td><td>0 1px 2px rgba(16,24,40,.05)</td></tr>
+            <tr><td><code>.shadow-sm</code></td><td>0 1px 3px rgba(16,24,40,.10), 0 1px 2px rgba(16,24,40,.06)</td></tr>
+            <tr><td><code>.shadow-md</code></td><td>0 4px 8px -2px rgba(16,24,40,.10), 0 2px 4px -2px rgba(16,24,40,.06)</td></tr>
+            <tr><td><code>.shadow-lg</code></td><td>0 12px 16px -4px rgba(16,24,40,.08), 0 4px 6px -2px rgba(16,24,40,.03)</td></tr>
+            <tr><td><code>.shadow-xl</code></td><td>0 20px 24px -4px rgba(16,24,40,.08), 0 8px 8px -4px rgba(16,24,40,.03)</td></tr>
+            <tr><td><code>.shadow-2xl</code></td><td>0 24px 48px -12px rgba(16,24,40,.18)</td></tr>
+            <tr><td><code>.shadow-3xl</code></td><td>0 32px 64px -12px rgba(16,24,40,.14)</td></tr>
+          </tbody>
+        </table>
       </section>
 
       <section class="ix-section" id="section-patterns">
         <h2 class="ix-section__title">Patterns</h2>
-        <p class="ix-placeholder">준비중 — Search + Table, Dashboard, Login 등 여러 컴포넌트를 조합한 실무 화면 패턴이 여기 정리될 예정입니다.</p>
+        <p class="ix-section__desc">여러 <strong>Components</strong>를 조합해 실제 화면을 구성하는 UI 패턴. 카드는 실제 <code>patterns/*.html</code>을 iframe으로 그대로 띄운 것입니다. spec.md 4장에 정의된 7개 패턴을 모두 완성했습니다.</p>
+        <div class="ix-component-grid">
+          <article class="ix-card">
+            <div class="ix-card__header">
+              <span class="ix-card__title">Search Form<small>Input · Select · Date Picker · Button 조합</small></span>
+              <a class="ix-card__open" href="patterns/search-form.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a>
+            </div>
+            <div class="ix-card__frame-wrap">
+              <iframe src="patterns/search-form.html" loading="lazy" title="Search Form 패턴 미리보기"></iframe>
+            </div>
+          </article>
+          <article class="ix-card">
+            <div class="ix-card__header">
+              <span class="ix-card__title">Login<small>Input · Checkbox · Button 조합 — Logo는 자리표시자</small></span>
+              <a class="ix-card__open" href="patterns/login.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a>
+            </div>
+            <div class="ix-card__frame-wrap">
+              <iframe src="patterns/login.html" loading="lazy" title="Login 패턴 미리보기"></iframe>
+            </div>
+          </article>
+          <article class="ix-card">
+            <div class="ix-card__header">
+              <span class="ix-card__title">Search + Table<small>Input · Dropdown(select) · Button · Table · Badge · Pagination · Empty State 조합</small></span>
+              <a class="ix-card__open" href="patterns/search-table.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a>
+            </div>
+            <div class="ix-card__frame-wrap">
+              <iframe src="patterns/search-table.html" loading="lazy" title="Search + Table 패턴 미리보기"></iframe>
+            </div>
+          </article>
+          <article class="ix-card">
+            <div class="ix-card__header">
+              <span class="ix-card__title">Empty State<small>검색 결과 없음 · 등록된 데이터 없음 · 권한 없음 비교</small></span>
+              <a class="ix-card__open" href="patterns/empty-state.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a>
+            </div>
+            <div class="ix-card__frame-wrap">
+              <iframe src="patterns/empty-state.html" loading="lazy" title="Empty State 패턴 미리보기"></iframe>
+            </div>
+          </article>
+          <article class="ix-card">
+            <div class="ix-card__header">
+              <span class="ix-card__title">Detail Page<small>Input · Textarea · Switch · Button 조합</small></span>
+              <a class="ix-card__open" href="patterns/detail-page.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a>
+            </div>
+            <div class="ix-card__frame-wrap">
+              <iframe src="patterns/detail-page.html" loading="lazy" title="Detail Page 패턴 미리보기"></iframe>
+            </div>
+          </article>
+          <article class="ix-card">
+            <div class="ix-card__header">
+              <span class="ix-card__title">Modal Form<small>Modal · Input · Select · Textarea · Button 조합 — 트리거로 직접 열어볼 수 있음</small></span>
+              <a class="ix-card__open" href="patterns/modal-form.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a>
+            </div>
+            <div class="ix-card__frame-wrap">
+              <iframe src="patterns/modal-form.html" loading="lazy" title="Modal Form 패턴 미리보기"></iframe>
+            </div>
+          </article>
+          <article class="ix-card">
+            <div class="ix-card__header">
+              <span class="ix-card__title">Dashboard<small>Card(card--stat) · Chart · Table · Badge 조합</small></span>
+              <a class="ix-card__open" href="patterns/dashboard.html" target="_blank" rel="noopener">새 창에서 열기 ↗</a>
+            </div>
+            <div class="ix-card__frame-wrap">
+              <iframe src="patterns/dashboard.html" loading="lazy" title="Dashboard 패턴 미리보기"></iframe>
+            </div>
+          </article>
+        </div>
       </section>
     </main>
   </div>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern — Search Form</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/component/input.css">
+  <link rel="stylesheet" href="/css/component/date-picker.css">
+  <link rel="stylesheet" href="/css/component/dropdown.css">
+  <link rel="stylesheet" href="/css/component/button.css">
+  <link rel="stylesheet" href="/css/component/code-panel.css">
+  <link rel="stylesheet" href="/css/component/doc-template.css">
+  <style>
+    body {
+      padding: 1rem;
+    }
+    /* 이 페이지(패턴) 전용 레이아웃 */
+    .search-bar {
+      display: flex;
+      align-items: flex-end;
+      gap: var(--spacing-16);
+      flex-wrap: wrap;
+      padding: var(--spacing-20);
+      background: var(--color-bg-subtle);
+      border-radius: var(--radius-md);
+    }
+    .search-bar__field {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-6);
+    }
+    .search-bar__label {
+      font-size: var(--text-14);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+    }
+    .search-bar__actions {
+      display: flex;
+      gap: var(--spacing-8);
+    }
+  </style>
+</head>
+<body>
+  <script>if (window.self !== window.top) { document.documentElement.classList.add('is-embedded'); }</script>
+  <div class="page-container">
+  <div class="page-header">
+    <h2>Search Form</h2>
+    <p>목록 화면 상단에서 데이터를 검색·필터링하는 기본 검색 영역 — Input · Select · Date Picker · Button 조합</p>
+  </div>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Overview</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      회원 관리·게시판·상품 목록·사용자 조회처럼 조건으로 목록을 좁히는 화면 상단에 쓰는 검색 영역이다.
+      Search + Table 패턴(4-2)의 상단부가 바로 이 패턴이며, 거기서는 Date Picker 컴포넌트가 없어 기간 필터를 뺐지만
+      Date Picker가 생긴 지금은 이 패턴에서 Input·Select·Date Picker(기간)·Button까지 전부 포함한 완전한 조합을 보여준다.
+      Table 없이 카드형 목록이나 게시판처럼 다른 결과 뷰와도 그대로 조합해 쓸 수 있다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">구성 요소</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>요소</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">field</code></td>
+          <td>검색어 입력 (Input)</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">select</code></td>
+          <td>카테고리/상태 필터 — 옵션이 적어 네이티브 select 사용 (Dropdown)</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">field-range</code></td>
+          <td>기간 필터 — date input 2개 + <code class="doc-code">~</code> 구분자 (Date Picker)</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">btn btn--primary</code> / <code class="doc-code">btn btn--default</code></td>
+          <td>검색(주요 액션) / 초기화(보조 액션) — Button</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Example</h3>
+
+    <div class="board" style="margin-bottom: 16px;">
+      <div class="board__header">
+        <code class="class-label">간단형 — 검색어 + 검색 버튼만 (게시판 등 조건이 단순한 목록)</code>
+      </div>
+      <div class="board__body">
+        <div data-code-source style="padding: 4px 0;">
+          <div class="search-bar">
+            <div class="search-bar__field">
+              <label class="search-bar__label" for="sf-simple-q">검색어</label>
+              <div class="field" style="max-width: 280px;">
+                <div class="field__box">
+                  <input type="text" id="sf-simple-q" class="field__input" placeholder="제목 또는 내용 검색">
+                </div>
+              </div>
+            </div>
+            <div class="search-bar__actions">
+              <button type="button" class="btn btn--primary">검색</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">상세형 — 검색어 + 상태 필터(select) + 기간(field-range) + 검색/초기화</code>
+      </div>
+      <div class="board__body">
+        <div data-code-source style="padding: 4px 0;">
+          <div class="search-bar">
+            <div class="search-bar__field">
+              <label class="search-bar__label" for="sf-name">이름/이메일</label>
+              <div class="field" style="max-width: 220px;">
+                <div class="field__box">
+                  <input type="text" id="sf-name" class="field__input" placeholder="이름 또는 이메일 검색">
+                </div>
+              </div>
+            </div>
+            <div class="search-bar__field">
+              <label class="search-bar__label" for="sf-status">상태</label>
+              <select class="select" id="sf-status" style="width: 160px;">
+                <option>전체</option>
+                <option>Active</option>
+                <option>Invited</option>
+              </select>
+            </div>
+            <div class="search-bar__field">
+              <label class="search-bar__label" for="sf-start">가입일</label>
+              <div class="field-range">
+                <div class="field">
+                  <div class="field__box">
+                    <input type="date" id="sf-start" class="field__input" aria-label="시작일">
+                  </div>
+                </div>
+                <span class="field-range__sep">~</span>
+                <div class="field">
+                  <div class="field__box">
+                    <input type="date" id="sf-end" class="field__input" aria-label="종료일">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="search-bar__actions">
+              <button type="button" class="btn btn--primary">검색</button>
+              <button type="button" class="btn btn--default">초기화</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Guidelines</h3>
+    <div class="doc-guideline-grid">
+      <div class="doc-guideline doc-guideline--do">
+        <h4>✓ 권장</h4>
+        <ul>
+          <li>조건이 늘어나면 <code class="doc-code">flex-wrap</code>으로 줄바꿈, 가로 스크롤 강제하지 않기</li>
+          <li>자주 안 쓰는 조건이 많아지면(6개 이상) 전부 펼치지 말고 "상세 검색" 토글 뒤로 숨기기</li>
+          <li>검색은 <code class="doc-code">btn--primary</code>, 초기화는 <code class="doc-code">btn--default</code>로 위계 구분</li>
+        </ul>
+      </div>
+      <div class="doc-guideline doc-guideline--dont">
+        <h4>✕ 지양</h4>
+        <ul>
+          <li>날짜 조건을 텍스트 입력으로 받기 — Date Picker(<code class="doc-code">field-range</code>) 사용</li>
+          <li>검색/초기화 버튼을 둘 다 <code class="doc-code">btn--primary</code>로 동급 강조</li>
+          <li>간단형이면 충분한 화면에 상세형 필터를 전부 기본 노출 (조건 개수는 실제 사용 빈도에 맞춰서)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <script>
+    (function () {
+      function escapeHTML(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function dedent(str) {
+        var lines = str.replace(/^\n+|\s+$/g, '').split('\n');
+        var minIndent = Infinity;
+        lines.forEach(function (line) {
+          if (!line.trim()) return;
+          var indent = line.match(/^\s*/)[0].length;
+          minIndent = Math.min(minIndent, indent);
+        });
+        if (!isFinite(minIndent)) minIndent = 0;
+        return lines.map(function (line) { return line.slice(minIndent); }).join('\n');
+      }
+
+      function wireCopy(panel, rawCode) {
+        var codeEl = panel.querySelector('.code-panel__code');
+        var copyBtn = panel.querySelector('[data-code-copy]');
+        codeEl.innerHTML = escapeHTML(rawCode);
+
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(rawCode).then(function () {
+            copyBtn.classList.add('is-copied');
+            copyBtn.textContent = 'Copied';
+            setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyBtn.textContent = 'Copy';
+            }, 1200);
+          });
+        });
+      }
+
+      document.querySelectorAll('[data-code-panel]').forEach(function (panel) {
+        var section = panel.closest('.board, .sgroup');
+        var source = section.querySelector('[data-code-source]');
+        wireCopy(panel, dedent(source.innerHTML));
+      });
+    })();
+  </script>
+  <script src="/js/scroll-top.js"></script>
+</body>
+</html>

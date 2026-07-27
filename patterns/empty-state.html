@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern — Empty State</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/component/button.css">
+  <link rel="stylesheet" href="/css/component/empty-state.css">
+  <link rel="stylesheet" href="/css/component/code-panel.css">
+  <link rel="stylesheet" href="/css/component/doc-template.css">
+  <style>
+    body {
+      padding: 1rem;
+    }
+    /* 이 페이지(패턴) 전용 레이아웃 */
+    .es-pattern-row {
+      display: flex;
+      gap: var(--spacing-20);
+      flex-wrap: wrap;
+      padding: var(--spacing-20);
+    }
+    .es-pattern-row > .empty-state {
+      flex: 1 1 260px;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-md);
+    }
+  </style>
+</head>
+<body>
+  <script>if (window.self !== window.top) { document.documentElement.classList.add('is-embedded'); }</script>
+  <div class="page-container">
+  <div class="page-header">
+    <h2>Empty State</h2>
+    <p>조회 결과·데이터·권한이 없는 상황을 안내하는 패턴 — Empty State · Button 조합</p>
+  </div>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Overview</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      Empty State 패턴은 단일 컴포넌트(Empty State)를 상황별로 어떻게 조합해 쓰는지 정의한다. 컴포넌트 자체의 Variants/States는
+      <code class="doc-code">component/empty-state.html</code>에 있고, 이 문서는 실무에서 자주 겹치는 세 가지 상황 — 검색 결과 없음 / 등록된 데이터 없음 / 권한 없음 —
+      을 나란히 비교해서 어떤 아이콘·문구·액션 유무를 골라야 하는지 보여준다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">구성 요소</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>상황</th>
+          <th>아이콘</th>
+          <th>액션 버튼</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>검색 결과 없음</td>
+          <td>돋보기 (중립)</td>
+          <td>생략 — 사용자가 검색어를 바꾸면 되므로 시스템이 대신 할 행동이 없음</td>
+        </tr>
+        <tr>
+          <td>등록된 데이터 없음</td>
+          <td>빈 상자 (중립)</td>
+          <td>포함 — <code class="doc-code">empty-state__action</code>으로 "추가하기"류 다음 행동 제시</td>
+        </tr>
+        <tr>
+          <td>권한 없음</td>
+          <td>잠금 (중립, <code class="doc-code">empty-state--error</code> 아님 — 사용자 잘못이 아니라 접근 제한 안내이므로 위험색 강조 대신 중립 유지)</td>
+          <td>선택 — 문의 경로가 있으면 <code class="doc-code">btn--default</code>로 안내, 없으면 생략</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Example</h3>
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">검색 결과 없음 (액션 없음) · 등록된 데이터 없음 (액션 있음) · 권한 없음 (보조 액션)</code>
+      </div>
+      <div class="board__body">
+        <div class="es-pattern-row" data-code-source>
+          <div class="empty-state">
+            <div class="empty-state__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M21 21L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="empty-state__title">검색 결과가 없습니다</h3>
+            <p class="empty-state__desc">다른 검색어나 필터 조건으로 다시 시도해보세요.</p>
+          </div>
+          <div class="empty-state">
+            <div class="empty-state__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M3 7L12 12L21 7M3 7L12 2L21 7M3 7V17L12 22M21 7V17L12 22M12 12V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="empty-state__title">등록된 항목이 없습니다</h3>
+            <p class="empty-state__desc">첫 항목을 추가하면 여기 목록에 표시됩니다.</p>
+            <button type="button" class="btn btn--primary btn--sm empty-state__action">항목 추가</button>
+          </div>
+          <div class="empty-state">
+            <div class="empty-state__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M17 10V8A5 5 0 0 0 7 8V10M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V13.2C21 12.0799 21 11.5198 20.782 11.092C20.5903 10.7157 20.2843 10.4097 19.908 10.218C19.4802 10 18.9201 10 17.8 10H6.2C5.0799 10 4.51984 10 4.09202 10.218C3.71569 10.4097 3.40973 10.7157 3.21799 11.092C3 11.5198 3 12.0799 3 13.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="empty-state__title">접근 권한이 없습니다</h3>
+            <p class="empty-state__desc">이 화면을 보려면 관리자 권한이 필요합니다.</p>
+            <button type="button" class="btn btn--default btn--sm empty-state__action">권한 문의하기</button>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Guidelines</h3>
+    <div class="doc-guideline-grid">
+      <div class="doc-guideline doc-guideline--do">
+        <h4>✓ 권장</h4>
+        <ul>
+          <li>액션 버튼은 "사용자가 실제로 취할 수 있는 다음 행동"이 있을 때만 추가 (없으면 과감히 생략)</li>
+          <li>권한 없음은 사용자 잘못이 아니므로 <code class="doc-code">empty-state--error</code>(위험색)로 강조하지 않고 기본형 유지</li>
+          <li>같은 화면 안에서 검색 결과 없음 ↔ 등록된 데이터 없음을 구분해서 문구를 다르게 (전자는 "다시 검색", 후자는 "추가")</li>
+        </ul>
+      </div>
+      <div class="doc-guideline doc-guideline--dont">
+        <h4>✕ 지양</h4>
+        <ul>
+          <li>세 상황(검색/데이터/권한)에 전부 같은 아이콘·문구 재사용</li>
+          <li>권한 없음 상태에 <code class="doc-code">empty-state--error</code>를 적용해 사용자 실수처럼 보이게 하기</li>
+          <li>등록된 데이터 없음인데 액션 버튼 없이 방치 (다음 행동을 안내해야 함)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <script>
+    (function () {
+      function escapeHTML(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function dedent(str) {
+        var lines = str.replace(/^\n+|\s+$/g, '').split('\n');
+        var minIndent = Infinity;
+        lines.forEach(function (line) {
+          if (!line.trim()) return;
+          var indent = line.match(/^\s*/)[0].length;
+          minIndent = Math.min(minIndent, indent);
+        });
+        if (!isFinite(minIndent)) minIndent = 0;
+        return lines.map(function (line) { return line.slice(minIndent); }).join('\n');
+      }
+
+      function wireCopy(panel, rawCode) {
+        var codeEl = panel.querySelector('.code-panel__code');
+        var copyBtn = panel.querySelector('[data-code-copy]');
+        codeEl.innerHTML = escapeHTML(rawCode);
+
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(rawCode).then(function () {
+            copyBtn.classList.add('is-copied');
+            copyBtn.textContent = 'Copied';
+            setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyBtn.textContent = 'Copy';
+            }, 1200);
+          });
+        });
+      }
+
+      document.querySelectorAll('[data-code-panel]').forEach(function (panel) {
+        var section = panel.closest('.board, .sgroup');
+        var source = section.querySelector('[data-code-source]');
+        wireCopy(panel, dedent(source.innerHTML));
+      });
+    })();
+  </script>
+  <script src="/js/scroll-top.js"></script>
+</body>
+</html>

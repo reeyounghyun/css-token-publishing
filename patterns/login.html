@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern — Login</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/component/input.css">
+  <link rel="stylesheet" href="/css/component/checkbox.css">
+  <link rel="stylesheet" href="/css/component/button.css">
+  <link rel="stylesheet" href="/css/component/code-panel.css">
+  <link rel="stylesheet" href="/css/component/doc-template.css">
+  <style>
+    body {
+      padding: 1rem;
+    }
+    /* 이 페이지(패턴) 전용 레이아웃 — 어떤 컴포넌트 css에도 속하지 않는 조합 래퍼 */
+    .login-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-16);
+      max-width: 320px;
+      padding: var(--spacing-28);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border-subtle);
+      background: var(--color-bg-surface);
+      box-shadow: var(--shadows-sm);
+    }
+    /* Logo는 정식 컴포넌트가 아님 — 실제 서비스 로고로 교체되는 자리표시자 */
+    .login-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: var(--height-xl);
+      border-radius: var(--radius-sm);
+      background: var(--color-bg-muted);
+      color: var(--color-text-faint);
+      font-size: var(--text-14);
+      font-weight: var(--weight-medium);
+      letter-spacing: 0.05em;
+    }
+    .check-item {
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <script>if (window.self !== window.top) { document.documentElement.classList.add('is-embedded'); }</script>
+  <div class="page-container">
+  <div class="page-header">
+    <h2>Login</h2>
+    <p>서비스 인증 화면 — Input · Checkbox · Button 조합</p>
+  </div>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Overview</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      아이디·비밀번호를 입력받아 인증을 시도하는 화면 패턴이다. 단일 컴포넌트가 아니라 Input(텍스트/비밀번호) + Checkbox + Button을 조합해서 만든다.
+      상단 Logo는 이 디자인 시스템의 정식 컴포넌트가 아니며, 실제 적용 시 서비스별 로고로 교체되는 자리표시자다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">구성 요소</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>요소</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Logo</td>
+          <td>시스템 컴포넌트 아님 — 자리표시자. 실제 사용 시 서비스 로고로 교체</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">field</code></td>
+          <td>아이디 입력 (Input 기본형)</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">field field--password</code></td>
+          <td>비밀번호 입력 (Input, 눈 아이콘 마스킹 토글)</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">checkbox</code></td>
+          <td>로그인 상태 유지 (Checkbox)</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">btn btn--primary</code></td>
+          <td>로그인 버튼 (Button, 화면당 주요 액션 1개)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Example</h3>
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">Logo(자리표시자) + field + field--password + checkbox + btn--primary</code>
+      </div>
+      <div class="board__body">
+        <div class="login-card" data-code-source>
+          <div class="login-logo" aria-hidden="true">LOGO</div>
+          <div class="field">
+            <label class="field__label" for="login-pattern-id">아이디</label>
+            <div class="field__box">
+              <input type="text" id="login-pattern-id" class="field__input" placeholder="아이디를 입력하세요">
+            </div>
+          </div>
+          <div class="field field--password">
+            <label class="field__label" for="login-pattern-pw">비밀번호</label>
+            <div class="field__box">
+              <input type="password" id="login-pattern-pw" class="field__input" placeholder="비밀번호를 입력하세요">
+              <button type="button" class="field__btn" aria-label="비밀번호 표시">
+                <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M16.5622 8.54648C14.8957 5.03613 12.3768 3.26953 9.00004 3.26953C5.62152 3.26953 3.10434 5.03613 1.43793 8.54824C1.37109 8.68978 1.33643 8.84436 1.33643 9.00088C1.33643 9.1574 1.37109 9.31198 1.43793 9.45352C3.10434 12.9639 5.62328 14.7305 9.00004 14.7305C12.3786 14.7305 14.8957 12.9639 16.5622 9.45176C16.6975 9.16699 16.6975 8.83652 16.5622 8.54648V8.54648ZM9.00004 13.4648C6.16469 13.4648 4.08871 12.027 2.62445 9C4.08871 5.97305 6.16469 4.53516 9.00004 4.53516C11.8354 4.53516 13.9114 5.97305 15.3756 9C13.9131 12.027 11.8371 13.4648 9.00004 13.4648ZM8.92973 5.90625C7.22113 5.90625 5.83598 7.29141 5.83598 9C5.83598 10.7086 7.22113 12.0938 8.92973 12.0938C10.6383 12.0938 12.0235 10.7086 12.0235 9C12.0235 7.29141 10.6383 5.90625 8.92973 5.90625ZM8.92973 10.9688C7.84164 10.9688 6.96098 10.0881 6.96098 9C6.96098 7.91191 7.84164 7.03125 8.92973 7.03125C10.0178 7.03125 10.8985 7.91191 10.8985 9C10.8985 10.0881 10.0178 10.9688 8.92973 10.9688Z" fill="black" fill-opacity="0.25"/></svg>
+              </button>
+            </div>
+          </div>
+          <label class="check-item">
+            <input type="checkbox" class="checkbox">
+            <span class="check-item__text">로그인 상태 유지</span>
+          </label>
+          <button type="button" class="btn btn--primary btn--lg" style="width: 100%;">로그인</button>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Guidelines</h3>
+    <div class="doc-guideline-grid">
+      <div class="doc-guideline doc-guideline--do">
+        <h4>✓ 권장</h4>
+        <ul>
+          <li>화면당 주요 액션(로그인)은 <code class="doc-code">btn--primary</code> 하나만 강조</li>
+          <li>비밀번호 필드는 Input 컴포넌트의 <code class="doc-code">field--password</code> 그대로 사용 (마스킹 + 눈 아이콘 토글)</li>
+          <li>Logo는 실제 서비스 로고 이미지/텍스트로 교체 — 여기 표시된 회색 박스는 자리표시자일 뿐</li>
+        </ul>
+      </div>
+      <div class="doc-guideline doc-guideline--dont">
+        <h4>✕ 지양</h4>
+        <ul>
+          <li>로그인 버튼 외에 동급 강조 버튼(<code class="doc-code">btn--primary</code>) 추가 배치</li>
+          <li>Logo를 정식 컴포넌트로 취급해 별도 Variants/States를 만드는 것 (이 디자인 시스템의 컴포넌트 목록에 속하지 않음)</li>
+          <li>비밀번호 필드에 새 마스킹 방식을 직접 구현 (Input의 기존 <code class="doc-code">field--password</code> 패턴 재사용)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <script>
+    (function () {
+      function escapeHTML(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function dedent(str) {
+        var lines = str.replace(/^\n+|\s+$/g, '').split('\n');
+        var minIndent = Infinity;
+        lines.forEach(function (line) {
+          if (!line.trim()) return;
+          var indent = line.match(/^\s*/)[0].length;
+          minIndent = Math.min(minIndent, indent);
+        });
+        if (!isFinite(minIndent)) minIndent = 0;
+        return lines.map(function (line) { return line.slice(minIndent); }).join('\n');
+      }
+
+      function wireCopy(panel, rawCode) {
+        var codeEl = panel.querySelector('.code-panel__code');
+        var copyBtn = panel.querySelector('[data-code-copy]');
+        codeEl.innerHTML = escapeHTML(rawCode);
+
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(rawCode).then(function () {
+            copyBtn.classList.add('is-copied');
+            copyBtn.textContent = 'Copied';
+            setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyBtn.textContent = 'Copy';
+            }, 1200);
+          });
+        });
+      }
+
+      document.querySelectorAll('[data-code-panel]').forEach(function (panel) {
+        var section = panel.closest('.board, .sgroup');
+        var source = section.querySelector('[data-code-source]');
+        wireCopy(panel, dedent(source.innerHTML));
+      });
+    })();
+  </script>
+  <script src="/js/scroll-top.js"></script>
+</body>
+</html>

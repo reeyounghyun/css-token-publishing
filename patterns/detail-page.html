@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern — Detail Page</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/component/input.css">
+  <link rel="stylesheet" href="/css/component/textarea.css">
+  <link rel="stylesheet" href="/css/component/switch.css">
+  <link rel="stylesheet" href="/css/component/button.css">
+  <link rel="stylesheet" href="/css/component/code-panel.css">
+  <link rel="stylesheet" href="/css/component/doc-template.css">
+  <style>
+    body {
+      padding: 1rem;
+    }
+    /* 이 페이지(패턴) 전용 레이아웃 — 어떤 컴포넌트 css에도 속하지 않는 조합 래퍼 */
+    .detail-page {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-20);
+      max-width: 480px;
+      padding: var(--spacing-28);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border-subtle);
+      background: var(--color-bg-surface);
+      box-shadow: var(--shadows-sm);
+    }
+    .detail-page__section-title {
+      font-size: var(--text-16);
+      font-weight: var(--weight-Semibold);
+      color: var(--color-text-primary);
+    }
+    .detail-page__group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-16);
+    }
+    .detail-page__divider {
+      border: 0;
+      border-top: 1px solid var(--color-border-subtle);
+      margin: 0;
+    }
+    .detail-page__footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--spacing-8);
+    }
+    .detail-page .field,
+    .detail-page .textarea {
+      max-width: none;
+    }
+  </style>
+</head>
+<body>
+  <script>if (window.self !== window.top) { document.documentElement.classList.add('is-embedded'); }</script>
+  <div class="page-container">
+  <div class="page-header">
+    <h2>Detail Page</h2>
+    <p>선택한 데이터의 상세 정보를 조회·수정하는 화면 — Input · Textarea · Switch · Button 조합</p>
+  </div>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Overview</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      회원 상세, 상품 상세, 게시글 상세처럼 하나의 대상을 조회·수정하는 화면 패턴이다. 짧은 값은 기본 정보 구획에 Input으로,
+      긴 텍스트나 on/off 설정은 추가 정보 구획에 Textarea·Switch로 나누고, 맨 아래 저장/취소로 마무리한다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">구성 요소</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>구획</th>
+          <th>요소</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>기본 정보</td>
+          <td><code class="doc-code">field</code> — 이름·이메일 등 짧은 값 (Input)</td>
+        </tr>
+        <tr>
+          <td>추가 정보</td>
+          <td><code class="doc-code">textarea</code> — 메모/소개 등 여러 줄 텍스트, <code class="doc-code">toggle</code> — 즉시 반영되는 on/off 설정 (Switch)</td>
+        </tr>
+        <tr>
+          <td>하단 액션</td>
+          <td><code class="doc-code">btn btn--primary</code> 저장 · <code class="doc-code">btn btn--default</code> 취소 (Button)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Example</h3>
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">기본 정보(field) → 추가 정보(textarea + toggle) → 저장/취소(btn)</code>
+      </div>
+      <div class="board__body">
+        <div class="detail-page" data-code-source>
+          <div class="detail-page__group">
+            <h4 class="detail-page__section-title">기본 정보</h4>
+            <div class="field">
+              <label class="field__label" for="dp-name">이름</label>
+              <div class="field__box">
+                <input type="text" id="dp-name" class="field__input" value="Olivia Rhye">
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="dp-email">이메일</label>
+              <div class="field__box">
+                <span class="icon">아이콘</span>
+                <input type="email" id="dp-email" class="field__input" value="olivia@untitledui.com">
+              </div>
+            </div>
+          </div>
+
+          <hr class="detail-page__divider">
+
+          <div class="detail-page__group">
+            <h4 class="detail-page__section-title">추가 정보</h4>
+            <div class="textarea">
+              <label class="textarea__label" for="dp-memo">소개</label>
+              <div class="textarea__box">
+                <textarea id="dp-memo" class="textarea" placeholder="자기소개를 입력하세요">Product Designer, 5년차</textarea>
+              </div>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" class="toggle__input" role="switch" checked>
+              <span class="toggle__text">
+                <span class="toggle__title">이메일 알림</span>
+                <span class="toggle__desc">활동 관련 알림을 이메일로 받습니다.</span>
+              </span>
+            </label>
+          </div>
+
+          <hr class="detail-page__divider">
+
+          <div class="detail-page__footer">
+            <button type="button" class="btn btn--default">취소</button>
+            <button type="button" class="btn btn--primary">저장</button>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Guidelines</h3>
+    <div class="doc-guideline-grid">
+      <div class="doc-guideline doc-guideline--do">
+        <h4>✓ 권장</h4>
+        <ul>
+          <li>저장은 <code class="doc-code">btn--primary</code>, 취소는 <code class="doc-code">btn--default</code>로 위계 구분, 항상 오른쪽 정렬</li>
+          <li>선택 즉시 반영돼야 하는 설정만 Switch로 (그 외 값은 저장 버튼을 눌러야 반영되는 Input/Textarea)</li>
+          <li>구획이 늘어나면 <code class="doc-code">detail-page__divider</code>로 시각적으로 분리해 스캔하기 쉽게</li>
+        </ul>
+      </div>
+      <div class="doc-guideline doc-guideline--dont">
+        <h4>✕ 지양</h4>
+        <ul>
+          <li>Switch로 만든 설정을 저장 버튼을 눌러야만 반영되게 만들기 (즉시 반영이라는 Switch의 전제와 모순)</li>
+          <li>기본 정보/추가 정보 구분 없이 모든 필드를 한 구획에 나열</li>
+          <li>취소 버튼을 저장과 동일한 <code class="doc-code">btn--primary</code>로 강조해 우선순위를 헷갈리게 하기</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <script>
+    (function () {
+      function escapeHTML(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function dedent(str) {
+        var lines = str.replace(/^\n+|\s+$/g, '').split('\n');
+        var minIndent = Infinity;
+        lines.forEach(function (line) {
+          if (!line.trim()) return;
+          var indent = line.match(/^\s*/)[0].length;
+          minIndent = Math.min(minIndent, indent);
+        });
+        if (!isFinite(minIndent)) minIndent = 0;
+        return lines.map(function (line) { return line.slice(minIndent); }).join('\n');
+      }
+
+      function wireCopy(panel, rawCode) {
+        var codeEl = panel.querySelector('.code-panel__code');
+        var copyBtn = panel.querySelector('[data-code-copy]');
+        codeEl.innerHTML = escapeHTML(rawCode);
+
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(rawCode).then(function () {
+            copyBtn.classList.add('is-copied');
+            copyBtn.textContent = 'Copied';
+            setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyBtn.textContent = 'Copy';
+            }, 1200);
+          });
+        });
+      }
+
+      document.querySelectorAll('[data-code-panel]').forEach(function (panel) {
+        var section = panel.closest('.board, .sgroup');
+        var source = section.querySelector('[data-code-source]');
+        wireCopy(panel, dedent(source.innerHTML));
+      });
+    })();
+  </script>
+  <script src="/js/scroll-top.js"></script>
+</body>
+</html>

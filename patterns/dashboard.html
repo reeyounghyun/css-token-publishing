@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern — Dashboard</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/component/button.css">
+  <link rel="stylesheet" href="/css/component/card.css">
+  <link rel="stylesheet" href="/css/component/chart.css">
+  <link rel="stylesheet" href="/css/component/badge.css">
+  <link rel="stylesheet" href="/css/component/table.css">
+  <link rel="stylesheet" href="/css/component/code-panel.css">
+  <link rel="stylesheet" href="/css/component/doc-template.css">
+  <style>
+    body {
+      padding: 1rem;
+    }
+    /* 이 페이지(패턴) 전용 레이아웃 */
+    .dashboard {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-20);
+    }
+    .dashboard-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--spacing-16);
+    }
+    @media (max-width: 640px) {
+      .dashboard-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .dashboard .card {
+      max-width: none;
+    }
+  </style>
+</head>
+<body>
+  <script>if (window.self !== window.top) { document.documentElement.classList.add('is-embedded'); }</script>
+  <div class="page-container">
+  <div class="page-header">
+    <h2>Dashboard</h2>
+    <p>주요 현황과 통계를 카드 형태로 제공하는 화면 — Card · Chart · Table 조합</p>
+  </div>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Overview</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      관리자 메인, 운영 현황처럼 핵심 지표를 한눈에 보여주는 화면 패턴이다. 맨 위에 <code class="doc-code">card--stat</code> 카드로 핵심 지표를 요약하고,
+      가운데에 추이를 Chart로, 아래에 최근 목록을 Table로 배치한다. Chart 컴포넌트는 이 패턴 때문에 새로 만들어졌다 (spec.md 6장 질문 #2 해결) — 상세는 <code class="doc-code">component/chart.html</code> 참고.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">구성 요소</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>구획</th>
+          <th>요소</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>핵심 지표</td>
+          <td><code class="doc-code">card card--stat</code> — 지표 하나당 카드 하나 (Card)</td>
+        </tr>
+        <tr>
+          <td>추이</td>
+          <td><code class="doc-code">chart</code> — 세로 막대 그래프, <code class="doc-code">card</code>로 감싸서 위젯처럼 표시 (Chart)</td>
+        </tr>
+        <tr>
+          <td>최근 목록</td>
+          <td><code class="doc-code">table</code> + <code class="doc-code">badge</code> — 최근 항목 5행 이내, 역시 <code class="doc-code">card</code>로 감쌈 (Table)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Example</h3>
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">card--stat ×4 → card&gt;chart → card&gt;table(badge)</code>
+      </div>
+      <div class="board__body">
+        <div class="dashboard" data-code-source>
+          <div class="dashboard-stats">
+            <div class="card card--stat">
+              <span class="card__label">이번 달 매출</span>
+              <span class="card__value">₩45,231,890</span>
+              <span class="card__delta card__delta--up">▲ 12.4% 전월 대비</span>
+            </div>
+            <div class="card card--stat">
+              <span class="card__label">신규 가입자</span>
+              <span class="card__value">1,204명</span>
+              <span class="card__delta card__delta--up">▲ 8.2% 전월 대비</span>
+            </div>
+            <div class="card card--stat">
+              <span class="card__label">활성 사용자</span>
+              <span class="card__value">8,532명</span>
+              <span class="card__delta card__delta--up">▲ 3.1% 전월 대비</span>
+            </div>
+            <div class="card card--stat">
+              <span class="card__label">이탈률</span>
+              <span class="card__value">2.4%</span>
+              <span class="card__delta card__delta--down">▼ 0.5%p 전월 대비</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h4 class="card__title" style="margin-bottom: var(--spacing-12);">월별 신규 가입자</h4>
+            <div class="chart">
+              <div class="chart__bars">
+                <div class="chart__col">
+                  <span class="chart__value">820</span>
+                  <div class="chart__bar" style="height: 48%;"></div>
+                  <span class="chart__label">1월</span>
+                </div>
+                <div class="chart__col">
+                  <span class="chart__value">910</span>
+                  <div class="chart__bar" style="height: 54%;"></div>
+                  <span class="chart__label">2월</span>
+                </div>
+                <div class="chart__col">
+                  <span class="chart__value">1,040</span>
+                  <div class="chart__bar" style="height: 61%;"></div>
+                  <span class="chart__label">3월</span>
+                </div>
+                <div class="chart__col">
+                  <span class="chart__value">1,320</span>
+                  <div class="chart__bar" style="height: 78%;"></div>
+                  <span class="chart__label">4월</span>
+                </div>
+                <div class="chart__col">
+                  <span class="chart__value">1,204</span>
+                  <div class="chart__bar is-accent" style="height: 71%;"></div>
+                  <span class="chart__label">5월</span>
+                </div>
+                <div class="chart__col">
+                  <span class="chart__value">1,680</span>
+                  <div class="chart__bar is-muted" style="height: 100%;"></div>
+                  <span class="chart__label">6월(예상)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: var(--spacing-12);">
+              <h4 class="card__title">최근 가입자</h4>
+              <button type="button" class="btn btn--text btn--sm">전체 보기</button>
+            </div>
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr><th>Name</th><th>Role</th><th>Status</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="table__cell-title">Phoenix Baker</div>
+                      <div class="table__cell-sub">phoenix@untitledui.com</div>
+                    </td>
+                    <td>Product Designer</td>
+                    <td><span class="badge badge--primary"><span class="badge__dot"></span>Active</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="table__cell-title">Lana Steiner</div>
+                      <div class="table__cell-sub">lana@untitledui.com</div>
+                    </td>
+                    <td>UX Researcher</td>
+                    <td><span class="badge badge--default"><span class="badge__dot"></span>Invited</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="table__cell-title">Olivia Rhye</div>
+                      <div class="table__cell-sub">olivia@untitledui.com</div>
+                    </td>
+                    <td>Frontend Developer</td>
+                    <td><span class="badge badge--primary"><span class="badge__dot"></span>Active</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Guidelines</h3>
+    <div class="doc-guideline-grid">
+      <div class="doc-guideline doc-guideline--do">
+        <h4>✓ 권장</h4>
+        <ul>
+          <li>카드 하나 = 지표 하나 원칙 유지 (Card 컴포넌트 Guidelines 그대로 적용)</li>
+          <li>Chart 아래엔 항상 <code class="doc-code">chart__value</code>로 정확한 수치 표시</li>
+          <li>최근 목록은 5~10행 이내로 제한하고 "전체 보기"로 상세 목록(Search + Table 패턴)으로 연결</li>
+        </ul>
+      </div>
+      <div class="doc-guideline doc-guideline--dont">
+        <h4>✕ 지양</h4>
+        <ul>
+          <li>핵심 지표 카드를 스크롤 없이 안 보일 정도로 늘어놓기 (4개 안팎 권장)</li>
+          <li>최근 목록 Table에 Pagination까지 붙여 Search + Table 패턴과 역할을 중복시키기 — Dashboard는 요약만</li>
+          <li>Chart에 10개 넘는 항목을 세로 막대로 욱여넣기 (가로 막대나 별도 화면으로 분리)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <script>
+    (function () {
+      function escapeHTML(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function dedent(str) {
+        var lines = str.replace(/^\n+|\s+$/g, '').split('\n');
+        var minIndent = Infinity;
+        lines.forEach(function (line) {
+          if (!line.trim()) return;
+          var indent = line.match(/^\s*/)[0].length;
+          minIndent = Math.min(minIndent, indent);
+        });
+        if (!isFinite(minIndent)) minIndent = 0;
+        return lines.map(function (line) { return line.slice(minIndent); }).join('\n');
+      }
+
+      function wireCopy(panel, rawCode) {
+        var codeEl = panel.querySelector('.code-panel__code');
+        var copyBtn = panel.querySelector('[data-code-copy]');
+        codeEl.innerHTML = escapeHTML(rawCode);
+
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(rawCode).then(function () {
+            copyBtn.classList.add('is-copied');
+            copyBtn.textContent = 'Copied';
+            setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyBtn.textContent = 'Copy';
+            }, 1200);
+          });
+        });
+      }
+
+      document.querySelectorAll('[data-code-panel]').forEach(function (panel) {
+        var section = panel.closest('.board, .sgroup');
+        var source = section.querySelector('[data-code-source]');
+        wireCopy(panel, dedent(source.innerHTML));
+      });
+    })();
+  </script>
+  <script src="/js/scroll-top.js"></script>
+</body>
+</html>

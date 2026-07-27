@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern — Search + Table</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/component/input.css">
+  <link rel="stylesheet" href="/css/component/dropdown.css">
+  <link rel="stylesheet" href="/css/component/button.css">
+  <link rel="stylesheet" href="/css/component/badge.css">
+  <link rel="stylesheet" href="/css/component/table.css">
+  <link rel="stylesheet" href="/css/component/pagination.css">
+  <link rel="stylesheet" href="/css/component/empty-state.css">
+  <link rel="stylesheet" href="/css/component/code-panel.css">
+  <link rel="stylesheet" href="/css/component/doc-template.css">
+  <style>
+    body {
+      padding: 1rem;
+    }
+    /* 이 페이지(패턴) 전용 레이아웃 — 어떤 컴포넌트 css에도 속하지 않는 조합 래퍼 */
+    .search-bar {
+      display: flex;
+      align-items: flex-end;
+      gap: var(--spacing-16);
+      flex-wrap: wrap;
+      padding: var(--spacing-20);
+      background: var(--color-bg-subtle);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--spacing-20);
+    }
+    .search-bar__field {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-6);
+    }
+    .search-bar__label {
+      font-size: var(--text-14);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+    }
+    .search-bar__actions {
+      display: flex;
+      gap: var(--spacing-8);
+    }
+    .pattern-section-title {
+      font-size: var(--text-14);
+      font-weight: var(--weight-Semibold);
+      color: var(--color-text-secondary);
+      margin: var(--spacing-20) 0 var(--spacing-8);
+    }
+  </style>
+</head>
+<body>
+  <script>if (window.self !== window.top) { document.documentElement.classList.add('is-embedded'); }</script>
+  <div class="page-container">
+  <div class="page-header">
+    <h2>Search + Table</h2>
+    <p>검색 조건과 결과 목록을 함께 쓰는 관리 화면 패턴 — Search Form · Table · Pagination · Empty State 조합</p>
+  </div>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Overview</h3>
+    <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
+      회원관리·주문관리처럼 조건으로 검색해 목록을 조회하는 화면에 쓰는 가장 대표적인 관리 화면 패턴이다.
+      상단 검색 영역 → 결과 테이블 → 페이지네이션 순으로 배치하고, 검색 결과가 없으면 테이블 대신 Empty State로 교체한다.
+      spec.md 4-1(Search Form) 스펙엔 Date Picker도 포함돼 있지만, 이 패턴을 만들 당시엔 Date Picker 컴포넌트가 없어 제외했다. 이후 Date Picker가 추가됐고 <code class="doc-code">patterns/search-form.html</code>에는 기간 필터가 포함돼 있다 — 이 페이지(Search + Table)는 아직 검색어+상태만 있는 간단 버전으로 남아있다.
+    </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">구성 요소</h3>
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>요소</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="doc-code">field</code></td>
+          <td>검색어 입력 (Input 기본형)</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">select</code></td>
+          <td>상태 필터 (Dropdown, 네이티브 select — 옵션이 적어 커스텀 드롭다운 대신 선택)</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">btn btn--primary</code> / <code class="doc-code">btn btn--default</code></td>
+          <td>검색(주요 액션) / 초기화(보조 액션) — Button</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">table</code> + <code class="doc-code">badge</code></td>
+          <td>결과 목록 (Table, 상태 열은 Badge)</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">pagination</code></td>
+          <td>결과 페이지 이동 (Pagination)</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">empty-state</code></td>
+          <td>검색 결과 없음 — 결과가 0건일 때 테이블을 대체 (Empty State)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Example</h3>
+
+    <div class="board" style="margin-bottom: 16px;">
+      <div class="board__header">
+        <code class="class-label">검색 결과 있음 — search-bar + table(badge) + pagination</code>
+      </div>
+      <div class="board__body">
+        <div data-code-source style="padding: 4px 0;">
+          <div class="search-bar">
+            <div class="search-bar__field">
+              <label class="search-bar__label" for="st-name">이름/이메일</label>
+              <div class="field" style="max-width: 220px;">
+                <div class="field__box">
+                  <input type="text" id="st-name" class="field__input" placeholder="이름 또는 이메일 검색">
+                </div>
+              </div>
+            </div>
+            <div class="search-bar__field">
+              <label class="search-bar__label" for="st-status">상태</label>
+              <select class="select" id="st-status" style="width: 160px;">
+                <option>전체</option>
+                <option>Active</option>
+                <option>Invited</option>
+              </select>
+            </div>
+            <div class="search-bar__actions">
+              <button type="button" class="btn btn--primary">검색</button>
+              <button type="button" class="btn btn--default">초기화</button>
+            </div>
+          </div>
+
+          <div class="table-toolbar" style="max-width: 640px;">
+            <span class="table-toolbar__title">Team members</span>
+            <button type="button" class="btn btn--primary btn--sm">Add member</button>
+          </div>
+          <div class="table-wrap" style="max-width: 640px;">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th class="table__cell--center">Edit</th>
+                  <th class="table__cell--center">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="table__cell-title">Phoenix Baker</div>
+                    <div class="table__cell-sub">phoenix@untitledui.com</div>
+                  </td>
+                  <td>Product Designer</td>
+                  <td><span class="badge badge--primary"><span class="badge__dot"></span>Active</span></td>
+                  <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm">Edit</button></td>
+                  <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table__cell-title">Lana Steiner</div>
+                    <div class="table__cell-sub">lana@untitledui.com</div>
+                  </td>
+                  <td>UX Researcher</td>
+                  <td><span class="badge badge--default"><span class="badge__dot"></span>Invited</span></td>
+                  <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm">Edit</button></td>
+                  <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table__cell-title">Olivia Rhye</div>
+                    <div class="table__cell-sub">olivia@untitledui.com</div>
+                  </td>
+                  <td>Frontend Developer</td>
+                  <td><span class="badge badge--primary"><span class="badge__dot"></span>Active</span></td>
+                  <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm">Edit</button></td>
+                  <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm is-danger">Delete</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <nav class="pagination" aria-label="페이지네이션" style="margin-top: var(--spacing-16); max-width: 640px;">
+            <button type="button" class="pagination__arrow" aria-label="이전 페이지" disabled>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <ul class="pagination__list">
+              <li><button type="button" class="pagination__item is-active" aria-current="page">1</button></li>
+              <li><button type="button" class="pagination__item">2</button></li>
+              <li><button type="button" class="pagination__item">3</button></li>
+            </ul>
+            <button type="button" class="pagination__arrow" aria-label="다음 페이지">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </nav>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">검색 결과 없음 — search-bar + empty-state (table 대신)</code>
+      </div>
+      <div class="board__body">
+        <div data-code-source style="padding: 4px 0;">
+          <div class="search-bar">
+            <div class="search-bar__field">
+              <label class="search-bar__label" for="st-name-2">이름/이메일</label>
+              <div class="field" style="max-width: 220px;">
+                <div class="field__box">
+                  <input type="text" id="st-name-2" class="field__input" value="마케팅">
+                </div>
+              </div>
+            </div>
+            <div class="search-bar__field">
+              <label class="search-bar__label" for="st-status-2">상태</label>
+              <select class="select" id="st-status-2" style="width: 160px;">
+                <option>전체</option>
+                <option>Active</option>
+                <option>Invited</option>
+              </select>
+            </div>
+            <div class="search-bar__actions">
+              <button type="button" class="btn btn--primary">검색</button>
+              <button type="button" class="btn btn--default">초기화</button>
+            </div>
+          </div>
+
+          <div style="max-width: 400px; margin: 0 auto;">
+            <div class="empty-state">
+              <div class="empty-state__icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M21 21L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="empty-state__title">검색 결과가 없습니다</h3>
+              <p class="empty-state__desc">"마케팅"과 일치하는 팀원을 찾지 못했습니다. 다른 검색어로 시도해보세요.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Guidelines</h3>
+    <div class="doc-guideline-grid">
+      <div class="doc-guideline doc-guideline--do">
+        <h4>✓ 권장</h4>
+        <ul>
+          <li>검색은 <code class="doc-code">btn--primary</code>, 초기화는 <code class="doc-code">btn--default</code>로 위계를 구분</li>
+          <li>검색 필드가 늘어나면 <code class="doc-code">flex-wrap</code>으로 줄바꿈, 가로 스크롤 강제하지 않기</li>
+          <li>결과 0건이면 빈 <code class="doc-code">&lt;table&gt;</code> 대신 Empty State(검색 결과 없음)로 교체</li>
+          <li>검색 조건이 바뀌면 Pagination을 1페이지로 리셋</li>
+        </ul>
+      </div>
+      <div class="doc-guideline doc-guideline--dont">
+        <h4>✕ 지양</h4>
+        <ul>
+          <li>검색/초기화 버튼을 둘 다 <code class="doc-code">btn--primary</code>로 동급 강조</li>
+          <li>Date Picker가 없다고 임의로 새 컴포넌트를 만들어 끼워넣기 — 정식 컴포넌트 제작 후 추가</li>
+          <li>검색 결과 없음 상태에서 테이블 헤더만 남기고 <code class="doc-code">tbody</code>를 비워두기 (Empty State로 명확히 안내)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <script>
+    (function () {
+      function escapeHTML(str) {
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function dedent(str) {
+        var lines = str.replace(/^\n+|\s+$/g, '').split('\n');
+        var minIndent = Infinity;
+        lines.forEach(function (line) {
+          if (!line.trim()) return;
+          var indent = line.match(/^\s*/)[0].length;
+          minIndent = Math.min(minIndent, indent);
+        });
+        if (!isFinite(minIndent)) minIndent = 0;
+        return lines.map(function (line) { return line.slice(minIndent); }).join('\n');
+      }
+
+      function wireCopy(panel, rawCode) {
+        var codeEl = panel.querySelector('.code-panel__code');
+        var copyBtn = panel.querySelector('[data-code-copy]');
+        codeEl.innerHTML = escapeHTML(rawCode);
+
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(rawCode).then(function () {
+            copyBtn.classList.add('is-copied');
+            copyBtn.textContent = 'Copied';
+            setTimeout(function () {
+              copyBtn.classList.remove('is-copied');
+              copyBtn.textContent = 'Copy';
+            }, 1200);
+          });
+        });
+      }
+
+      document.querySelectorAll('[data-code-panel]').forEach(function (panel) {
+        var section = panel.closest('.board, .sgroup');
+        var source = section.querySelector('[data-code-source]');
+        wireCopy(panel, dedent(source.innerHTML));
+      });
+    })();
+  </script>
+  <script src="/js/scroll-top.js"></script>
+</body>
+</html>
