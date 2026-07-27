@@ -2,6 +2,7 @@
 .field {
   display: flex;
   flex-direction: column;
+  width: 100%;
   max-width: 320px;
 }
 .field .field__label {
@@ -77,6 +78,33 @@
   margin-top: var(--spacing-6);
 }
 
+/* 필수 표시(*) — 에러 문구와 같은 색 재사용 */
+.field__label .required {
+  color: var(--color-text-danger-medium);
+  margin-left: var(--spacing-4);
+}
+
+/* email:성공 */
+.field--success .field__box {
+  display: flex;
+  align-items: center;
+
+  padding-block: var(--spacing-10);
+  padding-inline: var(--spacing-14);
+  border-radius: var( --radius-md);
+  border: 1px solid var(--color-border-success);
+  background: var(--color-bg-surface);
+  box-shadow: var(--shadows-xs);
+}
+
+.field--success p {
+  color: var(--color-text-success-medium);
+  font-size: var(--text-14);
+  font-weight: var(--weight-regular);
+  line-height: 142.857%;
+  margin-top: var(--spacing-6);
+}
+
 /* phone number:기본 */
 .field__number .lang__box {
   display: flex;
@@ -116,8 +144,9 @@
 }
 
 /*  */
-/* password는 앞쪽 mail 아이콘이 없음 → input 왼쪽 여백 제거 */
-.field--password .field__input {
+/* password/search는 앞쪽 아이콘이 없음 → input 왼쪽 여백 제거 */
+.field--password .field__input,
+.field--search .field__input {
   margin-left: 0;
 }
 
@@ -155,6 +184,12 @@
 .field__error .field__box:focus-within {
   border-color: var(--color-border-danger);
   box-shadow: var(--shadows-xs), 0 0 0 4px var(--color-ring-danger);
+}
+
+/* success 필드 focus ring */
+.field--success .field__box:focus-within {
+  border-color: var(--color-border-success);
+  box-shadow: var(--shadows-xs), 0 0 0 4px var(--color-ring-success);
 }
 
 /* ---- Disabled ---- */

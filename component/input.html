@@ -60,12 +60,16 @@
           <td><code class="doc-code">field__number</code></td>
           <td>전화번호. 왼쪽에 국가 코드 선택 버튼(<code class="doc-code">lang__box</code>) 추가 — 기존 네이밍이 <code class="doc-code">field--</code>가 아니라 <code class="doc-code">field__</code>라 예외적이지만 실제 쓰이는 클래스라 그대로 둠</td>
         </tr>
+        <tr>
+          <td><code class="doc-code">field--search</code></td>
+          <td>검색. 오른쪽에 돋보기 아이콘 버튼</td>
+        </tr>
       </tbody>
     </table>
 
     <div class="board" style="margin-top: 16px;">
       <div class="board__header">
-        <code class="class-label">field [field--password | field__number]</code>
+        <code class="class-label">field [field--password | field__number | field--search]</code>
       </div>
       <div class="board__body">
         <div class="field-row" data-code-source>
@@ -92,6 +96,15 @@
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </button>
               <input type="tel" id="phone-basic" class="field__input" placeholder="+1 (555) 000-0000">
+            </div>
+          </div>
+          <div class="field field--search">
+            <label class="field__label" for="search-basic">Search</label>
+            <div class="field__box">
+              <input type="search" id="search-basic" class="field__input" placeholder="검색어 입력">
+              <button type="button" class="field__btn" aria-label="검색">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M9.16667 15.8333C12.8486 15.8333 15.8333 12.8486 15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 17.5L13.875 13.875" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
             </div>
           </div>
         </div>
@@ -180,12 +193,16 @@
           <td><code class="doc-code">field__error</code></td>
           <td>검증 실패. 빨간 테두리 + 힌트 텍스트 색상 변경 — <code class="doc-code">field--</code>가 아닌 예외 네이밍</td>
         </tr>
+        <tr>
+          <td><code class="doc-code">field--success</code></td>
+          <td>검증 성공. 초록 테두리 + 힌트 텍스트 색상 변경</td>
+        </tr>
       </tbody>
     </table>
 
     <div class="board" style="margin-top: 16px;">
       <div class="board__header">
-        <code class="class-label">field [field--disabled] [readonly] [field__error]</code>
+        <code class="class-label">field [field--disabled] [readonly] [field__error] [field--success]</code>
       </div>
       <div class="board__body">
         <div class="field-row" data-code-source>
@@ -202,12 +219,20 @@
             </div>
           </div>
           <div class="field field__error">
-            <label class="field__label" for="email-error">Email</label>
+            <label class="field__label" for="email-error">Email <span class="required" aria-hidden="true">*</span></label>
             <div class="field__box">
               <span class="icon">아이콘</span>
-              <input type="email" id="email-error" class="field__input" placeholder="olivia@untitledui.com">
+              <input type="email" id="email-error" class="field__input" placeholder="olivia@untitledui.com" required aria-invalid="true" aria-describedby="email-error-hint">
             </div>
-            <p>올바른 이메일 형식이 아닙니다.</p>
+            <p id="email-error-hint">올바른 이메일 형식이 아닙니다.</p>
+          </div>
+          <div class="field field--success">
+            <label class="field__label" for="email-success">Email <span class="required" aria-hidden="true">*</span></label>
+            <div class="field__box">
+              <span class="icon">아이콘</span>
+              <input type="email" id="email-success" class="field__input" value="olivia@untitledui.com" required aria-invalid="false" aria-describedby="email-success-hint">
+            </div>
+            <p id="email-success-hint">사용 가능한 이메일입니다.</p>
           </div>
         </div>
       </div>
@@ -254,6 +279,9 @@
           <li>필수 안내는 <code class="doc-code">label</code>/힌트 텍스트에, placeholder는 예시로만</li>
           <li>에러 시 힌트 텍스트를 구체적인 안내로 교체</li>
           <li>비밀번호는 기본적으로 마스킹, 눈 아이콘으로만 토글 제공</li>
+          <li><code class="doc-code">field__error</code>/<code class="doc-code">field--success</code> input엔 <code class="doc-code">aria-invalid="true"/"false"</code>를 명시</li>
+          <li>힌트 <code class="doc-code">&lt;p&gt;</code>에 고유 <code class="doc-code">id</code>를 부여하고 input의 <code class="doc-code">aria-describedby</code>로 1:1 연결</li>
+          <li>필수 입력 필드는 <code class="doc-code">required</code> 속성 + 라벨에 <code class="doc-code">&lt;span class="required" aria-hidden="true"&gt;*&lt;/span&gt;</code> 표시</li>
         </ul>
       </div>
       <div class="doc-guideline doc-guideline--dont">
@@ -261,11 +289,13 @@
         <ul>
           <li><code class="doc-code">label</code> 없이 placeholder만으로 용도 설명 (스크린리더 접근성 저해)</li>
           <li>여러 줄 입력이 필요한데 Input 사용 (Textarea를 써야 함)</li>
-          <li>새 필드에 <code class="doc-code">field__error</code>/<code class="doc-code">field__number</code> 같은 예외 네이밍을 새로 복제 (신규 옵션은 <code class="doc-code">field--</code> 형태로)</li>
+          <li>새 필드에 <code class="doc-code">field__error</code>/<code class="doc-code">field__number</code> 같은 예외 네이밍을 새로 복제 (신규 옵션은 <code class="doc-code">field--</code> 형태로 — <code class="doc-code">field--success</code>가 그 예)</li>
+          <li>정적 데모인 힌트 컨테이너에 <code class="doc-code">role</code>/<code class="doc-code">aria-live</code> 추가 (값이 실시간으로 등장하는 시나리오가 아니므로 속성 매핑만 정의)</li>
         </ul>
       </div>
     </div>
   </section>
+  </div>
 
   <script>
     (function () {
@@ -309,5 +339,6 @@
       });
     })();
   </script>
+  <script src="/js/scroll-top.js"></script>
 </body>
 </html>

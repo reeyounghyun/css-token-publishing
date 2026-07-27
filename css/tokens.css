@@ -52,6 +52,18 @@
   --warning-800 :  #93370D;
   --warning-900  :  #7A2E0E;
 
+  /* 성공 */
+  --success-50 :  #ECFDF3;
+  --success-100 :  #D1FADF;
+  --success-200 :  #A6F4C5;
+  --success-300 :  #6CE9A6;
+  --success-400 :  #32D583;
+  --success-500 :  #12B76A;
+  --success-600 :  #039855;
+  --success-700 :  #027A48;
+  --success-800 :  #05603A;
+  --success-900  :  #054F31;
+
   --White:white;
   --black: black;
   --gray:gray;
@@ -190,6 +202,7 @@
   --color-text-danger:        var(--error-600);  /* #D92D20 */
   --color-text-danger-medium: var(--error-500);  /* #F04438 · 에러 필드 하단 안내문구 */
   --color-text-danger-hover:  var(--error-700);  /* #B42318 */
+  --color-text-success-medium: var(--success-500);  /* #12B76A · 성공 필드 하단 안내문구 */
   --color-text-warning:       var(--warning-700);  /* #B54708 */
 
   /* 아이콘 */
@@ -213,6 +226,7 @@
   --color-border-accent-active: var(--primary-800);  /* #1849A9 */
   --color-border-danger:        var(--error-300);  /* #FDA29B */
   --color-border-danger-subtle: var(--error-200);  /* #FECDCA */
+  --color-border-success:       var(--success-300);  /* #6CE9A6 */
   --color-border-warning-subtle: var(--warning-200);  /* #FEDF89 */
   --color-border-inverse:       var(--gray-700);  /* #344054 · 체크박스/라디오 선택 표시 */
   --color-border-faint:         var(--gray-100);  /* #F2F4F7 · 옅은 구분선, checkbox/dropdown focus-visible 테두리 */
@@ -237,6 +251,7 @@
   --color-ring-accent:        var(--primary-200);  /* #B2DDFF · btn 기준으로 통일 */
   --color-ring-accent-subtle: var(--primary-100);  /* #D1E9FF · switch pressed 등 마우스 인터랙션 링 */
   --color-ring-danger:        var(--error-100);  /* #FEE4E2 */
+  --color-ring-success:       var(--success-100);  /* #D1FADF */
   --color-ring-neutral:       var(--gray-400);   /* #98A2B3 · switch 토글 focus-visible */
   --color-ring-neutral-subtle: var(--gray-100);  /* #F2F4F7 · switch pressed(off 상태) 링 */
 
