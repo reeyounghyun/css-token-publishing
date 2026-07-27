@@ -36,6 +36,7 @@
     <p style="font-size: var(--text-14); color: var(--color-text-tertiary); line-height: 1.6;">
       Dropdown Menu는 트리거(아바타/버튼 등)를 눌렀을 때 나타나는 액션 목록이다. 항목을 골라 즉시 실행하는 링크형(<code class="doc-code">dropdown__menu</code>)과,
       여러 개를 체크해서 필터링하는 체크리스트형(<code class="doc-code">checklist</code>) 두 가지 컨테이너가 있다. 트리거 클릭으로 여닫는 JS는 이 페이지엔 없고, 컨테이너 자체 마크업/스타일만 다룬다.
+      폼에서 값 하나를 골라 입력에 반영하는 게 목적이면(담당자 지정, 국가 선택 등) 이 컴포넌트가 아니라 Dropdown(select/커스텀 셀렉트) 컴포넌트를 쓴다 — 요약하면 Dropdown Menu는 <b>탐색/액션(Navigation)</b>, Dropdown은 <b>폼 입력(Forms)</b> 용도다.
     </p>
   </section>
 
@@ -223,13 +224,14 @@
       <div class="doc-guideline doc-guideline--dont">
         <h4>✕ 지양</h4>
         <ul>
-          <li>항목 10개 이상 나열 (검색 가능한 Dropdown 컴포넌트가 더 적합)</li>
+          <li>항목 10개 이상 나열 — Dropdown Menu/Dropdown 둘 다 검색 기능은 없으므로, 목록이 길어지면 검색 UI를 별도로 추가하거나 구조 자체를 재검토</li>
           <li>선택형(라디오 성격)인데 체크박스로 다중 선택처럼 보이게 만들기</li>
           <li>트리거 없이 메뉴가 항상 열려있는 상태로 두기</li>
         </ul>
       </div>
     </div>
   </section>
+  </div>
 
   <script>
     (function () {
