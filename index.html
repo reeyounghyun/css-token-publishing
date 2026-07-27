@@ -6,6 +6,7 @@
   <title>css-token-publishing — 컴포넌트 인덱스</title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/utilities.css">
   <!--
     이 페이지는 컴포넌트 css(button.css 등)를 전혀 불러오지 않는다.
     컴포넌트 미리보기는 전부 iframe으로 각 component/*.html을 그대로 띄우는 방식이라
@@ -372,6 +373,54 @@
     }
     .ix-box.is-copied .ix-box__label { color: var(--primary-600); }
 
+    /* ---- utilities 데모/표 ---- */
+    .ix-util-demo {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      padding: var(--spacing-20);
+      border: 1px dashed var(--gray-200);
+      border-radius: var(--radius-md);
+      background: var(--gray-50);
+      margin-bottom: var(--spacing-16);
+    }
+    .ix-util-demo__box {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-family: ui-monospace, monospace;
+      font-size: 12px;
+      color: var(--gray-600);
+      white-space: nowrap;
+    }
+    .ix-util-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      font-size: var(--text-14);
+    }
+    .ix-util-table th,
+    .ix-util-table td {
+      text-align: left;
+      padding: var(--spacing-8) var(--spacing-12);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .ix-util-table th {
+      background: var(--gray-100);
+      font-weight: var(--weight-Semibold);
+      color: var(--gray-600);
+    }
+    .ix-util-table tr:last-child td { border-bottom: 0; }
+    .ix-util-table code {
+      font-family: ui-monospace, monospace;
+      font-size: 12px;
+      background: var(--gray-100);
+      padding: 2px 6px;
+      border-radius: var(--radius-xs);
+    }
+
     /* ---- transition ---- */
     .ix-transition-grid {
       display: grid;
@@ -663,11 +712,11 @@
       </div>
 
       <div class="ix-nav-group">
-        <a class="ix-nav-group__label is-placeholder" href="#section-utilities">5. Utilities</a>
+        <a class="ix-nav-group__label" href="#section-utilities">5. Utilities</a>
       </div>
 
       <div class="ix-nav-group">
-        <a class="ix-nav-group__label is-placeholder" href="#section-patterns">6. Patterns</a>
+        <a class="ix-nav-group__label" href="#section-patterns">6. Patterns</a>
       </div>
     </nav>
 
