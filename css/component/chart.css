@@ -6,7 +6,7 @@
 }
 .chart__title {
   font-size: var(--text-14);
-  font-weight: var(--weight-Semibold);
+  font-weight: var(--weight-semibold);
   color: var(--color-text-secondary);
 }
 
@@ -35,7 +35,7 @@
 .chart__bar {
   width: 100%;
   max-width: 32px;
-  border-radius: var(--radius-xs) var(--radius-xs) 0 0;
+  border-radius: var(--radius-4) var(--radius-4) 0 0;
   background: var(--color-bg-accent);
 }
 .chart__label {
@@ -79,7 +79,7 @@
 .chart--horizontal .chart__bar {
   max-width: none;
   height: 16px;
-  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  border-radius: 0 var(--radius-4) var(--radius-4) 0;
 }
 .chart--horizontal .chart__value {
   flex-shrink: 0;

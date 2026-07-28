@@ -4,10 +4,10 @@
   appearance: none;
   -webkit-appearance: none;
   width: 240px;
-  height: var(--height-lg);
+  height: var(--height-48);
   padding: 0 40px 0 var(--spacing-12);   /* 오른쪽은 화살표 자리 */
   border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-6);
   background-color: var(--color-bg-surface);
   font-size: var(--text-16);
   color: var(--color-text-primary);
@@ -20,7 +20,7 @@
 }
 
 /* ▲ 열린 상태: */
-.select.is--open {
+.select.is-open {
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 12.5L10 7.5L5 12.5" stroke="%23667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat right 12px center;
   background-color: var(--color-bg-surface);
   border-color: var(--color-border-accent-strong);
@@ -30,16 +30,16 @@
 .select:focus-visible {
   outline: none;
   border: 1px solid var(--color-border-accent);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-8);
   box-shadow:var( --shadows-xs);
 }
 
 /* [공통] 드롭다운_커스텀 */
 .dropdown-custom, .dropdown {
   width: 240px;
-  height: var(--height-lg);
+  height: var(--height-48);
   border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-6);
   background-color: var(--color-bg-surface);
   font-size: var(--text-16);
   color: var(--color-text-primary);
@@ -57,17 +57,17 @@
 }
 
 /* ★ 상태 훅: 이 클래스만 붙으면 열림 */
-.dropdown-custom.is--open .dropdown__list  {
+.dropdown-custom.is-open .dropdown__list  {
   display: block;
 }
-.dropdown-custom.is--open .dropdown__arrow {
+.dropdown-custom.is-open .dropdown__arrow {
   transform: rotate(180deg);
 }
 
 /* 옵션 */
 .dropdown__item {
   padding: var(--spacing-10) var(--spacing-12);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-6);
   font-size: var(--text-16);
   cursor: pointer;
 }
@@ -90,7 +90,7 @@
   justify-content: space-between;
   gap: var(--spacing-8);
   width: 100%;
-  height: var(--height-lg);
+  height: var(--height-48);
   padding: var(--spacing-10) var(--spacing-14);
 
   font-size: var(--text-16);
@@ -122,7 +122,7 @@
   max-height: 280px;
   padding: var(--spacing-8);
   border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-6);
   background: var(--color-bg-surface);
   box-shadow: var( --shadows-lg);
   overflow-y: auto;
@@ -143,7 +143,7 @@
   justify-content: space-between;
   gap: var(--spacing-8);
   padding: var(--spacing-10) var(--spacing-14);
-  border-radius: var( --radius-sm);
+  border-radius: var( --radius-6);
   font-size: var(--text-16);
   color: var(--color-text-primary);
   cursor: pointer;
@@ -154,7 +154,7 @@
   background: var(--color-bg-muted);
 }
 /* 키보드로 이동 중인 활성 항목 (마우스 hover 와 동일한 모양) */
-.dropdown__item.is--active {
+.dropdown__item.is-active {
   background: var(--color-bg-muted);
 }
 
@@ -210,7 +210,7 @@
   justify-content: flex-start;
   gap: var(--gap-8);
   padding: var(--spacing-10) var(--spacing-14);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-6);
   font-size: var(--text-14);
   color: var(--color-text-primary);
   cursor: pointer;

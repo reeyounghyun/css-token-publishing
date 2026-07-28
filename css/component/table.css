@@ -3,7 +3,7 @@
   width: 100%;
   overflow-x: auto;
   border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-8);
   background: var(--color-bg-surface);
 }
 
@@ -121,7 +121,7 @@ th[aria-sort="descending"] .table__sort svg {
 .table__sort:focus-visible {
   outline: none;
   box-shadow: 0 0 0 4px var(--color-ring-accent);
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-4);
 }
 
 /* 헤더 위 툴바 (제목 + 액션) */
@@ -134,7 +134,7 @@ th[aria-sort="descending"] .table__sort svg {
 }
 .table-toolbar__title {
   font-size: var(--text-18);
-  font-weight: var(--weight-Semibold);
+  font-weight: var(--weight-semibold);
   color: var(--color-text-primary);
 }
 
@@ -178,7 +178,7 @@ th[aria-sort="descending"] .table__sort svg {
 .table--pivot tbody tr.table__row--total td {
   background: var(--color-bg-subtle);
   color: var(--color-text-primary);
-  font-weight: var(--weight-Semibold);
+  font-weight: var(--weight-semibold);
 }
 .table--pivot tbody tr.table__row--total td:first-child {
   background: var(--color-bg-muted);
@@ -271,7 +271,7 @@ th[aria-sort="descending"] .table__sort svg {
 .grid-table--pivot .grid-table__row--total .grid-table__cell {
   background: var(--color-bg-subtle);
   color: var(--color-text-primary);
-  font-weight: var(--weight-Semibold);
+  font-weight: var(--weight-semibold);
 }
 .grid-table--pivot .grid-table__row--total .grid-table__cell:first-child {
   background: var(--color-bg-muted);

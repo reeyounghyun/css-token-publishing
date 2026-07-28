@@ -6,7 +6,7 @@
   width: 22px;
   height: 22px;
   border: 1.5px solid var(--color-border-default);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-6);
   background: var(--color-bg-surface);
   cursor: pointer;
   position: relative;
@@ -33,7 +33,7 @@
 
 .checkbox:focus-visible {
   border: 2px solid var(--color-border-faint);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-8);
   background: var(--color-bg-surface);
   box-shadow: var(--shadows-lg);
 }

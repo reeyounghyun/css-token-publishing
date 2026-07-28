@@ -16,7 +16,7 @@
 .tooltip__trigger:focus-visible {
   outline: none;
   box-shadow: 0 0 0 4px var(--color-ring-accent);
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-4);
 }
 
 .tooltip__content {
@@ -25,7 +25,7 @@
   width: max-content;
   max-width: 220px;
   padding: var(--spacing-6) var(--spacing-10);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-6);
   background: var(--color-bg-inverse);
   color: var(--color-text-inverse);
   font-size: var(--text-14);

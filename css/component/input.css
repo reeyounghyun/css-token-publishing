@@ -18,7 +18,7 @@
   justify-content: space-between;
   padding-block: var(--spacing-10);
   padding-inline: var(--spacing-14);
-  border-radius: var( --radius-md);
+  border-radius: var( --radius-8);
   border: 1px solid var(--color-border-default);
   background: var(--color-bg-surface);
   box-shadow: var(--shadows-xs);
@@ -64,7 +64,7 @@
 
   padding-block: var(--spacing-10);
   padding-inline: var(--spacing-14);
-  border-radius: var( --radius-md);
+  border-radius: var( --radius-8);
   border: 1px solid var(--color-border-danger);
   background: var(--color-bg-surface);
   box-shadow: var(--shadows-xs);
@@ -91,7 +91,7 @@
 
   padding-block: var(--spacing-10);
   padding-inline: var(--spacing-14);
-  border-radius: var( --radius-md);
+  border-radius: var( --radius-8);
   border: 1px solid var(--color-border-success);
   background: var(--color-bg-surface);
   box-shadow: var(--shadows-xs);
@@ -129,7 +129,7 @@
 
   padding-block: var(--spacing-10);
   padding-inline: var(--spacing-14);
-  border-radius: var( --radius-md);
+  border-radius: var( --radius-8);
   border: 1px solid var(--color-border-danger);
   background: var(--color-bg-surface);
   box-shadow: var(--shadows-xs);
@@ -163,7 +163,7 @@
 .field__btn:focus-visible {
   outline: none;
   box-shadow: 0 0 0 4px var(--color-ring-accent);
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-4);
 }
 
 /* ---- 상태(가상클래스로 자동) : 모든 field 공통 ---- */

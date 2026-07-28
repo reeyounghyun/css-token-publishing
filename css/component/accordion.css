@@ -1,7 +1,7 @@
 /* 아코디언 — <details>/<summary> 네이티브 태그로 구현. JS 없이 바로 동작 */
 .accordion {
   border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-8);
   overflow: hidden;
 }
 

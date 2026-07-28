@@ -5,7 +5,7 @@
   gap: var(--gap-12);
   padding: var(--spacing-16);
   border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-8);
   background: var(--color-bg-subtle);
 }
 .alert--primary {
@@ -37,7 +37,7 @@
 }
 .alert__title {
   font-size: var(--text-14);
-  font-weight: var(--weight-Semibold);
+  font-weight: var(--weight-semibold);
   color: var(--color-text-primary);
 }
 .alert__desc {
@@ -66,7 +66,7 @@
 .alert__close:focus-visible {
   outline: none;
   box-shadow: 0 0 0 4px var(--color-ring-accent);
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-4);
 }
 
 /* ============ Banner (화면/섹션 상단 전체 폭 공지) ============ */
@@ -90,7 +90,7 @@
   padding: 0;
   color: var(--color-text-inverse);
   font-size: var(--text-14);
-  font-weight: var(--weight-Semibold);
+  font-weight: var(--weight-semibold);
   text-decoration: underline;
   cursor: pointer;
 }

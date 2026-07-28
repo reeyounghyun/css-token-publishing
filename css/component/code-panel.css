@@ -4,8 +4,8 @@
    overlay 방식은 스크롤 전에도 버튼과 텍스트가 같은 자리에서 부딪히기 때문. */
 .code-panel {
   margin-top: var(--spacing-8);
-  background: #0B0D12;
-  border-radius: var(--radius-md);
+  background: var(--color-code-bg);
+  border-radius: var(--radius-8);
   overflow: hidden;
 }
 .code-panel__toolbar {
@@ -14,6 +14,7 @@
   padding: var(--spacing-8) var(--spacing-8) 0;
 }
 .code-panel__scroll {
+  max-width: 100%;
   padding: var(--spacing-16);
   overflow-x: auto;
 }
@@ -21,32 +22,32 @@
 .code-panel__code {
   margin: 0;
   font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
-  font-size: 12px;
+  font-size: var(--text-12);
   line-height: 1.9;
-  color: #E5E7EB;
+  color: var(--color-code-text);
   white-space: pre;
 }
 
 .code-panel__copy {
   padding: var(--spacing-4) var(--spacing-10);
-  background: #1F242E;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: var(--radius-sm);
-  color: #E5E7EB;
-  font-size: 11px;
+  background: var(--color-code-control-bg);
+  border: 1px solid var(--color-code-control-border);
+  border-radius: var(--radius-6);
+  color: var(--color-code-text);
+  font-size: var(--text-12);
   font-weight: var(--weight-medium);
   cursor: pointer;
   transition: background var(--transition-fast);
 }
 .code-panel__copy:hover {
-  background: #2A3040;
+  background: var(--color-code-control-hover);
 }
 .code-panel__copy:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 var(--spacing-4) var(--color-code-ring);
 }
 .code-panel__copy.is-copied {
-  background: var(--primary-600);
-  border-color: var(--primary-600);
-  color: var(--White);
+  background: var(--color-bg-accent);
+  border-color: var(--color-bg-accent);
+  color: var(--color-text-inverse);
 }

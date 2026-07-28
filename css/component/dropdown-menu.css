@@ -43,7 +43,7 @@
 
 .dropdown__menu .dropdown__link:focus-visible {
   border: 2px solid var(--color-border-faint);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-8);
   background: var(--color-bg-surface);
   box-shadow:var( --shadows-lg)
 }
@@ -139,7 +139,7 @@
 
 .dropdown__name {
   font-size: var(--text-14);
-  font-weight: var(--weight-Semibold);
+  font-weight: var(--weight-semibold);
   color: var(--color-text-primary);
   line-height: 142.857%;
 }

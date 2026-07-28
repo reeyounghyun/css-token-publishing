@@ -21,7 +21,7 @@
 
 .empty-state__title {
   font-size: var(--text-16);
-  font-weight: var(--weight-Semibold);
+  font-weight: var(--weight-semibold);
   color: var(--color-text-primary);
 }
 

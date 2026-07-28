@@ -64,7 +64,7 @@
   --success-800 :  #05603A;
   --success-900  :  #054F31;
 
-  --White:white;
+  --white:white;
   --black: black;
   --gray:gray;
 
@@ -75,21 +75,21 @@
   --brand-apple-hover:#1A1A1A;
 
   /* 높이 */
-  --height-xs:2.25rem; /* 36px */
-  --height-sm:2.5rem;  /* 40px */
-  --height-md:2.75rem; /* 44px */
-  --height-lg:3rem;    /* 48px */
-  --height-xl:3.75rem; /* 60px */
-  --height-1xl:6.75rem; /* 108px */
+  --height-36:2.25rem; /* 36px */
+  --height-40:2.5rem;  /* 40px */
+  --height-44:2.75rem; /* 44px */
+  --height-48:3rem;    /* 48px */
+  --height-60:3.75rem; /* 60px */
+  --height-108:6.75rem; /* 108px */
   --height-56:3.5rem; /* 56px — sbtn(SNS 로그인 버튼) 전용 */
 
   /* radius */
-  --radius-xs:0.25rem;  /* 4px */
-  --radius-sm:0.375rem; /* 6px */
-  --radius-md:0.5rem;   /* 8px */
+  --radius-4:0.25rem;  /* 4px */
+  --radius-6:0.375rem; /* 6px */
+  --radius-8:0.5rem;   /* 8px */
   --radius-14:0.875rem; /* 14px */
-  --radius-lg:1rem;     /* 16px */
-  --radius-xl:999px;
+  --radius-16:1rem;     /* 16px */
+  --radius-full:999px;
 
 
   /* 간격(padding,margin) */
@@ -117,7 +117,7 @@
   /* 폰트 굵기 */
   --weight-regular:400;
   --weight-medium:500;
-  --weight-Semibold:600;
+  --weight-semibold:600;
   --weight-bold:700;
 
   /* 폰트 크기_본문 */
@@ -195,7 +195,7 @@
   --color-text-tertiary:      var(--gray-600);  /* #475467 · 본문/설명 텍스트 */
   --color-text-quaternary:    var(--gray-500);  /* #667085 · 힌트/placeholder/보조 텍스트 */
   --color-text-faint:         var(--gray-400);  /* #98A2B3 · 가장 옅은 텍스트(비활성 포함) */
-  --color-text-inverse:       var(--White);     /* white · 채워진/어두운 배경 위 텍스트 */
+  --color-text-inverse:       var(--white);     /* white · 채워진/어두운 배경 위 텍스트 */
   --color-text-accent:        var(--primary-700);  /* #175CD3 */
   --color-text-accent-medium: var(--primary-600);  /* #1570EF */
   --color-text-accent-strong: var(--primary-800);  /* #1849A9 */
@@ -232,7 +232,7 @@
   --color-border-faint:         var(--gray-100);  /* #F2F4F7 · 옅은 구분선, checkbox/dropdown focus-visible 테두리 */
 
   /* 배경 */
-  --color-bg-surface:       var(--White);     /* white */
+  --color-bg-surface:       var(--white);     /* white */
   --color-bg-subtle:        var(--gray-50);   /* #F9FAFB */
   --color-bg-canvas:        var(--gray-75);   /* #F8F8F8 · 문서 페이지 전체 배경 */
   --color-bg-muted:         var(--gray-100);  /* #F2F4F7 */
@@ -254,6 +254,14 @@
   --color-ring-success:       var(--success-100);  /* #D1FADF */
   --color-ring-neutral:       var(--gray-400);   /* #98A2B3 · switch 토글 focus-visible */
   --color-ring-neutral-subtle: var(--gray-100);  /* #F2F4F7 · switch pressed(off 상태) 링 */
+
+  /* 코드 패널 */
+  --color-code-bg:             #0B0D12;
+  --color-code-text:           var(--gray-200);
+  --color-code-control-bg:     var(--gray-800);
+  --color-code-control-hover:  var(--gray-700);
+  --color-code-control-border: rgba(255, 255, 255, 0.15);
+  --color-code-ring:           rgba(255, 255, 255, 0.3);
 
   /* 상태 표시 */
   --color-status-dot: var(--error-400);  /* #F97066 */
