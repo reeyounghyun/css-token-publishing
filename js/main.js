@@ -3,13 +3,13 @@
 // 드롭다운_오리지널 JS
   const select = document.getElementById('member');
   if (select) {
-    select.addEventListener('focus',  () => select.classList.add('is--open'));    // 포커스 → 위 화살표
-    select.addEventListener('blur',   () => select.classList.remove('is--open')); // 벗어남 → 아래 화살표
+    select.addEventListener('focus',  () => select.classList.add('is-open'));    // 포커스 → 위 화살표
+    select.addEventListener('blur',   () => select.classList.remove('is-open')); // 벗어남 → 아래 화살표
     select.addEventListener('change', () => select.blur());                       // 선택 → blur (위 blur가 클래스 정리)
   }
 
   // 드롭다운_커스탐1 JS
-  // 작업 중엔 class 에 is--open 붙여서 열린 상태로 스타일 잡고, 넘길 땐 is--open 만 빼면 됨
+  // 작업 중엔 class 에 is-open 붙여서 열린 상태로 스타일 잡고, 넘길 땐 is-open 만 빼면 됨
   document.querySelectorAll('[data-dropdown-custom]').forEach(root => {
     const trigger = root.querySelector('.dropdown__trigger');
     const value   = root.querySelector('.dropdown__value');
@@ -17,7 +17,7 @@
 
     // 1) 토글
     trigger.addEventListener('click', () => {
-      const open = root.classList.toggle('is--open');
+      const open = root.classList.toggle('is-open');
       trigger.setAttribute('aria-expanded', open);
     });
 
@@ -32,7 +32,7 @@
           triggerAvatar.src = itemAvatar.src;
           triggerAvatar.alt = itemAvatar.alt;
         }
-        root.classList.remove('is--open');
+        root.classList.remove('is-open');
         trigger.setAttribute('aria-expanded', 'false');
       });
     });
@@ -40,7 +40,7 @@
     // 3) 바깥클릭 → 닫기
     document.addEventListener('click', e => {
       if (!root.contains(e.target)) {
-        root.classList.remove('is--open');
+        root.classList.remove('is-open');
         trigger.setAttribute('aria-expanded', 'false');
       }
     });
@@ -66,7 +66,7 @@
     }
     function close() {
       trigger.setAttribute('aria-expanded', 'false');
-      items.forEach(i => i.classList.remove('is--active'));
+      items.forEach(i => i.classList.remove('is-active'));
     }
     function isOpen() {
       return trigger.getAttribute('aria-expanded') === 'true';
@@ -76,7 +76,7 @@
     // --- 키보드 이동용 활성 항목 표시 ---
     function setActive(index) {
       activeIndex = (index + items.length) % items.length;
-      items.forEach((i, n) => i.classList.toggle('is--active', n === activeIndex));
+      items.forEach((i, n) => i.classList.toggle('is-active', n === activeIndex));
       list.setAttribute('aria-activedescendant', items[activeIndex].id);
       items[activeIndex].scrollIntoView({ block: 'nearest' });
     }
@@ -217,21 +217,45 @@
   document.querySelectorAll('[data-tabs]').forEach(root => {
     const tabs = Array.from(root.querySelectorAll('.tabs__tab'));
     const panels = Array.from(root.querySelectorAll('.tabs__panel'));
+    const enabledTabs = tabs.filter(tab => !tab.disabled && tab.getAttribute('aria-disabled') !== 'true');
+
+    tabs.forEach((tab, index) => {
+      const panel = panels.find(p => p.dataset.tabPanel === tab.dataset.tab);
+      if (!tab.id) tab.id = `tab-${index}-${tab.dataset.tab}`;
+      if (panel) {
+        if (!panel.id) panel.id = `panel-${index}-${tab.dataset.tab}`;
+        tab.setAttribute('aria-controls', panel.id);
+        panel.setAttribute('aria-labelledby', tab.id);
+      }
+    });
 
     function activate(tab, focus = true) {
-      tabs.forEach(t => t.setAttribute('aria-selected', t === tab ? 'true' : 'false'));
-      panels.forEach(p => p.classList.toggle('is-active', p.dataset.tabPanel === tab.dataset.tab));
+      if (!enabledTabs.includes(tab)) return;
+      tabs.forEach(t => {
+        const selected = t === tab;
+        t.setAttribute('aria-selected', selected ? 'true' : 'false');
+        t.tabIndex = selected ? 0 : -1;
+      });
+      panels.forEach(p => {
+        const selected = p.dataset.tabPanel === tab.dataset.tab;
+        p.classList.toggle('is-active', selected);
+        p.hidden = !selected;
+      });
       if (focus) tab.focus();
     }
 
+    activate(enabledTabs.find(tab => tab.getAttribute('aria-selected') === 'true') || enabledTabs[0], false);
+
     tabs.forEach((tab, i) => {
+      const enabledIndex = enabledTabs.indexOf(tab);
       tab.addEventListener('click', () => activate(tab, false));
       tab.addEventListener('keydown', (e) => {
+        if (enabledIndex < 0) return;
         switch (e.key) {
-          case 'ArrowRight': e.preventDefault(); activate(tabs[(i + 1) % tabs.length]); break;
-          case 'ArrowLeft':  e.preventDefault(); activate(tabs[(i - 1 + tabs.length) % tabs.length]); break;
-          case 'Home':       e.preventDefault(); activate(tabs[0]); break;
-          case 'End':        e.preventDefault(); activate(tabs[tabs.length - 1]); break;
+          case 'ArrowRight': e.preventDefault(); activate(enabledTabs[(enabledIndex + 1) % enabledTabs.length]); break;
+          case 'ArrowLeft':  e.preventDefault(); activate(enabledTabs[(enabledIndex - 1 + enabledTabs.length) % enabledTabs.length]); break;
+          case 'Home':       e.preventDefault(); activate(enabledTabs[0]); break;
+          case 'End':        e.preventDefault(); activate(enabledTabs[enabledTabs.length - 1]); break;
         }
       });
     });

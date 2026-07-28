@@ -94,14 +94,15 @@
         <div data-code-source>
           <div class="tabs" data-tabs style="max-width: 480px;">
             <div class="tabs__list" role="tablist">
-              <button type="button" class="tabs__tab" role="tab" id="tab-overview" aria-selected="true" data-tab="overview">개요</button>
-              <button type="button" class="tabs__tab" role="tab" id="tab-activity" aria-selected="false" data-tab="activity">활동</button>
-              <button type="button" class="tabs__tab" role="tab" id="tab-settings" aria-selected="false" data-tab="settings">설정</button>
-              <button type="button" class="tabs__tab" role="tab" id="tab-billing" aria-selected="false" data-tab="billing" disabled>결제 (준비중)</button>
+              <button type="button" class="tabs__tab" role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true" data-tab="overview">개요</button>
+              <button type="button" class="tabs__tab" role="tab" id="tab-activity" aria-controls="panel-activity" aria-selected="false" data-tab="activity">활동</button>
+              <button type="button" class="tabs__tab" role="tab" id="tab-settings" aria-controls="panel-settings" aria-selected="false" data-tab="settings">설정</button>
+              <button type="button" class="tabs__tab" role="tab" id="tab-billing" aria-controls="panel-billing" aria-selected="false" data-tab="billing" disabled>결제 (준비중)</button>
             </div>
-            <div class="tabs__panel is-active" role="tabpanel" data-tab-panel="overview">계정 개요 정보가 여기에 표시됩니다. 가입일, 요약 통계 등을 보여주는 영역입니다.</div>
-            <div class="tabs__panel" role="tabpanel" data-tab-panel="activity">최근 활동 내역이 시간순으로 나열되는 영역입니다.</div>
-            <div class="tabs__panel" role="tabpanel" data-tab-panel="settings">알림, 권한 등 세부 설정을 변경하는 영역입니다.</div>
+            <div class="tabs__panel is-active" role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" data-tab-panel="overview">계정 개요 정보가 여기에 표시됩니다. 가입일, 요약 통계 등을 보여주는 영역입니다.</div>
+            <div class="tabs__panel" role="tabpanel" id="panel-activity" aria-labelledby="tab-activity" data-tab-panel="activity" hidden>최근 활동 내역이 시간순으로 나열되는 영역입니다.</div>
+            <div class="tabs__panel" role="tabpanel" id="panel-settings" aria-labelledby="tab-settings" data-tab-panel="settings" hidden>알림, 권한 등 세부 설정을 변경하는 영역입니다.</div>
+            <div class="tabs__panel" role="tabpanel" id="panel-billing" aria-labelledby="tab-billing" data-tab-panel="billing" hidden>결제 기능은 아직 준비 중입니다.</div>
           </div>
         </div>
       </div>
@@ -116,13 +117,13 @@
         <div data-code-source>
           <div class="tabs tabs--pill" data-tabs style="max-width: 480px;">
             <div class="tabs__list" role="tablist">
-              <button type="button" class="tabs__tab" role="tab" aria-selected="true" data-tab="monthly">월간</button>
-              <button type="button" class="tabs__tab" role="tab" aria-selected="false" data-tab="weekly">주간</button>
-              <button type="button" class="tabs__tab" role="tab" aria-selected="false" data-tab="daily">일간</button>
+              <button type="button" class="tabs__tab" role="tab" id="tab-report-monthly" aria-controls="panel-report-monthly" aria-selected="true" data-tab="monthly">월간</button>
+              <button type="button" class="tabs__tab" role="tab" id="tab-report-weekly" aria-controls="panel-report-weekly" aria-selected="false" data-tab="weekly">주간</button>
+              <button type="button" class="tabs__tab" role="tab" id="tab-report-daily" aria-controls="panel-report-daily" aria-selected="false" data-tab="daily">일간</button>
             </div>
-            <div class="tabs__panel is-active" role="tabpanel" data-tab-panel="monthly">월간 리포트 데이터입니다.</div>
-            <div class="tabs__panel" role="tabpanel" data-tab-panel="weekly">주간 리포트 데이터입니다.</div>
-            <div class="tabs__panel" role="tabpanel" data-tab-panel="daily">일간 리포트 데이터입니다.</div>
+            <div class="tabs__panel is-active" role="tabpanel" id="panel-report-monthly" aria-labelledby="tab-report-monthly" data-tab-panel="monthly">월간 리포트 데이터입니다.</div>
+            <div class="tabs__panel" role="tabpanel" id="panel-report-weekly" aria-labelledby="tab-report-weekly" data-tab-panel="weekly" hidden>주간 리포트 데이터입니다.</div>
+            <div class="tabs__panel" role="tabpanel" id="panel-report-daily" aria-labelledby="tab-report-daily" data-tab-panel="daily" hidden>일간 리포트 데이터입니다.</div>
           </div>
         </div>
       </div>
