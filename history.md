@@ -6,6 +6,27 @@
 
 ---
 
+## 2026-07-28 — Quick Start 신설 1차 (14/19, 진행 중)
+
+백로그 최우선 항목("Quick Start 섹션 부재")을 컴포넌트 하나씩 확인하며 처리. Overview/Guidelines에 이미 있는 문장을 그대로 가져와 Use when/Avoid when을 구성하고, 각 컴포넌트의 가장 안전한 최소 마크업을 Quick Start에 배치하는 방식으로 진행.
+
+**Quick Start 완료 (14개)**: button(기존), input, textarea, checkbox, switch, dropdown, date-picker, dropdown-menu, pagination, tabs, accordion, badge, card, chart, table.
+
+**남은 컴포넌트 (5개)**: empty-state, tooltip, alert, modal, toast — 전부 Data Display/Feedback 카테고리. 다음 세션에 이어서 진행.
+
+**작업 중 발견해서 같이 고친 버그**:
+- `textarea__box`가 `height`(고정값)라 리사이즈해도 박스가 안 커져서 내용이 삐져나오던 문제 → `min-height`로 전환, 안쪽 textarea는 `height:100%` 대신 명시값으로 (`css/component/textarea.css`)
+- `date-picker`의 달력 아이콘이 박스 끝에 안 붙던 문제 → `field__input[type="date"]`에 `margin-inline:0` + `max-width:none` 추가 (`css/component/date-picker.css`)
+- `accordion`/`tabs`의 Quick Start가 `.sgroup`(flex, shrink-to-fit)을 써서 내용 길이에 따라 박스 너비가 흔들리던 문제 → `.board`(블록)로 전환. 이 발견을 계기로 button.html 이후 새로 만든 Quick Start는 전부 처음부터 `.board`로 작성
+- `tabs.html` Quick Start가 `data-code-source`를 `.tabs` 안쪽에 둬서 Copy 버튼이 `data-tabs` 래퍼 없는 죽은 코드를 복사하던 버그 → 바깥으로 이동
+- `tabs.html`의 탭 패널 내용 길이가 서로 달라서 탭 전환 시 높이가 흔들리는 문제 → 세 패널에 동일한 `min-height` 부여 (Quick Start + Examples 두 데모 다)
+
+**Quick Start 외 추가 작업**:
+- `switch`/`textarea`/`input`/`dropdown-menu`/`button`(SNS 로그인)/`pagination`/`table` 컴포넌트 문서에 남아있던 영어 데모 텍스트(Remember me, Olivia Rhye, Sign in with Google 등)를 전부 한국어로 교체
+- `card.html` Quick Start에 사용자가 요청한 실무 예시 6종 추가(ESG 콘텐츠/통계, 은행권 거래내역, 대시보드 공지, 멤버 관리 2종) — `card-member__*` 신규 클래스를 `card.css`에 추가. 이미지가 필요한 자리는 실제 사진 대신 기존 `card__placeholder` 패턴으로 통일(고길동 아바타 1곳만 사용자가 올린 실제 사진 사용)
+
+**변경 파일**: `component/{input,textarea,checkbox,switch,dropdown,date-picker,dropdown-menu,pagination,tabs,accordion,badge,card,chart,table}.html`, `css/component/{textarea,date-picker,card}.css`, `history.md`
+
 ## 2026-07-28 — 활용성 감사 2회차 [신규 발견, 미해결 — 작업 예정]
 
 목적: "문서만 보고 활용 가능한가" 기준으로 컴포넌트/CSS/JS/patterns/workflow.md 전체 재점검. Claude에게 2회에 걸쳐 감사를 맡기고, 핵심 항목은 실제 파일을 직접 대조해 검증까지 마침. 아래는 전부 기존 백로그(§ 남은 작업)와 겹치지 않는 신규 발견이며, 아직 아무것도 수정하지 않은 상태.
@@ -248,7 +269,7 @@ TODO.md 원본 백로그 중 실제 코드 기준으로 재확인한 현재 상�
 | `--radius-*` / `--height-*` 숫자 표기로 통일 | `tokens.css` + 대부분의 컴포넌트 | 해결 (2026-07-28 정리, `--radius-full` 예외 유지) |
 | `img` → `image` | `dropdown-menu.css`, `style.css` | 미확인 — 재검토 필요 |
 | `dropdown__userinfo` → `dropdown__user-info` | `dropdown-menu.css` + `dropdown-menu.html` | 미해결 |
-| Quick Start 섹션 부재 (20개 중 19개) | `component/*.html` (`button.html` 제외) | 미해결 (신규발견 2026-07-28, 최우선) |
+| Quick Start 섹션 부재 (20개 중 19개) | `component/*.html` (`button.html` 제외) | 진행 중 — 14/19 완료(2026-07-28), 남은 5개: empty-state·tooltip·alert·modal·toast |
 | 아이콘 자리 "아이콘" 텍스트 리터럴 | `component/input.html`(4곳) + `patterns/detail-page.html` | 미해결 (신규발견 2026-07-28) |
 | Modal 포커스 트랩 없음 | `js/main.js` | 미해결 (신규발견 2026-07-28) |
 | doc-template.css 하드코딩 색상(`#98A2B3`) | `css/component/doc-template.css:40` | 미해결 (신규발견 2026-07-28) |
