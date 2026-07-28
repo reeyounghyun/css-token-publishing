@@ -42,6 +42,35 @@
   </section>
 
   <section class="doc-section">
+    <h3 class="doc-section__title">Quick Start</h3>
+    <div class="doc-quick-start">
+      <div class="doc-quick-start__item">
+        <strong class="doc-quick-start__label">Use when</strong>
+        <p>설명·메모·리뷰처럼 줄바꿈이 필요한 여러 줄 입력에 사용합니다.</p>
+      </div>
+      <div class="doc-quick-start__item">
+        <strong class="doc-quick-start__label">Avoid when</strong>
+        <p>한 줄짜리 짧은 입력에는 Input을 사용합니다 — Textarea를 쓰지 않습니다.</p>
+      </div>
+    </div>
+    <section class="sgroup">
+      <div class="sgroup__header">
+        <code class="class-label">가장 자주 쓰는 기본 조합: label + textarea + 힌트</code>
+      </div>
+      <div class="sgroup__body" data-code-source>
+        <div class="textarea">
+          <label class="textarea__label" for="quick-start-textarea">이용 후기</label>
+          <div class="textarea__box">
+            <textarea id="quick-start-textarea" class="textarea" placeholder="설명을 입력하세요"></textarea>
+          </div>
+          <p>입력 시 도움이 되는 힌트 문구입니다.</p>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </section>
+  </section>
+
+  <section class="doc-section">
     <h3 class="doc-section__title">Variants</h3>
     <p style="font-size: var(--text-14); color: var(--color-text-tertiary);">
       스타일 변형 없음 — <code class="doc-code">textarea</code> 기본형 하나만 존재한다.
@@ -74,14 +103,14 @@
           <div class="textarea">
             <label class="textarea__label" for="ta-resize">기본 (세로 조절 가능)</label>
             <div class="textarea__box">
-              <textarea id="ta-resize" class="textarea" placeholder="Enter a description..."></textarea>
+              <textarea id="ta-resize" class="textarea" placeholder="설명을 입력하세요"></textarea>
             </div>
             <p>우측 하단을 드래그해서 크기를 늘릴 수 있습니다.</p>
           </div>
           <div class="textarea textarea__resize-none">
             <label class="textarea__label" for="ta-noresize">resize-none (크기 조절 불가)</label>
             <div class="textarea__box">
-              <textarea id="ta-noresize" class="textarea" placeholder="Enter a description..."></textarea>
+              <textarea id="ta-noresize" class="textarea" placeholder="설명을 입력하세요"></textarea>
             </div>
             <p>높이가 고정되어 늘어나지 않습니다.</p>
           </div>
@@ -121,23 +150,23 @@
           <div class="textarea">
             <label class="textarea__label" for="ta-default">기본</label>
             <div class="textarea__box">
-              <textarea id="ta-default" class="textarea" placeholder="Enter a description..."></textarea>
+              <textarea id="ta-default" class="textarea" placeholder="설명을 입력하세요"></textarea>
             </div>
-            <p>This is a hint text to help user.</p>
+            <p>입력 시 도움이 되는 힌트 문구입니다.</p>
           </div>
           <div class="textarea textarea__error">
             <label class="textarea__label" for="ta-error">에러</label>
             <div class="textarea__box">
-              <textarea id="ta-error" class="textarea" placeholder="Enter a description..."></textarea>
+              <textarea id="ta-error" class="textarea" placeholder="설명을 입력하세요"></textarea>
             </div>
-            <p>This is a hint text to help user.</p>
+            <p>입력 시 도움이 되는 힌트 문구입니다.</p>
           </div>
           <div class="textarea textarea__disabled">
             <label class="textarea__label" for="ta-disabled">비활성</label>
             <div class="textarea__box">
-              <textarea id="ta-disabled" class="textarea" placeholder="Enter a description..." disabled></textarea>
+              <textarea id="ta-disabled" class="textarea" placeholder="설명을 입력하세요" disabled></textarea>
             </div>
-            <p>This is a hint text to help user.</p>
+            <p>입력 시 도움이 되는 힌트 문구입니다.</p>
           </div>
         </div>
       </div>

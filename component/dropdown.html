@@ -39,6 +39,33 @@
   </section>
 
   <section class="doc-section">
+    <h3 class="doc-section__title">Quick Start</h3>
+    <div class="doc-quick-start">
+      <div class="doc-quick-start__item">
+        <strong class="doc-quick-start__label">Use when</strong>
+        <p>여러 옵션 중 하나를 골라야 할 때 사용합니다. 단순한 목록엔 네이티브 <code class="doc-code">select</code>가 접근성·모바일 대응이 가장 안정적이라 우선 고려합니다.</p>
+      </div>
+      <div class="doc-quick-start__item">
+        <strong class="doc-quick-start__label">Avoid when</strong>
+        <p>프로필 메뉴나 즉시 실행되는 액션 목록이 목적이면 Dropdown Menu를 대신 씁니다. 옵션이 2~3개뿐이면 Radio가 더 빠릅니다.</p>
+      </div>
+    </div>
+    <section class="sgroup">
+      <div class="sgroup__header">
+        <code class="class-label">가장 자주 쓰는 기본 조합: 네이티브 select</code>
+      </div>
+      <div class="sgroup__body" data-code-source>
+        <select class="select" id="quick-start-select" aria-label="담당자 선택">
+          <option>Phoenix Baker</option>
+          <option selected>Olivia Rhye</option>
+          <option>Lana Steiner</option>
+        </select>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </section>
+  </section>
+
+  <section class="doc-section">
     <h3 class="doc-section__title">Variants</h3>
     <table class="doc-table">
       <thead>

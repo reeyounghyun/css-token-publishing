@@ -35,6 +35,51 @@
   </section>
 
   <section class="doc-section">
+    <h3 class="doc-section__title">Quick Start</h3>
+    <div class="doc-quick-start">
+      <div class="doc-quick-start__item">
+        <strong class="doc-quick-start__label">Use when</strong>
+        <p>여러 값을 막대 길이로 비교하는 간단한 시각화가 필요할 때 사용합니다.</p>
+        <p style="margin-top: 4px;">항목이 많거나 이름이 길면 <code class="doc-code">chart--horizontal</code> 변형을 사용합니다.</p>
+      </div>
+      <div class="doc-quick-start__item">
+        <strong class="doc-quick-start__label">Avoid when</strong>
+        <p>실시간 갱신·확대/축소 같은 인터랙티브 차트가 필요하면 별도 라이브러리를 씁니다.</p>
+      </div>
+    </div>
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">가장 자주 쓰는 기본 조합: chart(세로 막대) + is-accent</code>
+      </div>
+      <div class="board__body">
+        <div style="max-width: 320px; padding: 4px 0;" data-code-source>
+          <div class="chart">
+            <span class="chart__title">월별 신규 가입자</span>
+            <div class="chart__bars">
+              <div class="chart__col">
+                <span class="chart__value">120</span>
+                <div class="chart__bar" style="height: 48%;"></div>
+                <span class="chart__label">1월</span>
+              </div>
+              <div class="chart__col">
+                <span class="chart__value">148</span>
+                <div class="chart__bar" style="height: 60%;"></div>
+                <span class="chart__label">2월</span>
+              </div>
+              <div class="chart__col">
+                <span class="chart__value">205</span>
+                <div class="chart__bar is-accent" style="height: 82%;"></div>
+                <span class="chart__label">3월</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
     <h3 class="doc-section__title">Variants</h3>
     <table class="doc-table">
       <thead>

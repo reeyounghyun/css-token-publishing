@@ -33,6 +33,40 @@
   </section>
 
   <section class="doc-section">
+    <h3 class="doc-section__title">Quick Start</h3>
+    <div class="doc-quick-start">
+      <div class="doc-quick-start__item">
+        <strong class="doc-quick-start__label">Use when</strong>
+        <p>같은 맥락의 콘텐츠를 여러 패널로 나눠서 한 번에 하나씩만 보여줄 때 사용합니다. 같은 화면 안에서 동시에 볼 필요가 없는 콘텐츠에만 씁니다.</p>
+      </div>
+      <div class="doc-quick-start__item">
+        <strong class="doc-quick-start__label">Avoid when</strong>
+        <p>탭이 5개 이상으로 넘어가면 Dropdown이나 사이드 내비게이션이 더 적합합니다. 1단계→2단계처럼 이어지는 단계형 흐름엔 Stepper를 쓰고, 탭을 쓰지 않습니다.</p>
+      </div>
+    </div>
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">가장 자주 쓰는 기본 조합: tabs(Underline) 3개</code>
+      </div>
+      <div class="board__body">
+        <div data-code-source>
+          <div class="tabs" data-tabs style="max-width: 480px;">
+            <div class="tabs__list" role="tablist">
+              <button type="button" class="tabs__tab" role="tab" id="tab-quick-overview" aria-controls="panel-quick-overview" aria-selected="true" data-tab="overview">개요</button>
+              <button type="button" class="tabs__tab" role="tab" id="tab-quick-activity" aria-controls="panel-quick-activity" aria-selected="false" data-tab="activity">활동</button>
+              <button type="button" class="tabs__tab" role="tab" id="tab-quick-settings" aria-controls="panel-quick-settings" aria-selected="false" data-tab="settings">설정</button>
+            </div>
+            <div class="tabs__panel is-active" role="tabpanel" id="panel-quick-overview" aria-labelledby="tab-quick-overview" data-tab-panel="overview" style="min-height: 4.5em;">계정 개요 정보가 여기에 표시됩니다. 가입일, 요약 통계 등을 보여주는 영역입니다.</div>
+            <div class="tabs__panel" role="tabpanel" id="panel-quick-activity" aria-labelledby="tab-quick-activity" data-tab-panel="activity" hidden style="min-height: 4.5em;">최근 활동 내역이 시간순으로 나열되는 영역입니다. 로그인, 결제, 설정 변경 등 계정에서 발생한 주요 이벤트를 확인할 수 있습니다.</div>
+            <div class="tabs__panel" role="tabpanel" id="panel-quick-settings" aria-labelledby="tab-quick-settings" data-tab-panel="settings" hidden style="min-height: 4.5em;">알림, 권한 등 세부 설정을 변경하는 영역입니다.</div>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
     <h3 class="doc-section__title">Variants</h3>
     <table class="doc-table">
       <thead>
@@ -99,10 +133,10 @@
               <button type="button" class="tabs__tab" role="tab" id="tab-settings" aria-controls="panel-settings" aria-selected="false" data-tab="settings">설정</button>
               <button type="button" class="tabs__tab" role="tab" id="tab-billing" aria-controls="panel-billing" aria-selected="false" data-tab="billing" disabled>결제 (준비중)</button>
             </div>
-            <div class="tabs__panel is-active" role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" data-tab-panel="overview">계정 개요 정보가 여기에 표시됩니다. 가입일, 요약 통계 등을 보여주는 영역입니다.</div>
-            <div class="tabs__panel" role="tabpanel" id="panel-activity" aria-labelledby="tab-activity" data-tab-panel="activity" hidden>최근 활동 내역이 시간순으로 나열되는 영역입니다.</div>
-            <div class="tabs__panel" role="tabpanel" id="panel-settings" aria-labelledby="tab-settings" data-tab-panel="settings" hidden>알림, 권한 등 세부 설정을 변경하는 영역입니다.</div>
-            <div class="tabs__panel" role="tabpanel" id="panel-billing" aria-labelledby="tab-billing" data-tab-panel="billing" hidden>결제 기능은 아직 준비 중입니다.</div>
+            <div class="tabs__panel is-active" role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" data-tab-panel="overview" style="min-height: 4.5em;">계정 개요 정보가 여기에 표시됩니다. 가입일, 요약 통계 등을 보여주는 영역입니다.</div>
+            <div class="tabs__panel" role="tabpanel" id="panel-activity" aria-labelledby="tab-activity" data-tab-panel="activity" hidden style="min-height: 4.5em;">최근 활동 내역이 시간순으로 나열되는 영역입니다. 로그인, 결제, 설정 변경 등 계정에서 발생한 주요 이벤트를 최신순으로 확인할 수 있습니다.</div>
+            <div class="tabs__panel" role="tabpanel" id="panel-settings" aria-labelledby="tab-settings" data-tab-panel="settings" hidden style="min-height: 4.5em;">알림, 권한 등 세부 설정을 변경하는 영역입니다.</div>
+            <div class="tabs__panel" role="tabpanel" id="panel-billing" aria-labelledby="tab-billing" data-tab-panel="billing" hidden style="min-height: 4.5em;">결제 기능은 아직 준비 중입니다.</div>
           </div>
         </div>
       </div>
@@ -121,9 +155,9 @@
               <button type="button" class="tabs__tab" role="tab" id="tab-report-weekly" aria-controls="panel-report-weekly" aria-selected="false" data-tab="weekly">주간</button>
               <button type="button" class="tabs__tab" role="tab" id="tab-report-daily" aria-controls="panel-report-daily" aria-selected="false" data-tab="daily">일간</button>
             </div>
-            <div class="tabs__panel is-active" role="tabpanel" id="panel-report-monthly" aria-labelledby="tab-report-monthly" data-tab-panel="monthly">월간 리포트 데이터입니다.</div>
-            <div class="tabs__panel" role="tabpanel" id="panel-report-weekly" aria-labelledby="tab-report-weekly" data-tab-panel="weekly" hidden>주간 리포트 데이터입니다.</div>
-            <div class="tabs__panel" role="tabpanel" id="panel-report-daily" aria-labelledby="tab-report-daily" data-tab-panel="daily" hidden>일간 리포트 데이터입니다.</div>
+            <div class="tabs__panel is-active" role="tabpanel" id="panel-report-monthly" aria-labelledby="tab-report-monthly" data-tab-panel="monthly" style="min-height: 3.5em;">월간 리포트 데이터입니다. 이번 달 매출, 방문자 수, 전환율을 한눈에 확인할 수 있습니다.</div>
+            <div class="tabs__panel" role="tabpanel" id="panel-report-weekly" aria-labelledby="tab-report-weekly" data-tab-panel="weekly" hidden style="min-height: 3.5em;">주간 리포트 데이터입니다. 최근 7일간의 추이를 요일별로 비교해서 보여줍니다.</div>
+            <div class="tabs__panel" role="tabpanel" id="panel-report-daily" aria-labelledby="tab-report-daily" data-tab-panel="daily" hidden style="min-height: 3.5em;">일간 리포트 데이터입니다.</div>
           </div>
         </div>
       </div>
@@ -145,7 +179,7 @@
       <div class="doc-guideline doc-guideline--dont">
         <h4>✕ 지양</h4>
         <ul>
-          <li>탭 5~6개 이상 나열 (Dropdown이나 사이드 내비게이션이 더 적합)</li>
+          <li>탭 5개 이상 나열 (Dropdown이나 사이드 내비게이션이 더 적합)</li>
           <li>탭 전환 시 페이지 전체를 새로고침 (SPA처럼 패널만 바뀌어야 함)</li>
           <li>서로 이어지는 단계형 흐름(1단계→2단계)에 탭 사용 (그건 Stepper)</li>
         </ul>

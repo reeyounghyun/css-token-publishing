@@ -63,6 +63,34 @@
   </section>
 
   <section class="doc-section">
+    <h3 class="doc-section__title">Quick Start</h3>
+    <div class="doc-quick-start">
+      <div class="doc-quick-start__item">
+        <strong class="doc-quick-start__label">Use when</strong>
+        <p>선택 즉시 효과가 반영되는 on/off 설정에 사용합니다 (알림 켜기/끄기 등). 저장 버튼이 따로 필요 없어야 합니다.</p>
+      </div>
+      <div class="doc-quick-start__item">
+        <strong class="doc-quick-start__label">Avoid when</strong>
+        <p>여러 개를 폼에 모아뒀다가 한 번에 "저장"으로 제출해야 하면 Checkbox를 사용합니다. 라벨 없이 스위치만 나열하지 않습니다 — 무엇을 켜는지 알 수 없습니다.</p>
+      </div>
+    </div>
+    <section class="sgroup">
+      <div class="sgroup__header">
+        <code class="class-label">가장 자주 쓰는 기본 조합: toggle + 라벨 텍스트</code>
+      </div>
+      <div class="sgroup__body" data-code-source>
+        <label class="toggle">
+          <input type="checkbox" class="toggle__input" role="switch">
+          <span class="toggle__text">
+            <span class="toggle__title">로그인 상태 유지</span>
+          </span>
+        </label>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </section>
+  </section>
+
+  <section class="doc-section">
     <h3 class="doc-section__title">Variants</h3>
     <p style="font-size: var(--text-14); color: var(--color-text-tertiary);">
       스타일 변형 없음 — <code class="doc-code">toggle</code> 기본형 하나만 존재한다.
@@ -102,14 +130,14 @@
           <label class="toggle">
             <input type="checkbox" class="toggle__input" role="switch">
             <span class="toggle__text">
-              <span class="toggle__title">Remember me</span>
+              <span class="toggle__title">로그인 상태 유지</span>
             </span>
           </label>
           <label class="toggle">
             <input type="checkbox" class="toggle__input" role="switch">
             <span class="toggle__text">
-              <span class="toggle__title">Remember me</span>
-              <span class="toggle__desc">Save my login details for next time.</span>
+              <span class="toggle__title">로그인 상태 유지</span>
+              <span class="toggle__desc">다음에도 로그인 정보를 저장합니다.</span>
             </span>
           </label>
         </div>
@@ -227,8 +255,8 @@
           <label class="toggle">
             <input type="checkbox" class="toggle__input" role="switch" checked>
             <span class="toggle__text">
-              <span class="toggle__title">Remember me</span>
-              <span class="toggle__desc">Save my login details for next time.</span>
+              <span class="toggle__title">로그인 상태 유지</span>
+              <span class="toggle__desc">다음에도 로그인 정보를 저장합니다.</span>
             </span>
           </label>
         </div>
