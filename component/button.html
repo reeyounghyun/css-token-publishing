@@ -41,6 +41,30 @@
   </section>
 
   <section class="doc-section">
+    <h3 class="doc-section__title">Quick Start</h3>
+    <div class="doc-quick-start">
+      <div class="doc-quick-start__item">
+        <strong class="doc-quick-start__label">Use when</strong>
+        <p>저장, 등록, 확인처럼 사용자의 즉시 행동이 필요한 경우에 사용합니다. 한 화면의 가장 중요한 동작 하나만 <code class="doc-code">btn--primary</code>로 둡니다.</p>
+      </div>
+      <div class="doc-quick-start__item">
+        <strong class="doc-quick-start__label">Avoid when</strong>
+        <p>다른 페이지로 이동하는 것이 목적이면 <code class="doc-code">a</code> 요소를 사용합니다. 되돌릴 수 없는 삭제는 확인 절차를 먼저 제공합니다.</p>
+      </div>
+    </div>
+    <section class="sgroup">
+      <div class="sgroup__header">
+        <code class="class-label">가장 자주 쓰는 기본 조합: 취소 + 저장</code>
+      </div>
+      <div class="sgroup__body" data-code-source>
+        <button type="button" class="btn btn--default">취소</button>
+        <button type="button" class="btn btn--primary">저장하기</button>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </section>
+  </section>
+
+  <section class="doc-section">
     <h3 class="doc-section__title">Variants</h3>
     <table class="doc-table">
       <thead>
@@ -106,12 +130,12 @@
 
   <div class="tabs" data-tabs>
     <div class="tabs__list" role="tablist">
-      <button type="button" class="tabs__tab" role="tab" id="tab-pressed" aria-selected="true" data-tab="pressed">Pressed</button>
-      <button type="button" class="tabs__tab" role="tab" id="tab-disabled" aria-selected="false" data-tab="disabled">Disabled</button>
-      <button type="button" class="tabs__tab" role="tab" id="tab-loading" aria-selected="false" data-tab="loading">Loading</button>
+      <button type="button" class="tabs__tab" role="tab" id="tab-button-pressed" aria-controls="panel-button-pressed" aria-selected="true" data-tab="pressed">Pressed</button>
+      <button type="button" class="tabs__tab" role="tab" id="tab-button-disabled" aria-controls="panel-button-disabled" aria-selected="false" data-tab="disabled">Disabled</button>
+      <button type="button" class="tabs__tab" role="tab" id="tab-button-loading" aria-controls="panel-button-loading" aria-selected="false" data-tab="loading">Loading</button>
     </div>
 
-    <div class="tabs__panel is-active" data-tab-panel="pressed" role="tabpanel">
+    <div class="tabs__panel is-active" id="panel-button-pressed" aria-labelledby="tab-button-pressed" data-tab-panel="pressed" role="tabpanel">
     <!-- ============ PRESSED ============ -->
     <section class="board">
       <div class="board__header">
@@ -128,68 +152,68 @@
         <div class="matrix__row-header">
           <span class="matrix__row-label">Large</span>
         </div>
-        <button class="btn btn--primary btn--lg is-pressed">Button</button>
-        <button class="btn btn--default btn--lg is-pressed">Button</button>
-        <button class="btn btn--dashed btn--lg is-pressed">Button</button>
-        <button class="btn btn--text btn--lg is-pressed">Button</button>
-        <button class="btn btn--link btn--lg is-pressed">Button</button>
+        <button type="button" class="btn btn--primary btn--lg is-pressed">Button</button>
+        <button type="button" class="btn btn--default btn--lg is-pressed">Button</button>
+        <button type="button" class="btn btn--dashed btn--lg is-pressed">Button</button>
+        <button type="button" class="btn btn--text btn--lg is-pressed">Button</button>
+        <button type="button" class="btn btn--link btn--lg is-pressed">Button</button>
         <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
 
         <div class="matrix__row-header">
           <span class="matrix__row-label">Large · Round</span>
         </div>
-        <button class="btn btn--primary btn--lg btn--round is-pressed">Button</button>
-        <button class="btn btn--default btn--lg btn--round is-pressed">Button</button>
-        <button class="btn btn--dashed btn--lg btn--round is-pressed">Button</button>
-        <button class="btn btn--text btn--lg btn--round is-pressed">Button</button>
-        <button class="btn btn--link btn--lg btn--round is-pressed">Button</button>
+        <button type="button" class="btn btn--primary btn--lg btn--round is-pressed">Button</button>
+        <button type="button" class="btn btn--default btn--lg btn--round is-pressed">Button</button>
+        <button type="button" class="btn btn--dashed btn--lg btn--round is-pressed">Button</button>
+        <button type="button" class="btn btn--text btn--lg btn--round is-pressed">Button</button>
+        <button type="button" class="btn btn--link btn--lg btn--round is-pressed">Button</button>
         <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
 
         <div class="matrix__row-header">
           <span class="matrix__row-label">Medium (기본)</span>
         </div>
-        <button class="btn btn--primary is-pressed">Button</button>
-        <button class="btn btn--default is-pressed">Button</button>
-        <button class="btn btn--dashed is-pressed">Button</button>
-        <button class="btn btn--text is-pressed">Button</button>
-        <button class="btn btn--link is-pressed">Button</button>
+        <button type="button" class="btn btn--primary is-pressed">Button</button>
+        <button type="button" class="btn btn--default is-pressed">Button</button>
+        <button type="button" class="btn btn--dashed is-pressed">Button</button>
+        <button type="button" class="btn btn--text is-pressed">Button</button>
+        <button type="button" class="btn btn--link is-pressed">Button</button>
         <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
 
         <div class="matrix__row-header">
           <span class="matrix__row-label">Medium · Round</span>
         </div>
-        <button class="btn btn--primary btn--round is-pressed">Button</button>
-        <button class="btn btn--default btn--round is-pressed">Button</button>
-        <button class="btn btn--dashed btn--round is-pressed">Button</button>
-        <button class="btn btn--text btn--round is-pressed">Button</button>
-        <button class="btn btn--link btn--round is-pressed">Button</button>
+        <button type="button" class="btn btn--primary btn--round is-pressed">Button</button>
+        <button type="button" class="btn btn--default btn--round is-pressed">Button</button>
+        <button type="button" class="btn btn--dashed btn--round is-pressed">Button</button>
+        <button type="button" class="btn btn--text btn--round is-pressed">Button</button>
+        <button type="button" class="btn btn--link btn--round is-pressed">Button</button>
         <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
 
         <div class="matrix__row-header">
           <span class="matrix__row-label">Small</span>
         </div>
-        <button class="btn btn--primary btn--sm is-pressed">Button</button>
-        <button class="btn btn--default btn--sm is-pressed">Button</button>
-        <button class="btn btn--dashed btn--sm is-pressed">Button</button>
-        <button class="btn btn--text btn--sm is-pressed">Button</button>
-        <button class="btn btn--link btn--sm is-pressed">Button</button>
+        <button type="button" class="btn btn--primary btn--sm is-pressed">Button</button>
+        <button type="button" class="btn btn--default btn--sm is-pressed">Button</button>
+        <button type="button" class="btn btn--dashed btn--sm is-pressed">Button</button>
+        <button type="button" class="btn btn--text btn--sm is-pressed">Button</button>
+        <button type="button" class="btn btn--link btn--sm is-pressed">Button</button>
         <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
 
         <div class="matrix__row-header">
           <span class="matrix__row-label">Small · Round</span>
         </div>
-        <button class="btn btn--primary btn--sm btn--round is-pressed">Button</button>
-        <button class="btn btn--default btn--sm btn--round is-pressed">Button</button>
-        <button class="btn btn--dashed btn--sm btn--round is-pressed">Button</button>
-        <button class="btn btn--text btn--sm btn--round is-pressed">Button</button>
-        <button class="btn btn--link btn--sm btn--round is-pressed">Button</button>
+        <button type="button" class="btn btn--primary btn--sm btn--round is-pressed">Button</button>
+        <button type="button" class="btn btn--default btn--sm btn--round is-pressed">Button</button>
+        <button type="button" class="btn btn--dashed btn--sm btn--round is-pressed">Button</button>
+        <button type="button" class="btn btn--text btn--sm btn--round is-pressed">Button</button>
+        <button type="button" class="btn btn--link btn--sm btn--round is-pressed">Button</button>
         <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
       </div>
       </div>
     </section>
     </div>
 
-    <div class="tabs__panel" data-tab-panel="disabled" role="tabpanel">
+    <div class="tabs__panel" id="panel-button-disabled" aria-labelledby="tab-button-disabled" data-tab-panel="disabled" role="tabpanel" hidden>
     <!-- ============ DISABLED ============ -->
     <section class="board">
       <div class="board__header">
@@ -206,68 +230,68 @@
         <div class="matrix__row-header">
           <span class="matrix__row-label">Large</span>
         </div>
-        <button class="btn btn--primary btn--lg" disabled>Button</button>
-        <button class="btn btn--default btn--lg" disabled>Button</button>
-        <button class="btn btn--dashed btn--lg" disabled>Button</button>
-        <button class="btn btn--text btn--lg" disabled>Button</button>
-        <button class="btn btn--link btn--lg" disabled>Button</button>
+        <button type="button" class="btn btn--primary btn--lg" disabled>Button</button>
+        <button type="button" class="btn btn--default btn--lg" disabled>Button</button>
+        <button type="button" class="btn btn--dashed btn--lg" disabled>Button</button>
+        <button type="button" class="btn btn--text btn--lg" disabled>Button</button>
+        <button type="button" class="btn btn--link btn--lg" disabled>Button</button>
         <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
 
         <div class="matrix__row-header">
           <span class="matrix__row-label">Large · Round</span>
         </div>
-        <button class="btn btn--primary btn--lg btn--round" disabled>Button</button>
-        <button class="btn btn--default btn--lg btn--round" disabled>Button</button>
-        <button class="btn btn--dashed btn--lg btn--round" disabled>Button</button>
-        <button class="btn btn--text btn--lg btn--round" disabled>Button</button>
-        <button class="btn btn--link btn--lg btn--round" disabled>Button</button>
+        <button type="button" class="btn btn--primary btn--lg btn--round" disabled>Button</button>
+        <button type="button" class="btn btn--default btn--lg btn--round" disabled>Button</button>
+        <button type="button" class="btn btn--dashed btn--lg btn--round" disabled>Button</button>
+        <button type="button" class="btn btn--text btn--lg btn--round" disabled>Button</button>
+        <button type="button" class="btn btn--link btn--lg btn--round" disabled>Button</button>
         <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
 
         <div class="matrix__row-header">
           <span class="matrix__row-label">Medium (기본)</span>
         </div>
-        <button class="btn btn--primary" disabled>Button</button>
-        <button class="btn btn--default" disabled>Button</button>
-        <button class="btn btn--dashed" disabled>Button</button>
-        <button class="btn btn--text" disabled>Button</button>
-        <button class="btn btn--link" disabled>Button</button>
+        <button type="button" class="btn btn--primary" disabled>Button</button>
+        <button type="button" class="btn btn--default" disabled>Button</button>
+        <button type="button" class="btn btn--dashed" disabled>Button</button>
+        <button type="button" class="btn btn--text" disabled>Button</button>
+        <button type="button" class="btn btn--link" disabled>Button</button>
         <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
 
         <div class="matrix__row-header">
           <span class="matrix__row-label">Medium · Round</span>
         </div>
-        <button class="btn btn--primary btn--round" disabled>Button</button>
-        <button class="btn btn--default btn--round" disabled>Button</button>
-        <button class="btn btn--dashed btn--round" disabled>Button</button>
-        <button class="btn btn--text btn--round" disabled>Button</button>
-        <button class="btn btn--link btn--round" disabled>Button</button>
+        <button type="button" class="btn btn--primary btn--round" disabled>Button</button>
+        <button type="button" class="btn btn--default btn--round" disabled>Button</button>
+        <button type="button" class="btn btn--dashed btn--round" disabled>Button</button>
+        <button type="button" class="btn btn--text btn--round" disabled>Button</button>
+        <button type="button" class="btn btn--link btn--round" disabled>Button</button>
         <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
 
         <div class="matrix__row-header">
           <span class="matrix__row-label">Small</span>
         </div>
-        <button class="btn btn--primary btn--sm" disabled>Button</button>
-        <button class="btn btn--default btn--sm" disabled>Button</button>
-        <button class="btn btn--dashed btn--sm" disabled>Button</button>
-        <button class="btn btn--text btn--sm" disabled>Button</button>
-        <button class="btn btn--link btn--sm" disabled>Button</button>
+        <button type="button" class="btn btn--primary btn--sm" disabled>Button</button>
+        <button type="button" class="btn btn--default btn--sm" disabled>Button</button>
+        <button type="button" class="btn btn--dashed btn--sm" disabled>Button</button>
+        <button type="button" class="btn btn--text btn--sm" disabled>Button</button>
+        <button type="button" class="btn btn--link btn--sm" disabled>Button</button>
         <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
 
         <div class="matrix__row-header">
           <span class="matrix__row-label">Small · Round</span>
         </div>
-        <button class="btn btn--primary btn--sm btn--round" disabled>Button</button>
-        <button class="btn btn--default btn--sm btn--round" disabled>Button</button>
-        <button class="btn btn--dashed btn--sm btn--round" disabled>Button</button>
-        <button class="btn btn--text btn--sm btn--round" disabled>Button</button>
-        <button class="btn btn--link btn--sm btn--round" disabled>Button</button>
+        <button type="button" class="btn btn--primary btn--sm btn--round" disabled>Button</button>
+        <button type="button" class="btn btn--default btn--sm btn--round" disabled>Button</button>
+        <button type="button" class="btn btn--dashed btn--sm btn--round" disabled>Button</button>
+        <button type="button" class="btn btn--text btn--sm btn--round" disabled>Button</button>
+        <button type="button" class="btn btn--link btn--sm btn--round" disabled>Button</button>
         <div class="code-panel" data-row-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
       </div>
       </div>
     </section>
     </div>
 
-    <div class="tabs__panel" data-tab-panel="loading" role="tabpanel">
+    <div class="tabs__panel" id="panel-button-loading" aria-labelledby="tab-button-loading" data-tab-panel="loading" role="tabpanel" hidden>
     <!-- ============ LOADING ============ -->
     <section class="board">
       <div class="board__header">
@@ -281,11 +305,11 @@
         <span class="matrix__head">Text</span>
         <span class="matrix__head">Link</span>
 
-        <button class="btn btn--primary is-loading"><span class="btn__label">Button</span></button>
-        <button class="btn btn--default is-loading"><span class="btn__label">Button</span></button>
-        <button class="btn btn--dashed is-loading"><span class="btn__label">Button</span></button>
-        <button class="btn btn--text is-loading"><span class="btn__label">Button</span></button>
-        <button class="btn btn--link is-loading"><span class="btn__label">Button</span></button>
+        <button type="button" class="btn btn--primary is-loading"><span class="btn__label">Button</span></button>
+        <button type="button" class="btn btn--default is-loading"><span class="btn__label">Button</span></button>
+        <button type="button" class="btn btn--dashed is-loading"><span class="btn__label">Button</span></button>
+        <button type="button" class="btn btn--text is-loading"><span class="btn__label">Button</span></button>
+        <button type="button" class="btn btn--link is-loading"><span class="btn__label">Button</span></button>
       </div>
       </div>
       <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
@@ -296,17 +320,17 @@
   <section class="doc-section">
     <h3 class="doc-section__title">Examples</h3>
 
-    <h4 style="font-size: var(--text-14); font-weight: var(--weight-Semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-8);">Icon</h4>
+    <h4 style="font-size: var(--text-14); font-weight: var(--weight-semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-8);">Icon</h4>
     <section class="sgroup" style="margin-bottom: 24px;">
       <div class="sgroup__header">
         <code class="class-label">btn btn--{primary|default} &gt; svg (자식으로 넣으면 gap 토큰으로 자동 정렬)</code>
       </div>
       <div class="sgroup__body" data-code-source style="gap: var(--gap-16);">
-        <button class="btn btn--primary">
+        <button type="button" class="btn btn--primary">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3.33V12.67M3.33 8H12.67" stroke="currentColor" stroke-width="1.67" stroke-linecap="round"/></svg>
           추가하기
         </button>
-        <button class="btn btn--default">
+        <button type="button" class="btn btn--default">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3.33V12.67M3.33 8H12.67" stroke="currentColor" stroke-width="1.67" stroke-linecap="round"/></svg>
           추가하기
         </button>
@@ -314,19 +338,19 @@
       <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
     </section>
 
-    <h4 style="font-size: var(--text-14); font-weight: var(--weight-Semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-8);">Button Group</h4>
+    <h4 style="font-size: var(--text-14); font-weight: var(--weight-semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-8);">Button Group</h4>
     <section class="sgroup" style="margin-bottom: 24px;">
       <div class="sgroup__header">
         <code class="class-label">btn btn--{default|primary} 나란히 배치 (취소/확인형 액션 그룹)</code>
       </div>
       <div class="sgroup__body" data-code-source style="gap: var(--gap-8);">
-        <button class="btn btn--default">취소</button>
-        <button class="btn btn--primary">저장하기</button>
+        <button type="button" class="btn btn--default">취소</button>
+        <button type="button" class="btn btn--primary">저장하기</button>
       </div>
       <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
     </section>
 
-    <h4 style="font-size: var(--text-14); font-weight: var(--weight-Semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-8);">SNS 로그인</h4>
+    <h4 style="font-size: var(--text-14); font-weight: var(--weight-semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-8);">SNS 로그인</h4>
     <!--sns 로그인 버튼 -->
     <svg width="0" height="0" style="position:absolute" aria-hidden="true">
       <!-- 구글(컬러) -->
@@ -358,25 +382,25 @@
           </div>
           <div class="sgroup__body" data-code-source>
             <div class="sgroup__col">
-              <button class="sbtn sbtn--filled sbtn--google">
+              <button type="button" class="sbtn sbtn--filled sbtn--google">
                 <svg class="sbtn__icon"><use href="#ic-google-color"/></svg>
                 <span class="sbtn__label">Sign in with Google</span>
               </button>
-              <button class="sbtn sbtn--filled sbtn--facebook">
+              <button type="button" class="sbtn sbtn--filled sbtn--facebook">
                 <svg class="sbtn__icon"><use href="#ic-facebook"/></svg>
                 <span class="sbtn__label">Sign in with Facebook</span>
               </button>
-              <button class="sbtn sbtn--filled sbtn--apple">
+              <button type="button" class="sbtn sbtn--filled sbtn--apple">
                 <svg class="sbtn__icon"><use href="#ic-apple"/></svg>
                 <span class="sbtn__label">Sign in with Apple</span>
               </button>
             </div>
             <div class="sgroup__row">
-              <button class="sbtn sbtn--icon sbtn--filled sbtn--google" aria-label="Sign in with Google">
+              <button type="button" class="sbtn sbtn--icon sbtn--filled sbtn--google" aria-label="Sign in with Google">
                 <svg class="sbtn__icon"><use href="#ic-google-color"/></svg></button>
-              <button class="sbtn sbtn--icon sbtn--filled sbtn--facebook" aria-label="Sign in with Facebook">
+              <button type="button" class="sbtn sbtn--icon sbtn--filled sbtn--facebook" aria-label="Sign in with Facebook">
                 <svg class="sbtn__icon"><use href="#ic-facebook"/></svg></button>
-              <button class="sbtn sbtn--icon sbtn--filled sbtn--apple" aria-label="Sign in with Apple">
+              <button type="button" class="sbtn sbtn--icon sbtn--filled sbtn--apple" aria-label="Sign in with Apple">
                 <svg class="sbtn__icon"><use href="#ic-apple"/></svg></button>
             </div>
           </div>
@@ -390,25 +414,25 @@
           </div>
           <div class="sgroup__body" data-code-source>
             <div class="sgroup__col">
-              <button class="sbtn sbtn--outline sbtn--google">
+              <button type="button" class="sbtn sbtn--outline sbtn--google">
                 <svg class="sbtn__icon"><use href="#ic-google-color"/></svg>
                 <span class="sbtn__label">Sign in with Google</span>
               </button>
-              <button class="sbtn sbtn--outline sbtn--facebook">
+              <button type="button" class="sbtn sbtn--outline sbtn--facebook">
                 <svg class="sbtn__icon"><use href="#ic-facebook"/></svg>
                 <span class="sbtn__label">Sign in with Facebook</span>
               </button>
-              <button class="sbtn sbtn--outline sbtn--apple">
+              <button type="button" class="sbtn sbtn--outline sbtn--apple">
                 <svg class="sbtn__icon"><use href="#ic-apple"/></svg>
                 <span class="sbtn__label">Sign in with Apple</span>
               </button>
             </div>
             <div class="sgroup__row">
-              <button class="sbtn sbtn--icon sbtn--outline sbtn--google" aria-label="Sign in with Google">
+              <button type="button" class="sbtn sbtn--icon sbtn--outline sbtn--google" aria-label="Sign in with Google">
                 <svg class="sbtn__icon"><use href="#ic-google-color"/></svg></button>
-              <button class="sbtn sbtn--icon sbtn--outline sbtn--facebook" aria-label="Sign in with Facebook">
+              <button type="button" class="sbtn sbtn--icon sbtn--outline sbtn--facebook" aria-label="Sign in with Facebook">
                 <svg class="sbtn__icon"><use href="#ic-facebook"/></svg></button>
-              <button class="sbtn sbtn--icon sbtn--outline sbtn--apple" aria-label="Sign in with Apple">
+              <button type="button" class="sbtn sbtn--icon sbtn--outline sbtn--apple" aria-label="Sign in with Apple">
                 <svg class="sbtn__icon"><use href="#ic-apple"/></svg></button>
             </div>
           </div>
@@ -422,25 +446,25 @@
           </div>
           <div class="sgroup__body" data-code-source>
             <div class="sgroup__col">
-              <button class="sbtn sbtn--mono sbtn--google">
+              <button type="button" class="sbtn sbtn--mono sbtn--google">
                 <svg class="sbtn__icon"><use href="#ic-google-mono"/></svg>
                 <span class="sbtn__label">Sign in with Google</span>
               </button>
-              <button class="sbtn sbtn--mono sbtn--facebook">
+              <button type="button" class="sbtn sbtn--mono sbtn--facebook">
                 <svg class="sbtn__icon"><use href="#ic-facebook"/></svg>
                 <span class="sbtn__label">Sign in with Facebook</span>
               </button>
-              <button class="sbtn sbtn--mono sbtn--apple">
+              <button type="button" class="sbtn sbtn--mono sbtn--apple">
                 <svg class="sbtn__icon"><use href="#ic-apple"/></svg>
                 <span class="sbtn__label">Sign in with Apple</span>
               </button>
             </div>
             <div class="sgroup__row">
-              <button class="sbtn sbtn--icon sbtn--mono sbtn--google" aria-label="Sign in with Google">
+              <button type="button" class="sbtn sbtn--icon sbtn--mono sbtn--google" aria-label="Sign in with Google">
                 <svg class="sbtn__icon"><use href="#ic-google-mono"/></svg></button>
-              <button class="sbtn sbtn--icon sbtn--mono sbtn--facebook" aria-label="Sign in with Facebook">
+              <button type="button" class="sbtn sbtn--icon sbtn--mono sbtn--facebook" aria-label="Sign in with Facebook">
                 <svg class="sbtn__icon"><use href="#ic-facebook"/></svg></button>
-              <button class="sbtn sbtn--icon sbtn--mono sbtn--apple" aria-label="Sign in with Apple">
+              <button type="button" class="sbtn sbtn--icon sbtn--mono sbtn--apple" aria-label="Sign in with Apple">
                 <svg class="sbtn__icon"><use href="#ic-apple"/></svg></button>
             </div>
           </div>

@@ -21,7 +21,7 @@
 }
 .page-header h2 {
   font-size: var(--display-sm);
-  font-weight: var(--weight-Semibold);
+  font-weight: var(--weight-semibold);
   color: var(--color-text-primary);
 }
 .page-header p {
@@ -47,7 +47,7 @@
 .board,
 .sgroup {
   border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-8);
   background: var(--color-bg-subtle);
 }
 .sgroup {
@@ -59,8 +59,8 @@
   padding: var(--spacing-12) var(--spacing-20);
   background: var(--color-bg-muted);
   border-bottom: 1px solid var(--color-border-subtle);
-  border-top-left-radius: var(--radius-md);
-  border-top-right-radius: var(--radius-md);
+  border-top-left-radius: var(--radius-8);
+  border-top-right-radius: var(--radius-8);
 }
 .board__header .class-label,
 .sgroup__header .class-label {
@@ -78,6 +78,9 @@
 .board > .code-panel,
 .sgroup > .code-panel {
   margin: 0 var(--spacing-20) var(--spacing-20);
+}
+.sgroup > .code-panel {
+  min-width: 0;
 }
 
 /* ---- 매트릭스 행 헤더 (사이즈/상태별 그룹) ---- */
@@ -103,9 +106,35 @@
 }
 .doc-section__title {
   font-size: var(--text-16);
-  font-weight: var(--weight-Semibold);
+  font-weight: var(--weight-semibold);
   color: var(--color-text-primary);
   margin-bottom: var(--spacing-12);
+}
+
+/* ---- Quick Start: 복사 가능한 최소 구현과 사용 기준 ---- */
+.doc-quick-start {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-16);
+  margin-bottom: var(--spacing-16);
+}
+.doc-quick-start__item {
+  padding: var(--spacing-14);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-8);
+  background: var(--color-bg-surface);
+}
+.doc-quick-start__label {
+  display: block;
+  margin-bottom: var(--spacing-6);
+  color: var(--color-text-secondary);
+  font-size: var(--text-14);
+  font-weight: var(--weight-semibold);
+}
+.doc-quick-start__item p {
+  color: var(--color-text-tertiary);
+  font-size: var(--text-14);
+  line-height: 1.6;
 }
 
 /* ---- Variants/Options 표 ---- */
@@ -113,7 +142,7 @@
   width: 100%;
   border-collapse: collapse;
   border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-8);
   overflow: hidden;
 }
 .doc-table th,
@@ -143,7 +172,7 @@
 .doc-code {
   display: inline-block;
   padding: 2px 8px;
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-4);
   background: var(--color-bg-muted);
   color: var(--color-text-primary);
   font-family: ui-monospace, monospace;
@@ -162,12 +191,12 @@
 }
 .doc-guideline {
   padding: var(--spacing-16);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-8);
   border: 1px solid;
 }
 .doc-guideline h4 {
   font-size: var(--text-14);
-  font-weight: var(--weight-Semibold);
+  font-weight: var(--weight-semibold);
   margin-bottom: var(--spacing-8);
 }
 .doc-guideline ul {
@@ -192,4 +221,14 @@
 }
 .doc-guideline--dont h4 {
   color: var(--color-text-danger);
+}
+
+@media (max-width: 640px) {
+  .page-container {
+    overflow-x: hidden;
+  }
+  .doc-quick-start,
+  .doc-guideline-grid {
+    grid-template-columns: 1fr;
+  }
 }
