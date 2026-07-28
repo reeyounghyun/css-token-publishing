@@ -2,7 +2,33 @@
 
 > 날짜순 진행 기록. 스펙/작업지시서·IA·작성규칙·Patterns 정의는 [spec.md](spec.md) 참고.
 > TODO.md + TODO2.md(6장 진행 메모) + TODO3.md를 통합해 정리함.
-> 최종 수정: 2026-07-27
+> 최종 수정: 2026-07-28
+
+---
+
+## 2026-07-28 — 활용성 감사 2회차 [신규 발견, 미해결 — 작업 예정]
+
+목적: "문서만 보고 활용 가능한가" 기준으로 컴포넌트/CSS/JS/patterns/workflow.md 전체 재점검. Claude에게 2회에 걸쳐 감사를 맡기고, 핵심 항목은 실제 파일을 직접 대조해 검증까지 마침. 아래는 전부 기존 백로그(§ 남은 작업)와 겹치지 않는 신규 발견이며, 아직 아무것도 수정하지 않은 상태.
+
+- 🔴 **Quick Start 섹션이 `component/button.html` 1곳에만 있고 나머지 19개 컴포넌트엔 없음.** `spec.md:39-49`가 정의한 7단계 템플릿(Overview→Quick Start→Variants→Options→States→Examples→Guidelines) 중 "복붙해도 안전한 최소 마크업" 담당 섹션인데, 이 파일의 TASK-1 완료 기록(74행 근처)조차 "6단계로 재작성"이라 적어 처음부터 빠졌음을 자인. **최우선 처리 대상.**
+- 🔴 `component/input.html:164, 224, 232, 254`의 아이콘 자리에 "아이콘"이라는 한글 텍스트가 플레이스홀더가 아니라 리터럴로 남아있음. Copy 버튼으로 복붙하면 그대로 렌더링됨. `patterns/detail-page.html:119`에도 전파됨.
+- 🟡 `js/main.js:139-175`의 Modal에 포커스 트랩 없음. ESC 닫기·오버레이 클릭 닫기·최초 포커스 이동은 있으나 Tab 키로 모달 밖 배경까지 빠져나갈 수 있음.
+- 🟡 `css/component/doc-template.css:40`의 `color: #98A2B3` 하드코딩. `tokens.css`의 `--gray-400`(`--color-text-faint`)와 완전히 동일한 값인데 토큰 미사용. 18개 컴포넌트 페이지가 공유하는 CSS라 영향 범위 큼.
+- 🟡 `component/table.html:315` Guideline이 "`aria-sort`를 실제 정렬 상태와 동기화하라"고 지시하지만 `js/main.js`엔 정렬 동작 자체가 없음(기존 백로그 "STEP 6" 항목과 같은 뿌리 — 정적 데모 원칙으로 이미 보류된 것과 연결됨). Guideline 문구를 "정렬 JS 연결 시" 조건부 표현으로 정정 필요.
+- 🟢 `component/switch.html:99-101` 첫 데모에 텍스트/`aria-label` 등 접근 가능한 이름이 없음.
+- 🟢 `component/checkbox.html`에 indeterminate 상태 없음 — 의도적 제외인지 단순 누락인지 문서에 명시 안 됨.
+- **문서 공백(저비용 추가 권장, 모든 md에 0건)**: 에러 메시지 작성(콘텐츠) 가이드 / 브라우저 지원 범위 명시 / 아이콘 소스·라이브러리 지정.
+- 확인 결과 이상 없음: `index.html` COMPONENTS 배열=파일 20개 1:1, `patterns/*.html` 7개 마크업 정상(태그/id/클래스 참조 이상 없음), `toast` `aria-live` 정상, 커스텀 dropdown 키보드 네비 완비, `workflow.md` 전체 정독 결과 STEP/QA체크리스트/링크 이상 없음(단 QA체크리스트가 "검수용"이라 Quick Start 부재를 못 메움), pagination "…" 생략 표시·accordion 단일/다중 옵션 문서화 확인.
+- 변경 파일: `history.md` (기록만, 실제 수정은 사용자가 별도 진행 예정)
+
+## 2026-07-28 — 문서 활용성 개선 1차 [완료]
+- 문서를 처음 보는 실무자가 토큰 목록부터 탐색하지 않도록, `index.html` 첫 화면에 **Patterns → Components → Quick Start 코드 → Tokens → 공통 원칙 점검**의 사용 흐름을 추가.
+- Design Tokens 상단에 상황별 선택 기준표를 추가. 텍스트/간격/색상/크기/레이어별로 어떤 역할 토큰을 먼저 선택해야 하는지 명시.
+- Patterns를 단순 예시 모음이 아니라 화면 제작의 시작점으로 재정의하고, 만들려는 화면 유형별 권장 Pattern 표를 추가.
+- `component/button.html`을 기준 샘플로 확장: Overview 다음에 Quick Start(Use when/Avoid when)와 복사 가능한 최소 마크업을 배치.
+- `doc-template.css`에 Quick Start 공용 스타일을 추가. 이후 다른 컴포넌트에 같은 구조를 확산할 수 있는 기준을 마련.
+- 모바일 검증 중 Button 문서의 긴 코드와 상태 매트릭스가 페이지 전체 가로 스크롤을 만들던 점을 발견. 코드 패널과 매트릭스의 스크롤 범위를 내부 컨테이너로 제한.
+- `README.md`에는 실무 사용 순서와 화면별 Pattern 시작점을, `spec.md`에는 Quick Start 작성 기준과 Pattern 선택 기준을 문서 규격으로 반영.
 
 ---
 
@@ -214,14 +240,24 @@ TODO.md 원본 백로그 중 실제 코드 기준으로 재확인한 현재 상�
 
 | 내용 | 대상 파일 | 상태 |
 |---|---|---|
-| `is--open`/`is--active` → `is-open`/`is-active` | `dropdown.css`(4곳) + `main.js` | 미해결 (코드에 여전히 `is--open`/`is--active` 존재, 2026-07-27 재확인) |
-| primitive 직접 참조 → semantic | `code-panel.css` | 미해결 (`var(--White)` 등 직접 참조 여전히 존재) |
-| `--White` → `--color-bg-surface` 등으로 교체 후 토큰 삭제 | `tokens.css` + `code-panel.css` | 미해결 |
+| `is--open`/`is--active` → `is-open`/`is-active` | `dropdown.css` + `main.js` + `component/dropdown.html` | 해결 (2026-07-28 정리) |
+| primitive 직접 참조 → semantic | `code-panel.css` | 해결 (2026-07-28 정리, 코드 패널 전용 semantic 토큰 추가) |
+| `--white` → `--color-bg-surface` 등으로 교체 후 토큰 삭제 | `tokens.css` | 미해결 (`--white` 토큰 삭제 여부는 별도 재검토) |
 | `--gray: gray` / `--black: black` 삭제 (사용처 0곳) | `tokens.css` | 미확인 — 재검토 필요 |
-| `--weight-Semibold` → `--weight-semibold` | `tokens.css` + 컴포넌트 다수(18곳 확인) | 미해결 |
-| `--radius-*` / `--height-*` 숫자 표기로 통일 | `tokens.css` + 대부분의 컴포넌트 | 미해결 (현재 xs/sm/md/lg 네이밍 유지 중) |
+| `--weight-Semibold` → `--weight-semibold` | `tokens.css` + 컴포넌트/문서 예시 | 해결 (2026-07-28 정리) |
+| `--radius-*` / `--height-*` 숫자 표기로 통일 | `tokens.css` + 대부분의 컴포넌트 | 해결 (2026-07-28 정리, `--radius-full` 예외 유지) |
 | `img` → `image` | `dropdown-menu.css`, `style.css` | 미확인 — 재검토 필요 |
 | `dropdown__userinfo` → `dropdown__user-info` | `dropdown-menu.css` + `dropdown-menu.html` | 미해결 |
+| Quick Start 섹션 부재 (20개 중 19개) | `component/*.html` (`button.html` 제외) | 미해결 (신규발견 2026-07-28, 최우선) |
+| 아이콘 자리 "아이콘" 텍스트 리터럴 | `component/input.html`(4곳) + `patterns/detail-page.html` | 미해결 (신규발견 2026-07-28) |
+| Modal 포커스 트랩 없음 | `js/main.js` | 미해결 (신규발견 2026-07-28) |
+| doc-template.css 하드코딩 색상(`#98A2B3`) | `css/component/doc-template.css:40` | 미해결 (신규발견 2026-07-28) |
+| `table__sort` Guideline과 실제 동작 불일치 | `component/table.html:315` + `js/main.js` | 미해결 (기존 STEP 6 항목과 동일 뿌리) |
+| Switch 첫 데모 접근가능한 이름 없음 | `component/switch.html:99-101` | 미해결 (신규발견 2026-07-28, 사소) |
+| Checkbox indeterminate 상태 없음 | `component/checkbox.html` | 미확인 — 의도적 제외 여부 재검토 필요 |
+| 에러 메시지 작성 가이드 부재 | 전체 md | 신규 — 추가 검토 |
+| 브라우저 지원 범위 미명시 | 전체 md | 신규 — 추가 검토 |
+| 아이콘 소스/라이브러리 미지정 | `publishing-rules.md` 또는 `README.md` | 신규 — 추가 검토 |
 
 publishing-rules.md 안에 있던 인라인 "수정 필요" 콜아웃 4개도 위 표와 같은 내용이라 중복이었음 — publishing-rules.md에서는 삭제하고, 원문 그대로 이곳으로 옮김(요약 없이 원본 문구 보존):
 
@@ -243,3 +279,62 @@ publishing-rules.md 안에 있던 인라인 "수정 필요" 콜아웃 4개도 �
 - **code-panel(구문강조+Copy 버튼)을 컴포넌트 페이지에 적용할지**: TASK-1에서 이미 18개 전체에 적용 완료 — 해결됨, 백로그에서 제외.
 - **Breadcrumb**: 아직 미착수. "필요할 때 추가".
 - **Skeleton**: 아직 미착수 (TODO2.md 6장 질문 #6, 답변 안 됨). "필요할 때 추가".
+
+### 2026-07-28 — 리뷰 후 컨벤션 싱크 1차 정리 [완료]
+- 사용자 결정: 토큰명은 숫자형으로 통일. 기존 `--height-xs/sm/md/lg/xl/1xl`은 `--height-36/40/44/48/60/108`로, `--radius-xs/sm/md/lg/xl`은 `--radius-4/6/8/16/full`로 변경. `--weight-Semibold`는 `--weight-semibold`, `--White`는 `--white`로 변경.
+- 상태 클래스는 규칙대로 `is-` 접두사만 쓰도록 `dropdown` 계열의 `is--open`/`is--active`를 `is-open`/`is-active`로 변경.
+- `spec.md`에 Components 구현 상태 표를 추가해 별도 파일 구현/통합 구현/미착수를 구분. `radio`는 `checkbox.html`, `select`는 `dropdown.html`에 통합 구현으로 명시.
+- `component/button.html`의 복사 대상 데모 버튼에 `type="button"`을 추가해 복붙 코드가 QA 기준을 통과하도록 정리.
+- 정적 검색 검증 완료:
+  - 옛 토큰명(`--height-xs/sm/md/lg/xl/1xl`, `--radius-xs/sm/md/lg/xl`, `--weight-Semibold`, `--White`) 검색 결과 없음.
+  - 실제 코드의 `is--open`/`is--active` 검색 결과 없음. 단, 규칙 문서의 금지 예시 문구는 유지.
+  - `component/`, `patterns/`, `index.html` 기준 `type` 없는 `<button>` 검색 결과 없음.
+- 로컬 서버 확인: 번들 Python으로 `http://127.0.0.1:8000/index.html` 응답 `200 OK` 확인. Playwright 자동 렌더링 검증은 번들 패키지에서 `playwright-core`를 찾지 못해 미진행.
+- 이번 작업 뒤에도 별도 백로그로 남은 것: `--gray`/`--black`/`--white` 삭제 가능 여부 재검토, `img` → `image`, `dropdown__userinfo` → `dropdown__user-info`, Skeleton/Breadcrumb 필요 여부.
+- 변경 파일: `css/tokens.css`, `css/component/*.css`, `component/*.html`, `patterns/*.html`, `index.html`, `js/main.js`, `js/scroll-top.js`, `README.md`, `spec.md`, `history.md`
+
+### 2026-07-28 — Tabs 접근성 / code-panel 토큰화 추가 정리 [완료]
+- 리뷰 재확인 결과, Tabs 컴포넌트에 `aria-controls`/`aria-labelledby` 연결이 없고 `main.js`의 방향키 이동이 disabled 탭까지 포함하는 문제가 남아 있었음.
+- `component/tabs.html` 예제에 탭-패널 연결을 명시하고, 비활성 패널에는 `hidden`을 추가. disabled 탭(`tab-billing`)도 깨진 참조가 생기지 않도록 숨겨진 준비중 패널(`panel-billing`)을 연결.
+- `component/button.html`의 States 탭도 같은 방식으로 `aria-controls`/`aria-labelledby`/`hidden`을 추가해 문서 안에서 재사용되는 Tabs 예제까지 통일.
+- `js/main.js`의 `[data-tabs]` 초기화 로직을 보강:
+  - 마크업에 id/ARIA 연결이 빠져 있으면 런타임에서 보정.
+  - `disabled` 또는 `aria-disabled="true"` 탭은 클릭/방향키/Home/End 이동 대상에서 제외.
+  - 활성 패널은 `is-active`와 `hidden`을 함께 토글.
+  - 선택된 탭만 `tabIndex=0`, 나머지는 `tabIndex=-1`로 정리.
+- `code-panel.css`의 하드코딩 색상(`#0B0D12`, `#E5E7EB`, `#1F242E`, `#2A3040`, `rgba(...)`)과 primitive 직접 참조(`var(--white)`, `var(--primary-600)`)를 제거.
+- `tokens.css`에 `--color-code-*` semantic 토큰을 추가하고, `code-panel.css`는 해당 토큰과 기존 semantic 토큰(`--color-bg-accent`, `--color-text-inverse`)만 참조하도록 변경.
+- 검증: `code-panel.css` 안의 hex/rgba/primitive 참조 검색 결과 없음, `component/tabs.html`/`component/button.html`의 `aria-controls`·`aria-labelledby` 참조 누락 없음, `node --check js/main.js` 통과, 로컬 서버 `index.html` 응답 `200 OK`.
+- 변경 파일: `component/tabs.html`, `component/button.html`, `js/main.js`, `css/tokens.css`, `css/component/code-panel.css`, `history.md`
+
+### 2026-07-27 — 사이드바 "1. 시스템 소개" / "3. 공통 원칙" 콘텐츠 작성 [완료, IA 6개 대분류 전부 완성]
+- 유저가 index.html 사이드바에 이 둘만 아직 "준비중"으로 남아있는 걸 확인 요청 → 채우기로 결정
+- "1. 시스템 소개": spec.md §0(컨텍스트) 내용을 요약 — 무엇을 만드는지, 기술 제약(정적 HTML+CSS/BEM/토큰) 표, 그리고 README/publishing-rules.md/workflow.md/spec.md/history.md 문서 안내 포인터
+- "3. 공통 원칙": publishing-rules.md 핵심만 요약 3개 표(토큰/BEM 네이밍/접근성 기본), 전체 규칙은 publishing-rules.md 참고하라고 안내. 새 CSS 클래스 안 만들고 기존 `ix-util-table`(Utilities 섹션에서 쓰던 것) 재사용
+- 사이드바 두 링크의 `is-placeholder` 클래스 제거
+- **IA(spec.md 2장) 6개 대분류(시스템 소개/Design Tokens/공통 원칙/컴포넌트 목록/Utilities/Patterns) 전부 실 콘텐츠로 채워짐.**
+- 이어서 이제 아무 데서도 안 쓰이는 `.ix-nav-group__label.is-placeholder`/`.ix-placeholder` CSS 규칙 2개를 삭제(사용자 확인 후)
+- 변경 파일: `index.html`
+
+### 2026-07-27 — 사이드바 "2. Design Tokens" 하위 메뉴 순서를 실제 콘텐츠 순서에 맞게 수정 [완료]
+- 실제 섹션 순서(Color → Typography → Font Weight → Spacing → Radius → Shadow → Transition → Z-Index → Icon Size)와 사이드바 메뉴 순서(Font Weight가 맨 끝에 있었음)가 어긋나 있던 것을 사용자가 발견 → Font Weight를 Typography 바로 다음으로 옮겨 일치시킴
+- 변경 파일: `index.html`
+
+### 2026-07-27 — Design Tokens: Color·Typography 항목 과다 문제를 "핵심만 미리보기 + 더보기/접기" 로 해결 [완료]
+- 사용자가 "색상/타이포는 항목이 너무 많으니 별도 페이지로 분리해서 새 창에서 열기로 보여주면 어떻겠냐"고 제안 → 별도 페이지 대신, 같은 페이지 안에서 "자주 쓰는 것만 먼저 보여주고 나머지는 토글로 펼치기"를 대안으로 제시해 사용자가 채택
+  - 이유: 색상/타이포는 JS가 tokens.css를 실시간으로 읽어와 그리는 구조라, 별도 페이지를 만들면 그 읽기 로직을 두 곳에서 중복 관리해야 함. "자주 쓰는 것"을 사람이 계속 골라 유지하는 부담도 새로 생기지만, 그래도 페이지/파일을 새로 만드는 것보다는 가벼움
+- 대상 3곳: 색상 primitive(그룹당 3단계만 core), 색상 semantic(그룹당 1~2개만 core, 그룹이 통째로 안 사라지게 그룹마다 최소 1개는 core로 지정), 타이포 본문 텍스트 크기(25단계 중 5개만 core)
+- core가 아닌 항목은 `[data-collapsed] .ix-swatch:not(.is-core)` 등 CSS로 숨김. `wireMoreToggle()` 공통 함수로 각 목록의 실제 개수를 세어 버튼 라벨(`전체 N개 보기`)을 채움
+- **버튼 배치 반복 조정** — 처음엔 목록 아래에 토글 버튼 하나만 뒀는데(더보기↔접기 겸용), 사용자 피드백으로: ① 제목(`ix-subtitle`) 오른쪽 끝에 배치하는 게 낫겠다 → ② 근데 접기는 원래처럼 목록 맨 아래 유지가 나을 것 같다 → 최종적으로 버튼을 2개로 분리: "전체 N개 보기"는 제목 옆(`ix-subtitle-row`, flex space-between)에, "접기"는 기존처럼 목록 맨 아래에. 버튼이 상태 바뀔 때마다 위치를 옮기면 어색해서 위치 고정된 버튼 2개로 나눈 것
+- 버튼 스타일도 처음엔 대비가 약한 투명+점선(거의 안 보인다는 피드백) → primary 파란 계열로 바꿨다가 → 최종적으로 다른 곳(`ix-card__open`)과 통일된 중립 회색 스타일(흰 배경, gray-300 테두리, gray-700 텍스트)로 정착
+- 접기 버튼도 처음엔 테두리 없는 링크 스타일(gray-500, hover 시 밑줄)로 가볍게 했다가, 사용자 피드백으로 배경(흰색)+테두리(gray-300)를 다시 추가해 "전체 보기" 버튼과 톤을 맞춤. 위치도 왼쪽 정렬이던 걸 `margin-left: auto`(block 요소를 fit-content 폭으로 만들고 왼쪽 마진만 auto)로 오른쪽 끝 정렬로 변경
+- 변경 파일: `index.html`
+
+### 2026-07-27 — 사이드바 대분류 순서를 "공통 원칙 → Design Tokens" 순으로 변경 [완료]
+- 사용자 요청: 1.소개(유지) → 2.공통 원칙 → 3.Design Tokens → 4.컴포넌트(유지) → 5.Utilities(유지) → 6.Patterns(유지). 기존엔 2.Design Tokens/3.공통 원칙이 반대 순서였음
+- 사이드바 nav 블록 순서와 라벨 번호, `<main>` 안 `section-principles`/`section-tokens` 콘텐츠 블록 순서를 모두 이 순서에 맞게 맞바꿈(앵커 id·하위 목록 내용은 그대로, 순서만 이동)
+- 변경 파일: `index.html`
+
+### 2026-07-27 — publishing-rules.md 제목에 "(순수 규칙)" 부기 [사용자/린터가 직접 수정]
+- 제목이 `# 퍼블리싱 규칙` → `# 퍼블리싱 규칙 (순수 규칙)`으로 변경됨 — 앞서 진행사항/백로그 콜아웃을 history.md로 옮기고 이 문서엔 규칙만 남긴 것과 맥락이 맞음
+- 변경 파일: `publishing-rules.md`

@@ -14,10 +14,32 @@ CSS 커스텀 프로퍼티(디자인 토큰) 기반으로 만든 UI 컴포넌트
 | [spec.md](spec.md) | 프로젝트 스펙/지시서 (IA, Utilities·Patterns 정의) |
 | [history.md](history.md) | 날짜순 진행 히스토리 + 남은 작업(백로그) |
 
+## 실무 사용 순서
+
+새 화면을 만들 때는 토큰 목록부터 고르지 않는다. 아래 순서로 시작하면 기존 컴포넌트와의 일관성을 유지하면서 빠르게 화면을 구성할 수 있다.
+
+1. **Pattern 선택**: 만들려는 화면과 가장 가까운 `patterns/*.html`을 먼저 연다.
+2. **Component 확인**: Pattern에 포함된 컴포넌트의 상태·변형을 `component/*.html`에서 확인한다.
+3. **Quick Start 복사**: 컴포넌트 문서 상단의 최소 마크업을 복사해 시작한다.
+4. **Token 조정**: 여백·크기·색상은 `index.html` Design Tokens의 선택 기준에 따라 역할 토큰으로 조정한다.
+5. **원칙 점검**: BEM, 접근성, 하드코딩 금지 여부를 `publishing-rules.md`와 `workflow.md` QA로 확인한다.
+
+### 화면별 시작 Pattern
+
+| 만들려는 화면 | 시작 Pattern |
+|---|---|
+| 검색 조건만 있는 조회 화면 | `patterns/search-form.html` |
+| 검색 결과와 목록을 함께 보여주는 화면 | `patterns/search-table.html` |
+| 로그인·인증 진입 화면 | `patterns/login.html` |
+| 한 건의 정보를 조회·수정하는 화면 | `patterns/detail-page.html` |
+| 짧은 입력을 현재 화면 위에서 처리 | `patterns/modal-form.html` |
+| 데이터 없음·권한 없음 안내 | `patterns/empty-state.html` |
+| 지표와 현황을 한눈에 확인 | `patterns/dashboard.html` |
+
 ## 폴더 구조
 
 ```
-component-ui/
+css-token-publishing/
 ├─ index.html              # 컴포넌트 인덱스 — 여기서 시작. 토큰 카탈로그 + 컴포넌트 검색/미리보기(iframe)
 ├─ brickify.html            # 랜딩 페이지 데모(Brickify). 컴포넌트 인덱스와 무관, 별개 작업물
 ├─ component/               # 컴포넌트별 데모 페이지 (아래 "컴포넌트 보기" 표 참고)
@@ -36,7 +58,7 @@ component-ui/
 
 ## index.html (컴포넌트 인덱스)
 
-새 프로젝트 시작할 때 여기부터 엽니다. 두 구역으로 구성됩니다.
+새 프로젝트 시작할 때 여기부터 엽니다. Pattern, 토큰 카탈로그, 컴포넌트 검색·미리보기를 한곳에서 확인할 수 있습니다.
 
 ### 1. 토큰 카탈로그
 
@@ -54,6 +76,11 @@ component-ui/
 - 검색창에 입력하면 컴포넌트 이름/설명으로 카드가 필터링됩니다
 - 각 카드는 실제 `component/*.html`을 **iframe으로 통째로 띄운 것**입니다. 스크린샷이나 재구현이 아니라 진짜 그 페이지라서, 항상 최신 상태를 반영합니다
 - 카드 우측 상단 "새 창에서 열기"로 전체 화면에서 볼 수 있습니다
+- 개별 페이지는 Overview 다음의 **Quick Start**에서 사용·비사용 기준과 복사 가능한 최소 마크업을 먼저 확인합니다
+
+### 3. Patterns
+
+새 화면의 시작점입니다. 여러 컴포넌트를 이미 조합한 구조이므로, 비슷한 화면을 찾아 필요한 부분만 바꾸는 방식으로 사용합니다.
 
 **설계 메모**: 지시서 원안은 `index.html`의 툴 UI를 `#ix` + `all: unset`으로 격리하는 방식이었습니다(컴포넌트 css가 인덱스 페이지 자체를 침범하지 못하게). 대신 `index.html`이 `css/component/*.css`를 **아예 로드하지 않고** iframe으로만 컴포넌트를 보여주는 방식을 택했습니다 — 격리해야 할 대상 자체가 사라지기 때문에 `all:unset`보다 확실합니다. 인덱스 자체의 UI 클래스는 관례상 `.ix-` 접두사를 유지합니다.
 

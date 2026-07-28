@@ -8,7 +8,7 @@
 ## 0. 컨텍스트
 
 **무엇을 만드는가**
-실무 퍼블리싱용 디자인 시스템 가이드 사이트. 디자인 토큰 → 컴포넌트 → 유틸리티 → 패턴 순으로
+실무 퍼블리싱용 디자인 시스템 가이드 사이트. 실무자는 **Pattern → Component → Quick Start → Token → QA** 순서로 필요한 화면과 코드를 찾고,
 "이 클래스를 쓰면 화면에 뭐가 나오고, 어떤 토큰이 적용되는지"를 개발자·퍼블리셔가 바로 확인하는 문서.
 
 **기술 제약**
@@ -34,19 +34,27 @@ css-token-publishing/
 
 ### TASK-1. 컴포넌트 페이지 템플릿 통일 (완료 — history.md 참고)
 
-`component/` 폴더 안 **모든 페이지**를 아래 6개 섹션 구조로 동일하게 재작성한다.
-섹션 순서·제목을 임의로 바꾸지 않는다.
+`component/` 폴더 안 **모든 페이지**는 아래 문서 구조를 따른다. `Quick Start`는 Overview 다음에 두며, 기존 6단계 상세 문서는 그 뒤에 이어진다.
 
 | # | 섹션 | 내용 |
 |---|------|------|
 | 1 | Overview | 목적 + 언제 쓰는지 (2~3줄) |
-| 2 | Variants | 스타일 변형 (컴포넌트마다 다름) |
-| 3 | Options | size(sm·md·lg) / round / icon-only / block / danger 등 부가 옵션 |
-| 4 | States | default / hover / focus / active / disabled / loading 등 |
-| 5 | Examples | 실제 조합 예시 |
-| 6 | Guidelines | 해당 컴포넌트 한정 Do·Don't, aria 규칙 |
+| 2 | Quick Start | Use when / Avoid when + 복사 가능한 최소 마크업. 처음 쓰는 사람이 가장 먼저 보는 구역 |
+| 3 | Variants | 스타일 변형 (컴포넌트마다 다름) |
+| 4 | Options | size(sm·md·lg) / round / icon-only / block / danger 등 부가 옵션 |
+| 5 | States | default / hover / focus / active / disabled / loading 등 |
+| 6 | Examples | 실제 조합 예시 |
+| 7 | Guidelines | 해당 컴포넌트 한정 Do·Don't, aria 규칙 |
 
-> ⚠️ 위 항목 예시는 Button 기준. 다른 컴포넌트는 **섹션 구조(6단계)만 동일하게 유지**하고 내부 항목은 해당 컴포넌트에 맞게 채운다.
+> ⚠️ 위 항목 예시는 Button 기준. 다른 컴포넌트도 문서 순서는 유지하되, Options/States/Examples의 세부 항목은 해당 컴포넌트에 맞게 채운다.
+
+### Quick Start 작성 기준
+
+- `Use when`: 이 컴포넌트를 선택해야 하는 상황을 한두 문장으로 쓴다.
+- `Avoid when`: 다른 HTML 요소·컴포넌트·패턴을 선택해야 하는 상황을 한두 문장으로 쓴다.
+- 최소 마크업: 가장 자주 쓰는 조합 하나만 제시하고 Copy 버튼으로 바로 복사할 수 있게 한다.
+- 최소 마크업에는 실제 프로젝트에 붙여도 안전한 `type="button"`, label 연결, 필수 aria 속성을 포함한다.
+- 복잡한 상태·변형은 Quick Start에 넣지 않고 뒤의 States/Examples에서 다룬다.
 
 ### TASK-2. `index.html` 사이드바 구현 (완료 — history.md 참고)
 
@@ -91,6 +99,36 @@ css-token-publishing/
 
 > date-picker/chart는 2026-07-27에 신규 추가되며 이 표에 반영함 (history.md 참고). skeleton은 아직 미착수.
 
+### 2-3. Components 구현 상태
+
+README 기준 최신 노출 목록은 `index.html`의 `COMPONENTS` 배열이다. 아래 표는 IA 항목이 실제 파일로 구현됐는지, 다른 컴포넌트 안에 통합됐는지, 아직 미착수인지 확인하는 상태 표다.
+
+| 컴포넌트 | 상태 | 기준 파일 | 비고 |
+|---|---|---|---|
+| button | 구현 완료 | `component/button.html` | SNS 로그인 버튼 예시 포함 |
+| input | 구현 완료 | `component/input.html` | text/email/password/tel 등 입력 예시 |
+| textarea | 구현 완료 | `component/textarea.html` | resize 옵션 포함 |
+| checkbox | 구현 완료 | `component/checkbox.html` | radio 예시와 같은 페이지에서 관리 |
+| radio | 통합 구현 | `component/checkbox.html` | 별도 `radio.html` 없음 |
+| select | 통합 구현 | `component/dropdown.html` | 네이티브 select와 커스텀 dropdown을 같은 페이지에서 관리 |
+| switch | 구현 완료 | `component/switch.html` | 상태/사이즈 예시 |
+| dropdown | 구현 완료 | `component/dropdown.html` | Forms 카테고리 |
+| date-picker | 구현 완료 | `component/date-picker.html` | 네이티브 date input 기반 |
+| dropdown-menu | 구현 완료 | `component/dropdown-menu.html` | Navigation 카테고리 |
+| pagination | 구현 완료 | `component/pagination.html` | 숫자형/텍스트형/반응형 조합 |
+| tabs | 구현 완료 | `component/tabs.html` | Underline/Pill |
+| accordion | 구현 완료 | `component/accordion.html` | details/summary 기반 |
+| badge | 구현 완료 | `component/badge.html` | Tag 예시 포함 |
+| card | 구현 완료 | `component/card.html` | 기본/가로형/통계/리스트 |
+| chart | 구현 완료 | `component/chart.html` | 정적 CSS 그래프 |
+| table | 구현 완료 | `component/table.html` | table/grid-table 예시 |
+| empty-state | 구현 완료 | `component/empty-state.html` | 검색 결과 없음/에러 포함 |
+| tooltip | 구현 완료 | `component/tooltip.html` | 4방향 |
+| alert | 구현 완료 | `component/alert.html` | Banner 예시 포함 |
+| modal | 구현 완료 | `component/modal.html` | sm/md/lg |
+| toast | 구현 완료 | `component/toast.html` | info/success/warning/error |
+| skeleton | 미착수 | - | 필요 시 `component/skeleton.html`로 추가 |
+
 ---
 
 ## 3. Utilities 페이지 작성 규칙
@@ -114,12 +152,25 @@ css-token-publishing/
 ### 개요
 Patterns는 여러 **Components**와 **Utilities**를 조합해 실제 화면을 구성하는 UI 패턴이다.
 단일 컴포넌트 사용법이 아니라, **실무에서 자주 쓰는 화면 구조와 배치 방법**을 정의한다.
+새 화면 작업의 첫 진입점으로 사용한다. Pattern에서 필요한 컴포넌트를 파악한 뒤 개별 문서의 Quick Start로 내려간다.
 
 ### 구성 원칙
 - Components를 조합해 화면을 구성한다.
 - Design Tokens 기반으로 일관된 간격·크기를 유지한다.
 - Utilities를 활용해 레이아웃을 구성한다.
 - 동일한 목적의 화면은 동일한 패턴을 사용한다.
+
+### Pattern 선택 기준
+
+| 상황 | 시작 Pattern |
+|---|---|
+| 검색 조건만 있는 조회 화면 | Search Form |
+| 검색 결과와 목록을 함께 보여주는 화면 | Search + Table |
+| 로그인·인증 진입 화면 | Login |
+| 한 건의 정보를 조회·수정하는 화면 | Detail Page |
+| 짧은 입력을 현재 화면 위에서 처리 | Modal Form |
+| 데이터 없음·권한 없음 안내 | Empty State |
+| 지표와 현황을 한눈에 확인 | Dashboard |
 
 ### 4-1. Search Form — ✅ `patterns/search-form.html`
 목록 화면 상단에서 데이터를 검색·필터링하는 기본 검색 영역.
