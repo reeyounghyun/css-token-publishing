@@ -2,6 +2,8 @@
    여기서는 브라우저 기본 달력 아이콘 색상만 디자인 토큰에 맞춰 조정한다. */
 .field__input[type="date"] {
   color: var(--color-text-primary);
+  margin-inline: 0; /* 별도 아이콘/버튼이 없어 input.css의 아이콘용 여백이 불필요 — 달력 아이콘이 박스 끝에 붙게 함 */
+  max-width: none; /* input.css의 240px 제한은 옆에 아이콘/버튼이 붙는 필드용 — date는 그런 요소가 없어 박스 끝까지 채움 */
 }
 .field__input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;

@@ -10,7 +10,7 @@
   display: flex;
   align-items: stretch;
   max-width: 320px;
-  height: var( --height-108);
+  min-height: var( --height-108);
   padding: var(--spacing-10) var(--spacing-14);
   border-radius: var(--radius-6);
   border: 1px solid var(--color-border-default);
@@ -20,7 +20,7 @@
 
 .textarea .textarea__box textarea {
   width: 100%;
-  height: 100%;
+  height: var( --height-108);
   box-sizing: border-box;
   border: transparent;
 }
