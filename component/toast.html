@@ -24,6 +24,10 @@
     .toast-preview-row .toast {
       position: static;
       width: 300px;
+      min-height: 76px;
+    }
+    .toast-preview-row--lg .toast {
+      width: 420px;
     }
   </style>
 </head>
@@ -42,6 +46,34 @@
       저장 완료, 삭제, 에러처럼 일회성 알림에 쓰고, 사용자 확인이 꼭 필요한 내용은 Modal을 쓴다.
       <code class="doc-code">js/main.js</code>의 <code class="doc-code">showToast()</code>가 실제 DOM을 만들고 4초 뒤 자동으로 제거한다.
     </p>
+  </section>
+
+  <section class="doc-section">
+    <h3 class="doc-section__title">Quick Start</h3>
+    <div class="doc-quick-start">
+      <div class="doc-quick-start__item">
+        <strong class="doc-quick-start__label">Use when</strong>
+        <p>사용자 액션에 대한 짧은 피드백을 잠깐 띄웠다가 자동으로 사라져야 할 때 사용합니다. 저장 완료, 삭제, 에러처럼 일회성 알림에 씁니다.</p>
+      </div>
+      <div class="doc-quick-start__item">
+        <strong class="doc-quick-start__label">Avoid when</strong>
+        <p>사용자 확인이 꼭 필요한 내용엔 Toast 대신 Modal을 씁니다. 4초 안에 다 읽기 힘든 긴 설명문은 넣지 않습니다.</p>
+      </div>
+    </div>
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">가장 자주 쓰는 기본 조합: data-toast 속성이 있는 버튼 — showToast()가 실제로 우하단에 띄운다</code>
+      </div>
+      <div class="board__body">
+        <div data-code-source style="padding: 4px 0;">
+          <button type="button" class="btn btn--default"
+            data-toast=""
+            data-toast-title="알림"
+            data-toast-desc="새로운 업데이트가 있습니다.">기본 토스트</button>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
   </section>
 
   <section class="doc-section">
@@ -78,7 +110,7 @@
         <code class="class-label">toast [toast--{success|warning|error}] — showToast()가 생성하는 실제 마크업</code>
       </div>
       <div class="board__body">
-        <div class="toast-preview-row" data-code-source>
+        <div class="toast-preview-row toast-preview-row--lg" style="flex-direction: column;" data-code-source>
           <div class="toast is-visible">
             <svg class="toast__icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/></svg>
             <div class="toast__body">
@@ -193,22 +225,30 @@
           <button type="button" class="btn btn--default"
             data-toast=""
             data-toast-title="알림"
-            data-toast-desc="새로운 업데이트가 있습니다.">기본 토스트</button>
+            data-toast-desc="새로운 업데이트가 있습니다.">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/></svg>
+            기본 토스트</button>
 
-          <button type="button" class="btn btn--primary"
+          <button type="button" class="btn btn--primary is-success"
             data-toast="success"
             data-toast-title="저장 완료"
-            data-toast-desc="변경 사항이 저장되었습니다.">성공 토스트</button>
+            data-toast-desc="변경 사항이 저장되었습니다.">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/></svg>
+            성공 토스트</button>
 
-          <button type="button" class="btn btn--default"
+          <button type="button" class="btn btn--primary is-warning"
             data-toast="warning"
             data-toast-title="저장 용량 임박"
-            data-toast-desc="곧 저장 공간의 90%에 도달합니다.">경고 토스트</button>
+            data-toast-desc="곧 저장 공간의 90%에 도달합니다.">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/></svg>
+            경고 토스트</button>
 
-          <button type="button" class="btn btn--default"
+          <button type="button" class="btn btn--primary is-danger"
             data-toast="error"
             data-toast-title="저장 실패"
-            data-toast-desc="네트워크 오류가 발생했습니다. 다시 시도해주세요.">에러 토스트</button>
+            data-toast-desc="네트워크 오류가 발생했습니다. 다시 시도해주세요.">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/></svg>
+            에러 토스트</button>
         </div>
       </div>
       <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
