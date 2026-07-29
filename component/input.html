@@ -100,7 +100,7 @@
         <code class="class-label">field [field--password | field__number | field--search]</code>
       </div>
       <div class="board__body">
-        <div class="field-row" data-code-source>
+        <div style="display: flex; flex-direction: column; gap: var(--spacing-16);" data-code-source>
           <div class="field">
             <label class="field__label" for="text-default">이름</label>
             <div class="field__box">
@@ -242,7 +242,7 @@
           <div class="field field__error">
             <label class="field__label" for="email-error">이메일 <span class="required" aria-hidden="true">*</span></label>
             <div class="field__box">
-              <span class="icon">아이콘</span>
+              <span class="icon" aria-hidden="true"></span>
               <input type="email" id="email-error" class="field__input" placeholder="seoyeon@example.com" required aria-invalid="true" aria-describedby="email-error-hint">
             </div>
             <p id="email-error-hint">올바른 이메일 형식이 아닙니다.</p>
@@ -250,7 +250,7 @@
           <div class="field field--success">
             <label class="field__label" for="email-success">이메일 <span class="required" aria-hidden="true">*</span></label>
             <div class="field__box">
-              <span class="icon">아이콘</span>
+              <span class="icon" aria-hidden="true"></span>
               <input type="email" id="email-success" class="field__input" value="seoyeon@example.com" required aria-invalid="false" aria-describedby="email-success-hint">
             </div>
             <p id="email-success-hint">사용 가능한 이메일입니다.</p>
@@ -272,7 +272,7 @@
           <div class="field">
             <label class="field__label" for="login-email">이메일</label>
             <div class="field__box">
-              <span class="icon">아이콘</span>
+              <span class="icon" aria-hidden="true"></span>
               <input type="email" id="login-email" class="field__input" placeholder="seoyeon@example.com">
             </div>
           </div>
