@@ -1,15 +1,19 @@
  .matrix {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--spacing-20) var(--spacing-12);
   align-items: center;
-  justify-items: start;
+  justify-items: center;
+}
+.matrix--labeled {
+  grid-template-columns: 130px repeat(4, 1fr);
 }
 .matrix__head {
-  padding: 0 2rem;
+  justify-self: stretch;
+  text-align: center;
   font-size: var(--text-14);
   font-weight: var(--weight-medium);
-  color: var(--color-text-quaternary);
+  color: var(--color-text-tertiary);
 }
 .matrix__divider { 
   grid-column: 1 / -1; 
@@ -90,22 +94,6 @@
   color: var(--color-text-accent);
 }
 
-/* Dashed : 점선 버튼(추가/생성 유도) */
-.btn--dashed {
-  background: var(--color-bg-surface);
-  border: 1px dashed var(--color-border-default);
-  color: var(--color-text-secondary);
-}
-.btn--dashed:hover       {
-  background: var(--color-bg-subtle);
-  color: var(--color-text-strong);
-}
-.btn--dashed:active,
-.btn--dashed.is-pressed  {
-  border-color: var(--color-border-accent-strong);
-  color: var(--color-text-accent);
-}
-
 /* Text : 배경 없는 버튼(보조 액션) */
 .btn--text {
   color: var(--color-text-secondary);
@@ -118,7 +106,7 @@
   background: var(--color-bg-strong);
 }
 
-/* Danger : 삭제 등 파괴적 액션 (Text 위에 색만 덮어씀) */
+/* Danger : 삭제 등 파괴적 액션 (Text/Primary 위에 색만 덮어씀) */
 .btn--text.is-danger {
   color: var(--color-text-danger);
 }
@@ -129,6 +117,62 @@
 .btn--text.is-danger:active,
 .btn--text.is-danger.is-pressed {
   background: var(--color-bg-danger-muted);
+}
+.btn--primary.is-danger {
+  background: var(--color-bg-danger);
+  border-color: var(--color-border-danger-strong);
+}
+.btn--primary.is-danger:hover {
+  background: var(--color-bg-danger-hover);
+  border-color: var(--color-bg-danger-hover);
+}
+.btn--primary.is-danger:active,
+.btn--primary.is-danger.is-pressed {
+  background: var(--color-bg-danger-active);
+  border-color: var(--color-bg-danger-active);
+}
+.btn--default.is-danger {
+  background: var(--color-bg-surface);
+  border-color: var(--color-border-danger);
+  color: var(--color-text-danger);
+}
+.btn--default.is-danger:hover {
+  background: var(--color-bg-danger-subtle);
+  color: var(--color-text-danger-hover);
+}
+.btn--default.is-danger:active,
+.btn--default.is-danger.is-pressed {
+  background: var(--color-bg-danger-muted);
+}
+
+/* Success : 성공/완료 확정 액션 */
+.btn--primary.is-success {
+  background: var(--color-bg-success);
+  border-color: var(--color-border-success-strong);
+}
+.btn--primary.is-success:hover {
+  background: var(--color-bg-success-hover);
+  border-color: var(--color-bg-success-hover);
+}
+.btn--primary.is-success:active,
+.btn--primary.is-success.is-pressed {
+  background: var(--color-bg-success-active);
+  border-color: var(--color-bg-success-active);
+}
+
+/* Warning : 주의가 필요한 액션 */
+.btn--primary.is-warning {
+  background: var(--color-bg-warning);
+  border-color: var(--color-border-warning-strong);
+}
+.btn--primary.is-warning:hover {
+  background: var(--color-bg-warning-hover);
+  border-color: var(--color-bg-warning-hover);
+}
+.btn--primary.is-warning:active,
+.btn--primary.is-warning.is-pressed {
+  background: var(--color-bg-warning-active);
+  border-color: var(--color-bg-warning-active);
 }
 
 /* Link : 링크형 버튼(내비게이션 성격) */
@@ -147,6 +191,7 @@
 .btn--lg {
   height: var(--height-48);
   padding: 0 var(--spacing-28);
+  min-width: 140px;
   border-radius: var(--radius-8);
   font-size: var(--text-16);
 }
@@ -170,13 +215,9 @@
   box-shadow: none;
 }
 .btn--primary:disabled, .btn--primary.is-disabled,
-.btn--default:disabled, .btn--default.is-disabled,
-.btn--dashed:disabled,  .btn--dashed.is-disabled {
+.btn--default:disabled, .btn--default.is-disabled {
   background: var(--color-bg-muted);
   border-color: var(--color-border-subtle);
-}
-.btn--dashed:disabled, .btn--dashed.is-disabled {
-  border-style: dashed;
 }
 .btn--text:disabled, .btn--text.is-disabled,
 .btn--link:disabled, .btn--link.is-disabled {
@@ -284,47 +325,49 @@
 
 /* 2. 형태: 아이콘 전용 -------------------------------------- */
 .sbtn--icon {
-  padding:0 var(--spacing-28);
+  width:var(--height-56);
+  padding:0;
+  border-radius:9999px;
 }
 
 /* 3. Style: filled (각 브랜드 공식 스타일) ------------------ */
-.sbtn--filled.sbtn--facebook {
-  background:var(--brand-facebook);
-  border-color:var(--brand-facebook);
+.sbtn--filled.sbtn--naver {
+  background:var(--brand-naver);
+  border-color:var(--brand-naver);
   color:var(--color-text-inverse);
 }
-.sbtn--filled.sbtn--facebook:hover {
-  background:var(--brand-facebook-hover);
-  border-color:var(--brand-facebook-hover);
-}
-.sbtn--filled.sbtn--facebook .sbtn__icon {
+.sbtn--filled.sbtn--naver .sbtn__icon {
   color:var(--color-text-inverse);
 }
-.sbtn--filled.sbtn--apple {
-  background:var(--brand-apple);
-  border-color:var(--brand-apple);
-  color:var(--color-text-inverse);
+.sbtn--filled.sbtn--kakao {
+  background:var(--brand-kakao);
+  border-color:var(--brand-kakao);
+  color:var(--brand-kakao-label);
 }
-.sbtn--filled.sbtn--apple:hover {
-  background:var(--brand-apple-hover);
-  border-color:var(--brand-apple-hover);
-}
-.sbtn--filled.sbtn--apple .sbtn__icon {
-  color:var(--color-text-inverse);
+.sbtn--filled.sbtn--kakao .sbtn__icon {
+  color:var(--black);
 }
 /* filled google = 흰 배경 + 컬러 로고 → base 그대로, 마크업에서 컬러 심볼 */
 
-/* 4. Style: outline (흰 배경 + 컬러 아이콘) ----------------- */
-.sbtn--outline.sbtn--facebook .sbtn__icon {
-  color:var(--brand-facebook);
+/* filled 그룹(Google/Naver/Kakao)은 브랜드 공식 색이라 hover 시에도 변하지 않게 고정 */
+.sbtn--filled.sbtn--google:hover {
+  background:var(--color-bg-surface);
+  border-color:var(--color-border-default);
 }
-.sbtn--outline.sbtn--apple  .sbtn__icon {
-  color:var(--color-icon-primary);
+.sbtn--filled.sbtn--naver:hover {
+  background:var(--brand-naver);
+  border-color:var(--brand-naver);
 }
-/* outline google → 컬러 심볼 */
+.sbtn--filled.sbtn--kakao:hover {
+  background:var(--brand-kakao);
+  border-color:var(--brand-kakao);
+}
 
-/* 5. Style: mono (흰 배경 + 그레이 아이콘) ------------------ */
-.sbtn--mono .sbtn__icon {
-  color:var(--color-icon-faint);
+/* 4. Style: outline (흰 배경 + 컬러 아이콘) ----------------- */
+.sbtn--outline.sbtn--naver .sbtn__icon {
+  color:var(--brand-naver);
 }
-/* mono google → 모노 심볼(#ic-google-mono) */
+.sbtn--outline.sbtn--kakao .sbtn__icon {
+  color:var(--black);
+}
+/* outline google → 컬러 심볼, base 그대로 */

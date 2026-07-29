@@ -23,26 +23,39 @@
       color: var(--color-text-accent-medium);
     }
     .state-head {
+      display: grid;
+      grid-template-columns: 110px repeat(4, 1fr);
       margin-bottom: var(--spacing-10);
     }
     .state-head__cell {
       font-size: var(--text-14);
       font-weight: var(--weight-medium);
-      color: var(--color-text-quaternary);
+      color: var(--color-text-tertiary);
+      text-align: center;
     }
     .size-row {
+      display: grid;
+      grid-template-columns: 110px repeat(4, 1fr);
+      gap: var(--gap-row) var(--gap);
+      align-items: center;
       margin-bottom: var(--spacing-16);
     }
     .size-row__label {
-      display: block;
       font-size: var(--text-14);
-      margin-bottom: var(--spacing-10);
-      font-weight: var(--weight-medium);
+      font-weight: var(--weight-semibold);
       color: var(--color-text-secondary);
+    }
+    .size-row .grid--4 {
+      grid-column: 2 / -1;
+    }
+    .size-row .code-panel {
+      grid-column: 1 / -1;
+      margin-top: var(--spacing-10);
     }
     .state-cell {
       display: flex;
       align-items: center;
+      justify-content: center;
       min-height: 36px;
     }
   </style>
@@ -184,6 +197,7 @@
           <section class="state-group">
             <h3 class="state-group__title">Active: True</h3>
             <div class="grid grid--4 state-head">
+              <span class="state-head__cell"></span>
               <span class="state-head__cell">Default</span>
               <span class="state-head__cell">Pressed</span>
               <span class="state-head__cell">Loading</span>
@@ -213,6 +227,7 @@
           <section class="state-group">
             <h3 class="state-group__title">Active: False</h3>
             <div class="grid grid--4 state-head">
+              <span class="state-head__cell"></span>
               <span class="state-head__cell">Default</span>
               <span class="state-head__cell">Pressed</span>
               <span class="state-head__cell">Loading</span>
