@@ -117,7 +117,7 @@
             </div>
           </div>
           <div class="field field__number">
-            <label class="field__label" for="phone-basic">Phone number</label>
+            <label class="field__label" for="phone-basic">전화번호</label>
             <div class="field__box">
               <button type="button" class="lang__box">
                 <span>US</span>
@@ -127,7 +127,7 @@
             </div>
           </div>
           <div class="field field--search">
-            <label class="field__label" for="search-basic">Search</label>
+            <label class="field__label" for="search-basic">검색</label>
             <div class="field__box">
               <input type="search" id="search-basic" class="field__input" placeholder="검색어 입력">
               <button type="button" class="field__btn" aria-label="검색">
@@ -186,13 +186,6 @@
               <input type="text" id="text-lg" class="field__input" placeholder="크게">
             </div>
           </div>
-          <div class="field">
-            <label class="field__label" for="email-icon">Email</label>
-            <div class="field__box">
-              <span class="icon">아이콘</span>
-              <input type="email" id="email-icon" class="field__input" placeholder="seoyeon@example.com">
-            </div>
-          </div>
         </div>
       </div>
       <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
@@ -233,7 +226,7 @@
         <code class="class-label">field [field--disabled] [readonly] [field__error] [field--success]</code>
       </div>
       <div class="board__body">
-        <div class="field-row" data-code-source>
+        <div style="display: flex; flex-direction: column; gap: var(--spacing-16);" data-code-source>
           <div class="field field--disabled">
             <label class="field__label" for="text-disabled">이름</label>
             <div class="field__box">
@@ -247,7 +240,7 @@
             </div>
           </div>
           <div class="field field__error">
-            <label class="field__label" for="email-error">Email <span class="required" aria-hidden="true">*</span></label>
+            <label class="field__label" for="email-error">이메일 <span class="required" aria-hidden="true">*</span></label>
             <div class="field__box">
               <span class="icon">아이콘</span>
               <input type="email" id="email-error" class="field__input" placeholder="seoyeon@example.com" required aria-invalid="true" aria-describedby="email-error-hint">
@@ -255,7 +248,7 @@
             <p id="email-error-hint">올바른 이메일 형식이 아닙니다.</p>
           </div>
           <div class="field field--success">
-            <label class="field__label" for="email-success">Email <span class="required" aria-hidden="true">*</span></label>
+            <label class="field__label" for="email-success">이메일 <span class="required" aria-hidden="true">*</span></label>
             <div class="field__box">
               <span class="icon">아이콘</span>
               <input type="email" id="email-success" class="field__input" value="seoyeon@example.com" required aria-invalid="false" aria-describedby="email-success-hint">
@@ -277,7 +270,7 @@
       <div class="board__body">
         <div style="max-width: 320px; padding: 4px 0; display: flex; flex-direction: column; gap: var(--spacing-16);" data-code-source>
           <div class="field">
-            <label class="field__label" for="login-email">Email</label>
+            <label class="field__label" for="login-email">이메일</label>
             <div class="field__box">
               <span class="icon">아이콘</span>
               <input type="email" id="login-email" class="field__input" placeholder="seoyeon@example.com">

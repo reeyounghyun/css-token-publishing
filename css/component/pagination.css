@@ -81,10 +81,9 @@
   background: transparent;
 }
 
-/* ---- 양끝 배치 : 화살표 양 끝, 가운데 콘텐츠 ---- */
+/* ---- 양끝 배치 : 전체 폭 대신 자기 크기 유지 + 넉넉한 간격으로 답답해 보이지 않게 ---- */
 .pagination--split {
-  justify-content: space-between;
-  width: 100%;
+  gap: var(--spacing-28);
 }
 
 /* ---- 화살표 + 텍스트 버전 ---- */

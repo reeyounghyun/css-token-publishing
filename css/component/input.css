@@ -5,6 +5,15 @@
   width: 100%;
   max-width: 320px;
 }
+.field-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-16);
+}
+.field-row .field {
+  width: auto;
+  max-width: 160px;
+}
 .field .field__label {
   color: var(--color-text-secondary);
   font-size: var( --text-14);
