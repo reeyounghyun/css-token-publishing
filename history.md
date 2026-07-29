@@ -70,6 +70,7 @@
 - Options의 아이콘 옵션 데모(이메일+아이콘 예시)가 Examples의 로그인 폼과 내용이 완전히 겹쳐서 중복이라는 지적으로 Options 쪽 삭제
 - `field-row`가 마크업엔 있는데 CSS 정의가 아예 없어서(작게/보통/크게 데모가 그냥 세로로 쌓여 있었음) `.field-row`(flex+gap)와 `.field-row .field`(max-width:160px) 신규 추가해 가로 배치로 수정
 - States 데모는 반대로 `field-row`(가로, 160px 제한)를 쓰고 있어서 이메일/에러 힌트 텍스트가 좁게 눌려 있었음 → 클래스를 빼서 `.field` 기본값(세로 스택, 최대 320px)으로 되돌려 세로 배치+넓은 폭으로 수정
+- Variants 데모도 같은 이유로 `field-row`를 빼고 세로 배치로 통일 (Options의 "작게/보통/크게" 데모만 `field-row` 유지)
 
 ### Pagination — 양끝 배치를 전체 폭 대신 간격으로
 - `.pagination--split`이 `width:100%`+`justify-content:space-between`으로 항상 꽉 채우던 것을, 자기 크기 유지 + `gap:28px`(넉넉한 간격)로 변경 — 답답해 보이지 않으면서도 불필요하게 넓어지지 않게
@@ -99,10 +100,17 @@
 ### doc-code 전역 적용
 - 2026-07-28 세션에서 "일단 button.html만 변경"으로 로컬 오버라이드(`--color-bg-strong`)만 넣어뒀던 `.doc-code` 배경을, 확인 후 공용 `doc-template.css` 자체를 바꿔 20개 페이지 전체에 적용. button.html의 이제 중복된 로컬 오버라이드는 삭제
 
+### 활용성 감사 백로그 3건 추가 해결
+사용량이 얼마 안 남아 남은 백로그 중 손이 적게 가는 것부터 처리.
+- **아이콘 자리 "아이콘" 텍스트 리터럴**: `input.html`(States 2곳 + Examples 1곳) + `patterns/detail-page.html` 총 4곳. `.field__box .icon`이 이미 `background:url(mail_icon.png)`+`text-indent:-9999px`로 화면에서는 텍스트를 숨기고 있어서 원인은 "복붙 안전성"이었음(이 CSS 없는 곳에 마크업만 복사하면 "아이콘" 글자가 그대로 노출됨) — `<span class="icon">아이콘</span>` → `<span class="icon" aria-hidden="true"></span>`(빈 텍스트+장식용 처리)로 4곳 전부 수정. label이 이미 입력창의 접근성 이름을 제공하므로 스크린 리더 중복 안내도 같이 해소됨
+- **doc-template.css 하드코딩 색상**: `.class-label`의 `color:#98A2B3` → `var(--color-text-faint)`(같은 값의 기존 토큰)로 교체
+- **Switch 첫 데모 접근가능한 이름 없음**: Options의 bare 토글(텍스트 없이 토글만 있는 데모)에 `aria-label="로그인 상태 유지"` 추가 — 시각적으로는 그대로, 스크린 리더에서만 이름이 읽히도록
+
 ### 보류된 것
 - `index.html` COMPONENTS 배열에서 Date Picker와 Dropdown Menu 순서를 바꾸려 했으나, 서로 다른 카테고리(입력/Forms vs 탐색·이동/Navigation)라 배열 순서를 바꾸면 사이드바에 카테고리 헤더가 중복 노출되는 문제 발견 — 사용자가 복잡도 이유로 보류, 원래 순서 유지
+- 남은 미해결 백로그: Modal 포커스 트랩 없음(`js/main.js`), `table__sort` Guideline-동작 불일치, Checkbox indeterminate 상태 — 다음 세션에 이어서 진행
 
-**변경 파일**: `component/{button,switch,modal,tabs,accordion,input,pagination,card,chart,table,toast,empty-state,tooltip,alert,badge}.html`, `css/component/{button,doc-template,tabs,accordion,input,pagination,chart,badge}.css`, `css/tokens.css`, `history.md`
+**변경 파일**: `component/{button,switch,modal,tabs,accordion,input,pagination,card,chart,table,toast,empty-state,tooltip,alert,badge}.html`, `patterns/detail-page.html`, `css/component/{button,doc-template,tabs,accordion,input,pagination,chart,badge}.css`, `css/tokens.css`, `history.md`
 
 ---
 
@@ -370,11 +378,11 @@ TODO.md 원본 백로그 중 실제 코드 기준으로 재확인한 현재 상�
 | `img` → `image` | `dropdown-menu.css`, `style.css` | 미확인 — 재검토 필요 |
 | `dropdown__userinfo` → `dropdown__user-info` | `dropdown-menu.css` + `dropdown-menu.html` | 미해결 |
 | Quick Start 섹션 부재 (20개 중 19개) | `component/*.html` (`button.html` 제외) | 해결 (2026-07-29, toast까지 19/19 완료 — 20개 컴포넌트 전체 Quick Start 보유) |
-| 아이콘 자리 "아이콘" 텍스트 리터럴 | `component/input.html`(4곳) + `patterns/detail-page.html` | 미해결 (신규발견 2026-07-28) |
+| 아이콘 자리 "아이콘" 텍스트 리터럴 | `component/input.html`(3곳) + `patterns/detail-page.html` | 해결 (2026-07-29, `aria-hidden="true"` + 빈 텍스트로 교체) |
 | Modal 포커스 트랩 없음 | `js/main.js` | 미해결 (신규발견 2026-07-28) |
-| doc-template.css 하드코딩 색상(`#98A2B3`) | `css/component/doc-template.css:40` | 미해결 (신규발견 2026-07-28) |
+| doc-template.css 하드코딩 색상(`#98A2B3`) | `css/component/doc-template.css:40` | 해결 (2026-07-29, `var(--color-text-faint)`로 교체) |
 | `table__sort` Guideline과 실제 동작 불일치 | `component/table.html:315` + `js/main.js` | 미해결 (기존 STEP 6 항목과 동일 뿌리) |
-| Switch 첫 데모 접근가능한 이름 없음 | `component/switch.html:99-101` | 미해결 (신규발견 2026-07-28, 사소) |
+| Switch 첫 데모 접근가능한 이름 없음 | `component/switch.html` (bare 토글) | 해결 (2026-07-29, `aria-label="로그인 상태 유지"` 추가) |
 | Checkbox indeterminate 상태 없음 | `component/checkbox.html` | 미확인 — 의도적 제외 여부 재검토 필요 |
 | 에러 메시지 작성 가이드 부재 | 전체 md | 신규 — 추가 검토 |
 | 브라우저 지원 범위 미명시 | 전체 md | 신규 — 추가 검토 |
