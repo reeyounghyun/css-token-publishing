@@ -37,6 +37,46 @@
   </section>
 
   <section class="doc-section">
+    <h3 class="doc-section__title">Quick Start</h3>
+    <div class="doc-quick-start">
+      <div class="doc-quick-start__item">
+        <strong class="doc-quick-start__label">Use when</strong>
+        <p>사용자 확인이 꼭 필요한 동작이나, 별도 페이지로 옮기기엔 가벼운 폼/상세정보를 보여줄 때 사용합니다.</p>
+      </div>
+      <div class="doc-quick-start__item">
+        <strong class="doc-quick-start__label">Avoid when</strong>
+        <p>모달 위에 또 모달을 띄우지 않습니다. 페이지 이동에 가까운 복잡한 다단계 흐름은 모달 하나에 욱여넣지 않습니다.</p>
+      </div>
+    </div>
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">가장 자주 쓰는 기본 조합: 확인/취소 버튼이 있는 삭제 확인 모달 — 트리거를 눌러서 열어볼 수 있다</code>
+      </div>
+      <div class="board__body">
+        <div data-code-source>
+          <button type="button" class="btn btn--default" data-modal-open="modal-quick-confirm">삭제하기</button>
+          <div class="modal-overlay" id="modal-quick-confirm" data-modal>
+            <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-quick-confirm-title">
+              <div class="modal__header">
+                <h3 class="modal__title" id="modal-quick-confirm-title">정말 삭제하시겠어요?</h3>
+                <button type="button" class="modal__close" aria-label="닫기" data-modal-close>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+              <p class="modal__body">이 작업은 되돌릴 수 없습니다. 삭제된 데이터는 복구할 수 없어요.</p>
+              <div class="modal__footer">
+                <button type="button" class="btn btn--default" data-modal-close>취소</button>
+                <button type="button" class="btn btn--primary" data-modal-close>삭제</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
     <h3 class="doc-section__title">Variants</h3>
     <p style="font-size: var(--text-14); color: var(--color-text-tertiary);">
       스타일 변형 없음 — <code class="doc-code">modal</code> 기본형 하나만 존재한다.
@@ -70,7 +110,7 @@
       </div>
       <div class="board__body">
         <div class="demo-row" data-code-source style="display: flex; gap: var(--gap-12); flex-wrap: wrap;">
-          <button type="button" class="btn btn--default" data-modal-open="modal-sm">작은 모달 (sm)</button>
+          <button type="button" class="btn btn--default" data-modal-open="modal-sm" style="min-width: 140px;">작은 모달</button>
           <div class="modal-overlay" id="modal-sm" data-modal>
             <div class="modal modal--sm" role="dialog" aria-modal="true" aria-labelledby="modal-sm-title">
               <div class="modal__header">
@@ -86,7 +126,7 @@
             </div>
           </div>
 
-          <button type="button" class="btn btn--dashed" data-modal-open="modal-lg">큰 모달 (lg)</button>
+          <button type="button" class="btn btn--default" data-modal-open="modal-lg" style="min-width: 140px;">큰 모달</button>
           <div class="modal-overlay" id="modal-lg" data-modal>
             <div class="modal modal--lg" role="dialog" aria-modal="true" aria-labelledby="modal-lg-title">
               <div class="modal__header">
@@ -232,7 +272,7 @@
       </div>
       <div class="board__body">
         <div data-code-source>
-          <button type="button" class="btn btn--dashed" data-modal-open="modal-table">팀원 보기</button>
+          <button type="button" class="btn btn--default" data-modal-open="modal-table">팀원 보기</button>
           <div class="modal-overlay" id="modal-table" data-modal>
             <div class="modal modal--lg" role="dialog" aria-modal="true" aria-labelledby="modal-table-title">
               <div class="modal__header">

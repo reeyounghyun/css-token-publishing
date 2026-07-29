@@ -45,6 +45,40 @@
   </section>
 
   <section class="doc-section">
+    <h3 class="doc-section__title">Quick Start</h3>
+    <div class="doc-quick-start">
+      <div class="doc-quick-start__item">
+        <strong class="doc-quick-start__label">Use when</strong>
+        <p>표시할 데이터가 없을 때 상황을 설명하고 다음 행동을 안내합니다. 목록이 비어있거나, 검색 결과가 없거나, 데이터 로드에 실패했을 때 빈 화면 대신 사용합니다.</p>
+      </div>
+      <div class="doc-quick-start__item">
+        <strong class="doc-quick-start__label">Avoid when</strong>
+        <p>아직 데이터를 불러오는 중인 상태엔 쓰지 않습니다 — 로딩 중엔 스피너/스켈레톤을 쓰고, 로딩이 끝난 뒤 실제로 데이터가 없을 때만 표시합니다.</p>
+      </div>
+    </div>
+    <div class="board">
+      <div class="board__header">
+        <code class="class-label">가장 자주 쓰는 기본 조합: empty-state + empty-state__action</code>
+      </div>
+      <div class="board__body">
+        <div data-code-source style="max-width: 400px; margin: 0 auto;">
+          <div class="empty-state">
+            <div class="empty-state__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M3 7L12 12L21 7M3 7L12 2L21 7M3 7V17L12 22M21 7V17L12 22M12 12V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="empty-state__title">아직 항목이 없습니다</h3>
+            <p class="empty-state__desc">새 프로젝트를 추가해서 팀 작업을 시작해보세요.</p>
+            <button type="button" class="btn btn--primary btn--sm empty-state__action">프로젝트 추가</button>
+          </div>
+        </div>
+      </div>
+      <div class="code-panel" data-code-panel><div class="code-panel__toolbar"><button type="button" class="code-panel__copy" data-code-copy>Copy</button></div><pre class="code-panel__scroll"><code class="code-panel__code"></code></pre></div>
+    </div>
+  </section>
+
+  <section class="doc-section">
     <h3 class="doc-section__title">Variants</h3>
     <table class="doc-table">
       <thead>
