@@ -6,6 +6,106 @@
 
 ---
 
+## 2026-07-29 — Button: SNS 로그인 브랜드 교체 + Dashed 삭제 + Danger 확장 [완료]
+
+### SNS 로그인: Facebook/Apple → Naver/Kakao 교체
+- Facebook을 Naver로, Apple을 Kakao로 교체. 사용자가 준 공식 브랜드 색상표(Naver `#03A94D`, Kakao 컨테이너 `#FEE500`/심볼 `#000000`/레이블 `rgba(0,0,0,.85)`)를 그대로 반영해 `tokens.css`에 `--brand-naver`/`--brand-naver-hover`/`--brand-kakao`/`--brand-kakao-hover`/`--brand-kakao-label` 신규 추가
+- Naver 아이콘: 처음엔 초록 사각형 배지(자체 컬러 고정)로 만들었다가, 사용자가 공식 "화이트 배경 사용 시" 스펙(배경 없이 초록 N 글자만)을 보여줘서 `ic-naver` 심볼을 배경 없는 `currentColor` 글자로 재작성 → filled 그룹은 흰색, outline 그룹은 `--brand-naver` 초록으로 그룹별 톤 적용 (facebook/apple과 동일한 패턴)
+- Kakao 아이콘은 공식 SVG 소스가 없어 사용자가 준 참고 이미지를 보고 손으로 근사한 말풍선(둥근 사각형+꼬리) 벡터로 제작 — 정확한 공식 에셋이 아님을 사용자에게 고지함
+- 아이콘 시각 크기 불일치 발견: Apple 로고가 24×24 viewBox 안에서 실제 그림은 77%만 채우고 있어 Google/Facebook보다 작아 보임 → `viewBox`를 실제 컨텐츠 바운딩 박스(`2.7 0 18.6 22`)로 좁혀 해결. 이후 Naver/Kakao 교체 과정에서도 같은 문제가 반복돼 Kakao 블록 크기를 Google 기준으로 키움
+- 라벨 텍스트를 "~로 로그인"에서 "~ 로그인"으로 전체 변경(조사 제거)
+- 아이콘 전용 버튼(`.sbtn--icon`)이 패딩 기반이라 폭 78px·높이 56px로 타원형이었던 것을 발견 → `width:var(--height-56)`로 고정해 56×56 완전한 원형으로 수정
+- filled 그룹(Google/Naver/Kakao)이 hover 시 브랜드 컬러와 무관한 색(회색 톤 등)으로 바뀌던 것을 사용자 요청으로 고정 — hover 시에도 rest 상태와 동일한 배경/테두리 값을 명시
+- mono(그레이 아이콘) 그룹은 사용자 판단으로 전체 삭제 — `ic-google-mono` 심볼, `.sbtn--mono` CSS, 관련 마크업까지 전부 제거
+
+### Danger 버튼: Text 전용 → Primary/Default도 지원
+- 기존엔 `is-danger`가 `btn--text`와만 조합 가능하다고 문서화돼 있었음(Options 표). Icon 예시 섹션에 삭제 버튼을 추가하며 "배경 있는 버전도 필요하다"는 요청으로 `.btn--primary.is-danger`(채움)를 먼저 추가
+- 이어서 "+추가하기"(`btn--default`, 흰 배경+테두리)와 짝을 맞추려면 삭제 버튼도 같은 박스 형태여야 일관돼 보인다는 피드백으로 `.btn--default.is-danger`(흰 배경+빨간 테두리+빨간 텍스트)를 추가하고, Icon 예시의 배경 없는 삭제 버튼을 `btn--text.is-danger`에서 `btn--default.is-danger`로 교체
+- `tokens.css`에 `--color-bg-danger`/`-hover`/`-active`(error-600/700/800, 기존 `--color-bg-accent` 계열과 동일한 패턴)와 `--color-border-danger-strong` 신규 추가
+- Options 표의 `is-danger` 설명을 "btn--text와만 조합" → "btn--text(배경 없음) · btn--default(흰 배경+테두리) · btn--primary(채움)와 조합"으로 정정
+
+### Dashed variant 완전 삭제
+- 사용자 판단: 실사용 빈도가 낮아 variant 자체를 없애기로 결정
+- 삭제 전 실사용처 확인 결과 `modal.html`의 트리거 버튼 2곳("큰 모달 (lg)", "팀원 보기")에서 쓰이고 있어, 먼저 `btn--default`로 이관한 뒤 variant 삭제 진행(순서를 반대로 했으면 이 버튼들이 스타일을 잃을 뻔함)
+- `button.css`의 `.btn--dashed` 정의·disabled 규칙, `button.html`의 Overview 문구·Variants 표·States 매트릭스(Pressed/Disabled/Loading, 19개 인스턴스)에서 전부 제거. `.matrix` grid를 5열→4열로 조정
+- 1차로 States 매트릭스만 정리했다가 `modal.html`의 두 번째 트리거("팀원 보기")를 빠뜨렸던 걸 최종 grep 검증에서 발견해 추가로 수정함
+
+### 기타
+- `.btn--lg`에 `min-width:140px` 추가 — 짧은 라벨(확인/취소 등) 버튼이 padding만으로는 폭이 좁아 레이아웃이 휑해 보이던 문제 해결. `padding` 자체는 안 건드려 "임의 padding으로 크기 맞추지 않는다" 원칙과 충돌 없음
+- `index.html` 자체 표(`.ix-util-table`)의 헤더/인라인 코드 배경 컬러가 실제 컴포넌트 표(`doc-table`)와 다른 톤(원시 gray 토큰)을 쓰고 있던 걸 발견해 semantic 토큰(`--color-bg-accent-subtle`/`--color-text-accent`, code는 `--color-bg-strong`)으로 통일
+- `kakao_logo.png`(사용자 제공, 검정 말풍선), `kakao_badge.png`(사용자 제공, 노란 배지)를 `images/` 폴더로 이동 — 기존 `apple_bg.png`와 동일한 snake_case 네이밍 적용
+
+**변경 파일**: `component/button.html`, `component/modal.html`, `css/component/button.css`, `css/tokens.css`, `index.html`, `images/kakao_logo.png`(신규), `images/kakao_badge.png`(신규), `history.md`
+
+---
+
+## 2026-07-29 (계속) — Quick Start 20/20 완료 + States 매트릭스 정렬 + 컴포넌트 전반 다듬기 [완료]
+
+### Quick Start 백로그 완주 — 20개 컴포넌트 전부 보유
+2026-07-28에 14/19였던 Quick Start를 나머지 5개(empty-state·tooltip·alert·modal·toast)까지 순서대로 마무리. 전부 같은 방식으로 진행: Overview 문장으로 Use when, Guidelines "지양" 항목으로 Avoid when을 구성하고, 이미 있던 예시 중 가장 안전한 걸 최소 마크업으로 재사용(신규 작성 안 함).
+- empty-state: "아직 항목이 없습니다"(아이콘+제목+설명+액션 버튼) 재사용
+- tooltip: 방향 클래스 생략(top이 기본값) 조합으로 최소화
+- alert: 기본 info alert(제목+설명+닫기) 재사용
+- modal: "삭제 확인"(취소/삭제 버튼) 패턴 재사용, id는 Examples의 `modal-confirm`과 안 겹치게 `modal-quick-confirm`으로 분리
+- toast: 실제 동작 방식 그대로 `data-toast` 속성 버튼(정적 미리보기 마크업이 아니라 `showToast()`를 트리거하는 진짜 사용법)을 최소 마크업으로 채택
+- **검증**: grep으로 `component/*.html` 20개 전부 "Quick Start" 보유 확인 완료. history.md 백로그 표를 "해결"로 갱신
+
+### States 매트릭스 — 헤더와 데이터 정렬 버그 (Button, Switch)
+- Button/Switch 둘 다 States 매트릭스에서 컬럼 헤더(Primary/Default 등, Default/Pressed 등) 텍스트가 왼쪽 정렬돼 있어 아래 데이터와 안 맞아 보이는 문제 발견
+- 1차 시도: 헤더만 가운데 정렬 → 데이터(버튼/토글)는 여전히 왼쪽 정렬(`justify-items:start`)이라 더 어긋남 확인
+- 원인 분석: 각 행마다 버튼/토글 폭이 다르므로(사이즈별로 lg/md/sm), "가운데 정렬"이 아니라 "왼쪽 정렬"만이 모든 행에서 정확히 일치하는 유일한 기준이라는 걸 확인 — 사용자가 그래도 가운데 정렬을 원해서, 헤더뿐 아니라 데이터 쪽도 같이 `justify-items:center`로 통일해 모든 행에서 정확히 맞도록 해결(폭이 달라도 "가운데"라는 기준점은 행마다 동일하므로)
+- 이 과정에서 전체 폭을 채워야 하는 요소(구분선 `matrix__row-header`, 코드 패널 `.matrix .code-panel`)가 같이 오그라드는 부작용 발생 → `justify-self:stretch`로 개별 예외 처리
+- **Switch**: 위와 별개로 "Size: Default"/"Size: Small" 라벨이 헤더와 다른 행(별도 grid)에 있어 열이 안 맞는 문제 → `state-head`/`size-row`를 동일한 5컬럼(`110px + repeat(4,1fr)`) grid로 맞춤. 이 과정에서 `size-row`에 `.grid` 클래스의 `gap`이 안 상속돼(직접 grid를 새로 만들어서) 컬럼 폭이 미묘하게 달랐던 버그를 발견해 같은 `gap: var(--gap-row) var(--gap)` 명시로 수정
+- **Button**: Switch처럼 라벨(Large/Large·Round 등)을 헤더와 같은 행의 첫 칸으로 합치는 구조로 재구성(`matrix--labeled`, 130px+4열). 기존에 구분선 역할이던 `matrix__row-header`(border-top 감싸는 div)는 삭제하고 grid의 행 간격(20px)만으로 그룹 구분
+- **States 탭-콘텐츠 간격 버그**: "States" 제목이 `.doc-section`(섹션 간 40px 마진) 안에 제목만 혼자 들어있고 탭은 그 섹션 밖 별개 요소라서, 섹션-섹션 간격이 제목-탭 간격에 그대로 붙어 과하게 벌어져 있던 것을 발견 → 탭을 `.doc-section` 안으로 옮겨 제목-콘텐츠 기본 간격(12px)이 적용되게 수정
+- 매트릭스 헤더(`.matrix__head`) 색을 옅은 회색(`--color-text-quaternary`)에서 한 단계 진하게(`--color-text-tertiary`), 사이즈 행 라벨(`.matrix__row-label`)도 `weight-medium`→`weight-semibold`로 강조
+
+### Tabs / Accordion — 콘텐츠 영역에 배경 추가
+- `.tabs__panel`이 배경 없이 텍스트만 떠 있던 것에 흰 배경+테두리+radius 추가(카드처럼 보이게) → 이후 "탭 바와 간격이 떠서 분리된 느낌"이라는 피드백으로 `margin-top`/위쪽 테두리·radius를 없애 탭 리스트 바로 아래 딱 붙는 형태로 재조정
+- `.accordion__trigger`(제목 행)에 기본 배경(`--color-bg-subtle`) 추가, hover는 톤 올려서(`--color-bg-strong`) 구분 → 이후 hover 효과 자체를 빼는 게 낫다는 피드백으로 hover 규칙 제거
+- `.accordion__content`에도 흰 배경(`--color-bg-surface`) 추가해 회색 헤더/흰 본문으로 명확히 구분, 상하 패딩도 균등하게 정리
+
+### Input — 한글화 + 중복 예시 정리
+- 라벨 3곳(`Phone number`/`Search`/`Email`) 한국어로 통일: 전화번호/검색/이메일
+- Options의 아이콘 옵션 데모(이메일+아이콘 예시)가 Examples의 로그인 폼과 내용이 완전히 겹쳐서 중복이라는 지적으로 Options 쪽 삭제
+- `field-row`가 마크업엔 있는데 CSS 정의가 아예 없어서(작게/보통/크게 데모가 그냥 세로로 쌓여 있었음) `.field-row`(flex+gap)와 `.field-row .field`(max-width:160px) 신규 추가해 가로 배치로 수정
+- States 데모는 반대로 `field-row`(가로, 160px 제한)를 쓰고 있어서 이메일/에러 힌트 텍스트가 좁게 눌려 있었음 → 클래스를 빼서 `.field` 기본값(세로 스택, 최대 320px)으로 되돌려 세로 배치+넓은 폭으로 수정
+
+### Pagination — 양끝 배치를 전체 폭 대신 간격으로
+- `.pagination--split`이 `width:100%`+`justify-content:space-between`으로 항상 꽉 채우던 것을, 자기 크기 유지 + `gap:28px`(넉넉한 간격)로 변경 — 답답해 보이지 않으면서도 불필요하게 넓어지지 않게
+- Options 표 설명과 데모 h5 라벨("양끝 배치"→"넓은 간격")도 실제 동작에 맞게 정정
+
+### Card — "실무 예시" 레이아웃 실험 후 원복 + 멤버 카드 버튼
+- "대시보드 공지 카드" 예시를 목업(이미지+타이틀 동등 2단 박스 + 풀폭 버튼)대로 재구성 시도 → 진행 중 사용자 판단으로 이미지는 120×120 고정 정사각형으로, 텍스트는 원래 왼쪽 정렬 타이틀+설명 형태로 되돌림. 버튼만 `btn--text`(배경 없음) → `btn--primary`(채움) + `width:100%`로 유지. 내용도 "ESG 보고서 발간 안내" → "정기 점검 안내"로 교체(버튼 라벨도 "자세히 보기"로 통일)
+- "초대 만료" 멤버 카드의 "초대메일 재발송" 버튼을 `btn--default`→`btn--primary`로 변경 — 취소(그만두는 액션)는 기본, 재발송(복구 액션)만 강조하는 게 Guidelines의 "Primary는 화면당 1개" 원칙과 맞음
+
+### Chart — 카드 배경 + 범례 + 카테고리 컬러
+- `.chart`에 배경 없이 떠 있던 걸 `.card`와 동일한 톤(흰 배경+테두리+radius-16+shadow-xs)으로 카드화
+- `.chart__legend`(점+텍스트) 신규 추가 — "월별 신규 가입자" 예시에서 3월만 색이 다른 이유(`is-accent`)가 설명 없이 달랐던 걸 범례로 보완. Quick Start에는 제목-범례 사이, Variants에는 막대 아래에 배치, 가운데 정렬로 통일
+- "인기 상품 Top 4"는 항목(카테고리)이 다른데 `is-accent` 하나만 써서 구분이 안 되던 걸 `chart__bar--series-{1~4}`(파랑/초록/주황/빨강, primary/success/warning/error-600 재사용) 신규 추가로 항목별 색 구분
+- "지역별 처리 현황"은 같은 방식이지만 "너무 알록달록하지 않게" 요청으로 톤 다운 버전 `chart__bar--series-{1~4}-soft`(각 400단계) 추가로 별도 적용
+- `.chart` 내부 세로 간격(제목→범례→막대) 12px→8px로 축소
+
+### Table — 뱃지 확장 + 팀원 상태 + 피벗 헤더 컬러
+- "팀원 목록"에 "비활성" 상태 행 신규 추가(`badge--error`, 기존 danger 톤 재사용), "초대됨"은 회색(`badge--default`)에서 초록(`badge--success`, 신규)으로 변경 — `badge--success` 클래스가 프로젝트에 없어서 `tokens.css`(`--color-bg-success-subtle`, `--color-text-success`)와 `badge.css`, `badge.html` Variants 문서까지 같이 추가. "비활성"에 `badge__dot`을 빠뜨렸다가 활성/초대됨과의 일관성 지적으로 추가
+- "제품별 월별 매출" 피벗 테이블의 1월~12월 헤더 셀에 `--primary-100` 배경 + `--color-text-accent` 텍스트 추가("구분" 칸은 원래 회색 유지) — primary-300처럼 채도 높은 색은 12칸 반복이라 무겁다고 판단해 가장 옅은 단계 선택
+- 스크롤바를 1월 시작 지점부터 나오게 하려면 "구분" 열을 별도 고정 테이블로 분리하는 frozen-column 구조가 필요하다고 설명 → 복잡도 대비 실익이 적어 사용자가 보류, 현재 구조(테이블 전체가 스크롤 컨테이너) 유지
+
+### Toast — 시맨틱 버튼 컬러 + 아이콘, Variants 세로 배치
+- Examples의 트리거 버튼 4개가 색 의미와 안 맞았음(성공=파랑 `btn--primary`, 경고/에러=흰색 `btn--default` 구분 없음) → `is-success`/`is-warning`을 `btn--primary`와 조합하는 채움 버튼 신규 추가(`tokens.css`에 success/warning 채움+hover+active 토큰, `button.css`에 `.btn--primary.is-success`/`.is-warning` 규칙), 에러는 기존 `is-danger` 재사용. 성공/경고/에러/기본 버튼에 실제 토스트와 같은 원형 아이콘(`currentColor`)도 라벨 앞에 추가
+- Variants 데모(4개 토스트 미리보기)를 가로 wrap에서 세로 배치로, 카드 폭도 300px→420px로 키움(`toast-preview-row--lg` 신규, 이 데모에만 적용). Options 데모는 그대로 유지
+- Options의 "desc 유무" 데모에서 "제목만" 카드가 "제목+설명" 카드보다 낮아 보이던 것을 `.toast-preview-row .toast`에 `min-height:76px` 추가로 맞춤
+
+### doc-code 전역 적용
+- 2026-07-28 세션에서 "일단 button.html만 변경"으로 로컬 오버라이드(`--color-bg-strong`)만 넣어뒀던 `.doc-code` 배경을, 확인 후 공용 `doc-template.css` 자체를 바꿔 20개 페이지 전체에 적용. button.html의 이제 중복된 로컬 오버라이드는 삭제
+
+### 보류된 것
+- `index.html` COMPONENTS 배열에서 Date Picker와 Dropdown Menu 순서를 바꾸려 했으나, 서로 다른 카테고리(입력/Forms vs 탐색·이동/Navigation)라 배열 순서를 바꾸면 사이드바에 카테고리 헤더가 중복 노출되는 문제 발견 — 사용자가 복잡도 이유로 보류, 원래 순서 유지
+
+**변경 파일**: `component/{button,switch,modal,tabs,accordion,input,pagination,card,chart,table,toast,empty-state,tooltip,alert,badge}.html`, `css/component/{button,doc-template,tabs,accordion,input,pagination,chart,badge}.css`, `css/tokens.css`, `history.md`
+
+---
+
 ## 2026-07-28 — Quick Start 신설 1차 (14/19, 진행 중)
 
 백로그 최우선 항목("Quick Start 섹션 부재")을 컴포넌트 하나씩 확인하며 처리. Overview/Guidelines에 이미 있는 문장을 그대로 가져와 Use when/Avoid when을 구성하고, 각 컴포넌트의 가장 안전한 최소 마크업을 Quick Start에 배치하는 방식으로 진행.
@@ -269,7 +369,7 @@ TODO.md 원본 백로그 중 실제 코드 기준으로 재확인한 현재 상�
 | `--radius-*` / `--height-*` 숫자 표기로 통일 | `tokens.css` + 대부분의 컴포넌트 | 해결 (2026-07-28 정리, `--radius-full` 예외 유지) |
 | `img` → `image` | `dropdown-menu.css`, `style.css` | 미확인 — 재검토 필요 |
 | `dropdown__userinfo` → `dropdown__user-info` | `dropdown-menu.css` + `dropdown-menu.html` | 미해결 |
-| Quick Start 섹션 부재 (20개 중 19개) | `component/*.html` (`button.html` 제외) | 진행 중 — 14/19 완료(2026-07-28), 남은 5개: empty-state·tooltip·alert·modal·toast |
+| Quick Start 섹션 부재 (20개 중 19개) | `component/*.html` (`button.html` 제외) | 해결 (2026-07-29, toast까지 19/19 완료 — 20개 컴포넌트 전체 Quick Start 보유) |
 | 아이콘 자리 "아이콘" 텍스트 리터럴 | `component/input.html`(4곳) + `patterns/detail-page.html` | 미해결 (신규발견 2026-07-28) |
 | Modal 포커스 트랩 없음 | `js/main.js` | 미해결 (신규발견 2026-07-28) |
 | doc-template.css 하드코딩 색상(`#98A2B3`) | `css/component/doc-template.css:40` | 미해결 (신규발견 2026-07-28) |
