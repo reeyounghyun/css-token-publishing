@@ -177,8 +177,9 @@
             <table class="table table--pivot">
               <thead>
                 <tr>
-                  <th>구분</th><th>1월</th><th>2월</th><th>3월</th><th>4월</th><th>5월</th><th>6월</th>
-                  <th>7월</th><th>8월</th><th>9월</th><th>10월</th><th>11월</th><th>12월</th>
+                  <th>구분</th>
+                  <th style="background: var(--primary-100); color: var(--color-text-accent);">1월</th><th style="background: var(--primary-100); color: var(--color-text-accent);">2월</th><th style="background: var(--primary-100); color: var(--color-text-accent);">3월</th><th style="background: var(--primary-100); color: var(--color-text-accent);">4월</th><th style="background: var(--primary-100); color: var(--color-text-accent);">5월</th><th style="background: var(--primary-100); color: var(--color-text-accent);">6월</th>
+                  <th style="background: var(--primary-100); color: var(--color-text-accent);">7월</th><th style="background: var(--primary-100); color: var(--color-text-accent);">8월</th><th style="background: var(--primary-100); color: var(--color-text-accent);">9월</th><th style="background: var(--primary-100); color: var(--color-text-accent);">10월</th><th style="background: var(--primary-100); color: var(--color-text-accent);">11월</th><th style="background: var(--primary-100); color: var(--color-text-accent);">12월</th>
                 </tr>
               </thead>
               <tbody>
@@ -326,7 +327,17 @@
                     <div class="table__cell-sub">yuna@example.com</div>
                   </td>
                   <td>UX 리서처</td>
-                  <td><span class="badge badge--default"><span class="badge__dot"></span>초대됨</span></td>
+                  <td><span class="badge badge--success"><span class="badge__dot"></span>초대됨</span></td>
+                  <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm">수정</button></td>
+                  <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm is-danger">삭제</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table__cell-title">박서준</div>
+                    <div class="table__cell-sub">seojun@example.com</div>
+                  </td>
+                  <td>프론트엔드 개발자</td>
+                  <td><span class="badge badge--error"><span class="badge__dot"></span>비활성</span></td>
                   <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm">수정</button></td>
                   <td class="table__cell--center"><button type="button" class="btn btn--text btn--sm is-danger">삭제</button></td>
                 </tr>

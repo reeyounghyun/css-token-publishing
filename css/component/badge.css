@@ -24,6 +24,10 @@
   background: var(--color-bg-danger-subtle);
   color: var(--color-text-danger-hover);
 }
+.badge--success {
+  background: var(--color-bg-success-subtle);
+  color: var(--color-text-success);
+}
 
 /* 테두리만 있는 버전 */
 .badge--outline {

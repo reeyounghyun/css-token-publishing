@@ -129,19 +129,19 @@
 
     <div class="board" style="margin-top: 16px;">
       <div class="board__header">
-        <code class="class-label">실무 예시 — 대시보드 공지 카드 (card--horizontal)</code>
+        <code class="class-label">실무 예시 — 대시보드 공지 카드 (이미지+타이틀 2단 박스 + 풀폭 버튼)</code>
       </div>
       <div class="board__body">
         <div style="max-width: 360px; padding: 4px 0;" data-code-source>
-          <div class="card card--horizontal">
-            <div class="card__placeholder" style="width: 96px; height: 96px; aspect-ratio: 1 / 1; flex-shrink: 0; margin-bottom: 0;">이미지</div>
-            <div class="card__body">
-              <h4 class="card__title">ESG 보고서 발간 안내</h4>
-              <p class="card__desc">2026년 상반기 지속가능경영보고서가 공개되었습니다.</p>
-              <div class="card__footer">
-                <button type="button" class="btn btn--text btn--sm">보고서 보기</button>
+          <div class="card">
+            <div style="display: flex; gap: var(--gap-16);">
+              <div class="card__placeholder" style="width: 120px; height: 120px; flex-shrink: 0; margin-bottom: 0;">이미지</div>
+              <div style="min-width: 0;">
+                <h4 class="card__title">정기 점검 안내</h4>
+                <p class="card__desc">매주 화요일 새벽 2~4시 점검이 진행됩니다.</p>
               </div>
             </div>
+            <button type="button" class="btn btn--primary" style="width: 100%; margin-top: var(--spacing-16);">자세히 보기</button>
           </div>
         </div>
       </div>
@@ -168,7 +168,7 @@
             </div>
             <div class="card__footer">
               <button type="button" class="btn btn--default btn--sm">초대취소</button>
-              <button type="button" class="btn btn--default btn--sm">초대메일 재발송</button>
+              <button type="button" class="btn btn--primary btn--sm">초대메일 재발송</button>
             </div>
           </div>
         </div>

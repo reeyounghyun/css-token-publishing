@@ -55,6 +55,10 @@
         <div style="max-width: 320px; padding: 4px 0;" data-code-source>
           <div class="chart">
             <span class="chart__title">월별 신규 가입자</span>
+            <div class="chart__legend">
+              <span class="chart__legend-item"><span class="chart__legend-dot"></span>일반</span>
+              <span class="chart__legend-item"><span class="chart__legend-dot is-accent"></span>이번 달</span>
+            </div>
             <div class="chart__bars">
               <div class="chart__col">
                 <span class="chart__value">120</span>
@@ -135,6 +139,10 @@
                 <span class="chart__label">5월</span>
               </div>
             </div>
+            <div class="chart__legend">
+              <span class="chart__legend-item"><span class="chart__legend-dot"></span>일반</span>
+              <span class="chart__legend-item"><span class="chart__legend-dot is-accent"></span>이번 달</span>
+            </div>
           </div>
         </div>
       </div>
@@ -152,22 +160,22 @@
             <div class="chart__bars">
               <div class="chart__col">
                 <span class="chart__label">노트북</span>
-                <div class="chart__bar-track"><div class="chart__bar is-accent" style="width: 100%;"></div></div>
+                <div class="chart__bar-track"><div class="chart__bar chart__bar--series-1" style="width: 100%;"></div></div>
                 <span class="chart__value">210</span>
               </div>
               <div class="chart__col">
                 <span class="chart__label">태블릿</span>
-                <div class="chart__bar-track"><div class="chart__bar" style="width: 60%;"></div></div>
+                <div class="chart__bar-track"><div class="chart__bar chart__bar--series-2" style="width: 60%;"></div></div>
                 <span class="chart__value">125</span>
               </div>
               <div class="chart__col">
                 <span class="chart__label">키보드</span>
-                <div class="chart__bar-track"><div class="chart__bar" style="width: 44%;"></div></div>
+                <div class="chart__bar-track"><div class="chart__bar chart__bar--series-3" style="width: 44%;"></div></div>
                 <span class="chart__value">92</span>
               </div>
               <div class="chart__col">
                 <span class="chart__label">마우스</span>
-                <div class="chart__bar-track"><div class="chart__bar" style="width: 31%;"></div></div>
+                <div class="chart__bar-track"><div class="chart__bar chart__bar--series-4" style="width: 31%;"></div></div>
                 <span class="chart__value">65</span>
               </div>
             </div>
@@ -195,6 +203,18 @@
         <tr>
           <td><code class="doc-code">is-muted</code></td>
           <td>선택. 실측이 아닌 예상치/비교값 표시 — <code class="doc-code">chart__bar</code>에 부여</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">chart__legend</code></td>
+          <td>선택. 막대 색상(<code class="doc-code">is-accent</code>/<code class="doc-code">is-muted</code>)이 뭘 의미하는지 점+텍스트로 설명. 색 구분이 있을 때만 추가</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">chart__bar--series-{1|2|3|4}</code></td>
+          <td>선택. 항목(카테고리)마다 다른 색을 줘서 구분 — 순위/비교가 아니라 종류가 다를 때 사용. <code class="doc-code">is-accent</code>/<code class="doc-code">is-muted</code>와 같이 쓰지 않음</td>
+        </tr>
+        <tr>
+          <td><code class="doc-code">chart__bar--series-{1|2|3|4}-soft</code></td>
+          <td>선택. 위와 같은 용도지만 톤 다운된 색상 — 너무 알록달록하지 않게 은은히 구분하고 싶을 때</td>
         </tr>
       </tbody>
     </table>
@@ -251,17 +271,17 @@
             <div class="chart__bars">
               <div class="chart__col">
                 <span class="chart__label">서울</span>
-                <div class="chart__bar-track"><div class="chart__bar is-accent" style="width: 92%;"></div></div>
+                <div class="chart__bar-track"><div class="chart__bar chart__bar--series-1-soft" style="width: 92%;"></div></div>
                 <span class="badge badge--primary"><span class="badge__dot"></span>92%</span>
               </div>
               <div class="chart__col">
                 <span class="chart__label">부산</span>
-                <div class="chart__bar-track"><div class="chart__bar" style="width: 68%;"></div></div>
+                <div class="chart__bar-track"><div class="chart__bar chart__bar--series-2-soft" style="width: 68%;"></div></div>
                 <span class="badge badge--default">68%</span>
               </div>
               <div class="chart__col">
                 <span class="chart__label">대구</span>
-                <div class="chart__bar-track"><div class="chart__bar is-muted" style="width: 34%;"></div></div>
+                <div class="chart__bar-track"><div class="chart__bar chart__bar--series-3-soft" style="width: 34%;"></div></div>
                 <span class="badge badge--default">34%</span>
               </div>
             </div>

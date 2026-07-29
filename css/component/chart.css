@@ -2,12 +2,45 @@
 .chart {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-12);
+  gap: var(--spacing-8);
+  padding: var(--spacing-20);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-16);
+  box-shadow: var(--shadows-xs);
 }
 .chart__title {
   font-size: var(--text-14);
   font-weight: var(--weight-semibold);
   color: var(--color-text-secondary);
+}
+
+/* 범례 — 막대 색상이 뭘 의미하는지 설명 (is-accent/is-muted 등 색 구분이 있을 때만 사용) */
+.chart__legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-16);
+}
+.chart__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-6);
+  font-size: var(--text-12);
+  color: var(--color-text-quaternary);
+}
+.chart__legend-dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-accent);
+}
+.chart__legend-dot.is-accent {
+  background: var(--color-bg-accent-active);
+}
+.chart__legend-dot.is-muted {
+  background: var(--color-bg-strong);
 }
 
 /* 세로 막대 (기본) */
@@ -52,6 +85,17 @@
 .chart__bar.is-muted {
   background: var(--color-bg-strong);
 }
+
+/* 카테고리 구분 색상 — 항목별로 다른 색을 줘야 구분되기 쉬운 경우 */
+.chart__bar--series-1 { background: var(--color-chart-series-1); }
+.chart__bar--series-2 { background: var(--color-chart-series-2); }
+.chart__bar--series-3 { background: var(--color-chart-series-3); }
+.chart__bar--series-4 { background: var(--color-chart-series-4); }
+/* 톤 다운 버전 */
+.chart__bar--series-1-soft { background: var(--color-chart-series-1-soft); }
+.chart__bar--series-2-soft { background: var(--color-chart-series-2-soft); }
+.chart__bar--series-3-soft { background: var(--color-chart-series-3-soft); }
+.chart__bar--series-4-soft { background: var(--color-chart-series-4-soft); }
 
 /* 가로 막대 — 랭킹처럼 항목명이 길 때 */
 .chart--horizontal .chart__bars {
