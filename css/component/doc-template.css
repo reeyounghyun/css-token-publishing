@@ -83,20 +83,15 @@
   min-width: 0;
 }
 
-/* ---- 매트릭스 행 헤더 (사이즈/상태별 그룹) ---- */
-.matrix__row-header {
-  grid-column: 1 / -1;
-  padding-top: var(--spacing-12);
-  margin-top: var(--spacing-4);
-  border-top: 1px solid var(--color-border-subtle);
-}
+/* ---- 매트릭스 행 라벨 (사이즈/상태별 그룹, 데이터와 같은 행의 첫 칸) ---- */
 .matrix__row-label {
   font-size: var(--text-14);
-  font-weight: var(--weight-medium);
-  color: var(--color-text-quaternary);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-secondary);
 }
 .matrix .code-panel {
   grid-column: 1 / -1;
+  justify-self: stretch;
 }
 
 /* ---- 문서 섹션 (Overview/Variants/Options/... 공통 래퍼) ---- */
@@ -109,6 +104,16 @@
   font-weight: var(--weight-semibold);
   color: var(--color-text-primary);
   margin-bottom: var(--spacing-12);
+}
+/* ---- 소제목 (Examples 등 doc-section 하위에 여러 데모를 나눌 때) ---- */
+.doc-subtitle {
+  margin-top: var(--spacing-20);
+  margin-bottom: var(--spacing-8);
+  padding-left: var(--spacing-8);
+  border-left: 3px solid var(--color-border-accent-strong);
+  font-size: var(--text-16);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-primary);
 }
 
 /* ---- Quick Start: 복사 가능한 최소 구현과 사용 기준 ---- */
@@ -173,7 +178,7 @@
   display: inline-block;
   padding: 2px 8px;
   border-radius: var(--radius-4);
-  background: var(--color-bg-muted);
+  background: var(--color-bg-strong);
   color: var(--color-text-primary);
   font-family: ui-monospace, monospace;
   font-size: 12px;

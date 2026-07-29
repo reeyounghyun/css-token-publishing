@@ -69,10 +69,11 @@
   --gray:gray;
 
   /*sns 컬러 */
-  --brand-facebook:#1877F2;
-  --brand-facebook-hover:#166FE5;
-  --brand-apple:#000000;    
-  --brand-apple-hover:#1A1A1A;
+  --brand-naver:#03A94D;
+  --brand-naver-hover:#039544;
+  --brand-kakao:#FEE500;
+  --brand-kakao-hover:#F5DC00;
+  --brand-kakao-label: rgba(0,0,0,.85);
 
   /* 높이 */
   --height-36:2.25rem; /* 36px */
@@ -203,6 +204,7 @@
   --color-text-danger-medium: var(--error-500);  /* #F04438 · 에러 필드 하단 안내문구 */
   --color-text-danger-hover:  var(--error-700);  /* #B42318 */
   --color-text-success-medium: var(--success-500);  /* #12B76A · 성공 필드 하단 안내문구 */
+  --color-text-success:        var(--success-700);  /* #027A48 · badge--success 텍스트 */
   --color-text-warning:       var(--warning-700);  /* #B54708 */
 
   /* 아이콘 */
@@ -226,8 +228,11 @@
   --color-border-accent-active: var(--primary-800);  /* #1849A9 */
   --color-border-danger:        var(--error-300);  /* #FDA29B */
   --color-border-danger-subtle: var(--error-200);  /* #FECDCA */
+  --color-border-danger-strong: var(--error-600);  /* #D92D20 · btn--primary.is-danger 테두리 */
   --color-border-success:       var(--success-300);  /* #6CE9A6 */
+  --color-border-success-strong: var(--success-600);  /* #039855 · btn--primary.is-success 테두리 */
   --color-border-warning-subtle: var(--warning-200);  /* #FEDF89 */
+  --color-border-warning-strong: var(--warning-600);  /* #DC6803 · btn--primary.is-warning 테두리 */
   --color-border-inverse:       var(--gray-700);  /* #344054 · 체크박스/라디오 선택 표시 */
   --color-border-faint:         var(--gray-100);  /* #F2F4F7 · 옅은 구분선, checkbox/dropdown focus-visible 테두리 */
 
@@ -244,7 +249,17 @@
   --color-bg-accent-active: var(--primary-800);  /* #1849A9 */
   --color-bg-danger-subtle: var(--error-50);   /* #FEF3F2 */
   --color-bg-danger-muted:  var(--error-100);  /* #FEE4E2 */
+  --color-bg-danger:        var(--error-600);  /* #D92D20 · btn--primary.is-danger 채움 */
+  --color-bg-danger-hover:  var(--error-700);  /* #B42318 */
+  --color-bg-danger-active: var(--error-800);  /* #912018 */
   --color-bg-warning-subtle: var(--warning-50);  /* #FFFAEB */
+  --color-bg-warning:        var(--warning-600);  /* #DC6803 · btn--primary.is-warning 채움 */
+  --color-bg-warning-hover:  var(--warning-700);  /* #B54708 */
+  --color-bg-warning-active: var(--warning-800);  /* #93370D */
+  --color-bg-success-subtle: var(--success-50);  /* #ECFDF3 · badge--success 배경 */
+  --color-bg-success:        var(--success-600);  /* #039855 · btn--primary.is-success 채움 */
+  --color-bg-success-hover:  var(--success-700);  /* #027A48 */
+  --color-bg-success-active: var(--success-800);  /* #05603A */
   --color-bg-control-disabled: var(--gray-300);  /* #D0D5DD · 체크박스/라디오 checked+disabled 채움 */
 
   /* 포커스 링 / 아웃라인 */
@@ -254,6 +269,17 @@
   --color-ring-success:       var(--success-100);  /* #D1FADF */
   --color-ring-neutral:       var(--gray-400);   /* #98A2B3 · switch 토글 focus-visible */
   --color-ring-neutral-subtle: var(--gray-100);  /* #F2F4F7 · switch pressed(off 상태) 링 */
+
+  /* 차트 카테고리 구분 색상 (chart__bar--series-N) */
+  --color-chart-series-1: var(--primary-600);  /* #1570EF */
+  --color-chart-series-2: var(--success-600);  /* #039855 */
+  --color-chart-series-3: var(--warning-600);  /* #DC6803 */
+  --color-chart-series-4: var(--error-600);    /* #D92D20 */
+  /* 차트 카테고리 구분 색상 — 톤 다운 버전 (많이 알록달록하지 않게, 은은한 구분용) */
+  --color-chart-series-1-soft: var(--primary-400);  /* #53B1FD */
+  --color-chart-series-2-soft: var(--success-400);  /* #32D583 */
+  --color-chart-series-3-soft: var(--warning-400);  /* #FDB022 */
+  --color-chart-series-4-soft: var(--error-400);    /* #F97066 */
 
   /* 코드 패널 */
   --color-code-bg:             #0B0D12;
