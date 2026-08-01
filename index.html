@@ -716,9 +716,6 @@
       #ix-sidebar {
         flex-basis: 200px;
       }
-    }
-
-    @media (max-width: 990px) {
       .ix-card__frame-wrap {
         height: 600px;
       }
@@ -778,6 +775,13 @@
         background: none;
         border-bottom: 0;
         padding: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .ix-card__frame-wrap {
+        height: 480px;
+        padding: var(--spacing-12);
       }
     }
 
