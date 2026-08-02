@@ -2,7 +2,25 @@
 
 > 날짜순 진행 기록. 스펙/작업지시서·IA·작성규칙·Patterns 정의는 [spec.md](spec.md) 참고.
 > TODO.md + TODO2.md(6장 진행 메모) + TODO3.md를 통합해 정리함.
-> 최종 수정: 2026-07-28
+> 최종 수정: 2026-08-02
+
+---
+
+## 2026-08-02 — 배포 사이트 CSS/JS 전체 깨짐 수정 + 토큰 가이드 표 스크롤 버그 수정 [완료]
+
+### 토큰 가이드 표(`#ix-token-guide-table`) 모바일 가로 스크롤/sticky 미작동
+- `index.html` "상황별 선택 기준" 표에 `table-layout:fixed`+컬럼별 고정 폭(9.5rem+8rem+15rem)을 줬는데도 모바일에서 가로 스크롤과 첫 컬럼 sticky가 전혀 동작하지 않는다는 리포트
+- 원인: 상위 `.ix-util-table`의 `width:100%`를 그대로 물려받고 있어서, 컬럼 폭을 다 합쳐도 브라우저가 비율대로 줄여 컨테이너(100%) 안에 항상 맞춰버림 → 오버플로우가 발생하지 않아 감싸고 있는 `.ix-table-scroll`의 `overflow-x:auto`도, `position:sticky`도 트리거될 일이 없었음
+- 수정: `@media (max-width:768px)`의 `#ix-token-guide-table` 규칙에 `width:max-content` 한 줄 추가 — 테이블이 컬럼 폭 합계(32.5rem)만큼 실제로 넓어지면서 좁은 화면에서 정상적으로 가로 스크롤+sticky 동작
+
+### 배포 사이트(GitHub Pages) CSS/JS/이미지 전체 깨짐
+- `component/dropdown.html`을 비롯해 여러 컴포넌트 페이지 스타일이 라이브 사이트에서 안 먹는다는 리포트로 조사
+- 원인: 이 저장소는 `reeyounghyun.github.io/css-token-publishing/` 하위 경로(project page)로 배포되는데, `component/*.html`·`patterns/*.html`·`index.html`이 `/css/...`, `/js/...`, `/images/...` 같은 **루트 기준 절대경로**를 쓰고 있었음. 브라우저는 이걸 `reeyounghyun.github.io/css/...`로 요청하는데 그 경로엔 아무것도 없어 전부 404 (curl로 직접 확인: `/css/base.css` → 404, `/css-token-publishing/css/base.css` → 200)
+- 로컬에서 파일을 더블클릭(`file://`)해서 열어도 같은 이유로 깨져 보임 — 배포 환경 문제와 로컬 직접 열기 문제가 같은 원인으로 겹쳐서 발견됨
+- 수정: `component/*.html`(20개)·`patterns/*.html`(7개)은 `../css|js|images/...`로, `index.html`의 `/js/scroll-top.js`는 `./js/scroll-top.js`로 전부 상대경로 전환 (28개 파일, 236줄 교체). 이후 저장소 전체 grep으로 남은 루트 절대경로 없음 확인
+- **배포 갱신**: 실제 서빙되는 브랜치가 `main`이 아니라 `gh-pages`이고, 자동 배포 워크플로우 없이 수동으로 `main`을 미러링하는 구조라는 것도 이번에 확인 — `gh-pages`가 `main`보다 6커밋 뒤처져 있어(`1aecde1`에 정지) 위 수정을 포함한 최근 작업들이 라이브에 전혀 반영 안 되고 있었음. `git push origin main:gh-pages`로 fast-forward해 배포 반영 완료
+
+**변경 파일**: `index.html`, `component/*.html`(20개), `patterns/*.html`(7개), `history.md`
 
 ---
 
