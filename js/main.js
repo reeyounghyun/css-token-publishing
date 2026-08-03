@@ -136,21 +136,31 @@
   }
 
   // 모달 JS
-  function openModal(id) {
+  const modalTriggerMap = new WeakMap(); // overlay → 연 트리거(닫을 때 포커스 복귀용)
+
+  function getFocusable(container) {
+    return Array.from(container.querySelectorAll(
+      'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    )).filter(el => el.offsetParent !== null);
+  }
+
+  function openModal(id, trigger) {
     const overlay = document.getElementById(id);
     if (!overlay) return;
     overlay.classList.add('is-open');
     document.body.classList.add('modal-open');
+    if (trigger) modalTriggerMap.set(overlay, trigger);
     overlay.querySelector('.modal__close, .btn')?.focus();
   }
   function closeModal(overlay) {
     overlay.classList.remove('is-open');
     document.body.classList.remove('modal-open');
+    modalTriggerMap.get(overlay)?.focus(); // 트리거로 포커스 복귀
   }
 
   // 열기 트리거
   document.querySelectorAll('[data-modal-open]').forEach(trigger => {
-    trigger.addEventListener('click', () => openModal(trigger.dataset.modalOpen));
+    trigger.addEventListener('click', () => openModal(trigger.dataset.modalOpen, trigger));
   });
 
   // 닫기 트리거 (X 버튼, 확인/취소 버튼 등)
@@ -172,6 +182,28 @@
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
     document.querySelectorAll('[data-modal].is-open').forEach(closeModal);
+  });
+
+  // 포커스 트랩 — 열린 모달 안에서만 Tab 순환, 밖으로 못 나가게 함
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const overlay = document.querySelector('[data-modal].is-open');
+    if (!overlay) return;
+    const panel = overlay.querySelector('.modal');
+    const focusable = getFocusable(panel);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    } else if (!panel.contains(document.activeElement)) {
+      e.preventDefault();
+      first.focus();
+    }
   });
 
   // 토스트 JS

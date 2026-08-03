@@ -345,7 +345,7 @@
   color:var(--brand-kakao-label);
 }
 .sbtn--filled.sbtn--kakao .sbtn__icon {
-  color:var(--black);
+  color:var(--brand-kakao-symbol);
 }
 /* filled google = 흰 배경 + 컬러 로고 → base 그대로, 마크업에서 컬러 심볼 */
 
@@ -368,6 +368,6 @@
   color:var(--brand-naver);
 }
 .sbtn--outline.sbtn--kakao .sbtn__icon {
-  color:var(--black);
+  color:var(--brand-kakao-symbol);
 }
 /* outline google → 컬러 심볼, base 그대로 */

@@ -2,7 +2,48 @@
 
 > 날짜순 진행 기록. 스펙/작업지시서·IA·작성규칙·Patterns 정의는 [spec.md](spec.md) 참고.
 > TODO.md + TODO2.md(6장 진행 메모) + TODO3.md를 통합해 정리함.
-> 최종 수정: 2026-07-28
+> 최종 수정: 2026-08-03
+
+---
+
+## 2026-08-03 — 백로그 재검증 + `--gray`/`--black` 정리 [완료]
+
+### 미해결 백로그 8건 재검증 (파일 직접 대조)
+- `--white`, `--gray`/`--black`, `img`→`image`, `dropdown__userinfo`, Modal 포커스 트랩, `table__sort` 불일치, Checkbox indeterminate — 전부 재확인. 대부분 07-28 시점 상태 그대로 미해결/미확인이지만 아래 2건은 상태가 달라져 있었음:
+  - **`--black` 사용처 재확인**: 백로그엔 "사용처 0곳"이라 적혀있었으나, 이는 07-28 작성 시점 기준. 바로 다음날(07-29) SNS 로그인 버튼 작업에서 Kakao 아이콘 심볼 색상(`.sbtn--filled.sbtn--kakao .sbtn__icon`, `.sbtn--outline.sbtn--kakao .sbtn__icon`, `button.css`)에 `var(--black)`이 신규로 쓰이기 시작해 지금은 삭제 불가 상태로 바뀜.
+  - **`img`→`image` 범위 확인**: 클래스명 기준 실사용처(`.img-rows`/`.box-img`/`.card--img`)는 전부 `brickify.html`(옛 Brickify 랜딩페이지를 이름만 바꿔 그대로 보존한 레거시 참고 파일, "TASK-1 · TASK-2" 절 참고)뿐 — 활성 컴포넌트/패턴 시스템과 무관. 백로그 항목 자체는 유효하지만 우선순위/적용 범위 재검토 필요(레거시 파일까지 규칙을 적용할지는 미결정으로 남김).
+
+### `--gray`/`--black` primitive 정리
+- `--gray: gray`(사용처 0곳, `--gray-50~900` 스케일과는 별개의 죽은 토큰) 삭제.
+- `--black: black`은 실사용 중이라 유지하되, `button.css`가 직접 참조하던 `var(--black)` 2곳을 신규 semantic 토큰 `--brand-kakao-symbol`(`tokens.css`, `--brand-kakao-*` 그룹에 위치, 값은 `var(--black)`)로 교체 — publishing-rules.md의 "컴포넌트 CSS는 primitive 직접 참조 금지, semantic만" 규칙 준수.
+- 재검증: `var(--gray)`/`var(--black)` 잔여 참조 없음, `var(--gray-*)` 스케일 토큰은 정상 유지 확인.
+
+**변경 파일**: `css/tokens.css`, `css/component/button.css`, `history.md`
+
+### Modal 포커스 트랩 구현
+- `js/main.js`에 없던 Tab 트랩을 추가: 모달이 열린 동안 Tab/Shift+Tab이 패널(`.modal`) 안의 포커스 가능 요소(`a[href]`/`button`/`textarea`/`input`/`select`/`[tabindex]`, `disabled` 및 비표시 요소 제외)끼리만 순환하도록 `keydown` 리스너 추가(`getFocusable()`). 열린 모달은 한 번에 하나뿐이라는 기존 전제(`document.querySelector('[data-modal].is-open')`)를 그대로 따름 — 중첩 모달 미지원은 기존과 동일.
+- 부가로 `openModal(id, trigger)`가 연 트리거 엘리먼트를 `WeakMap`에 저장해뒀다가, `closeModal()`에서 그 트리거로 포커스를 복귀시키도록 함 — 트랩만 있고 복귀가 없으면 닫은 뒤 포커스가 `body`로 떨어지는 별도 접근성 문제가 생기므로 같이 처리(기존엔 열 때 `.modal__close`/`.btn`으로 포커스 이동만 있었고 닫을 때 복귀 로직 자체가 없었음).
+- **검증**: Puppeteer로 `component/modal.html`의 `modal-confirm`을 실제로 열어 (1) 마지막 요소(삭제 버튼)에서 Tab → 첫 요소(X 버튼)로 순환, (2) 첫 요소에서 Shift+Tab → 마지막 요소로 순환, (3) ESC로 닫힌 뒤 포커스가 트리거 버튼("삭제하기")으로 정확히 복귀하는 것을 확인. 별도 라이브러리 추가 없이 순수 JS로 구현.
+
+**변경 파일**: `js/main.js`
+
+### `table__sort` Guideline-동작 불일치 정정
+- 원인 확인: `table.html:230`(State/Class 표)엔 이미 "시각 상태만 있고 실제 정렬 JS는 없음"이라 정확히 적혀있었는데, `Guidelines`의 "✓ 권장" 목록(구 361행)만 "정렬 가능한 헤더는 `aria-sort`를 실제 정렬 상태와 동기화"라는 무조건 지시문으로 남아있어 같은 문서 안에서 서로 모순되는 상태였음.
+- STEP 6(Table 정렬 JS 구현)을 다시 만드는 대신, Pagination("실제 페이지 전환 JS는 없는 정적 데모")·Chart 등에서 이미 채택된 "정적 데모, 조건부 안내" 원칙을 그대로 따라 Guideline 문구를 "정렬 JS를 연결한다면, `aria-sort`를 실제 정렬 상태와 동기화 (이 문서의 `table__sort` 예시는 시각 상태만 있는 정적 데모)"로 정정 — 문서 내 모순만 해소, 실제 정렬 JS는 이번에도 구현하지 않음(기존 원칙과 일관성 유지).
+- 동일 문구가 다른 파일(예: `patterns/search-table.html`)에 중복돼 있지 않은지 grep으로 확인 — 중복 없음, `component/table.html` 1곳만 수정.
+
+**변경 파일**: `component/table.html`
+
+### Checkbox indeterminate — 보류
+- States 데모 추가를 시도했으나(`el.indeterminate = true` 1~2줄 JS로 시각 데모만 표시), 프로젝트의 "퍼블리셔 가이드, 스크립트 최대한 안 쓰기" 원칙과 충돌한다는 사용자 지적으로 되돌림. `checkbox.html`/`checkbox.css` 변경사항 전부 원상복구(git diff 없음).
+- indeterminate는 `checked`/`disabled`와 달리 HTML 속성 자체가 없어 JS 없이는 어떤 형태로도 정적 데모가 불가능한 상태 — 스크립트 최소화 원칙과 근본적으로 상충하는 항목이라 별도 논의 후 재결정 필요. **미해결로 유지**.
+
+### `img` → `image` 백로그 범위 결정 [해제]
+- 원본 백로그가 대상으로 지목한 `dropdown-menu.css`는 재확인 결과 `img` 태그 셀렉터(`.dropdown__avatar img`)뿐이라 애초에 해당 없음(원본 감사의 오기로 추정).
+- `style.css`의 `.img-rows`/`.box-img`/`.card--img`(실사용처는 `brickify.html` — 옛 Brickify 랜딩페이지를 이름만 바꿔 그대로 보존하기로 이미 결정된 레거시 파일)는 활성 컴포넌트/패턴 시스템과 무관. `publishing-rules.md` §6 규칙(`img`→`image` 풀어쓰기)과 "레거시 파일은 그대로 보존" 결정이 충돌해 사용자에게 확인 → **보존 우선, 백로그에서 제외**하기로 결정.
+- 코드 변경 없음 — 백로그 표만 갱신.
+
+**변경 파일**: `history.md`
 
 ---
 
@@ -372,16 +413,17 @@ TODO.md 원본 백로그 중 실제 코드 기준으로 재확인한 현재 상�
 | `is--open`/`is--active` → `is-open`/`is-active` | `dropdown.css` + `main.js` + `component/dropdown.html` | 해결 (2026-07-28 정리) |
 | primitive 직접 참조 → semantic | `code-panel.css` | 해결 (2026-07-28 정리, 코드 패널 전용 semantic 토큰 추가) |
 | `--white` → `--color-bg-surface` 등으로 교체 후 토큰 삭제 | `tokens.css` | 미해결 (`--white` 토큰 삭제 여부는 별도 재검토) |
-| `--gray: gray` / `--black: black` 삭제 (사용처 0곳) | `tokens.css` | 미확인 — 재검토 필요 |
+| `--gray: gray` 삭제 (사용처 0곳) | `tokens.css` | 해결 (2026-08-03) |
+| `--black: black` 삭제 (사용처 0곳) | `tokens.css` | 취소 — 07-29 Kakao 아이콘 작업으로 실사용 시작됨. 대신 `--brand-kakao-symbol` semantic 토큰으로 감싸 primitive 직접 참조만 제거 (2026-08-03) |
 | `--weight-Semibold` → `--weight-semibold` | `tokens.css` + 컴포넌트/문서 예시 | 해결 (2026-07-28 정리) |
 | `--radius-*` / `--height-*` 숫자 표기로 통일 | `tokens.css` + 대부분의 컴포넌트 | 해결 (2026-07-28 정리, `--radius-full` 예외 유지) |
-| `img` → `image` | `dropdown-menu.css`, `style.css` | 미확인 — 재검토 필요 |
+| `img` → `image` | ~~`dropdown-menu.css`~~, `style.css` | 백로그 해제 (2026-08-03) — `dropdown-menu.css`는 재확인 결과 `img` 태그 셀렉터뿐이라 대상 아님. `style.css`의 `.img-rows`/`.box-img`/`.card--img`는 실사용처가 `brickify.html`(옛 Brickify 랜딩페이지, "그대로 보존"하기로 이미 결정된 레거시 파일)뿐이라 사용자 판단으로 보존 대상 제외 |
 | `dropdown__userinfo` → `dropdown__user-info` | `dropdown-menu.css` + `dropdown-menu.html` | 미해결 |
 | Quick Start 섹션 부재 (20개 중 19개) | `component/*.html` (`button.html` 제외) | 해결 (2026-07-29, toast까지 19/19 완료 — 20개 컴포넌트 전체 Quick Start 보유) |
 | 아이콘 자리 "아이콘" 텍스트 리터럴 | `component/input.html`(3곳) + `patterns/detail-page.html` | 해결 (2026-07-29, `aria-hidden="true"` + 빈 텍스트로 교체) |
-| Modal 포커스 트랩 없음 | `js/main.js` | 미해결 (신규발견 2026-07-28) |
+| Modal 포커스 트랩 없음 | `js/main.js` | 해결 (2026-08-03, Tab/Shift+Tab 순환 + 닫을 때 트리거로 포커스 복귀, Puppeteer로 검증) |
 | doc-template.css 하드코딩 색상(`#98A2B3`) | `css/component/doc-template.css:40` | 해결 (2026-07-29, `var(--color-text-faint)`로 교체) |
-| `table__sort` Guideline과 실제 동작 불일치 | `component/table.html:315` + `js/main.js` | 미해결 (기존 STEP 6 항목과 동일 뿌리) |
+| `table__sort` Guideline과 실제 동작 불일치 | `component/table.html:315` + `js/main.js` | 해결 (2026-08-03, Guideline 문구를 "정렬 JS 연결 시" 조건부로 정정 — 실제 정렬 JS는 정적 데모 원칙에 따라 미구현 유지) |
 | Switch 첫 데모 접근가능한 이름 없음 | `component/switch.html` (bare 토글) | 해결 (2026-07-29, `aria-label="로그인 상태 유지"` 추가) |
 | Checkbox indeterminate 상태 없음 | `component/checkbox.html` | 미확인 — 의도적 제외 여부 재검토 필요 |
 | 에러 메시지 작성 가이드 부재 | 전체 md | 신규 — 추가 검토 |

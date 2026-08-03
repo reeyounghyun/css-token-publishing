@@ -66,7 +66,6 @@
 
   --white:white;
   --black: black;
-  --gray:gray;
 
   /*sns 컬러 */
   --brand-naver:#03A94D;
@@ -74,6 +73,7 @@
   --brand-kakao:#FEE500;
   --brand-kakao-hover:#F5DC00;
   --brand-kakao-label: rgba(0,0,0,.85);
+  --brand-kakao-symbol: var(--black);
 
   /* 높이 */
   --height-36:2.25rem; /* 36px */
