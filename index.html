@@ -616,7 +616,7 @@
       padding: 0;
       border: 0;
       background: transparent;
-      font-size: var(--text-16);
+      font-size: var(--text-14);
       color: var(--gray-900);
     }
     .ix-search:focus-visible {
@@ -716,9 +716,6 @@
       #ix-sidebar {
         flex-basis: 200px;
       }
-    }
-
-    @media (max-width: 990px) {
       .ix-card__frame-wrap {
         height: 600px;
       }
@@ -743,6 +740,8 @@
         border: 0;
         border-bottom: 1px solid var(--gray-200);
         background: var(--gray-50);
+        font-size: var(--text-16);
+        font-weight: var(--weight-medium);
       }
       #ix-sidebar {
         display: none;
@@ -778,6 +777,63 @@
         background: none;
         border-bottom: 0;
         padding: 0;
+        margin-bottom: var(--spacing-12);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .ix-card__frame-wrap {
+        height: 480px;
+        padding: var(--spacing-12);
+      }
+      #section-principles .ix-util-table {
+        table-layout: fixed;
+      }
+      #section-principles .ix-util-table th:first-child,
+      #section-principles .ix-util-table td:first-child {
+        width: 7.5rem;
+        white-space: nowrap;
+        word-break: keep-all;
+      }
+      #ix-token-guide-table {
+        table-layout: fixed;
+        border-collapse: separate;
+        border-spacing: 0;
+        overflow: visible;
+        width: max-content;
+      }
+      #ix-token-guide-table th,
+      #ix-token-guide-table td {
+        border-bottom: 1px solid var(--gray-200);
+      }
+      #ix-token-guide-table tr:last-child td {
+        border-bottom: 0;
+      }
+      #ix-token-guide-table th:first-child,
+      #ix-token-guide-table td:first-child {
+        width: 9.5rem;
+        word-break: keep-all;
+        position: sticky;
+        left: 0;
+        z-index: 1;
+      }
+      #ix-token-guide-table td:first-child {
+        background: var(--color-bg-surface);
+      }
+      #ix-token-guide-table th:nth-child(2),
+      #ix-token-guide-table td:nth-child(2) {
+        width: 8rem;
+      }
+      #ix-token-guide-table th:nth-child(3),
+      #ix-token-guide-table td:nth-child(3) {
+        width: 15rem;
+      }
+      #ix-token-guide-table code {
+        white-space: nowrap;
+      }
+      .ix-table-scroll {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
       }
     }
 
@@ -951,7 +1007,8 @@
         <p class="ix-section__desc">클릭하면 <code>var(--토큰명)</code>이 클립보드에 복사됩니다. tokens.css의 실제 값을 그대로 읽어와서 보여줍니다.</p>
 
         <h3 class="ix-subtitle">상황별 선택 기준</h3>
-        <table class="ix-util-table">
+        <div class="ix-table-scroll">
+        <table class="ix-util-table" id="ix-token-guide-table">
           <thead><tr><th>필요한 것</th><th>먼저 선택할 토큰</th><th>판단 기준</th></tr></thead>
           <tbody>
             <tr><td>본문·라벨·힌트 텍스트</td><td><a href="#tokens-typo"><code>--text-*</code></a> + <a href="#tokens-weight"><code>--weight-*</code></a></td><td>본문은 <code>--text-14</code>/<code>--text-16</code>부터, 굵기는 regular → medium → semibold 순으로 필요한 만큼만 올립니다.</td></tr>
@@ -961,6 +1018,7 @@
             <tr><td>레이어·전환·아이콘</td><td><a href="#tokens-zindex"><code>--z-*</code></a> + <a href="#tokens-transition"><code>--transition-*</code></a> + <a href="#tokens-icon"><code>--icon-*</code></a></td><td>모달/토스트처럼 겹치는 UI와 인터랙션에만 사용하고 임의 수치를 새로 만들지 않습니다.</td></tr>
           </tbody>
         </table>
+        </div>
 
         <div class="ix-subtitle-row">
           <h3 class="ix-subtitle" id="tokens-color">색상 — primitive</h3>
@@ -1597,6 +1655,6 @@
       spyTargets.forEach(function (t) { spyObserver.observe(t); });
     })();
   </script>
-  <script src="/js/scroll-top.js"></script>
+  <script src="./js/scroll-top.js"></script>
 </body>
 </html>
