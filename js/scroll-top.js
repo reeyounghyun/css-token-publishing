@@ -8,7 +8,7 @@
     '.scroll-top-btn{position:fixed;right:20px;bottom:20px;width:40px;height:40px;' +
     'display:flex;align-items:center;justify-content:center;border:none;' +
     'border-radius:var(--radius-full,999px);background:var(--color-bg-accent-active);color:var(--color-text-inverse);' +
-    'box-shadow:0 4px 12px rgba(16,24,40,.24);cursor:pointer;opacity:0;visibility:hidden;' +
+    'box-shadow:var(--shadows-lg);cursor:pointer;opacity:0;visibility:hidden;' +
     'transform:translateY(8px);transition:opacity .15s ease,transform .15s ease,visibility .15s,background .15s;z-index:9999;}' +
     '.scroll-top-btn.is-visible{opacity:1;visibility:visible;transform:translateY(0);}' +
     '.scroll-top-btn:hover{background:var(--color-bg-accent-hover);}' +

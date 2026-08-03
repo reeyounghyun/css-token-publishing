@@ -45,6 +45,16 @@
 
 **변경 파일**: `history.md`
 
+### JS 전체 재검토 — "정적 데모, 최소 JS" 원칙 이탈 여부 점검
+- 사용자 요청으로 `js/main.js`(319줄)·`js/scroll-top.js`(37줄) 전체를 "정적 데모, 필요한 경우만 최소 JS(열고 닫기)" 원칙(Pagination/Chart/Checkbox indeterminate 판단에서 반복 채택된 원칙, 위 항목 참고)과 대조.
+- **`setupDropdown()`(구 `data-dropdown` 커스텀2, 88줄) 삭제**: 대상 속성 `[data-dropdown]`이 HTML 어디에도 없는 죽은 코드였음(grep 전체 확인). 내용도 화살표 키 이동·Home/End·타이핑 첫 글자 점프·`aria-activedescendant`까지 갖춘 완전한 ARIA combobox 구현이라, 실사용 중인 `data-dropdown-custom`(dropdown.html 4곳)과 기능이 겹치면서 원칙 범위도 벗어난 상태였음.
+- **`scroll-top.js` 토큰화**: `box-shadow:0 4px 12px rgba(16,24,40,.24)` 하드코딩을 `var(--shadows-lg)`로 교체 — publishing-rules.md §0/§1(하드코딩 금지, 토큰 우선) 위반 수정.
+- **모달 포커스 트랩(`main.js:138-` 부근)·탭 키보드 네비게이션(`main.js` 탭 JS)**: 재검토 결과 WAI-ARIA 표준 패턴이라 "열고 닫기"에 필수적인 범위로 판단, 원칙 위반 아님 — 유지.
+- **`showToast()` desc 처리 수정**: `desc` 없을 때 기존엔 `toast__desc` div를 만들고 `hidden`만 토글했는데, `toast.html:186` "제목만" 정적 데모 마크업엔 애초에 이 요소 자체가 없음 — 정적 마크업이 기준이라는 원칙(퍼블리셔가 복붙하는 원본)에 따라 JS 쪽을 고쳐 `desc`가 있을 때만 `toast__desc`를 생성하도록 변경. workflow.md QA "이유 없는 div 없음" 항목과도 일치.
+- **검증**: 로컬 서버(`http-server`) + Playwright 헤드리스로 (1) 모달 Tab/Shift+Tab 트랩·ESC 닫기·포커스 복귀, (2) 커스텀 드롭다운 열기/선택/바깥클릭 닫기, (3) 스크롤탑 버튼 노출·그림자 값·클릭 스크롤, (4) `showToast({title})` 단독 호출 시 `toast__desc` 미생성 — 전부 확인. 전체 28개 페이지(component + patterns + index) 콘솔 에러 0건, 요청 실패 0건, id 중복 0건.
+
+**변경 파일**: `js/main.js`, `js/scroll-top.js`, `history.md`
+
 ---
 
 ## 2026-08-02 — 배포 사이트 CSS/JS 전체 깨짐 수정 + 토큰 가이드 표 스크롤 버그 수정 [완료]
